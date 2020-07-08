@@ -1,0 +1,29 @@
+* {margin: 0;padding: 0;box-sizing: border-box;list-style:none}
+html,body {width: 100%;height: 100%;}
+body{  background: url(./../images/simple.jpg) no-repeat 0 0;background-size: 100% 100%;}
+
+.page-controller{
+  width:100%;
+  height:100%;
+  position: relative;
+  padding-top: 50px;
+  display: flex;
+}
+.page-header{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 50px;
+  background: pink;
+}
+.page-nav{
+  width: 72px;
+  height: 100%;
+  background: red;
+}
+.page-body{
+  flex: 1;
+  background: #ff6600;
+
+}
