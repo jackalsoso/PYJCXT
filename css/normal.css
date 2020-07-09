@@ -1,5 +1,12 @@
 @import "./reset.css";
 @import "./normal/index.css";
+@import "./normal/time.css";
+@import "./normal/statistics.css";
+@import "./normal/structural.css";
+@import "./normal/scenario.css";
+@import "./normal/warning.css";
+@import "./normal/system.css";
+
 /*浅色皮肤*/
 body{background-color:#eef0f3;}
 .page-controller{

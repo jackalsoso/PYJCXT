@@ -1,6 +1,11 @@
 @import "./reset.css";
 @import "./dark/index.css";
-/*深色皮肤*/
+@import "./dark/time.css";
+@import "./dark/statistics.css";
+@import "./dark/structural.css";
+@import "./dark/scenario.css";
+@import "./dark/warning.css";
+@import "./dark/system.css";/*深色皮肤*/
 body{background-color:#0A061E;}
 .page-controller{
   width:100%;
