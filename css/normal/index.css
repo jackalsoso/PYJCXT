@@ -1,7 +1,4 @@
-* {margin: 0;padding: 0;box-sizing: border-box;list-style:none}
-html,body {width: 100%;height: 100%;}
-body{  background: url(./../images/simple.jpg) no-repeat 0 0;background-size: 100% 100%;}
-
+/*浅色皮肤*/
 .page-controller{
   width:100%;
   height:100%;
@@ -15,15 +12,16 @@ body{  background: url(./../images/simple.jpg) no-repeat 0 0;background-size: 10
   top:0;
   width: 100%;
   height: 50px;
-  background: pink;
+  background: #161630;
 }
 .page-nav{
   width: 72px;
   height: 100%;
-  background: red;
+  background: #161630;
 }
 .page-body{
   flex: 1;
-  background: #ff6600;
-
+  background: white;
+  overflow: hidden;
+  overflow-y: auto;
 }
