@@ -5,7 +5,9 @@
 @import "./dark/structural.css";
 @import "./dark/scenario.css";
 @import "./dark/warning.css";
-@import "./dark/system.css";/*深色皮肤*/
+@import "./dark/system.css";
+@import "./dark/chart_demo.css";
+/*深色皮肤*/
 body{background-color:#0A061E;}
 .page-controller{
   width:100%;
