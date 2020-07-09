@@ -68,16 +68,23 @@
         radius: '60%',
         detail: {
           formatter: function (value) {
-            return `{a|${value}}\n{b|综合评分}`
+            return `{a|}\n{b|${value}}\n{c|综合评分}`
           },
           offsetCenter: [0, 0],
           rich: {
             a: {
+              backgroundColor: {
+                image: './images/score.png'
+              },
+              width: 42,
+              height: 20
+            },
+            b: {
               fontSize: 36,
               color: '#fff',
               lineHeight: 50
             },
-            b: {
+            c: {
               fontSize: 14,
               color: '#8D8C98'
             }
