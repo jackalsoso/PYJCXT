@@ -11,5 +11,4 @@ $(function(){
     let _url = $(this).attr('data-menu')
     window.location.href = './' + _url + '.html'
   })
-
 })
