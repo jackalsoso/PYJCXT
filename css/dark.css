@@ -1,4 +1,3 @@
-@import "./reset.css";
 @import "./dark/index.css";
 @import "./dark/time.css";
 @import "./dark/statistics.css";
@@ -10,6 +9,8 @@
 /*深色皮肤*/
 body{background-color:#0A061E;font-size: 14px;color:white}
 .page-controller{
+  /*display: block;*/
+  visibility: visible;
   width:100%;
   height:100%;
   position: relative;
