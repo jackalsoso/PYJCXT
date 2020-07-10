@@ -98,6 +98,12 @@
   <script src="./js/common.js"></script>
   <script type="text/javascript">
   let init = function (){
+    var value = 80;   // 数值
+    var _x = document.getElementById('chart1').offsetWidth;  // 宽度
+    var _y = document.getElementById('chart1').offsetHeight;   // 高度
+    var x0 = _x / 2, y0 = _y / 2;   // 圆心坐标点
+    var r = _x > _y ? _y * 0.3 - 8 : _x * 0.3 - 8;  // 半径
+    var deg = value / 100 * 270 - 225;   // 角度
     var option1 = {
       series: {
         name: '综合评分',
@@ -114,13 +120,13 @@
               backgroundColor: {
                 image: './images/score.png'
               },
-              width: 42,
-              height: 20
+              width: 40,
+              height: 22
             },
             b: {
               fontSize: 36,
               color: '#fff',
-              lineHeight: 50
+              padding: 10
             },
             c: {
               fontSize: 14,
@@ -129,11 +135,11 @@
           }
         },
         data: [{
-          value: 87
+          value: value
         }],
         axisLine: {
           lineStyle: {
-            width: 15,
+            width: 16,
             color: [
               [1, new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
                   offset: 0.15,
@@ -188,7 +194,19 @@
         axisTick: {
           show: false
         }
-      }
+      },
+      graphic: [{
+        type: 'circle',
+        shape: {
+          r: 10,
+          cx: x0 + r * Math.cos(deg * Math.PI / 180),
+          cy: y0 + r * Math.sin(deg * Math.PI / 180)
+        },
+        style: {
+          fill: '#fff'
+        },
+        z: 10
+      }]
     }
     var option2 = {
       series: {
@@ -298,8 +316,6 @@
     myChart1.setOption(option1,true);
     myChart2.setOption(option2,true);
     myChart3.setOption(option3,true);
-    $('.chart').width('100px')
-    $('.chart').height('100px')
   }
 
   </script>
