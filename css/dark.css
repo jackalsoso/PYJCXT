@@ -9,7 +9,8 @@
 /*深色皮肤*/
 body{background-color:#0A061E;font-size: 14px;color:white}
 .page-controller{
-  display: block;
+  /*display: block;*/
+  visibility: visible;
   width:100%;
   height:100%;
   position: relative;

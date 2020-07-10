@@ -1,6 +1,7 @@
 $(function(){
   !sessionStorage.theme ? sessionStorage.setItem('theme','dark') : ''
   $('#cssthemes').attr('href', './css/' + sessionStorage.theme + '.css')
+  init ? setTimeout(function(){init()},100) : ''
   $('.themes-picker').on('click', 'li', function(){
     sessionStorage.theme = $(this).attr('data-theme')
     $('#cssthemes').attr('href', './css/' + sessionStorage.theme + '.css')
