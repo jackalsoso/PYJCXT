@@ -74,6 +74,7 @@
   width: calc((100% - 20px) / 3);
   height: 100%;
   float: left;
+  box-sizing: content-box;
 }
 .bottom ul li + li{
   border-left: 10px #0A061E solid;

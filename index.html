@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <link id="cssthemes" href="" rel="stylesheet">
   <title>浦仪监测系统</title>
 </head>
+
 <body>
   <div class="page-controller">
     <div class="page-header">
@@ -19,7 +21,7 @@
           <li data-theme="normal"></li>
           <li data-theme="dark"></li>
         </ul>
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -43,7 +45,7 @@
           <div class="info">
             <ul>
               <li><span>桥梁名称：</span> <span>上坝大桥主桥</span> <a href="javascript:;">（切换）</a></li>
-              <li><span>桥      型：</span> <span>独柱形钢塔双索面钢箱梁</span></li>
+              <li><span>桥 型：</span> <span>独柱形钢塔双索面钢箱梁</span></li>
               <li><span>跨径组合：</span> <span>50+180+500+180+50m</span></li>
               <li><span>地区路线：</span> <span>镇江S235</span></li>
               <li><span>中心桩号：</span> <span>K023+152.78</span></li>
@@ -64,260 +66,259 @@
         </div>
       </div>
       <div class="page-box bottom">
-          <ul>
-            <li>
-              <div class="title">
-                <span>综合评分</span>
-              </div>
-              <div class="content">
-                <div class="chart" id="chart1"></div>
-              </div>
-            </li>
-            <li>
-              <div class="title">
-                <span>设备在线率</span>
-              </div>
-              <div class="content">
-                <div class="chart" id="chart2"></div>
-              </div>
-            </li>
-            <li>
-              <div class="title">
-                <span>预警统计</span>
-              </div>
-              <div class="content">
-                <div class="chart" id="chart3"></div>
-              </div>
-            </li>
-          </ul>
+        <ul>
+          <li>
+            <div class="title">
+              <span>综合评分</span>
+            </div>
+            <div class="content">
+              <div class="chart" id="chart1"></div>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <span>设备在线率</span>
+            </div>
+            <div class="content">
+              <div class="chart" id="chart2"></div>
+            </div>
+          </li>
+          <li>
+            <div class="title">
+              <span>预警统计</span>
+            </div>
+            <div class="content">
+              <div class="chart" id="chart3"></div>
+            </div>
+          </li>
+        </ul>
       </div>
-
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = function (){
-    var value = 80;   // 数值
-    var _x = document.getElementById('chart1').offsetWidth;  // 宽度
-    var _y = document.getElementById('chart1').offsetHeight;   // 高度
-    var x0 = _x / 2, y0 = _y / 2;   // 圆心坐标点
-    var r = _x > _y ? _y * 0.3 - 8 : _x * 0.3 - 8;  // 半径
-    var deg = value / 100 * 270 - 225;   // 角度
-    var option1 = {
-      series: {
-        name: '综合评分',
-        type: 'gauge',
-        max: 100,
-        radius: '60%',
-        detail: {
-          formatter: function (value) {
-            return `{a|}\n{b|${value}}\n{c|综合评分}`
-          },
-          offsetCenter: [0, 0],
-          rich: {
-            a: {
-              backgroundColor: {
-                image: './images/score.png'
+    let init = function () {
+      var value = 80; // 数值
+      var _x = document.getElementById('chart1').offsetWidth; // 宽度
+      var _y = document.getElementById('chart1').offsetHeight; // 高度
+      var x0 = _x / 2,
+        y0 = _y / 2; // 圆心坐标点
+      var r = _x > _y ? _y * 0.3 - 8 : _x * 0.3 - 8; // 半径
+      var deg = value / 100 * 270 - 225; // 角度
+      var option1 = {
+        series: {
+          name: '综合评分',
+          type: 'gauge',
+          max: 100,
+          radius: '60%',
+          detail: {
+            formatter: function (value) {
+              return `{a|}\n{b|${value}}\n{c|综合评分}`
+            },
+            offsetCenter: [0, 0],
+            rich: {
+              a: {
+                backgroundColor: {
+                  image: './images/score.png'
+                },
+                width: 40,
+                height: 22
               },
-              width: 40,
-              height: 22
-            },
-            b: {
-              fontSize: 36,
-              color: '#fff',
-              padding: 10
-            },
-            c: {
-              fontSize: 14,
-              color: '#8D8C98'
-            }
-          }
-        },
-        data: [{
-          value: value
-        }],
-        axisLine: {
-          lineStyle: {
-            width: 16,
-            color: [
-              [1, new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                  offset: 0.15,
-                  color: "#FF6383"
-                },
-                {
-                  offset: 0.50,
-                  color: "#C95FF2"
-                },
-                {
-                  offset: 0.85,
-                  color: "#7C6AF2"
-                },
-                {
-                  offset: 1,
-                  color: "#5C89FF"
-                }
-              ])]
-            ]
-          }
-        },
-        splitLine: {
-          show: false
-        },
-        axisLabel: {
-          distance: -20,
-          show: true,
-          formatter: function (value) {
-            if (value === 0) {
-              return '{a|严重}'
-            } else if (value === 100) {
-              return '{b|良好}'
-            }
-            return ''
-          },
-          rich: {
-            a: {
-              fontSize: 14,
-              color: '#FF6383',
-              padding: [-50, 0, 0, -10]
-            },
-            b: {
-              fontSize: 14,
-              color: '#6085FD',
-              padding: [-50, -10, 0, 0]
-            }
-          }
-        },
-        pointer: {
-          show: false
-        },
-        axisTick: {
-          show: false
-        }
-      },
-      graphic: [{
-        type: 'circle',
-        shape: {
-          r: 10,
-          cx: x0 + r * Math.cos(deg * Math.PI / 180),
-          cy: y0 + r * Math.sin(deg * Math.PI / 180)
-        },
-        style: {
-          fill: '#fff'
-        },
-        z: 10
-      }]
-    }
-    var option2 = {
-      series: {
-        name: '设备在线率',
-        type: 'pie',
-        radius: ['50%', '60%'],
-        itemStyle: {
-          normal: {
-            color: '#5C89FF',
-            label: {
-              show: false
-            },
-            labelLine: {
-              show: false
-            }
-          }
-        },
-        hoverAnimation: false,
-        data: [{
-          value: 86,
-          label: {
-            normal: {
-              formatter: function (params) {
-                return `{a|${params.value}%}\n{b|${params.seriesName}}`
+              b: {
+                fontSize: 36,
+                color: '#fff',
+                padding: 10
               },
-              rich: {
-                a: {
-                  fontSize: 36,
-                  color: '#fff',
-                  lineHeight: 50
-                },
-                b: {
-                  fontSize: 14,
-                  color: '#8D8C98',
-                }
-              },
-              position: 'center',
-              show: true
+              c: {
+                fontSize: 14,
+                color: '#8D8C98'
+              }
             }
           },
-        }, {
-          value: 100 - 86,
-          itemStyle: {
-            normal: {
-              color: '#364C94'
-            },
-            emphasis: {
-              color: '#364C94'
+          data: [{
+            value: value
+          }],
+          axisLine: {
+            lineStyle: {
+              width: 16,
+              color: [
+                [1, new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                    offset: 0.15,
+                    color: "#FF6383"
+                  },
+                  {
+                    offset: 0.50,
+                    color: "#C95FF2"
+                  },
+                  {
+                    offset: 0.85,
+                    color: "#7C6AF2"
+                  },
+                  {
+                    offset: 1,
+                    color: "#5C89FF"
+                  }
+                ])]
+              ]
             }
+          },
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            distance: -20,
+            show: true,
+            formatter: function (value) {
+              if (value === 0) {
+                return '{a|严重}'
+              } else if (value === 100) {
+                return '{b|良好}'
+              }
+              return ''
+            },
+            rich: {
+              a: {
+                fontSize: 14,
+                color: '#FF6383',
+                padding: [-50, 0, 0, -10]
+              },
+              b: {
+                fontSize: 14,
+                color: '#6085FD',
+                padding: [-50, -10, 0, 0]
+              }
+            }
+          },
+          pointer: {
+            show: false
+          },
+          axisTick: {
+            show: false
           }
+        },
+        graphic: [{
+          type: 'circle',
+          shape: {
+            r: 10,
+            cx: x0 + r * Math.cos(deg * Math.PI / 180),
+            cy: y0 + r * Math.sin(deg * Math.PI / 180)
+          },
+          style: {
+            fill: '#fff'
+          },
+          z: 10
         }]
       }
-    }
-    var option3 = {
-      color: ['#FF5973', '#FF9F40', '#FFCB48'],
-      tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b}: {c} ({d}%)'
-      },
-      legend: {
-        bottom: 20,
-        itemGap: 20,
-        textStyle: {
-          color: '#fff'
+      var option2 = {
+        series: {
+          name: '设备在线率',
+          type: 'pie',
+          radius: ['50%', '60%'],
+          itemStyle: {
+            normal: {
+              color: '#5C89FF',
+              label: {
+                show: false
+              },
+              labelLine: {
+                show: false
+              }
+            }
+          },
+          hoverAnimation: false,
+          data: [{
+            value: 86,
+            label: {
+              normal: {
+                formatter: function (params) {
+                  return `{a|${params.value}%}\n{b|${params.seriesName}}`
+                },
+                rich: {
+                  a: {
+                    fontSize: 36,
+                    color: '#fff',
+                    lineHeight: 50
+                  },
+                  b: {
+                    fontSize: 14,
+                    color: '#8D8C98',
+                  }
+                },
+                position: 'center',
+                show: true
+              }
+            },
+          }, {
+            value: 100 - 86,
+            itemStyle: {
+              normal: {
+                color: '#364C94'
+              },
+              emphasis: {
+                color: '#364C94'
+              }
+            }
+          }]
+        }
+      }
+      var option3 = {
+        color: ['#FF5973', '#FF9F40', '#FFCB48'],
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
-        data: ['红色预警', '橙色预警', '黄色预警']
-      },
-      series: [{
-        name: '预警统计',
-        type: 'pie',
-        radius: ['40%', '60%'],
-        center: ['50%', '43%'],
-        avoidLabelOverlap: false,
-        label: {
-          show: false,
-          position: 'center'
+        legend: {
+          bottom: 20,
+          itemGap: 20,
+          textStyle: {
+            color: '#fff'
+          },
+          data: ['红色预警', '橙色预警', '黄色预警']
         },
-        emphasis: {
+        series: [{
+          name: '预警统计',
+          type: 'pie',
+          radius: ['40%', '60%'],
+          center: ['50%', '43%'],
+          avoidLabelOverlap: false,
           label: {
-            show: true,
-            fontSize: 22,
-            fontWeight: 'bold'
-          }
-        },
-        labelLine: {
-          show: false
-        },
-        data: [{
-            value: 335,
-            name: '红色预警'
+            show: false,
+            position: 'center'
           },
-          {
-            value: 310,
-            name: '橙色预警'
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 22,
+              fontWeight: 'bold'
+            }
           },
-          {
-            value: 234,
-            name: '黄色预警'
-          }
-        ]
-      }]
-    };
-    // 初始化echarts实例
-    var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
-    var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
-    var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
-    myChart1.setOption(option1,true);
-    myChart2.setOption(option2,true);
-    myChart3.setOption(option3,true);
-  }
-
+          labelLine: {
+            show: false
+          },
+          data: [{
+              value: 335,
+              name: '红色预警'
+            },
+            {
+              value: 310,
+              name: '橙色预警'
+            },
+            {
+              value: 234,
+              name: '黄色预警'
+            }
+          ]
+        }]
+      };
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
+    }
   </script>
 </body>
 
