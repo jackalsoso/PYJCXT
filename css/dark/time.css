@@ -54,10 +54,6 @@
     display: flex;
     justify-content: space-between;
 }
-.time-bottom .page-box .content .header {
-    display: flex;
-    justify-content: space-between;
-}
 .time-bottom .page-box .content .header-left {
     display: flex;
 }
@@ -90,7 +86,7 @@
     font-size: 14px;
     color: #97B8DA;
     border: 0;
-    margin-right: 10px;
+    margin-left: 10px;
     cursor: pointer;
     padding: 0 8px;
 }
@@ -103,9 +99,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
 }
 .time-bottom .page-box .content .header-right .search {
-    margin-right: 10px;
     background: #5C89FF;
 }
 .time-bottom .page-box .content .header-right .export {
