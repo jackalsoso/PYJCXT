@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
+  <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <title>浦仪监测系统</title>
+</head>
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪监测系统</div>
+      <div class="user">
+        <ul class="themes-picker">
+          <li data-theme="normal"></li>
+          <li data-theme="dark"></li>
+        </ul>
+        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li data-menu="time1">时程数据</li><!-- 时程数据 -->
+        <li class="active" data-menu="statistics1">统计数据</li><!-- 统计数据 -->
+        <li data-menu="structural">结构<br>状态分析</li><!-- 结构状态分析 -->
+        <li data-menu="scenario">服役<br>环境分析</li><!-- 服役环境分析 -->
+        <li data-menu="warning">预警管理</li><!-- 预警管理 -->
+        <li data-menu="system">系统管理</li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="page-box time-top statistics-top">
+        <div class="title">
+          <span>IBM模型</span>
+        </div>
+        <div class="content">
+          <ul>
+            <li data-menu="statistics1">应力</li>
+            <li data-menu="statistics2">横向支座位移</li>
+            <li data-menu="statistics3">挠度</li>
+            <li data-menu="statistics4">温度</li>
+            <li data-menu="statistics5">空间变位</li>
+            <li data-menu="statistics6">温湿度</li>
+            <li data-menu="statistics7">拉索振动</li>
+            <li data-menu="statistics8">风速</li>
+            <li data-menu="statistics9">梁端位移</li>
+            <li data-menu="statistics10">动力特性</li>
+            <li data-menu="statistics11">阻尼器位移</li>
+            <li class="active" data-menu="statistics12">地震、船撞</li>
+          </ul>
+          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+        </div>
+      </div>
+      <div class="time-bottom statistics-bottom">
+        <div class="page-box">
+          <div class="title">
+            <span>地震、船撞</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li>10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="加速度峰值、均方根">加速度峰值、均方根</option>
+                  <option value="加速度峰值">加速度峰值</option>
+                  <option value="均方根">均方根</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <select class="time-selector">
+                  <option value="2020/05/12">2020/05/12</option>
+                  <option value="2020/05/13">2020/05/13</option>
+                  <option value="2020/05/14">2020/05/14</option>
+                  <option value="2020/05/15">2020/05/15</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart1"></div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript">
+    let init = function () {
+      var data = [
+        ["2020-05-12", 120, 220, 150, 320],
+        ["2020-05-13", 132, 182, 232, 334],
+        ["2020-05-14", 101, 191, 301, 486],
+        ["2020-05-15", 134, 332, 154, 390],
+        ["2020-05-16", 90, 290, 190, 210],
+        ["2020-05-17", 234, 330, 260, 310],
+        ["2020-05-18", 210, 310, 410, 184]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+      var valueList3 = data.map(function (item) {
+        return item[3];
+      });
+      var valueList4 = data.map(function (item) {
+        return item[4];
+      });
+      var option1 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          }, 
+          data: dateList,
+        },
+        yAxis: {
+          name: '加速度：m/s²',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },  
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '加速度峰值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList1
+        }, {
+          name: '均方根',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList2
+        }]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      myChart1.setOption(option1, true);
+    }
+  </script>
+</body>
+
+</html>

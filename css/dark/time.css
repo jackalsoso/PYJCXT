@@ -23,7 +23,7 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.time-top .content ul li:active {
+.time-top .content ul li:hover, .time-top .content ul li.active {
     background: #5985F9;
 }
 .time-top .content .imgbox {

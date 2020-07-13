@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
+  <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <title>浦仪监测系统</title>
+</head>
+
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪监测系统</div>
+      <div class="user">
+        <ul class="themes-picker">
+          <li data-theme="normal"></li>
+          <li data-theme="dark"></li>
+        </ul>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li class="active" data-menu="time1">时程数据</li><!-- 时程数据 -->
+        <li data-menu="statistics1">统计数据</li><!-- 统计数据 -->
+        <li data-menu="structural">结构<br>状态分析</li><!-- 结构状态分析 -->
+        <li data-menu="scenario">服役<br>环境分析</li><!-- 服役环境分析 -->
+        <li data-menu="warning">预警管理</li><!-- 预警管理 -->
+        <li data-menu="system">系统管理</li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="page-box time-top">
+        <div class="title">
+          <span>IBM模型</span>
+        </div>
+        <div class="content">
+          <ul>
+            <li class="active" data-menu="time1">应力</li>
+            <li data-menu="time1">横向支座位移</li>
+            <li data-menu="time1">挠度</li>
+            <li data-menu="time1">温度</li>
+            <li class="active" data-menu="time1">空间变位</li>
+            <li data-menu="time1">温湿度</li>
+            <li data-menu="time1">拉索振动</li>
+            <li data-menu="time1">风速</li>
+            <li data-menu="time1">梁端位移</li>
+            <li data-menu="time2">动力特性</li>
+            <li data-menu="time1">阻尼器位移</li>
+            <li data-menu="time1">地震、船撞</li>
+          </ul>
+          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+        </div>
+      </div>
+      <div class="time-bottom">
+        <div class="page-box">
+          <div class="title">
+            <span>结构应力</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li>实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <select class="time-selector">
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                </select>
+                <button class="search">
+                  <img src="./images/search.png" border="0" />
+                  <span>查询</span>
+                </button>
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart1"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>空间变位</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li>实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select placeholder="请选择">
+                  <option value="横桥向">横桥向</option>
+                  <option value="纵桥向">纵桥向</option>
+                  <option value="竖向">竖向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <select class="time-selector">
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                </select>
+                <button class="search">
+                  <img src="./images/search.png" border="0" />
+                  <span>查询</span>
+                </button>
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart2"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript">
+    let init = function () {
+      var data = [
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
+        ["2000-06-29", 85],
+        ["2000-06-30", 73],
+        ["2000-07-01", 83],
+        ["2000-07-02", 125],
+        ["2000-07-03", 107],
+        ["2000-07-04", 82],
+        ["2000-07-05", 44],
+        ["2000-07-06", 72],
+        ["2000-07-07", 106],
+        ["2000-07-08", 107],
+        ["2000-07-09", 66],
+        ["2000-07-10", 91],
+        ["2000-07-11", 92],
+        ["2000-07-12", 113],
+        ["2000-07-13", 107],
+        ["2000-07-14", 131],
+        ["2000-07-15", 111],
+        ["2000-07-16", 64],
+        ["2000-07-17", 69],
+        ["2000-07-18", 88],
+        ["2000-07-19", 77],
+        ["2000-07-20", 83],
+        ["2000-07-21", 111],
+        ["2000-07-22", 57],
+        ["2000-07-23", 55],
+        ["2000-07-24", 60],
+        ["2000-07-25", 73],
+        ["2000-07-26", 68],
+        ["2000-07-27", 92],
+        ["2000-07-28", 130],
+        ["2000-07-29", 245],
+        ["2000-07-30", 139],
+        ["2000-07-31", 115],
+        ["2000-08-01", 111],
+        ["2000-08-02", 309],
+        ["2000-08-03", 206],
+        ["2000-08-04", 137],
+        ["2000-08-05", 128],
+        ["2000-08-06", 92]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList = data.map(function (item) {
+        return item[1];
+      });
+      var option1 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          }, 
+          data: dateList,
+        },
+        yAxis: {
+          name: '应力：Mpa',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },  
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 0,
+          top: 30,
+          right: 10,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgb(23, 143, 255)'
+          },
+          areaStyle: {
+            color: 'rgb(18, 54, 105)'
+          },
+          data: valueList
+        }]
+      }
+      var option2 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          }, 
+          data: dateList,
+        },
+        yAxis: {
+          name: '位移：mm',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },  
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 0,
+          top: 30,
+          right: 10,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgb(201, 95, 242)'
+          },
+          areaStyle: {
+            color: 'rgb(71, 40, 101)'
+          },
+          data: valueList
+        }]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+    }
+  </script>
+</body>
+
+</html>

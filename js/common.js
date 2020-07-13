@@ -11,4 +11,8 @@ $(function(){
     let _url = $(this).attr('data-menu')
     window.location.href = './' + _url + '.html'
   })
+  $('.time-top').on('click', 'ul li', function(){
+    let _url = $(this).attr('data-menu')
+    window.location.href = './' + _url + '.html'
+  })
 })
