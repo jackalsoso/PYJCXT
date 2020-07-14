@@ -7,12 +7,12 @@ $(function(){
     $('#cssthemes').attr('href', './css/' + sessionStorage.theme + '.css')
     $(this).addClass('active').siblings().removeClass('active')
   })
-  $('.page-nav').on('click', 'ul li', function(){
+  $('.page-nav, .time-top').on('click', 'li', function(e){
     let _url = $(this).attr('data-menu')
-    window.location.href = './' + _url + '.html'
-  })
-  $('.time-top').on('click', 'ul li', function(){
-    let _url = $(this).attr('data-menu')
-    window.location.href = './' + _url + '.html'
+    if(_url){
+      e.stopPropagation()
+      let _url = $(this).attr('data-menu')
+      window.location.href = './' + _url + '.html'
+    }
   })
 })

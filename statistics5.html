@@ -26,12 +26,50 @@
     <div class="page-nav">
       <ul>
         <li data-menu="index">首页</li><!-- 首页 -->
-        <li data-menu="time1">时程数据</li><!-- 时程数据 -->
-        <li class="active" data-menu="statistics1">统计数据</li><!-- 统计数据 -->
-        <li data-menu="structural">结构<br>状态分析</li><!-- 结构状态分析 -->
-        <li data-menu="scenario">服役<br>环境分析</li><!-- 服役环境分析 -->
-        <li data-menu="warning">预警管理</li><!-- 预警管理 -->
-        <li data-menu="system">系统管理</li><!-- 系统管理 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li class="active"><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li><span>结构<br>状态分析</span>
+          <ul>
+          <li data-menu="structural1"><span>结构动力特性分析</span></li>
+          <li data-menu="structural2"><span>应力五度指标</span></li>
+          <li data-menu="structural3"><span>结构变形响应分析</span></li>
+          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+          <li data-menu="structural6"><span>结构相关性分析</span></li>
+          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <li data-menu="system3"><span>资料备份</span></li>
+          </ul>
+        </li><!-- 系统管理 -->
       </ul>
     </div>
     <div class="page-body">
@@ -100,7 +138,7 @@
               <div class="chart" id="chart1"></div>
             </div>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   </div>
@@ -149,7 +187,7 @@
           },
           axisTick: {
             alignWithLabel: true
-          }, 
+          },
           data: dateList,
         },
         yAxis: {
@@ -165,7 +203,7 @@
           },
           axisTick: {
             show: false
-          },  
+          },
           splitLine: {
             show: true,
             lineStyle: {
