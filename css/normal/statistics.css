@@ -1,1 +1,18 @@
-
+.statistics-bottom .page-box .content {
+    padding: 20px 0 10px;
+}
+.statistics-bottom .page-box .content .header {
+    padding: 0 20px;
+}
+.statistics-bottom .two-page-box {
+    display: flex;
+}
+.statistics-bottom .two-page-box .page-box {
+    flex: 1;
+}
+.statistics-bottom .two-page-box .page-box:first-child {
+    margin-right: 10px;
+}
+.statistics-bottom .page-box .content .chart-wrap .chart {
+    width: 100%;
+}

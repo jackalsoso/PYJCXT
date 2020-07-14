@@ -88,7 +88,6 @@ body{background-color:#eef0f3;font-size: 14px;color:#4a4a4a;}
   top:10px;
 }
 
-
 .page-nav{
   width: 72px;
   height: 100%;
@@ -96,9 +95,10 @@ body{background-color:#eef0f3;font-size: 14px;color:#4a4a4a;}
 }
 .page-nav > ul{
   width: 100%;
-  overflow: hidden;
+  height: 100%;
 }
 .page-nav > ul > li{
+  position: relative;
   width: 100%;
   height: 72px;
   color:white;
@@ -139,6 +139,40 @@ body{background-color:#eef0f3;font-size: 14px;color:#4a4a4a;}
 .page-nav > ul > li:hover{
   background-color: rgba(54,76,148,.2);
 }
+.page-nav > ul > li > ul{
+  display: none;
+  position: absolute;
+  left:70px;
+  top:10px;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 4px;
+  z-index:99;
+  box-shadow: 0 0 10px 10px rgba(0,0,0,.2);
+  text-align: left;
+  flex-direction: column;
+}
+.page-nav > ul > li > ul > li{
+  display: table-row;
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: left;
+  color:#6c6c6c;
+  white-space: nowrap;
+  padding: 0 20px;
+}
+.page-nav > ul > li > ul > li > span{
+  padding: 0 20px;
+}
+.page-nav > ul > li > ul > li:hover{
+  background-color: #5985F9;
+  color:white;
+}
+.page-nav > ul > li:hover ul{
+  display: table;
+}
+
 .page-body{
   position: relative;
   flex: 1;
