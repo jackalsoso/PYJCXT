@@ -19,12 +19,13 @@
     justify-content: center;
     align-items: center;
     margin: 0 10px 10px 0;
-    background: #191934;
+    background: #f9f9f9;
     border-radius: 4px;
     cursor: pointer;
 }
 .time-top .content ul li:hover, .time-top .content ul li.active {
-    background: #5985F9;
+    background: #5c89ff;
+    color:white;
 }
 .time-top .content .imgbox {
     flex: 1;
@@ -61,8 +62,8 @@
     height: 32px;
     line-height: 30px;
     padding: 0 10px;
-    border: 1px solid #4C4B5E;
-    color: #75798A;
+    border: 1px solid #c4c6cf;
+    color: #6c6c6c;
     cursor: pointer;
 }
 .time-bottom .page-box .content .header-left li:active {
@@ -82,10 +83,11 @@
 .time-bottom .page-box .content .header-right select {
     height: 32px;
     line-height: 32px;
-    background: #191934;
+    background: #fff;
     font-size: 14px;
-    color: #97B8DA;
-    border: 0;
+    color: #6c6c6c;
+    /*border: 0;*/
+    border-color:#c4c6cf;
     margin-left: 10px;
     cursor: pointer;
     padding: 0 8px;
