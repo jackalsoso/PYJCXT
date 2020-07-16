@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <link id="cssthemes" href="" rel="stylesheet">
   <title>浦仪监测系统</title>
 </head>
+
 <body>
   <div class="page-controller">
     <div class="page-header">
@@ -19,7 +21,7 @@
           <li data-theme="normal"></li>
           <li data-theme="dark"></li>
         </ul>
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -32,7 +34,7 @@
             <li data-menu="time3"><span>交通荷载</span></li>
           </ul>
         </li><!-- 时程数据 -->
-        <li><span>统计数据</span>
+        <li class="active"><span>统计数据</span>
           <ul>
             <li data-menu="statistics1"><span>测点时程统计</span></li>
             <li data-menu="statistics13"><span>交通荷载统计</span></li>
@@ -40,14 +42,14 @@
         </li><!-- 统计数据 -->
         <li><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li><span>服役<br>环境分析</span>
@@ -57,7 +59,7 @@
             <li data-menu="scenario3"><span>温度场分析</span></li>
           </ul>
         </li><!-- 服役环境分析 -->
-        <li class="active"><span>预警管理</span>
+        <li><span>预警管理</span>
           <ul>
             <li data-menu="warning1"><span>结构状态预警</span></li>
             <li data-menu="warning2"><span>服役环境预警</span></li>
@@ -73,13 +75,760 @@
       </ul>
     </div>
     <div class="page-body">
-      //do soming thing
+      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>车流量时程</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">请选择</option>
+                    <option value="上行">上行</option>
+                    <option value="下行">下行</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>车型、车速分布</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">请选择</option>
+                    <option value="车型">车型</option>
+                    <option value="车速">车速</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>最大车重、轴重时程</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">请选择</option>
+                    <option value="上行">上行</option>
+                    <option value="下行">下行</option>
+                  </select>
+                  <select>
+                    <option value="最大车重，最大轴重">最大车重，最大轴重</option>
+                    <option value="最大车重">最大车重</option>
+                    <option value="最大轴重">最大轴重</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>车重、轴重分布</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">请选择</option>
+                    <option value="上行">上行</option>
+                    <option value="下行">下行</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>超重车分布</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">请选择</option>
+                    <option value="上行">上行</option>
+                    <option value="下行">下行</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart5"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box" style="flex-basis: 500px;">
+            <div class="title">
+              <span>车辆时间区段分布</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li>车辆总数</li>
+                  <li>重车数量</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">请选择</option>
+                    <option value="上行">上行</option>
+                    <option value="下行">下行</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = function () {
+      var data = [
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-18", 210, 310, 410, 184, 101, 191]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+      var valueList3 = data.map(function (item) {
+        return item[3];
+      });
+      var valueList4 = data.map(function (item) {
+        return item[4];
+      });
+      var valueList5 = data.map(function (item) {
+        return item[5];
+      });
+      var valueList6 = data.map(function (item) {
+        return item[6];
+      });
+      var option1 = {
+        color: ['#5C89FF', '#7C6AF2', '#5C89FF', '#7C6AF2', '#5C89FF', '#7C6AF2'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '辆',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '1车道上行',
+          type: 'bar',
+          data: valueList1
+        }, {
+          name: '1车道下行',
+          type: 'bar',
+          data: valueList2
+        }, {
+          name: '2车道上行',
+          type: 'bar',
+          data: valueList3
+        }, {
+          name: '2车道下行',
+          type: 'bar',
+          data: valueList4
+        }, , {
+          name: '3车道上行',
+          type: 'bar',
+          data: valueList5
+        }, {
+          name: '3车道下行',
+          type: 'bar',
+          data: valueList6
+        }]
+      }
+      var option2 = {
+        color: ['#ffcb48', '#ff9f40', '#ff6383', '#c95ff2', '#7c6af2', '#5c89ff', '#665fff'],
+        title: [{
+          text: '车型',
+          textStyle: {
+            color: '#97B8DA',
+            fontSize: 16
+          },
+          left: '23%',
+          top: '10%'
+        }, {
+          text: '车速',
+          textStyle: {
+            color: '#97B8DA',
+            fontSize: 16
+          },
+          right: '23%',
+          top: '10%'
+        }, {
+          subtext: '单位：km/s',
+          textStyle: {
+            color: '#97B8DA',
+            fontSize: 14
+          },
+          right: '20%',
+          bottom: '5%'
+        }],
+        series: [{
+          type: 'pie',
+          radius: '50%',
+          center: ['26%', '55%'],
+          clockwise: false,
+          data: [{
+            name: '6轴',
+            value: 20
+          }, {
+            name: '5轴',
+            value: 30
+          }, {
+            name: '4轴',
+            value: 30
+          }, {
+            name: '3轴',
+            value: 30
+          }, {
+            name: '2轴',
+            value: 30
+          }, {
+            name: '1轴',
+            value: 20
+          }],
+          animation: false,
+          label: {
+            formatter: '{b}: {d}%',
+            color: '#fff'
+          },
+          labelLine: {
+            length2: 0
+          }
+        }, {
+          type: 'pie',
+          radius: '50%',
+          center: ['74%', '55%'],
+          clockwise: false,
+          data: [{
+            name: '>100',
+            value: 20
+          }, {
+            name: '80~100',
+            value: 30
+          }, {
+            name: '60~80',
+            value: 30
+          }, {
+            name: '40~60',
+            value: 30
+          }, {
+            name: '20~40',
+            value: 30
+          }, {
+            name: '<20',
+            value: 20
+          }],
+          animation: false,
+          label: {
+            formatter: '{b}',
+            color: '#fff'
+          },
+          labelLine: {
+            length2: 0
+          }
+        }]
+      }
+      var option3 = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '吨',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '1车道上行',
+          type: 'bar',
+          itemStyle: {
+            color: '#c95ff2'
+          },
+          data: valueList1
+        }, {
+          name: '1车道下行',
+          type: 'bar',
+          itemStyle: {
+            color: '#c95ff2'
+          },
+          data: valueList2
+        }, {
+          name: '2车道上行',
+          type: 'bar',
+          itemStyle: {
+            color: '#c95ff2'
+          },
+          data: valueList3
+        }, {
+          name: '2车道下行',
+          type: 'bar',
+          itemStyle: {
+            color: '#c95ff2'
+          },
+          data: valueList4
+        }, {
+          name: '3车道上行',
+          type: 'bar',
+          itemStyle: {
+            color: '#c95ff2'
+          },
+          data: valueList5
+        }, {
+          name: '3车道下行',
+          type: 'bar',
+          itemStyle: {
+            color: '#c95ff2'
+          },
+          data: valueList6
+        }]
+      }
+      var option4 = {
+        color: ['#ffcb48', '#ff9f40', '#ff6383', '#c95ff2', '#7c6af2', '#5c89ff', '#665fff'],
+        title: [{
+          text: '车重',
+          textStyle: {
+            color: '#97B8DA',
+            fontSize: 16
+          },
+          left: '23%',
+          top: '10%'
+        }, {
+          text: '轴重',
+          textStyle: {
+            color: '#97B8DA',
+            fontSize: 16
+          },
+          right: '23%',
+          top: '10%'
+        }, {
+          subtext: '单位：吨',
+          textStyle: {
+            color: '#97B8DA',
+            fontSize: 14
+          },
+          left: '47%',
+          bottom: '5%'
+        }],
+        series: [{
+          type: 'pie',
+          radius: '50%',
+          center: ['26%', '55%'],
+          clockwise: false,
+          data: [{
+            name: '>100',
+            value: 20
+          }, {
+            name: '55~100',
+            value: 30
+          }, {
+            name: '40~55',
+            value: 30
+          }, {
+            name: '30~40',
+            value: 30
+          }, {
+            name: '20~30',
+            value: 30
+          }, {
+            name: '10~20',
+            value: 20
+          }, {
+            name: '<10',
+            value: 20
+          }],
+          animation: false,
+          label: {
+            formatter: '{b}',
+            color: '#fff'
+          },
+          labelLine: {
+            length2: 0
+          }
+        }, {
+          type: 'pie',
+          radius: '50%',
+          center: ['74%', '55%'],
+          clockwise: false,
+          data: [{
+            name: '>14',
+            value: 20
+          }, {
+            name: '10~14',
+            value: 30
+          }, {
+            name: '5~10',
+            value: 30
+          }, {
+            name: '<5',
+            value: 30
+          }],
+          animation: false,
+          label: {
+            formatter: '{b}',
+            color: '#fff'
+          },
+          labelLine: {
+            length2: 0
+          }
+        }]
+      }
+      var option5 = {
+        color: ['#665fff', '#5c89ff', '#7c6af2', '#c95ff2', '#ff6383', '#ff9f40', '#ffcb48'],
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+          left: 'center',
+          top: 'bottom',
+          itemGap: 20,
+          selectedMode: false,
+          icon: 'circle',
+          textStyle: {
+            color: '#fff'
+          },
+          data: ['总重超50t', '总重超60t', '总重超70t', '', '总重超80t', '总重超90t', '总重超100t']
+        },
+        series: [{
+          name: '超重车分布',
+          type: 'pie',
+          radius: ['35%', '55%'],
+          center: ['50%', '45%'],
+          avoidLabelOverlap: false,
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: '20',
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [{
+              value: 335,
+              name: '总重超50t'
+            },
+            {
+              value: 310,
+              name: '总重超60t'
+            },
+            {
+              value: 234,
+              name: '总重超70t'
+            },
+            {
+              value: 215,
+              name: '总重超80t'
+            },
+            {
+              value: 150,
+              name: '总重超90t'
+            },
+            {
+              value: 135,
+              name: '总重超100t'
+            }
+          ]
+        }]
+      }
+      var option6 = {
+        tooltip: {
+          trigger: 'axis',
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true,
+            interval: 0
+          },
+          data: ['[1,2)', '[2,3)', '[3,4)', '[4,5)', '[5,6)', '[6,7)', '[7,8)', '[8,9)', '[9,10)', '[10,11)',
+            '[11,12)', '[12,13)', '[13,14)', '[14,15)', '[15,16)', '[16,17)', '[17,18)', '[18,19)', '[19,20)',
+            '[20,21)', '[21,22)', '[22,23)', '[23,24)', '[24,25)', '[25,26)', '[26,27)', '[27,28)', '[28,29)',
+            '[29,30)'
+          ],
+        },
+        yAxis: [{
+          name: '百分比',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          },
+          axisLabel: {
+            formatter: '{value}%'
+          }
+        }, {
+          name: '辆',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          },
+          min: 0,
+          max: 5000,
+          interval: 1000,
+          // axisLabel: {
+          //   formatter: '{value}'
+          // }
+        }],
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '1车道上行',
+          type: 'bar',
+          barWidth: 14,
+          itemStyle: {
+            color: '#ff6383'
+          },
+          label: {
+            show: true,
+            position: 'top',
+            rotate: 90,
+            offset: [7, -20],
+            color: '#fff',
+            formatter: '{c}%'
+          },
+          data: [2.4, 7.6, 8.6, 6.8, 3.8, 2.2, 2.6, 3.8, 5.7, 5.9, 7.6, 8.6, 6.8, 3.8, 2.2, 7.6, 8.6, 6.8, 3.8,
+            2.2, 2.6, 3.8, 5.7, 5.9, 7.6, 8.6, 6.8, 3.8, 2.2
+          ]
+        }]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+      var myChart4 = echarts.init(document.getElementById('chart4'), 'light');
+      var myChart5 = echarts.init(document.getElementById('chart5'), 'light');
+      var myChart6 = echarts.init(document.getElementById('chart6'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
+      myChart4.setOption(option4, true);
+      myChart5.setOption(option5, true);
+      myChart6.setOption(option6, true);
+    }
   </script>
 </body>
 

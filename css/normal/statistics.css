@@ -9,6 +9,7 @@
 }
 .statistics-bottom .two-page-box .page-box {
     flex: 1;
+    width: 49%;
 }
 .statistics-bottom .two-page-box .page-box:first-child {
     margin-right: 10px;
