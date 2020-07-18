@@ -18,6 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin: 0 10px 10px 0;
     background: #191934;
     border-radius: 4px;
@@ -65,7 +66,7 @@
     color: #75798A;
     cursor: pointer;
 }
-.time-bottom .page-box .content .header-left li:active {
+.time-bottom .page-box .content .header-left li.active, .time-bottom .page-box .content .header-left li:hover {
     border-color: #5C89FF;
     color: #5C89FF;
 }

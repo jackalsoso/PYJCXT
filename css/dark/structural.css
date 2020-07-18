@@ -1,1 +1,6 @@
-
+.structural2-top .content ul li {
+    height: calc((100% - 50px) / 5);
+}
+.structural4-top .content ul li {
+    height: calc((100% - 50px) / 4);
+}

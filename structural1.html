@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.4.0-rc.1/extension/dataTool.min.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <title>浦仪监测系统</title>
 </head>
+
 <body>
   <div class="page-controller">
     <div class="page-header">
@@ -19,9 +22,9 @@
           <li data-theme="normal"></li>
           <li data-theme="dark"></li>
         </ul>
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
-      </div>
+      </div>img
     </div>
     <div class="page-nav">
       <ul>
@@ -40,14 +43,14 @@
         </li><!-- 统计数据 -->
         <li class="active"><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li><span>服役<br>环境分析</span>
@@ -73,13 +76,269 @@
       </ul>
     </div>
     <div class="page-body">
-      //do soming thing
+      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>频率</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">实时</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">1阶</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>阻尼比</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">实时</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">1阶</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>结构动力特性分析</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="请选择">1阶</option>
+                </select>
+                <select class="time-selector">
+                  <option value="2020/05/12">2020/05/12</option>
+                  <option value="2020/05/13">2020/05/13</option>
+                  <option value="2020/05/14">2020/05/14</option>
+                  <option value="2020/05/15">2020/05/15</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-wrap" style="padding: 20px;">
+              <img src="./images/simple4.jpg" border="0" style="width: 100%;height: 100%;"/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = function () {
+      var data = echarts.dataTool.prepareBoxplotData([
+        [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
+        [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800],
+        [880, 880, 880, 860, 720, 720, 620, 860, 970, 950, 880, 910, 850, 870, 840, 840, 850, 840, 840, 840],
+        [890, 810, 810, 820, 800, 770, 760, 740, 750, 760, 910, 920, 890, 860, 880, 720, 840, 850, 850, 780],
+        [890, 840, 780, 810, 760, 810, 790, 810, 820, 850, 870, 870, 810, 740, 810, 940, 950, 800, 810, 870],
+        [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
+        [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800]
+      ]);
+      var option1 = {
+        color: ['#1f9870'],
+        tooltip: {
+          trigger: 'item',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          splitArea: {
+            show: false
+          },
+          data: ['2020/7/14', '2020/7/15', '2020/7/16', '2020/7/17', '2020/7/18', '2020/7/19', '2020/7/20']
+        },
+        yAxis: {
+          name: '频率：Hz',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+            name: 'boxplot',
+            type: 'boxplot',
+            data: data.boxData,
+            tooltip: {
+              formatter: function (param) {
+                return [
+                  param.name,
+                  '最大值: ' + param.data[3],
+                  '最小值: ' + param.data[1],
+                  '平均值: ' + param.data[2]
+                ].join('<br/>');
+              }
+            },
+            itemStyle: {
+              color: '#1f9870'
+            }
+          },
+          {
+            name: '异常值',
+            type: 'scatter',
+            data: data.outliers
+          }
+        ]
+      }
+      var option2 = {
+        color: ['#1f9870'],
+        tooltip: {
+          trigger: 'item',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          splitArea: {
+            show: false
+          },
+          data: ['2020/7/14', '2020/7/15', '2020/7/16', '2020/7/17', '2020/7/18', '2020/7/19', '2020/7/20']
+        },
+        yAxis: {
+          name: '阻尼比',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+            name: 'boxplot',
+            type: 'boxplot',
+            data: data.boxData,
+            tooltip: {
+              formatter: function (param) {
+                return [
+                  param.name,
+                  '最大值: ' + param.data[3],
+                  '最小值: ' + param.data[1],
+                  '平均值: ' + param.data[2]
+                ].join('<br/>');
+              }
+            },
+            itemStyle: {
+              color: '#1f9870'
+            }
+          },
+          {
+            name: '异常值',
+            type: 'scatter',
+            data: data.outliers
+          }
+        ]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+    }
   </script>
 </body>
 

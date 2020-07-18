@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <link id="cssthemes" href="" rel="stylesheet">
   <title>浦仪监测系统</title>
 </head>
+
 <body>
   <div class="page-controller">
     <div class="page-header">
@@ -19,7 +21,7 @@
           <li data-theme="normal"></li>
           <li data-theme="dark"></li>
         </ul>
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -40,14 +42,14 @@
         </li><!-- 统计数据 -->
         <li class="active"><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li><span>服役<br>环境分析</span>
@@ -73,13 +75,193 @@
       </ul>
     </div>
     <div class="page-body">
-      //do soming thing
+      <div class="page-box time-top statistics-top structural2-top">
+        <div class="title">
+          <span>IBM模型</span>
+        </div>
+        <div class="content">
+          <ul style="width: 150px;">
+            <li class="active" data-menu="structural2">安全度指标</li>
+            <li data-menu="structural2">承载度指标</li>
+            <li data-menu="structural2">异常度指标</li>
+            <li data-menu="structural2">震荡值指标</li>
+            <li data-menu="structural2">动向指标</li>
+          </ul>
+          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+        </div>
+      </div>
+      <div class="time-bottom statistics-bottom">
+        <div class="page-box">
+          <div class="title">
+            <span>安全度指标</span>
+            <span style="color: #75798a;">说明</span>
+            <div style="width: 300px; padding: 10px; background: #171732; position: absolute; top: 40px; right: 0;">
+              说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+            </div>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">小时</li>
+                <li>日</li>
+              </ul>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart1" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = function () {
+      var data = [
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
+        ["2000-06-29", 85],
+        ["2000-06-30", 73],
+        ["2000-07-01", 83],
+        ["2000-07-02", 125],
+        ["2000-07-03", 107],
+        ["2000-07-04", 82],
+        ["2000-07-05", 44],
+        ["2000-07-06", 72],
+        ["2000-07-07", 106],
+        ["2000-07-08", 107],
+        ["2000-07-09", 66],
+        ["2000-07-10", 91],
+        ["2000-07-11", 92],
+        ["2000-07-12", 113],
+        ["2000-07-13", 107],
+        ["2000-07-14", 131],
+        ["2000-07-15", 111],
+        ["2000-07-16", 64],
+        ["2000-07-17", 69],
+        ["2000-07-18", 88],
+        ["2000-07-19", 77],
+        ["2000-07-20", 83],
+        ["2000-07-21", 111],
+        ["2000-07-22", 57],
+        ["2000-07-23", 55],
+        ["2000-07-24", 60],
+        ["2000-07-25", 73],
+        ["2000-07-26", 68],
+        ["2000-07-27", 92],
+        ["2000-07-28", 130],
+        ["2000-07-29", 245],
+        ["2000-07-30", 139],
+        ["2000-07-31", 115],
+        ["2000-08-01", 111],
+        ["2000-08-02", 309],
+        ["2000-08-03", 206],
+        ["2000-08-04", 137],
+        ["2000-08-05", 128],
+        ["2000-08-06", 92]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList = data.map(function (item) {
+        return item[1];
+      });
+      var option1 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '安全度',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 18]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(46,202,92,1)'
+          },
+          areaStyle: {
+            color: 'rgba(46,202,92,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            lineStyle: {
+              color: '#ff4d4f'
+            },
+            label: {
+              show: false
+            },
+            data: [{
+              yAxis: 100
+            }]
+          },
+          data: valueList
+        }]
+      };
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      myChart1.setOption(option1, true);
+    }
   </script>
 </body>
 

@@ -188,6 +188,8 @@ body{background-color:#0A061E;font-size: 14px;color:white}
   height:40px;
   background: #191934;
   padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
 }
 .page-body .page-box .title span{
   color:white;

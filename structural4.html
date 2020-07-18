@@ -73,13 +73,182 @@
       </ul>
     </div>
     <div class="page-body">
-      //do soming thing
+      <div class="page-box time-top statistics-top structural4-top">
+        <div class="title">
+          <span>IBM模型</span>
+        </div>
+        <div class="content">
+          <ul style="width: 150px;">
+            <li class="active" data-menu="structural4">实测车流下疲劳分析</li>
+            <li data-menu="structural4">动应变监测<br/>数据下疲劳分析</li>
+          </ul>
+          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+        </div>
+      </div>
+      <div class="time-bottom statistics-bottom">
+        <div class="page-box">
+          <div class="title">
+            <span>疲劳损伤度程度/疲劳循环次数</span>
+            <span style="color: #75798a;">说明</span>
+            <div style="width: 300px; padding: 10px; background: #171732; position: absolute; top: 40px; right: 0;">
+              备注：疲劳损伤程度为1时结构产生疲劳破坏；将变幅疲劳换算成常幅疲劳，疲劳循环次数为换算常幅应力下的循环次数，但循环次数达到200万次时，结构疲劳破坏。
+            </div>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="疲劳损伤度">疲劳损伤度</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <select class="time-selector">
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart1" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = function () {
+      var data = [
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-18", 210, 310, 410, 184, 101, 191],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-18", 210, 310, 410, 184, 101, 191],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[1] - 50;
+      });
+      var option1 = {
+        color: ['#5076df', '#ffcb48'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            interval: 0,
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '单位时间疲劳损伤程度',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '累计疲劳损伤程度',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 50,
+          top: 30,
+          right: 50,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '单位时间疲劳损伤程度',
+          type: 'bar',
+          barWidth: 30,
+          data: valueList1
+        }, {
+          name: '累计疲劳损伤程度',
+          type: 'line',
+          yAxisIndex: 1,
+          symbol: 'circle',
+          data: valueList2
+        }]
+      };
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      myChart1.setOption(option1, true);
+    }
   </script>
 </body>
 
