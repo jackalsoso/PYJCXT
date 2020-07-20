@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
+  <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <title>浦仪监测系统</title>
+</head>
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪监测系统</div>
+      <div class="user">
+        <ul class="themes-picker">
+          <li data-theme="normal"></li>
+          <li data-theme="dark"></li>
+        </ul>
+        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li><span>结构<br>状态分析</span>
+          <ul>
+          <li data-menu="structural1"><span>结构动力特性分析</span></li>
+          <li data-menu="structural2"><span>应力五度指标</span></li>
+          <li data-menu="structural3"><span>结构变形响应分析</span></li>
+          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+          <li data-menu="structural6"><span>结构相关性分析</span></li>
+          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li class="active"><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <li data-menu="system3"><span>资料备份</span></li>
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>风速风向</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left"></ul>
+                <div class="header-right">
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <img src="./images/scenario2.jpg" border="0" style="width: 100%; height: 100%;"/>
+              </div>
+            </div>
+          </div>
+          <div class="page-box" style="flex-basis: 500px;">
+            <div class="title">
+              <span>风速功率谱</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">实时</li>
+                  <li>10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>风速、风向、紊流强度时程</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left"></ul>
+                <div class="header-right">
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>风速-紊流强度相关性</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">实时</li>
+                  <li>10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript">
+    let init = function () {
+      var data = [
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
+        ["2000-06-29", 85],
+        ["2000-06-30", 73],
+        ["2000-07-01", 83],
+        ["2000-07-02", 125],
+        ["2000-07-03", 107],
+        ["2000-07-04", 82],
+        ["2000-07-05", 44],
+        ["2000-07-06", 72],
+        ["2000-07-07", 106],
+        ["2000-07-08", 107],
+        ["2000-07-09", 66],
+        ["2000-07-10", 91],
+        ["2000-07-11", 92],
+        ["2000-07-12", 113],
+        ["2000-07-13", 107],
+        ["2000-07-14", 131],
+        ["2000-07-15", 111],
+        ["2000-07-16", 64],
+        ["2000-07-17", 69],
+        ["2000-07-18", 88],
+        ["2000-07-19", 77],
+        ["2000-07-20", 83],
+        ["2000-07-21", 111],
+        ["2000-07-22", 57],
+        ["2000-07-23", 55],
+        ["2000-07-24", 60],
+        ["2000-07-25", 73],
+        ["2000-07-26", 68],
+        ["2000-07-27", 92],
+        ["2000-07-28", 130],
+        ["2000-07-29", 245],
+        ["2000-07-30", 139],
+        ["2000-07-31", 115],
+        ["2000-08-01", 111],
+        ["2000-08-02", 309],
+        ["2000-08-03", 206],
+        ["2000-08-04", 137],
+        ["2000-08-05", 128],
+        ["2000-08-06", 92]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList = data.map(function (item) {
+        return item[1];
+      });
+      var valueList22 = data.map(function (item) {
+        return item[1] - 40;
+      });
+      var option1 = {
+
+      }
+      var option2 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '脉动风速功率（m2/s2）',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 18]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(46,202,92,1)'
+          },
+          areaStyle: {
+            color: 'rgba(46,202,92,0.2)'
+          },
+          data: valueList
+        }, {
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(255, 151, 68, 1)'
+          },
+          areaStyle: {
+            color: 'rgba(255, 151, 68, 0.2)'
+          },
+          data: valueList22
+        }]
+      };
+      var data3 = [
+        ["2020-05-12", 120, 220, 150, 320],
+        ["2020-05-13", 132, 182, 232, 334],
+        ["2020-05-14", 101, 191, 301, 486],
+        ["2020-05-15", 134, 332, 154, 390],
+        ["2020-05-16", 90, 290, 190, 210],
+        ["2020-05-17", 234, 330, 260, 310],
+        ["2020-05-18", 210, 310, 410, 184]
+      ];
+      var dateList3 = data3.map(function (item) {
+        return item[0];
+      });
+      var valueList3 = data3.map(function (item) {
+        return item[1];
+      });
+      var valueList4 = data3.map(function (item) {
+        return item[2];
+      });
+      var option3 = {
+        color: ['#c95ff2', '#5c89ff'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList3,
+        },
+        yAxis: [{
+          name: '风速：m/s',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '风攻角：°',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '风速',
+          type: 'line',
+          data: valueList3
+        }, {
+          name: '风攻角',
+          type: 'line',
+          yAxisIndex: 1,
+          data: valueList4
+        }]
+      }
+      var data4 = [
+        [3.275154, 2.957587],
+        [3.344465, 2.603513],
+        [0.355083, 3.376585],
+        [1.852435, 3.547351],
+        [2.078973, 2.552013],
+        [0.993756, 0.884433],
+        [2.682252, 4.007573],
+        [3.087776, 2.878713],
+        [1.565978, 1.256985],
+        [2.441611, 0.444826],
+        [0.659487, 3.111284],
+        [0.459601, 2.618005],
+        [2.17768, 2.387793],
+        [2.920969, 2.917485],
+        [0.028814, 4.168078],
+        [3.625746, 2.119041],
+        [3.912363, 1.325108],
+        [0.551694, 2.814223],
+        [2.855808, 3.483301],
+        [3.594448, 2.856651],
+        [0.421993, 2.372646],
+        [1.650821, 3.407572],
+        [2.082902, 3.384412],
+        [0.718809, 2.492514]
+      ];
+      var data5 = [
+        [4.513623, 3.841029],
+        [4.822011, 4.607049],
+        [0.656297, 1.449872],
+        [1.919901, 4.439368],
+        [3.287749, 3.918836],
+        [1.576936, 2.977622],
+        [3.598143, 1.97597],
+        [3.977329, 4.900932],
+        [0.765015, 3.00127],
+        [3.121904, 2.173988],
+        [4.025139, 4.65231],
+        [0.559558, 3.840539],
+        [4.376754, 4.863579],
+        [1.874308, 4.032237],
+        [0.089337, 3.026809],
+        [3.997787, 2.518662],
+        [3.082978, 2.884822],
+        [0.845235, 3.454465],
+        [1.327224, 3.358778],
+        [2.889949, 3.596178],
+        [0.966018, 2.839827],
+        [2.960769, 3.079555],
+        [3.275518, 1.577068],
+        [0.639276, 3.41284]
+      ];
+      var option4 = {
+        color: ['#3698FD', '#00C853'],
+        xAxis: {
+          name: '风速：m/s',
+          nameTextStyle: {
+            padding: [80, 0, 0, -65]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        },
+        yAxis: {
+          name: '紊流强度',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 20]
+          },
+          scale: true,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '浦口侧塔',
+          data: data4,
+          type: 'scatter'
+        }, {
+          name: '仪征侧塔',
+          data: data5,
+          type: 'scatter'
+        }]
+      }
+      
+      // 初始化echarts实例
+      // var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+      var myChart4 = echarts.init(document.getElementById('chart4'), 'light');
+      // myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
+      myChart4.setOption(option4, true);
+    }
+  </script>
+</body>
+
+</html>
