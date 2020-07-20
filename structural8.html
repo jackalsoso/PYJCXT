@@ -73,13 +73,220 @@
       </ul>
     </div>
     <div class="page-body">
-      //do soming thing
+      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>行人舒适度实时监测</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left"></ul>
+                <div class="header-right">
+                  <span>更新时间：2020年05月26日 15:30</span>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <img src="./images/simple1.jpg" border="0" style="width: 100%; height: 100%;"/>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>历史行人舒适度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select class="time-selector">
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = function () {
+      var data = [
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
+        ["2000-06-29", 85],
+        ["2000-06-30", 73],
+        ["2000-07-01", 83],
+        ["2000-07-02", 125],
+        ["2000-07-03", 107],
+        ["2000-07-04", 82],
+        ["2000-07-05", 44],
+        ["2000-07-06", 72],
+        ["2000-07-07", 106],
+        ["2000-07-08", 107],
+        ["2000-07-09", 66],
+        ["2000-07-10", 91],
+        ["2000-07-11", 92],
+        ["2000-07-12", 113],
+        ["2000-07-13", 107],
+        ["2000-07-14", 131],
+        ["2000-07-15", 111],
+        ["2000-07-16", 64],
+        ["2000-07-17", 69],
+        ["2000-07-18", 88],
+        ["2000-07-19", 77],
+        ["2000-07-20", 83],
+        ["2000-07-21", 111],
+        ["2000-07-22", 57],
+        ["2000-07-23", 55],
+        ["2000-07-24", 60],
+        ["2000-07-25", 73],
+        ["2000-07-26", 68],
+        ["2000-07-27", 92],
+        ["2000-07-28", 130],
+        ["2000-07-29", 245],
+        ["2000-07-30", 139],
+        ["2000-07-31", 115],
+        ["2000-08-01", 111],
+        ["2000-08-02", 309],
+        ["2000-08-03", 206],
+        ["2000-08-04", 137],
+        ["2000-08-05", 128],
+        ["2000-08-06", 92]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList = data.map(function (item) {
+        return item[1];
+      });
+      var option2 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '舒适度',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(23, 143, 255,1)'
+          },
+          areaStyle: {
+            color: 'rgba(23, 143, 255,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            data: [{
+              yAxis: 309,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '轻微不适'
+              },
+              lineStyle: {
+                color: '#ff4d4f'
+              }
+            }, {
+              yAxis: 175,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '极度不适'
+              },
+              lineStyle: {
+                color: '#fcb333'
+              }
+            }]
+          },
+          data: valueList
+        }]
+      }
+      // 初始化echarts实例
+      // var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      // myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+    }
   </script>
 </body>
 

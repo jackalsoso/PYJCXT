@@ -73,13 +73,333 @@
       </ul>
     </div>
     <div class="page-body">
-      //do soming thing
+      <div class="page-box time-top statistics-top">
+        <div class="title">
+          <span>IBM模型</span>
+        </div>
+        <div class="content">
+          <ul>
+            <li data-menu="structural6">结构应力/Mpa</li>
+            <li data-menu="structural6">支座位移/Mpa</li>
+            <li data-menu="structural6">挠度/Mpa</li>
+            <li data-menu="structural6">温度/Mpa</li>
+            <li data-menu="structural6">空间变位/Mpa</li>
+            <li data-menu="structural6">温湿度/Mpa</li>
+            <li data-menu="structural6">索力/Mpa</li>
+            <li data-menu="structural6">风速/Mpa</li>
+            <li data-menu="structural6">伸缩缝/Mpa</li>
+            <li data-menu="structural6">动力特性/Mpa</li>
+            <li data-menu="structural6">阻尼器/Mpa</li>
+            <li data-menu="structural6">地震、船撞/Mpa</li>
+          </ul>
+          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+        </div>
+      </div>
+      <div class="time-bottom statistics-bottom">
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>相关性时程分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="应力">应力</option>
+                  </select>
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                    <option value="YL-A1-B-02">YL-A1-B-02</option>
+                    <option value="YL-A1-B-03">YL-A1-B-03</option>
+                    <option value="YL-A1-B-04">YL-A1-B-04</option>
+                  </select>
+                  <select>
+                    <option value="温度">温度</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>相关性分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left"></ul>
+                <div class="header-right">
+                  <select>
+                    <option value="应力">应力</option>
+                  </select>
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                    <option value="YL-A1-B-02">YL-A1-B-02</option>
+                    <option value="YL-A1-B-03">YL-A1-B-03</option>
+                    <option value="YL-A1-B-04">YL-A1-B-04</option>
+                  </select>
+                  <select>
+                    <option value="温度">温度</option>
+                  </select>
+                  <select>
+                    <option value="WD-A1-B-01">WD-A1-B-01</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = function () {
+      var data = [
+        ["2020-05-12", 120, 220, 150, 320],
+        ["2020-05-13", 132, 182, 232, 334],
+        ["2020-05-14", 101, 191, 301, 486],
+        ["2020-05-15", 134, 332, 154, 390],
+        ["2020-05-16", 90, 290, 190, 210],
+        ["2020-05-17", 234, 330, 260, 310],
+        ["2020-05-18", 210, 310, 410, 184]
+      ];
+      var data1 = [
+        [3.275154, 2.957587],
+        [3.344465, 2.603513],
+        [0.355083, 3.376585],
+        [1.852435, 3.547351],
+        [2.078973, 2.552013],
+        [0.993756, 0.884433],
+        [2.682252, 4.007573],
+        [3.087776, 2.878713],
+        [1.565978, 1.256985],
+        [2.441611, 0.444826],
+        [0.659487, 3.111284],
+        [0.459601, 2.618005],
+        [2.17768, 2.387793],
+        [2.920969, 2.917485],
+        [0.028814, 4.168078],
+        [3.625746, 2.119041],
+        [3.912363, 1.325108],
+        [0.551694, 2.814223],
+        [2.855808, 3.483301],
+        [3.594448, 2.856651],
+        [0.421993, 2.372646],
+        [1.650821, 3.407572],
+        [2.082902, 3.384412],
+        [0.718809, 2.492514]
+      ];
+      var data2 = [
+        [4.513623, 3.841029],
+        [4.822011, 4.607049],
+        [0.656297, 1.449872],
+        [1.919901, 4.439368],
+        [3.287749, 3.918836],
+        [1.576936, 2.977622],
+        [3.598143, 1.97597],
+        [3.977329, 4.900932],
+        [0.765015, 3.00127],
+        [3.121904, 2.173988],
+        [4.025139, 4.65231],
+        [0.559558, 3.840539],
+        [4.376754, 4.863579],
+        [1.874308, 4.032237],
+        [0.089337, 3.026809],
+        [3.997787, 2.518662],
+        [3.082978, 2.884822],
+        [0.845235, 3.454465],
+        [1.327224, 3.358778],
+        [2.889949, 3.596178],
+        [0.966018, 2.839827],
+        [2.960769, 3.079555],
+        [3.275518, 1.577068],
+        [0.639276, 3.41284]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+      var valueList3 = data.map(function (item) {
+        return item[3];
+      });
+      var valueList4 = data.map(function (item) {
+        return item[4];
+      });
+      var option1 = {
+        color: ['#c95ff2', '#5c89ff'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '应力：Mpa',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '温度',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '应力',
+          type: 'line',
+          data: valueList1
+        }, {
+          name: '温度',
+          type: 'line',
+          yAxisIndex: 1,
+          data: valueList2
+        }]
+      }
+      var option2 = {
+        color: ['#3698FD', '#00C853'],
+        xAxis: {
+          name: '温度：℃',
+          nameTextStyle: {
+            padding: [80, 0, 0, -65]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        },
+        yAxis: {
+          name: '应力：Mpa',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 20]
+          },
+          scale: true,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '浦口侧塔',
+          data: data1,
+          type: 'scatter'
+        }, {
+          name: '仪征侧塔',
+          data: data2,
+          type: 'scatter'
+        }]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+    }
   </script>
 </body>
 

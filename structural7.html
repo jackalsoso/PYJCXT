@@ -73,22 +73,10 @@
       </ul>
     </div>
     <div class="page-body">
-      <div class="page-box time-top statistics-top structural4-top">
-        <div class="title">
-          <span>IBM模型</span>
-        </div>
-        <div class="content">
-          <ul style="width: 150px;">
-            <li class="active" data-menu="structural4">实测车流下疲劳分析</li>
-            <li data-menu="structural4">动应变监测<br/>数据下疲劳分析</li>
-          </ul>
-          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
-        </div>
-      </div>
-      <div class="time-bottom statistics-bottom">
+      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
         <div class="page-box">
           <div class="title">
-            <span>阻尼器/横向抗风支座累计行程分析</span>
+            <span>阻尼器累积行程分析</span>
             <span style="color: #75798a;">说明</span>
             <!-- <div style="width: 300px; padding: 10px; background: #171732; position: absolute; top: 40px; right: 0;">
               备注：疲劳损伤程度为1时结构产生疲劳破坏；将变幅疲劳换算成常幅疲劳，疲劳循环次数为换算常幅应力下的循环次数，但循环次数达到200万次时，结构疲劳破坏。
@@ -97,14 +85,10 @@
           <div class="content">
             <div class="header">
               <ul class="header-left">
-                <li>周</li>
-                <li class="active">日</li>
-                <li>h</li>
+                <li class="active">小时</li>
+                <li>日</li>
               </ul>
               <div class="header-right">
-                <select>
-                  <option value="疲劳损伤度">疲劳损伤度</option>
-                </select>
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                   <option value="YL-A1-B-02">YL-A1-B-02</option>
@@ -121,6 +105,40 @@
             </div>
             <div class="chart-wrap">
               <div class="chart" id="chart1" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>梁端纵向累积行程分析</span>
+            <span style="color: #75798a;">说明</span>
+            <!-- <div style="width: 300px; padding: 10px; background: #171732; position: absolute; top: 40px; right: 0;">
+              备注：疲劳损伤程度为1时结构产生疲劳破坏；将变幅疲劳换算成常幅疲劳，疲劳循环次数为换算常幅应力下的循环次数，但循环次数达到200万次时，结构疲劳破坏。
+            </div> -->
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <select class="time-selector">
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart2" style="width: 100%;"></div>
             </div>
           </div>
         </div>
@@ -188,7 +206,7 @@
           data: dateList,
         },
         yAxis: [{
-          name: '疲劳损伤程度（无量纲）',
+          name: '单位时间行程：cm',
           type: 'value',
           nameLocation: 'middle',
           nameRotate: 90,
@@ -209,7 +227,90 @@
             }
           }
         }, {
-          name: '疲劳循环次数（无量纲）',
+          name: '累计行程：m',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 50,
+          top: 30,
+          right: 50,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '单位时间行程',
+          type: 'bar',
+          barWidth: 30,
+          data: valueList1
+        }, {
+          name: '累计行程',
+          type: 'line',
+          yAxisIndex: 1,
+          symbol: 'circle',
+          data: valueList2
+        }]
+      };
+      var option2 = {
+        color: ['#db5675', '#ffcb48'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            interval: 0,
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '单位时间行程：cm',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '累计行程：m',
           type: 'value',
           nameLocation: 'middle',
           nameRotate: 90,
@@ -239,7 +340,7 @@
           barWidth: 30,
           data: valueList1
         }, {
-          name: '累计疲劳损伤程度',
+          name: '累计行程',
           type: 'line',
           yAxisIndex: 1,
           symbol: 'circle',
@@ -248,7 +349,9 @@
       };
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
       myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
     }
   </script>
 </body>
