@@ -135,3 +135,46 @@
 .time-bottom .page-box .content .chart-wrap .imgbox span {
     color: #ACB3BE;
 }
+.time3top{
+  left:15px;
+  top:10px;
+  right:15px;
+  height: 348px;
+}
+.time3top .imgbox{
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 10px;
+  padding-right:5px;
+}
+.time3top .imgbox + .imgbox{
+  float: right;
+  padding-right:10px;
+  padding-left:10px;
+}
+.time3top .imgbox img{
+  width: 100%;
+  height: 100%;
+}
+
+.time3bottom{
+  left:15px;
+  top:368px;
+  right:15px;
+  bottom: 10px;
+  height: auto;
+}
+.time3bottom .page-box{
+  height: 100%;
+}
+.list-table{
+  width: 100%;
+  height: calc(100% - 52px);
+  margin-top: 20px;
+  background: red;
+}
+.list-table img{
+  width: 100%;
+  height: 100%;
+}
