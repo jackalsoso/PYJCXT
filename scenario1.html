@@ -73,13 +73,399 @@
       </ul>
     </div>
     <div class="page-body">
-      //do soming thing
+      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>车载效应分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">实时</li>
+                  <li>10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="轴力、弯矩">轴力、弯矩</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>车载响应分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">实时</li>
+                  <li>10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="应力、位移">应力、位移</option>
+                  </select>
+                  <select class="time-selector">
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>车载效应概率密度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="请选择">1阶</option>
+                </select>
+                <select class="time-selector">
+                  <option value="2020/05/12">2020/05/12</option>
+                  <option value="2020/05/13">2020/05/13</option>
+                  <option value="2020/05/14">2020/05/14</option>
+                  <option value="2020/05/15">2020/05/15</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-    let init = null
+    let init = function () {
+      var data = [
+        ["2020-05-12", 120, 220, 150, 320],
+        ["2020-05-13", 132, 182, 232, 334],
+        ["2020-05-14", 101, 191, 301, 486],
+        ["2020-05-15", 134, 332, 154, 390],
+        ["2020-05-16", 90, 290, 190, 210],
+        ["2020-05-17", 234, 330, 260, 310],
+        ["2020-05-18", 210, 310, 410, 184]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+      var option1 = {
+        color: ['#c95ff2', '#5c89ff'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '轴力、剪力：kN',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '弯矩：kN/m',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '轴力、剪力',
+          type: 'line',
+          data: valueList1
+        }, {
+          name: '弯矩',
+          type: 'line',
+          yAxisIndex: 1,
+          data: valueList2
+        }]
+      }
+      var option2 = {
+        color: ['#c95ff2', '#5c89ff'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '应力：Mpa',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '位移：mm',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '应力',
+          type: 'line',
+          data: valueList1
+        }, {
+          name: '位移',
+          type: 'line',
+          yAxisIndex: 1,
+          data: valueList2
+        }]
+      }
+      var data3 = [
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-18", 210, 310, 410, 184, 101, 191],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-18", 210, 310, 410, 184, 101, 191],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+      ];
+      var dateList3 = data3.map(function (item) {
+        return item[0];
+      });
+      var valueList3 = data3.map(function (item) {
+        return item[1];
+      });
+      var valueList4 = data3.map(function (item) {
+        return item[1] - 50;
+      });
+      var option3 = {
+        color: ['#5076df', '#ffcb48'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            interval: 0,
+            alignWithLabel: true
+          },
+          data: dateList3,
+        },
+        yAxis: [{
+          name: '概率密度',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '累计概率',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 50,
+          top: 30,
+          right: 50,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '概率密度',
+          type: 'bar',
+          barWidth: 30,
+          data: valueList3
+        }, {
+          name: '累计概率',
+          type: 'line',
+          yAxisIndex: 1,
+          symbol: 'circle',
+          data: valueList4
+        }]
+      };
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
+    }
   </script>
 </body>
 

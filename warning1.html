@@ -73,13 +73,281 @@
       </ul>
     </div>
     <div class="page-body">
-      //do soming thing
+      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>最新评分</span>
+            </div>
+            <div class="content">
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>历史评分</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li>10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="桥塔">桥塔</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box" style="height: 630px;">
+          <img src="./images/warning1.jpg" border="0" style="width: 100%; height: 100%;"/>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = function () {
+      var value = 80; // 数值
+      var _x = document.getElementById('chart1').offsetWidth; // 宽度
+      var _y = document.getElementById('chart1').offsetHeight; // 高度
+      var x0 = _x / 2,
+        y0 = _y / 2; // 圆心坐标点
+      var r = _x > _y ? _y * 0.3 - 8 : _x * 0.3 - 8; // 半径
+      var deg = value / 100 * 270 - 225; // 角度
+      var option1 = {
+        series: {
+          name: '综合评分',
+          type: 'gauge',
+          max: 100,
+          radius: '60%',
+          detail: {
+            formatter: function (value) {
+              return `{a|}\n{b|${value}}\n{c|综合评分}`
+            },
+            offsetCenter: [0, 0],
+            rich: {
+              a: {
+                backgroundColor: {
+                  image: './images/score.png'
+                },
+                width: 40,
+                height: 22
+              },
+              b: {
+                fontSize: 36,
+                color: '#fff',
+                padding: 10
+              },
+              c: {
+                fontSize: 14,
+                color: '#8D8C98'
+              }
+            }
+          },
+          data: [{
+            value: value
+          }],
+          axisLine: {
+            lineStyle: {
+              width: 16,
+              color: [
+                [1, new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                    offset: 0.15,
+                    color: "#FF6383"
+                  },
+                  {
+                    offset: 0.50,
+                    color: "#C95FF2"
+                  },
+                  {
+                    offset: 0.85,
+                    color: "#7C6AF2"
+                  },
+                  {
+                    offset: 1,
+                    color: "#5C89FF"
+                  }
+                ])]
+              ]
+            }
+          },
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            distance: -20,
+            show: true,
+            formatter: function (value) {
+              if (value === 0) {
+                return '{a|严重}'
+              } else if (value === 100) {
+                return '{b|良好}'
+              }
+              return ''
+            },
+            rich: {
+              a: {
+                fontSize: 14,
+                color: '#FF6383',
+                padding: [-50, 0, 0, -10]
+              },
+              b: {
+                fontSize: 14,
+                color: '#6085FD',
+                padding: [-50, -10, 0, 0]
+              }
+            }
+          },
+          pointer: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          }
+        },
+        graphic: [{
+          type: 'circle',
+          shape: {
+            r: 10,
+            cx: x0 + r * Math.cos(deg * Math.PI / 180),
+            cy: y0 + r * Math.sin(deg * Math.PI / 180)
+          },
+          style: {
+            fill: '#fff'
+          },
+          z: 10
+        }]
+      }
+      var data = [
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList = data.map(function (item) {
+        return item[1];
+      });
+      var option2 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(23, 143, 255,1)'
+          },
+          areaStyle: {
+            color: 'rgba(23, 143, 255,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            data: [{
+              yAxis: 309,
+              label: {
+                show: false,
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '轻微不适'
+              },
+              lineStyle: {
+                color: '#ff4d4f'
+              }
+            }, {
+              yAxis: 175,
+              label: {
+                show: false,
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '极度不适'
+              },
+              lineStyle: {
+                color: '#fcb333'
+              }
+            }]
+          },
+          data: valueList
+        }]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+    }
   </script>
 </body>
 
