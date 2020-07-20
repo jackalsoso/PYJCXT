@@ -137,3 +137,72 @@
 .time-bottom .page-box .content .chart-wrap .imgbox span {
     color: #ACB3BE;
 }
+
+.time3top{
+  left:15px;
+  top:10px;
+  right:15px;
+  height: 348px;
+}
+.time3top .imgbox{
+  width: 50%;
+  height: 100%;
+  float: left;
+  padding: 10px;
+  padding-right:5px;
+}
+.time3top .imgbox + .imgbox{
+  float: right;
+  padding-right:10px;
+  padding-left:10px;
+}
+.time3top .imgbox img{
+  width: 100%;
+  height: 100%;
+}
+
+.time3bottom{
+  left:15px;
+  top:368px;
+  right:15px;
+  bottom: 10px;
+  height: auto;
+}
+.time3bottom .page-box{
+  height: 100%;
+}
+.list-table{
+  width: 100%;
+  height: calc(100% - 52px);
+  margin-top: 20px;
+}
+.list-table ul{
+  width: 100%;
+  overflow: hidden;
+}
+.list-table li{
+  width: calc(100% / 14);
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  text-align: center;
+}
+.list-table li.rd{
+  color:#fc0000;
+}
+.list-table .tb-hd{
+  width: 100%;
+  height: 40px;
+}
+.list-table .tb-bd{
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow: hidden;
+  overflow-y: auto;
+}
+.list-table .tb-hd ul{
+  color:#000;
+}
+.list-table .tb-bd ul:nth-child(odd){
+  background: #f9f9f9;
+}

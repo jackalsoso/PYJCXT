@@ -135,6 +135,7 @@
 .time-bottom .page-box .content .chart-wrap .imgbox span {
     color: #ACB3BE;
 }
+
 .time3top{
   left:15px;
   top:10px;
@@ -172,9 +173,34 @@
   width: 100%;
   height: calc(100% - 52px);
   margin-top: 20px;
-  background: red;
 }
-.list-table img{
+.list-table ul{
   width: 100%;
-  height: 100%;
+  overflow: hidden;
+}
+.list-table li{
+  width: calc(100% / 14);
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  text-align: center;
+}
+.list-table li.rd{
+  color:#fd4f54;
+}
+.list-table .tb-hd{
+  width: 100%;
+  height: 40px;
+}
+.list-table .tb-bd{
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow: hidden;
+  overflow-y: auto;
+}
+.list-table .tb-hd ul{
+  color:#98b9d9;
+}
+.list-table .tb-bd ul:nth-child(odd){
+  background: #191937;
 }

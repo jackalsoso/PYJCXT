@@ -92,10 +92,55 @@ body{background-color:#0A061E;font-size: 14px;color:white}
   width: 72px;
   height: 100%;
   background: #161630;
+  position: relative;
+}
+.page-nav .themes-picker{
+  z-index: 999;
+  position: absolute;
+  left:50%;
+  bottom:50px;
+  width: 52px;
+  height: 20px;
+  border-radius: 10px;
+  background: #2D2D44;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.page-nav .themes-picker .dot{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #81818E;
+  margin: 2px
+}
+.page-nav .themes-picker[data-theme=normal] .dot{
+  float: right;
+}
+.page-nav .themes-picker[data-theme=dark] .dot{
+  float: left;
+}
+.page-nav .themes-picker[data-theme=normal] .label{
+  left:6px;
+}
+.page-nav .themes-picker[data-theme=normal] .label::before{
+  content: '浅色'
+}
+.page-nav .themes-picker[data-theme=dark] .label{
+  left:22px;
+}
+.page-nav .themes-picker[data-theme=dark] .label::before{
+  content: '深色'
+}
+.page-nav .themes-picker .label{
+  color:#717181;
+  position: absolute;
+  line-height: 20px;
+  font-size: 12px;
+  top:0;
 }
 .page-nav > ul{
   width: 100%;
-  height: 100%;
+  height: calc(100% - 100px);
 }
 .page-nav > ul > li{
   position: relative;
