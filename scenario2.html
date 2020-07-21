@@ -95,7 +95,7 @@
                 </div>
               </div>
               <div class="chart-wrap">
-                <img src="./images/scenario2.jpg" border="0" style="width: 100%; height: 100%;"/>
+                <div class="chart" id="chart1"></div>
               </div>
             </div>
           </div>
@@ -266,7 +266,135 @@
         return item[1] - 40;
       });
       var option1 = {
-
+        // tooltip: {},
+        radar: {
+          shape: 'circle',
+          radius: '60%',
+          name: {
+            textStyle: {
+              color: '#747889'
+            }
+          },
+          nameGap: 30,
+          indicator: [{
+              name: 'N',
+              max: 20
+            },
+            {
+              name: 'NNW',
+              max: 20
+            },
+            {
+              name: 'NW',
+              max: 20
+            },
+            {
+              name: 'WWW',
+              max: 20
+            },
+            {
+              name: 'W',
+              max: 20
+            },
+            {
+              name: 'WSW',
+              max: 20
+            },
+            {
+              name: 'SW',
+              max: 20
+            },
+            {
+              name: 'SSW',
+              max: 20
+            },
+            {
+              name: 'S',
+              max: 20
+            },
+            {
+              name: 'SSE',
+              max: 20
+            },
+            {
+              name: 'SE',
+              max: 20
+            },
+            {
+              name: 'ESE',
+              max: 20
+            },
+            {
+              name: 'E',
+              max: 20
+            },
+            {
+              name: 'ENE',
+              max: 20
+            },
+            {
+              name: 'NE',
+              max: 20
+            },
+            {
+              name: 'NNE',
+              max: 20
+            }
+          ],
+          axisLabel: {
+            show: false,
+            showMinLabel: false
+          },
+          splitArea: {
+            show: false
+          }
+        },
+        series: [{
+          name: '风速风向',
+          type: 'radar',
+          symbol: 'none',
+          itemStyle: {
+            color: '#5C89FF'
+          },
+          areaStyle: {},
+          label: {
+            show: false
+          },
+          data: [{
+            value: [13, 6, 8, 7, 5, 6, 15, 14, 16, 8, 7, 15, 6, 15, 13, 16],
+            name: '风速风向'
+          }]
+        }, {
+          name: '风速风向',
+          type: 'radar',
+          symbol: 'none',
+          itemStyle: {
+            color: '#FF6383'
+          },
+          areaStyle: {},
+          label: {
+            show: false
+          },
+          data: [{
+            value: [8, 7, 15, 6, 15, 13, 16, 13, 6, 8, 7, 5, 6, 15, 14, 16 ],
+            name: '风速风向'
+          }]
+        }, {
+          name: '风速风向',
+          type: 'radar',
+          symbol: 'none',
+          itemStyle: {
+            color: '#7C6AF2'
+          },
+          areaStyle: {},
+          label: {
+            show: false
+          },
+          data: [{
+            value: [13, 16, 13, 6, 8, 7, 5, 8, 7, 15, 6, 15, 14, 16],
+            name: '风速风向'
+          }]
+        }]
       }
       var option2 = {
         tooltip: {
@@ -550,11 +678,11 @@
       }
 
       // 初始化echarts实例
-      // var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
       var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
       var myChart4 = echarts.init(document.getElementById('chart4'), 'light');
-      // myChart1.setOption(option1, true);
+      myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
       myChart3.setOption(option3, true);
       myChart4.setOption(option4, true);

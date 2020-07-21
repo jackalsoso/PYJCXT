@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,13 @@
   <link id="cssthemes" href="" rel="stylesheet">
   <title>浦仪监测系统</title>
 </head>
+
 <body>
   <div class="page-controller">
     <div class="page-header">
       <div class="logo">浦仪监测系统</div>
       <div class="user">
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -40,14 +42,14 @@
         </li><!-- 统计数据 -->
         <li><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li><span>服役<br>环境分析</span>
@@ -72,8 +74,8 @@
         </li><!-- 系统管理 -->
       </ul>
     </div>
-    <div class="page-body">
-      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+    <div class="page-body waring1">
+      <div class="time-bottom statistics-bottom waring1-top" style="height: 100%;top: 10px;">
         <div class="two-page-box">
           <div class="page-box">
             <div class="title">
@@ -87,14 +89,24 @@
           </div>
           <div class="page-box">
             <div class="title">
+              <span>整体监测得分</span>
+            </div>
+            <div class="content">
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
               <span>历史评分</span>
             </div>
             <div class="content">
               <div class="header">
                 <ul class="header-left">
-                  <li>10分钟</li>
                   <li>小时</li>
                   <li>日</li>
+                  <li>周</li>
                 </ul>
                 <div class="header-right">
                   <select>
@@ -103,12 +115,11 @@
                 </div>
               </div>
               <div class="chart-wrap">
-                <div class="chart" id="chart2"></div>
+                <div class="chart" id="chart3"></div>
               </div>
             </div>
           </div>
         </div>
-
         <div class="time-bottom time3bottom">
           <div class="page-box">
             <div class="title">
@@ -150,27 +161,116 @@
                   </ul>
                 </div>
                 <div class="tb-bd">
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level1.png" /></li><li class="rd">车路河大桥应力有9个测点数据超限</li><li>李志</li><li class="gd">已处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level2.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li class="gd">已处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level1.png" /></li><li class="rd">车路河大桥应力有9个测点数据超限</li><li>李志</li><li class="gd">已处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level3.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li class="gd">已处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level1.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li class="gd">已处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level2.png" / /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li>未处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level2.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li>未处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level3.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li>未处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level1.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li>未处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level3.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li>未处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level1.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li>未处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level3.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li>未处理</li><li>李志</li></ul>
-                  <ul><li>2018.1.1 14:00</li><li><img src="./images/level1.png" /></li><li>车路河大桥应力有9个测点数据超限</li><li>李志</li><li>未处理</li><li>李志</li></ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li class="rd">车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level2.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li class="rd">车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level3.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level2.png" / /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level2.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level3.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level3.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level3.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
                 </div>
                 <!-- <img src="./images/simple6.jpg" border="0" /> -->
               </div>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   </div>
@@ -289,6 +389,72 @@
           z: 10
         }]
       }
+      var option2 = {
+        tooltip: {},
+        radar: {
+          radius: '60%',
+          name: {
+            textStyle: {
+              color: '#747889'
+            }
+          },
+          nameGap: 30,
+          indicator: [{
+              name: '桥塔',
+              max: 100
+            },
+            {
+              name: '管理阻尼器',
+              max: 100
+            },
+            {
+              name: '支座',
+              max: 100
+            },
+            {
+              name: '墩台',
+              max: 100
+            },
+            {
+              name: '伸缩缝',
+              max: 100
+            },
+            {
+              name: '市场主梁',
+              max: 100
+            },
+            {
+              name: '拉索',
+              max: 100
+            }
+          ],
+          axisLabel: {
+            show: true,
+            showMinLabel: false
+          },
+          splitArea: {
+            show: false
+          }
+        },
+        series: [{
+          name: '整体监测得分',
+          type: 'radar',
+          symbolSize: 8,
+          itemStyle: {
+            color: '#5B8FF9'
+          },
+          areaStyle: {
+            color: '#5B8FF9'
+          },
+          label: {
+            show: false
+          },
+          data: [{
+            value: [43, 60, 88, 75, 50, 66, 55],
+            name: '整体监测得分'
+          }]
+        }]
+      }
       var data = [
         ["2000-06-05", 116],
         ["2000-06-06", 129],
@@ -321,7 +487,7 @@
       var valueList = data.map(function (item) {
         return item[1];
       });
-      var option2 = {
+      var option3 = {
         tooltip: {
           trigger: 'axis'
         },
@@ -368,10 +534,10 @@
           type: 'line',
           showSymbol: false,
           lineStyle: {
-            color: 'rgba(23, 143, 255,1)'
+            color: 'rgba(46,202,92,1)'
           },
           areaStyle: {
-            color: 'rgba(23, 143, 255,0.2)'
+            color: 'rgba(46,202,92,0.2)'
           },
           markLine: {
             symbol: "none",
@@ -405,8 +571,10 @@
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
     }
   </script>
 </body>

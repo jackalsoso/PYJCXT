@@ -72,14 +72,215 @@
         </li><!-- 系统管理 -->
       </ul>
     </div>
-    <div class="page-body" style="padding: 10px;">
-      <img src="./images/system2.jpg" border="0" style="width: 100%; height: 100%;"/>
+    <div class="page-body system2">
+      <div class="system2-left">
+        <div class="page-box system2-left-top">
+          <div class="title">
+            <span>监测设备健康状态</span>
+          </div>
+          <div class="content">
+            <div class="chart" id="chart1"></div>
+          </div>
+        </div>
+        <div class="page-box system2-left-bottom">
+          <div class="title">
+            <span>监测设备在线统计</span>
+          </div>
+          <div class="content">
+            <ul>
+              <li>
+                <span>设备总量</span>
+                <span>5600个</span>
+              </li>
+              <li>
+                <span>在线设备</span>
+                <span>3765个</span>
+              </li>
+            </ul>
+            <div class="chart" id="chart2"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = function () {
+      var value = 80; // 数值
+      var _x = document.getElementById('chart1').offsetWidth; // 宽度
+      var _y = document.getElementById('chart1').offsetHeight; // 高度
+      var x0 = _x / 2,
+        y0 = _y / 2; // 圆心坐标点
+      var r = _x > _y ? _y * 0.4 - 6 : _x * 0.4 - 6; // 半径
+      var deg = value / 100 * 270 - 225; // 角度
+      var option1 = {
+        series: {
+          name: '设备状况',
+          type: 'gauge',
+          max: 100,
+          radius: '80%',
+          detail: {
+            formatter: function (value) {
+              return `{a|}\n{b|${value}}\n{c|设备状况}`
+            },
+            offsetCenter: [0, 0],
+            rich: {
+              a: {
+                backgroundColor: {
+                  image: './images/score.png'
+                },
+                width: 40,
+                height: 22
+              },
+              b: {
+                fontSize: 30,
+                color: '#fff',
+                padding: [10, 0, 15]
+              },
+              c: {
+                fontSize: 14,
+                color: '#8D8C98'
+              }
+            }
+          },
+          data: [{
+            value: value
+          }],
+          axisLine: {
+            lineStyle: {
+              width: 12,
+              color: [
+                [1, new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                    offset: 0.15,
+                    color: "#FF6383"
+                  },
+                  {
+                    offset: 0.50,
+                    color: "#C95FF2"
+                  },
+                  {
+                    offset: 0.85,
+                    color: "#7C6AF2"
+                  },
+                  {
+                    offset: 1,
+                    color: "#5C89FF"
+                  }
+                ])]
+              ]
+            }
+          },
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            distance: -20,
+            show: true,
+            formatter: function (value) {
+              if (value === 0) {
+                return '{a|严重}'
+              } else if (value === 100) {
+                return '{b|良好}'
+              }
+              return ''
+            },
+            rich: {
+              a: {
+                fontSize: 14,
+                color: '#FF6383',
+                padding: [-50, 0, 0, -10]
+              },
+              b: {
+                fontSize: 14,
+                color: '#6085FD',
+                padding: [-50, -10, 0, 0]
+              }
+            }
+          },
+          pointer: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          }
+        },
+        graphic: [{
+          type: 'circle',
+          shape: {
+            r: 7,
+            cx: x0 + r * Math.cos(deg * Math.PI / 180),
+            cy: y0 + r * Math.sin(deg * Math.PI / 180)
+          },
+          style: {
+            fill: '#fff'
+          },
+          z: 10
+        }]
+      }
+      var option2 = {
+        xAxis: {
+          show: false
+        },
+        yAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            color: '#fff',
+            margin: 10
+          },
+          splitLine: {
+            show: false
+          },
+          boundaryGap: false,
+          data: ['风攻角', '风速', '温湿度', '温度', '支座位移', '阻尼器', '伸缩缝', '索力', '空间变位', '挠度', '应力']
+        },
+        series: [{
+          name: '监测设备在线统计',
+          type: 'bar',
+          barWidth: 14,
+          itemStyle: {
+            normal: {
+              label: {
+                show: true,
+                position: 'right',
+                textStyle: {
+                  color: '#fff',
+                  fontSize: 14
+                }
+              },
+              color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                offset: 0,
+                color: '#0063FA'
+              }, {
+                offset: 1,
+                color: '#2AD0FF'
+              }])
+            }
+          },
+          data: [68, 77, 80, 85, 99, 103, 105, 118, 127, 136, 143]
+        }],
+        grid: {
+          left: 20,
+          top: 20,
+          right: 40,
+          bottom: 20,
+          containLabel: true
+        }
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+    }
   </script>
 </body>
 
