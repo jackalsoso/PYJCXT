@@ -1,1 +1,16 @@
-
+.time-bottom .page-box .content .header-right input {
+    height: 32px;
+    line-height: 32px;
+    background: #191934;
+    font-size: 14px;
+    color: #97B8DA;
+    border: 0;
+    margin-left: 10px;
+    padding: 0 8px;
+}
+.list-table.waring1 li{
+  width: calc(100% / 6);
+}
+.list-table li img{
+  margin-top:10px;
+}

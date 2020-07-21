@@ -190,6 +190,9 @@
 .list-table li.rd{
   color:#fc0000;
 }
+.list-table li.gd{
+  color:#39c160;
+}
 .list-table .tb-hd{
   width: 100%;
   height: 40px;
