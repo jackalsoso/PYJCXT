@@ -81,19 +81,19 @@
           <div class="content">
             <div class="header">
               <ul class="header-left">
-                <li class="active">实时</li>
+                <li class="active">10分钟</li>
                 <li>小时</li>
                 <li>日</li>
               </ul>
               <div class="header-right">
                 <select>
-                  <option value="请选择">1阶</option>
+                  <option value="请选择">最大值、最小值</option>
+                </select>
+                <select>
+                  <option value="请选择">YL-A1-B-01</option>
                 </select>
                 <select class="time-selector">
                   <option value="2020/05/12">2020/05/12</option>
-                  <option value="2020/05/13">2020/05/13</option>
-                  <option value="2020/05/14">2020/05/14</option>
-                  <option value="2020/05/15">2020/05/15</option>
                 </select>
               </div>
             </div>
@@ -109,20 +109,15 @@
             </div>
             <div class="content">
               <div class="header">
-                <ul class="header-left">
-                  <li class="active">实时</li>
-                  <li>10分钟</li>
-                  <li>小时</li>
-                  <li>日</li>
+                <ul class="legend legend4">
+                  <li>升温温差</li>
+                  <li>降温温差</li>
                 </ul>
                 <div class="header-right">
                   <select>
-                    <option value="轴力、弯矩">轴力、弯矩</option>
+                    <option value="截面、方向">截面、方向</option>
                   </select>
                   <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
@@ -139,19 +134,11 @@
             <div class="content">
               <div class="header">
                 <ul class="header-left">
-                  <li class="active">实时</li>
-                  <li>10分钟</li>
-                  <li>小时</li>
-                  <li>日</li>
+                  <li class="active">小时</li>
+                  <li>天</li>
                 </ul>
                 <div class="header-right">
-                  <select>
-                    <option value="应力、位移">应力、位移</option>
-                  </select>
                   <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
@@ -263,18 +250,7 @@
         }]
       }
       var option2 = {
-        color: ['#FB9225', '#727180'],
-        legend: {
-          top: 10,
-          right: 20,
-          itemGap: 20,
-          selectedMode: false,
-          icon: 'rect',
-          itemHeight: 2,
-          textStyle: {
-            color: '#fff'
-          }
-        },
+        color: ['#5C89FF', '#C95FF2'],
         tooltip: {
           trigger: 'axis'
         },
@@ -328,20 +304,6 @@
           type: 'line',
           smooth: true,
           symbol: 'none',
-          markLine: {
-            symbol: 'none',
-            lineStyle: {
-              color: '#4c4b5e',
-              type: 'solid'
-            },
-            label: {
-              show: false
-            },
-            data: [[
-              {coord: [7, 0]},
-              {coord: [7, 192.2]}
-            ]]
-          },
           data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 105.6, 192.2, 48.7, 18.8, 6.0, 2.3, 2.6, 5.9, 9.0, 26.4, 28.7]
         }, {
           name: '降温温差',
@@ -350,20 +312,6 @@
           symbol: 'none',
           lineStyle: {
             type: 'dashed'
-          },
-          markLine: {
-            symbol: 'none',
-            lineStyle: {
-              color: '#4c4b5e',
-              type: 'solid'
-            },
-            label: {
-              show: false
-            },
-            data: [[
-              {coord: [6, 0]},
-              {coord: [6, 231.6]}
-            ]]
           },
           data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7, 3.9, 5.9, 11.1, 18.7, 48.3]
         }]
