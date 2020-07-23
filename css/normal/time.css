@@ -171,41 +171,41 @@
 .time3bottom .page-box{
   height: 100%;
 }
-.list-table{
+.time3bottom .list-table{
   width: 100%;
   height: calc(100% - 52px);
   margin-top: 20px;
 }
-.list-table ul{
+.time3bottom .list-table ul{
   width: 100%;
   overflow: hidden;
 }
-.list-table li{
+.time3bottom .list-table li{
   width: calc(100% / 14);
   height: 40px;
   line-height: 40px;
   float: left;
   text-align: center;
 }
-.list-table li.rd{
+.time3bottom .list-table li.rd{
   color:#fc0000;
 }
-.list-table li.gd{
+.time3bottom .list-table li.gd{
   color:#39c160;
 }
-.list-table .tb-hd{
+.time3bottom .list-table .tb-hd{
   width: 100%;
   height: 40px;
 }
-.list-table .tb-bd{
+.time3bottom .list-table .tb-bd{
   width: 100%;
   height: calc(100% - 40px);
   overflow: hidden;
   overflow-y: auto;
 }
-.list-table .tb-hd ul{
+.time3bottom .list-table .tb-hd ul{
   color:#000;
 }
-.list-table .tb-bd ul:nth-child(odd){
+.time3bottom .list-table .tb-bd ul:nth-child(odd){
   background: #f9f9f9;
 }
