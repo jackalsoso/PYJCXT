@@ -12,7 +12,7 @@
     width: 49%;
     margin-right: 10px;
 }
-.statistics-bottom .two-page-box .page-box:first-child {
+.statistics-bottom .two-page-box .page-box:last-child {
     margin-right: 0;
 }
 .statistics-bottom .page-box .content .chart-wrap .chart {
