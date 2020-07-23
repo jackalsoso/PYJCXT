@@ -7,6 +7,7 @@ $(function(){
     sessionStorage.theme == 'normal' ? $(this).attr('data-theme', 'dark') : $(this).attr('data-theme', 'normal')
     sessionStorage.theme = $(this).attr('data-theme')
     $('#cssthemes').attr('href', './css/' + sessionStorage.theme + '.css')
+    init ? init() : ''
   })
   $('.page-nav, .time-top').on('click', 'li', function(e){
     let _url = $(this).attr('data-menu')

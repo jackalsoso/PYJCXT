@@ -234,6 +234,19 @@ body{background-color:#eef0f3;font-size: 14px;color:#4a4a4a;}
   background: #f9f9f9;
   padding: 0 10px;
 }
+.page-body .page-box .title ul{
+  display: inline-block;
+}
+.page-body .page-box .title li{
+  display: inline-block;
+  line-height: 36px;
+  cursor: pointer;
+  padding: 0 20px;
+  border-bottom: 4px transparent solid;
+}
+.page-body .page-box .title li.active{
+  border-color:#5C89FF;
+}
 .page-body .page-box .title span{
   line-height: 40px;
 }

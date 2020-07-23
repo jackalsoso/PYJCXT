@@ -48,19 +48,36 @@
     width: 100%;
     height: calc(100% - 80px);
 }
-
+.system2-right{
+  left:320px;
+  top:10px;
+  right: 10px;
+  bottom:20px;
+  background: red;
+}
 
 
 .system3-top {
-    height: 25%;
-    display: flex;
-    justify-content: space-between;
+    width:calc(100% - 20px);
+    overflow: hidden;
+    left:10px;
+    top:10px;
+    right: 10px;
+    background: red;
+}
+.system3-top ul {
+    width:100%;
+    overflow: hidden;
 }
 .system3-top li {
-    flex: 1;
-    margin-right: 10px;
+    width:calc((100% - 30px) / 4);
     padding: 40px 40px 0;
     box-shadow: 0 2px 4px 0 rgba(14,29,49,0.60);
+    float: left;
+    height: 190px;
+}
+.system3-top li + li {
+    margin-left: 10px;
 }
 .system3-top li:first-child {
     background-image: linear-gradient(38deg, #2AD0FF 0%, #0063FA 100%);
@@ -81,19 +98,20 @@
 .system3-top li span:last-child {
     font-size: 32px;
 }
-.system2-right{
-  left:320px;
-  top:10px;
+.system3-bottom{
+  left:10px;
+  top:210px;
   right: 10px;
-  bottom:20px;
+  bottom:10px;
 }
-
-.system2-right .list-table{
+.system2-right .list-table,
+.system3-bottom .list-table{
   width: 100%;
   height: calc(100% - 72px);
   margin-top: 20px;
 }
-.system2-right .list-table ul{
+.system2-right .list-table ul,
+.system3-bottom .list-table ul{
   width: 100%;
   overflow: hidden;
 }
@@ -104,53 +122,66 @@
   float: left;
   text-align: center;
 }
-.system2-right .list-table li.rd{
+.system3-bottom .list-table li{
+  width: calc(100% / 5);
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  text-align: center;
+}
+.system2-right .list-table li.rd,
+.system3-bottom .list-table li.rd{
   color:#fd4f54;
 }
-.system2-right .list-table li.gd{
+.system2-right .list-table li.gd,
+.system3-bottom .list-table li.gd{
   color:#39c160;
 }
-.system2-right .list-table li.do{
+.system2-right .list-table li.do,
+.system3-bottom .list-table li.do{
   color:#55566a;
 }
-.system2-right .list-table li.do a{
+.system2-right .list-table li.do a,
+.system3-bottom .list-table li.do a{
   color:#5C89FF;
 }
-.system2-right .list-table li.do a:hover{
+.system2-right .list-table li.do a:hover,
+.system3-bottom .list-table li.do a:hover{
   color:#fff;
 }
-.system2-right .list-table .tb-hd{
+.system2-right .list-table .tb-hd,
+.system3-bottom .list-table .tb-hd{
   width: 100%;
   height: 40px;
 }
-.system2-right .list-table .tb-hd ul{
-  background: #f4f4f4;
-}
-.system2-right .list-table .tb-hd ul li{
-  color: #333;
-}
-.system2-right .list-table .tb-bd{
+.system2-right .list-table .tb-bd,
+.system3-bottom .list-table .tb-bd{
   width: 100%;
   height: calc(100% - 40px);
   overflow: hidden;
   overflow-y: auto;
 }
-.system2-right .list-table .tb-hd ul{
+.system2-right .list-table .tb-hd ul,
+.system3-bottom .list-table .tb-hd ul{
   color:#98b9d9;
 }
-.system2-right .list-table .tb-bd ul:nth-child(even){
-  background: #f9f9f9;
+.system2-right .list-table .tb-bd ul:nth-child(odd),
+.system3-bottom .list-table .tb-bd ul:nth-child(odd){
+  background: #191937;
 }
-.system2-right .content .header {
+.system2-right .content .header,
+.system3-bottom .content .header  {
     margin-top: 20px;
     padding-right: 20px;
     display: flex;
     justify-content: space-between;
 }
-.system2-right .content .header-left {
+.system2-right .content .header-left,
+.system3-bottom .content .header-left {
     display: flex;
 }
-.system2-right .content .header-left li {
+.system2-right .content .header-left li,
+.system3-bottom .content .header-left li {
     height: 32px;
     line-height: 30px;
     padding: 0 10px;
@@ -158,46 +189,50 @@
     color: #75798A;
     cursor: pointer;
 }
-.system2-right .content .header-left li.active, .system2-right .content .header-left li:hover {
+.system2-right .content .header-left li.active, .system2-right .content .header-left li:hover,
+.system3-bottom .content .header-left li.active, .system2-right .content .header-left li:hover,
+ {
     border-color: #5C89FF;
     color: #5C89FF;
 }
-.system2-right .content .header-left li:first-child {
+.system2-right .content .header-left li:first-child,
+.system3-bottom .content .header-left li:first-child  {
     border-radius: 4px 0 0 4px;
 }
-.system2-right .content .header-left li:last-child {
+.system2-right .content .header-left li:last-child,
+.system3-bottom .content .header-left li:last-child {
     border-radius: 0 4px 4px 0;
 }
-.system2-right .content .header-right {
+.system2-right .content .header-right,
+.system3-bottom .content .header-right {
     display: flex;
     align-items: center;
 }
-.system2-right .content .header-right select {
+.system2-right .content .header-right select,
+.system3-bottom .content .header-right select  {
     height: 32px;
     line-height: 32px;
-    background: #fff;
+    background: #191934;
     font-size: 14px;
     color: #97B8DA;
     border: 0;
     margin-left: 10px;
     cursor: pointer;
     padding: 0 8px;
-    border:1px #c4c6cf solid;
-    color:#4a4a4a;
 }
-.system2-right .content .header-right input {
+.system2-right .content .header-right input,
+.system3-bottom .content .header-right input {
     height: 32px;
     line-height: 32px;
-    background: #fff;
+    background: #191934;
     font-size: 14px;
     color: #97B8DA;
     border: 0;
     margin-left: 10px;
     padding: 0 8px;
-    border:1px #c4c6cf solid;
-    color:#4a4a4a;
 }
-.system2-right .content .header-right button {
+.system2-right .content .header-right button,
+.system3-bottom .content .header-right button {
     width: 80px;
     height: 32px;
     border: 0;
@@ -208,17 +243,21 @@
     align-items: center;
     margin-left: 10px;
 }
-.system2-right .content .header-right .search {
+.system2-right .content .header-right .search,
+.system3-bottom .content .header-right .search {
     background: #5C89FF;
 }
-.system2-right .content .header-right .export {
+.system2-right .content .header-right .export,
+.system3-bottom .content .header-right .export {
     background: #FCB333;
 }
-.system2-right .content .header-right .created {
+.system2-right .content .header-right .created,
+.system3-bottom .content .header-right .created {
     width: 100px;
     background: #2ECB5D;
 }
-.system2-right .content .header-right button img {
+.system2-right .content .header-right button img,
+.system3-bottom .content .header-right button img {
     width: 14px;
     height: 14px;
     margin-right: 10px;
