@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,13 @@
   <link id="cssthemes" href="" rel="stylesheet">
   <title>浦仪监测系统</title>
 </head>
+
 <body>
   <div class="page-controller">
     <div class="page-header">
       <div class="logo">浦仪监测系统</div>
       <div class="user">
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -40,14 +42,14 @@
         </li><!-- 统计数据 -->
         <li><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li class="active"><span>服役<br>环境分析</span>
@@ -93,9 +95,6 @@
                   </select>
                   <select class="time-selector">
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
               </div>
@@ -122,9 +121,6 @@
                   </select>
                   <select class="time-selector">
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
               </div>
@@ -140,20 +136,16 @@
           </div>
           <div class="content">
             <div class="header">
-              <ul class="header-left">
-                <li class="active">实时</li>
-                <li>小时</li>
-                <li>日</li>
+              <ul class="legend legend1">
+                <li>概率密度</li>
+                <li>累计概率</li>
               </ul>
               <div class="header-right">
                 <select>
-                  <option value="请选择">1阶</option>
+                  <option value="YL-A1-B-01，效应">YL-A1-B-01，效应</option>
                 </select>
                 <select class="time-selector">
-                  <option value="2020/05/12">2020/05/12</option>
-                  <option value="2020/05/13">2020/05/13</option>
-                  <option value="2020/05/14">2020/05/14</option>
-                  <option value="2020/05/15">2020/05/15</option>
+                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                 </select>
               </div>
             </div>
@@ -376,7 +368,7 @@
         return item[1] - 50;
       });
       var option3 = {
-        color: ['#5076df', '#ffcb48'],
+        color: ['#5C89FF', '#00C853'],
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -397,7 +389,10 @@
             interval: 0,
             alignWithLabel: true
           },
-          data: dateList3,
+          data: ['[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)',
+            '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)',
+            '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)',
+          ],
         },
         yAxis: [{
           name: '概率密度',
@@ -454,7 +449,11 @@
           name: '累计概率',
           type: 'line',
           yAxisIndex: 1,
-          symbol: 'circle',
+          symbol: 'none',
+          smooth: true,
+          lineStyle: {
+            type: 'dotted'
+          },
           data: valueList4
         }]
       };

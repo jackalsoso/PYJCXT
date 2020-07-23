@@ -88,9 +88,6 @@
                   </select>
                   <select class="time-selector">
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
               </div>
@@ -105,20 +102,15 @@
             </div>
             <div class="content">
               <div class="header">
-                <ul class="header-left">
-                  <li class="active">实时</li>
-                  <li>10分钟</li>
-                  <li>小时</li>
-                  <li>日</li>
+                <ul class="legend legend2">
+                  <li>脉动风速功率谱</li>
+                  <li>Davenport谱</li>
                 </ul>
                 <div class="header-right">
                   <select>
                     <option value="YL-A1-B-01">YL-A1-B-01</option>
                   </select>
                   <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
@@ -136,15 +128,18 @@
             </div>
             <div class="content">
               <div class="header">
-                <ul class="header-left"></ul>
+                <ul class="legend legend2">
+                  <li>风速</li>
+                  <li>风向</li>
+                </ul>
                 <div class="header-right">
                   <select>
                     <option value="YL-A1-B-01">YL-A1-B-01</option>
                   </select>
+                  <select>
+                    <option value="风攻角">风攻角</option>
+                  </select>
                   <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
@@ -160,20 +155,15 @@
             </div>
             <div class="content">
               <div class="header">
-                <ul class="header-left">
-                  <li class="active">实时</li>
-                  <li>10分钟</li>
-                  <li>小时</li>
-                  <li>日</li>
+                <ul class="legend legend3">
+                  <li>风速</li>
+                  <li>紊流强度</li>
                 </ul>
                 <div class="header-right">
                   <select>
                     <option value="YL-A1-B-01">YL-A1-B-01</option>
                   </select>
                   <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
@@ -356,7 +346,10 @@
           itemStyle: {
             color: '#5C89FF'
           },
-          areaStyle: {},
+          areaStyle: {
+            color: '#5C89FF',
+            opacity: 1
+          },
           label: {
             show: false
           },
@@ -371,7 +364,10 @@
           itemStyle: {
             color: '#FF6383'
           },
-          areaStyle: {},
+          areaStyle: {
+            color: '#FF6383',
+            opacity: 1
+          },
           label: {
             show: false
           },
@@ -386,7 +382,10 @@
           itemStyle: {
             color: '#7C6AF2'
           },
-          areaStyle: {},
+          areaStyle: {
+            color: '#7C6AF2',
+            opacity: 1
+          },
           label: {
             show: false
           },
@@ -419,7 +418,7 @@
           name: '脉动风速功率（m2/s2）',
           nameTextStyle: {
             lineHeight: 0,
-            padding: [0, 0, 0, 18]
+            padding: [0, 0, 0, 70]
           },
           axisLine: {
             lineStyle: {
