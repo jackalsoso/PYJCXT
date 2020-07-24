@@ -298,6 +298,7 @@
       var valueList6 = data.map(function (item) {
         return item[6];
       });
+
       var option1 = {
         color: ['#5C89FF', '#7C6AF2', '#5C89FF', '#7C6AF2', '#5C89FF', '#7C6AF2'],
         tooltip: {
@@ -427,7 +428,7 @@
           animation: false,
           label: {
             formatter: '{b}: {d}%',
-            color: '#fff'
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000'
           },
           labelLine: {
             length2: 0
@@ -459,7 +460,7 @@
           animation: false,
           label: {
             formatter: '{b}',
-            color: '#fff'
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000'
           },
           labelLine: {
             length2: 0
@@ -615,7 +616,7 @@
           animation: false,
           label: {
             formatter: '{b}',
-            color: '#fff'
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000'
           },
           labelLine: {
             length2: 0
@@ -641,7 +642,7 @@
           animation: false,
           label: {
             formatter: '{b}',
-            color: '#fff'
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000'
           },
           labelLine: {
             length2: 0
@@ -661,7 +662,7 @@
           selectedMode: false,
           icon: 'circle',
           textStyle: {
-            color: '#fff'
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000'
           },
           data: ['总重超50t', '总重超60t', '总重超70t', '', '总重超80t', '总重超90t', '总重超100t']
         },
@@ -807,7 +808,7 @@
             position: 'top',
             rotate: 90,
             offset: [7, -20],
-            color: '#fff',
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000',
             formatter: '{c}%'
           },
           data: [2.4, 7.6, 8.6, 6.8, 3.8, 2.2, 2.6, 3.8, 5.7, 5.9, 7.6, 8.6, 6.8, 3.8, 2.2, 7.6, 8.6, 6.8, 3.8,
@@ -815,6 +816,7 @@
           ]
         }]
       }
+      
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
@@ -822,6 +824,7 @@
       var myChart4 = echarts.init(document.getElementById('chart4'), 'light');
       var myChart5 = echarts.init(document.getElementById('chart5'), 'light');
       var myChart6 = echarts.init(document.getElementById('chart6'), 'light');
+
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
       myChart3.setOption(option3, true);

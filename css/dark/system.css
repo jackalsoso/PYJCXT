@@ -1,3 +1,70 @@
+.system1 {
+    padding: 10px;
+}
+.system1 .page-box:first-child {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    height: 200px;
+}
+.system1 .page-box:first-child .content {
+    padding: 30px;
+    position: relative;
+}
+.system1 .page-box:first-child ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.system1 .page-box:first-child ul li {
+    display: flex;
+}
+.system1 .page-box:first-child ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.system1 .page-box:first-child ul li label {
+    width: 100px;
+    text-align: right;
+    margin-right: 14px;
+}
+.system1 .page-box:first-child ul li select,
+.system1 .page-box:first-child ul li input {
+    width: 240px;
+    height: 32px;
+    background: #191934;
+    border: 0;
+    font-size: 14px;
+    color: #fff;
+    padding: 0 12px;
+}
+.system1 .page-box:first-child .buttons {
+    position: absolute;
+    right: 200px;
+    bottom: 20px;
+}
+.system1 .page-box:first-child .buttons button {
+    width: 120px;
+    height: 32px;
+    border: 0;
+    margin-left: 10px; 
+    font-size: 14px;
+    cursor: pointer;
+}
+.system1 .page-box:first-child .buttons button:first-child {
+    background: #191934;
+    color: #97B8DA;
+}
+.system1 .page-box:first-child .buttons button:last-child {
+    background: #5C89FF;
+    color: #fff;
+}
+.system1 .page-box:last-child {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    height: calc(100% - 230px);
+}
 .system2 {
     display: flex;
     padding: 10px;
@@ -80,16 +147,20 @@
     margin-left: 10px;
 }
 .system3-top li:first-child {
-    background-image: linear-gradient(38deg, #2AD0FF 0%, #0063FA 100%);
+    /* background-image: linear-gradient(38deg, #2AD0FF 0%, #0063FA 100%); */
+    background: url(../../images/system3-1.png) no-repeat center center/cover;
 }
 .system3-top li:nth-child(2) {
-    background-image: linear-gradient(198deg, #0098DA 0%, #41E0CB 100%);
+    /* background-image: linear-gradient(198deg, #0098DA 0%, #41E0CB 100%); */
+    background: url(../../images/system3-2.png) no-repeat center center/cover;
 }
 .system3-top li:nth-child(3) {
-    background-image: linear-gradient(42deg, #FAD961 0%, #F76B1C 100%);
+    /* background-image: linear-gradient(42deg, #FAD961 0%, #F76B1C 100%); */
+    background: url(../../images/system3-3.png) no-repeat center center/cover;
 }
 .system3-top li:last-child {
-    background-image: linear-gradient(225deg, #FF4B4F 0%, #FB7173 100%);
+    /* background-image: linear-gradient(225deg, #FF4B4F 0%, #FB7173 100%); */
+    background: url(../../images/system3-4.png) no-repeat center center/cover;
     margin-right: 0;
 }
 .system3-top li span:first-child {
@@ -104,23 +175,32 @@
   right: 10px;
   bottom:10px;
 }
+.system1 .list-table,
 .system2-right .list-table,
 .system3-bottom .list-table{
   width: 100%;
   height: calc(100% - 72px);
   margin-top: 20px;
 }
+.system1 .list-table ul,
 .system2-right .list-table ul,
 .system3-bottom .list-table ul{
   width: 100%;
   overflow: hidden;
 }
-.system2-right .list-table li{
-  width: calc(100% / 4);
+.system1 .list-table li{
+  width: calc(100% / 6);
   height: 40px;
   line-height: 40px;
   float: left;
   text-align: center;
+}
+.system2-right .list-table li{
+    width: calc(100% / 4);
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    text-align: center;
 }
 .system3-bottom .list-table li{
   width: calc(100% / 5);
@@ -129,31 +209,38 @@
   float: left;
   text-align: center;
 }
+.system1 .list-table li.rd,
 .system2-right .list-table li.rd,
 .system3-bottom .list-table li.rd{
   color:#fd4f54;
 }
+.system1 .list-table li.gd,
 .system2-right .list-table li.gd,
 .system3-bottom .list-table li.gd{
   color:#39c160;
 }
+.system1 .list-table li.do,
 .system2-right .list-table li.do,
 .system3-bottom .list-table li.do{
   color:#55566a;
 }
+.system1 .list-table li.do a,
 .system2-right .list-table li.do a,
 .system3-bottom .list-table li.do a{
   color:#5C89FF;
 }
+.system1 .list-table li.do a:hover,
 .system2-right .list-table li.do a:hover,
 .system3-bottom .list-table li.do a:hover{
   color:#fff;
 }
+.system1 .list-table .tb-hd,
 .system2-right .list-table .tb-hd,
 .system3-bottom .list-table .tb-hd{
   width: 100%;
   height: 40px;
 }
+.system1 .list-table .tb-bd,
 .system2-right .list-table .tb-bd,
 .system3-bottom .list-table .tb-bd{
   width: 100%;
@@ -161,10 +248,12 @@
   overflow: hidden;
   overflow-y: auto;
 }
+.system1 .list-table .tb-hd ul,
 .system2-right .list-table .tb-hd ul,
 .system3-bottom .list-table .tb-hd ul{
   color:#98b9d9;
 }
+.system1 .list-table .tb-bd ul:nth-child(odd),
 .system2-right .list-table .tb-bd ul:nth-child(odd),
 .system3-bottom .list-table .tb-bd ul:nth-child(odd){
   background: #191937;
@@ -190,8 +279,7 @@
     cursor: pointer;
 }
 .system2-right .content .header-left li.active, .system2-right .content .header-left li:hover,
-.system3-bottom .content .header-left li.active, .system2-right .content .header-left li:hover,
- {
+.system3-bottom .content .header-left li.active, .system2-right .content .header-left li:hover {
     border-color: #5C89FF;
     color: #5C89FF;
 }

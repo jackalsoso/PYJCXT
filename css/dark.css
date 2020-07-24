@@ -236,6 +236,19 @@ body{background-color:#0A061E;font-size: 14px;color:white}
   display: flex;
   justify-content: space-between;
 }
+.page-body .page-box .title-right {
+  color: #75798a;
+  display: flex;
+  align-items: center;
+}
+.page-body .page-box .title-right-tip {
+  width: 300px; 
+  padding: 10px; 
+  background: #171732; 
+  position: absolute; 
+  top: 40px; 
+  right: 0;
+}
 .page-body .page-box .title ul{
   display: inline-block;
 }

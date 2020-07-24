@@ -233,6 +233,21 @@ body{background-color:#eef0f3;font-size: 14px;color:#4a4a4a;}
   height:40px;
   background: #f9f9f9;
   padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.page-body .page-box .title-right {
+  color: #75798a;
+  display: flex;
+  align-items: center;
+}
+.page-body .page-box .title-right-tip {
+  width: 300px; 
+  padding: 10px; 
+  background: #f9f9f9; 
+  position: absolute; 
+  top: 40px; 
+  right: 0;
 }
 .page-body .page-box .title ul{
   display: inline-block;

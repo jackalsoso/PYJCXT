@@ -201,7 +201,7 @@
               },
               b: {
                 fontSize: 30,
-                color: '#fff',
+                color: sessionStorage.theme == 'dark' ? '#fff' : '#000',
                 padding: [10, 0, 15]
               },
               c: {
@@ -279,7 +279,7 @@
             cy: y0 + r * Math.sin(deg * Math.PI / 180)
           },
           style: {
-            fill: '#fff'
+            fill: sessionStorage.theme == 'dark' ? '#fff' : '#000'
           },
           z: 10
         }]
@@ -299,7 +299,7 @@
             show: false
           },
           axisLabel: {
-            color: '#fff',
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000',
             margin: 10
           },
           splitLine: {
@@ -318,7 +318,7 @@
                 show: true,
                 position: 'right',
                 textStyle: {
-                  color: '#fff',
+                  color: sessionStorage.theme == 'dark' ? '#fff' : '#000',
                   fontSize: 14
                 }
               },

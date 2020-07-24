@@ -60,9 +60,89 @@
   height: 100%;
 }
 .waring2 .waring2-right {
-  flex: 1;
+  width: calc(40% - 30px);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 830px;
 }
-
+.waring2 .waring2-right .content {
+  display: flex;
+  flex-direction: column;
+}
+.waring2 .waring2-right .content .header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+.waring2 .waring2-right .content .header-right {
+  display: flex;
+  align-items: center;
+}
+.waring2 .waring2-right .content .header-right select {
+  height: 32px;
+  line-height: 32px;
+  background: #191934;
+  font-size: 14px;
+  color: #97B8DA;
+  border: 0;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 0 8px;
+}
+.waring2 .waring2-right .content .header-right button {
+  width: 80px;
+  height: 32px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+.waring2 .waring2-right .content .header-right .search {
+  background: #5C89FF;
+}
+.waring2 .waring2-right .content .header-right .export {
+  background: #FCB333;
+}
+.waring2 .waring2-right .content .header-right button img {
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+}
+.waring2 .list-table {
+  flex: 1;
+  overflow: auto;
+}
+.waring2 .list-table ul{
+  width: 100%;
+  overflow: hidden;
+}
+.waring2 .list-table li{
+  width: calc(100% / 3);
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  text-align: center;
+}
+.waring2 .list-table .tb-hd{
+  width: 100%;
+  height: 40px;
+}
+.waring2 .list-table .tb-bd{
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow: hidden;
+  overflow-y: auto;
+}
+.waring2 .list-table .tb-hd ul{
+  color:#98b9d9;
+}
+.waring2 .list-table .tb-bd ul:nth-child(odd){
+  background: #191937;
+}
 
 .warning1bottom{
   left:0;
@@ -74,7 +154,6 @@
 .warning1bottom .page-box{
   height: 100%;
 }
-
 .warning1bottom .list-table{
   width: 100%;
   height: calc(100% - 52px);

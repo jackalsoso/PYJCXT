@@ -198,6 +198,7 @@
         return item[1];
       });
       var value = 40; // 数值
+
       var option1 = {
         title: {
           show: true,
@@ -238,7 +239,7 @@
             show: false
           },
           axisLabel: {
-            color: '#fff',
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000',
             distance: -34,
             show: true,
             formatter: function (value) {
@@ -390,6 +391,7 @@
           data: valueList
         }]
       }
+      
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');

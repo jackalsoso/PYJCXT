@@ -137,14 +137,14 @@
   <script src="./js/common.js"></script>
   <script type="text/javascript">
     let init = function () {
-
       var value = 80; // 数值
       var _x = document.getElementById('chart1').offsetWidth; // 宽度
       var _y = document.getElementById('chart1').offsetHeight; // 高度
       var x0 = _x / 2,
-        y0 = _y / 2; // 圆心坐标点
+          y0 = _y / 2; // 圆心坐标点
       var r = _x > _y ? _y * 0.3 - 8 : _x * 0.3 - 8; // 半径
       var deg = value / 100 * 270 - 225; // 角度
+
       var option1 = {
         series: {
           name: '综合评分',
@@ -167,7 +167,7 @@
               b: {
                 fontSize: 36,
                 color: '#fff',
-                padding: 10
+                padding: [8, 0, 12, 0]
               },
               c: {
                 fontSize: 14,
@@ -483,7 +483,7 @@
                 rich: {
                   a: {
                     fontSize: 36,
-                    color: '#fff',
+                    color: '#000',
                     lineHeight: 50
                   },
                   b: {
@@ -518,7 +518,7 @@
           bottom: 20,
           itemGap: 20,
           textStyle: {
-            color: '#fff'
+            color: '#000'
           },
           data: ['红色预警', '橙色预警', '黄色预警']
         },
@@ -572,7 +572,6 @@
         myChart2.setOption(option2n, true);
         myChart3.setOption(option3n, true);
       }
-
     }
   </script>
 </body>
