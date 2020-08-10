@@ -88,11 +88,13 @@
       <div class="time-bottom statistics-bottom">
         <div class="page-box">
           <div class="title">
-            <span>疲劳损伤度程度/疲劳循环次数</span>
-            <span class="title-right"><img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明</span>
-            <div class="title-right-tip">
-              备注：疲劳损伤程度为1时结构产生疲劳破坏；将变幅疲劳换算成常幅疲劳，疲劳循环次数为换算常幅应力下的循环次数，但循环次数达到200万次时，结构疲劳破坏。
-            </div>
+            <span>疲劳损伤程度/疲劳循环次数</span>
+            <span class="title-right">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                备注：疲劳损伤程度为1时结构产生疲劳破坏；将变幅疲劳换算成常幅疲劳，疲劳循环次数为换算常幅应力下的循环次数，但循环次数达到200万次时，结构疲劳破坏。
+              </div>
+            </span>
           </div>
           <div class="content">
             <div class="header">
@@ -105,18 +107,13 @@
                   <input type="checkbox" value="考虑残余应力疲劳分析" />&nbsp;考虑残余应力疲劳分析&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
                 <select>
-                  <option value="疲劳损伤度">疲劳损伤度</option>
+                  <option value="疲劳损伤程度" id="option1">疲劳损伤程度</option>
+                  <option value="疲劳循环次数" id="option2">疲劳循环次数</option>
                 </select>
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
-                  <option value="YL-A1-B-02">YL-A1-B-02</option>
-                  <option value="YL-A1-B-03">YL-A1-B-03</option>
-                  <option value="YL-A1-B-04">YL-A1-B-04</option>
                 </select>
                 <select class="time-selector">
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                 </select>
               </div>
@@ -248,9 +245,98 @@
           data: valueList2
         }]
       };
+      var option2 = {
+        color: ['#5076df', '#ffcb48'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            interval: 0,
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '单位时间疲劳循环次数',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '累计疲劳循环次数',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 50,
+          top: 30,
+          right: 50,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '单位时间疲劳循环次数',
+          type: 'bar',
+          barWidth: 30,
+          data: valueList1
+        }, {
+          name: '累计疲劳循环次数',
+          type: 'line',
+          yAxisIndex: 1,
+          symbol: 'circle',
+          data: valueList2
+        }]
+      };
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       myChart1.setOption(option1, true);
+      $('.option1').on('click', function(){
+        myChart1.setOption(option1, true);
+      })
+      $('.option2').on('click', function(){
+        myChart1.setOption(option2, true);
+      })
     }
   </script>
 </body>

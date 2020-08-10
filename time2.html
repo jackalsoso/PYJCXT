@@ -121,10 +121,6 @@
                   <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                 </select>
-                <button class="search">
-                  <img src="./images/search.png" border="0" />
-                  <span>查询</span>
-                </button>
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -157,15 +153,8 @@
                   <option value="YL-A1-B-04">YL-A1-B-04</option>
                 </select>
                 <select class="time-selector">
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
+                  <option value="2020/05/12">2020/05/12</option>
                 </select>
-                <button class="search">
-                  <img src="./images/search.png" border="0" />
-                  <span>查询</span>
-                </button>
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -319,6 +308,10 @@
           trigger: 'axis'
         },
         xAxis: {
+          name: '频率：Hz',
+          nameTextStyle: {
+            padding: [80, 0, 0, -65]
+          },
           axisLine: {
             lineStyle: {
               color: '#ACB3BE'
@@ -330,10 +323,10 @@
           axisTick: {
             alignWithLabel: true
           },
-          data: dateList,
+          data: valueList,
         },
         yAxis: {
-          name: '频率：Hz',
+          name: '幅值',
           nameTextStyle: {
             lineHeight: 0
           },

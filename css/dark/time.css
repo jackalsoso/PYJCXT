@@ -80,6 +80,10 @@
     display: flex;
     align-items: center;
 }
+.time-bottom .page-box .content .header-right .update {
+  display: flex;
+  align-items: center;
+}
 .time-bottom .page-box .content .header-right .update span {
   color: #3698FD;
 }

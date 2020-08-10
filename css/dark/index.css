@@ -55,6 +55,13 @@
   height:calc(100% - 340px);
   top:10px;
 }
+.right .check-box {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  width: 150px;
+  line-height: 22px;
+}
 .right img{
   width: 100%;
   height:100%

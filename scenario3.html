@@ -74,34 +74,6 @@
     </div>
     <div class="page-body">
       <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
-        <div class="page-box">
-          <div class="title">
-            <span>温差特征统计</span>
-          </div>
-          <div class="content">
-            <div class="header">
-              <ul class="header-left">
-                <li class="active">10分钟</li>
-                <li>小时</li>
-                <li>日</li>
-              </ul>
-              <div class="header-right">
-                <select>
-                  <option value="请选择">最大值、最小值</option>
-                </select>
-                <select>
-                  <option value="请选择">YL-A1-B-01</option>
-                </select>
-                <select class="time-selector">
-                  <option value="2020/05/12">2020/05/12</option>
-                </select>
-              </div>
-            </div>
-            <div class="chart-wrap">
-              <div class="chart" id="chart1"></div>
-            </div>
-          </div>
-        </div>
         <div class="two-page-box">
           <div class="page-box">
             <div class="title">
@@ -177,78 +149,6 @@
       var valueList3 = data.map(function (item) {
         return item[3];
       });
-      var option1 = {
-        tooltip: {
-          trigger: 'axis'
-        },
-        xAxis: {
-          type: 'category',
-          boundaryGap: false,
-          axisLine: {
-            lineStyle: {
-              color: '#ACB3BE'
-            }
-          },
-          axisLabel: {
-            margin: 20
-          },
-          axisTick: {
-            alignWithLabel: true
-          },
-          data: dateList,
-        },
-        yAxis: {
-          name: '温差：℃',
-          type: 'value',
-          nameTextStyle: {
-            lineHeight: 0
-          },
-          axisLine: {
-            lineStyle: {
-              color: '#ACB3BE'
-            }
-          },
-          axisTick: {
-            show: false
-          },
-          splitLine: {
-            show: true,
-            lineStyle: {
-              color: '#4C4B5E',
-              type: 'dashed'
-            }
-          }
-        },
-        grid: {
-          left: 20,
-          top: 30,
-          right: 40,
-          bottom: 17,
-          containLabel: true
-        },
-        series: [{
-          name: '最大值',
-          type: 'line',
-          lineStyle: {
-            // color: 'rgb(23, 143, 255)'
-          },
-          data: valueList1
-        }, {
-          name: '最小值',
-          type: 'line',
-          lineStyle: {
-            // color: 'rgb(23, 143, 255)'
-          },
-          data: valueList2
-        }, {
-          name: '平均值',
-          type: 'line',
-          lineStyle: {
-            // color: 'rgb(23, 143, 255)'
-          },
-          data: valueList3
-        }]
-      }
       var option2 = {
         color: ['#5C89FF', '#C95FF2'],
         tooltip: {
@@ -448,10 +348,8 @@
         }]
       };
       // 初始化echarts实例
-      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
       var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
-      myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
       myChart3.setOption(option3, true);
     }

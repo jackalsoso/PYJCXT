@@ -80,13 +80,13 @@
           <span>IBM模型</span>
         </div>
         <div class="content">
-          <ul style="width: 150px;">
+          <!-- <ul style="width: 150px;">
             <li class="active" data-menu="structural2">安全度指标</li>
             <li data-menu="structural2">承载度指标</li>
             <li data-menu="structural2">异常度指标</li>
             <li data-menu="structural2">震荡值指标</li>
             <li data-menu="structural2">动向指标</li>
-          </ul>
+          </ul> -->
           <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
         </div>
       </div>
@@ -94,10 +94,12 @@
         <div class="page-box">
           <div class="title">
             <span>安全度指标</span>
-            <span class="title-right"><img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明</span>
-            <div class="title-right-tip">
-              说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
-            </div>
+            <span class="title-right">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+              </div>
+            </span>
           </div>
           <div class="content">
             <div class="header">
@@ -108,6 +110,94 @@
             </div>
             <div class="chart-wrap">
               <div class="chart" id="chart1" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>承载度指标</span>
+            <span class="title-right">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+              </div>
+            </span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">小时</li>
+                <li>日</li>
+              </ul>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart2" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>异常度指标</span>
+            <span class="title-right">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+              </div>
+            </span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">小时</li>
+                <li>日</li>
+              </ul>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart3" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>振荡值指标</span>
+            <span class="title-right">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+              </div>
+            </span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">小时</li>
+                <li>日</li>
+              </ul>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart4" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>动向指标</span>
+            <span class="title-right">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+              </div>
+            </span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">小时</li>
+                <li>日</li>
+              </ul>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart5" style="width: 100%;"></div>
             </div>
           </div>
         </div>
@@ -209,7 +299,283 @@
           name: '安全度',
           nameTextStyle: {
             lineHeight: 0,
-            padding: [0, 0, 0, 18]
+            padding: [0, 0, 0, 0]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(46,202,92,1)'
+          },
+          areaStyle: {
+            color: 'rgba(46,202,92,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            lineStyle: {
+              color: '#ff4d4f'
+            },
+            label: {
+              show: false
+            },
+            data: [{
+              yAxis: 100
+            }]
+          },
+          data: valueList
+        }]
+      };
+      var option2 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '承载度',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 0]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(46,202,92,1)'
+          },
+          areaStyle: {
+            color: 'rgba(46,202,92,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            lineStyle: {
+              color: '#ff4d4f'
+            },
+            label: {
+              show: false
+            },
+            data: [{
+              yAxis: 100
+            }]
+          },
+          data: valueList
+        }]
+      };
+      var option3 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '异常度',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 0]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(46,202,92,1)'
+          },
+          areaStyle: {
+            color: 'rgba(46,202,92,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            lineStyle: {
+              color: '#ff4d4f'
+            },
+            label: {
+              show: false
+            },
+            data: [{
+              yAxis: 100
+            }]
+          },
+          data: valueList
+        }]
+      };
+      var option4 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '振荡值',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 0]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(46,202,92,1)'
+          },
+          areaStyle: {
+            color: 'rgba(46,202,92,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            lineStyle: {
+              color: '#ff4d4f'
+            },
+            label: {
+              show: false
+            },
+            data: [{
+              yAxis: 100
+            }]
+          },
+          data: valueList
+        }]
+      };
+      var option5 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '动向',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 0]
           },
           axisLine: {
             lineStyle: {
@@ -260,7 +626,15 @@
       };
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+      var myChart4 = echarts.init(document.getElementById('chart4'), 'light');
+      var myChart5 = echarts.init(document.getElementById('chart5'), 'light');
       myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
+      myChart4.setOption(option4, true);
+      myChart5.setOption(option5, true);
     }
   </script>
 </body>

@@ -83,19 +83,13 @@
             </div>
             <div class="content">
               <div class="header">
-                <ul class="header-left">
-                  <li class="active">浦口侧塔</li>
-                  <li>仪征侧塔</li>
-                </ul>
+                <ul class="header-left"></ul>
                 <div class="header-right">
                   <select>
                     <option value="浦口侧塔">浦口侧塔</option>
                     <option value="仪征侧塔">仪征侧塔</option>
                   </select>
                   <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
@@ -118,12 +112,14 @@
                 </ul>
                 <div class="header-right">
                   <select>
-                    <option value="请选择">边跨跨中</option>
+                    <option value="请选择">左幅中跨L/4</option>
+                    <option value="请选择">右幅中跨L/4</option>
+                    <option value="请选择">左幅中跨跨中</option>
+                    <option value="请选择">右幅中跨跨中</option>
+                    <option value="请选择">左幅中跨L3/4</option>
+                    <option value="请选择">右幅中跨L3/4</option>
                   </select>
                   <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   </select>
                 </div>
@@ -137,22 +133,33 @@
         <div class="page-box">
           <div class="title">
             <span>变形最值样本分析</span>
+            <span class="title-right">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+              </div>
+            </span>
           </div>
           <div class="content">
             <div class="header">
-              <ul class="header-left">
-                <li class="active">剔除温变影响主梁挠度值</li>
+              <ul class="legend legend5">
+                <li>剔除温变影响主梁挠度值</li>
                 <li>实测车流理论主梁挠度值</li>
               </ul>
               <div class="header-right">
-                <div class="update">校验系数：<span>0.45</span></div>
+                <div class="update">
+                  校验系数：<span>0.45</span>&nbsp;&nbsp;
+                  <img src="./images/refresh.png" border="0" />
+                </div>
                 <select>
-                  <option value="请选择">边跨跨中</option>
+                  <option value="请选择">左幅中跨L/4</option>
+                  <option value="请选择">右幅中跨L/4</option>
+                  <option value="请选择">左幅中跨跨中</option>
+                  <option value="请选择">右幅中跨跨中</option>
+                  <option value="请选择">左幅中跨L3/4</option>
+                  <option value="请选择">右幅中跨L3/4</option>
                 </select>
                 <select class="time-selector">
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                   <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
                 </select>
               </div>
@@ -379,17 +386,6 @@
       }
       var option3 = {
         color: ['#FB9225', '#727180'],
-        legend: {
-          top: 10,
-          right: 20,
-          itemGap: 20,
-          selectedMode: false,
-          icon: 'rect',
-          itemHeight: 2,
-          textStyle: {
-            color: sessionStorage.theme == 'dark' ? '#fff' : '#000'
-          }
-        },
         tooltip: {
           trigger: 'axis'
         },

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,13 @@
   <link id="cssthemes" href="" rel="stylesheet">
   <title>浦仪监测系统</title>
 </head>
+
 <body>
   <div class="page-controller">
     <div class="page-header">
       <div class="logo">浦仪监测系统</div>
       <div class="user">
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -40,14 +42,14 @@
         </li><!-- 统计数据 -->
         <li><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li class="active"><span>服役<br>环境分析</span>
@@ -137,7 +139,9 @@
                     <option value="YL-A1-B-01">YL-A1-B-01</option>
                   </select>
                   <select>
+                    <option value="风向">风向</option>
                     <option value="风攻角">风攻角</option>
+                    <option value="紊流强度">紊流强度</option>
                   </select>
                   <select class="time-selector">
                     <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
@@ -255,144 +259,59 @@
       var valueList22 = data.map(function (item) {
         return item[1] - 40;
       });
+
       var option1 = {
-        // tooltip: {},
-        radar: {
-          shape: 'circle',
-          radius: '60%',
-          name: {
-            textStyle: {
+        angleAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
               color: '#747889'
             }
           },
-          nameGap: 30,
-          indicator: [{
-              name: 'N',
-              max: 20
-            },
-            {
-              name: 'NNW',
-              max: 20
-            },
-            {
-              name: 'NW',
-              max: 20
-            },
-            {
-              name: 'WWW',
-              max: 20
-            },
-            {
-              name: 'W',
-              max: 20
-            },
-            {
-              name: 'WSW',
-              max: 20
-            },
-            {
-              name: 'SW',
-              max: 20
-            },
-            {
-              name: 'SSW',
-              max: 20
-            },
-            {
-              name: 'S',
-              max: 20
-            },
-            {
-              name: 'SSE',
-              max: 20
-            },
-            {
-              name: 'SE',
-              max: 20
-            },
-            {
-              name: 'ESE',
-              max: 20
-            },
-            {
-              name: 'E',
-              max: 20
-            },
-            {
-              name: 'ENE',
-              max: 20
-            },
-            {
-              name: 'NE',
-              max: 20
-            },
-            {
-              name: 'NNE',
-              max: 20
-            }
-          ],
-          axisLabel: {
-            show: false,
-            showMinLabel: false
-          },
-          splitArea: {
+          axisTick: {
             show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#747889'
+            }
+          },
+          data: ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WWW', 'NW', 'NNW']
+        },
+        radiusAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#747889'
+            }
+          },
+          axisLabel: {
+            showMinLabel: false
           }
         },
+        polar: {},
         series: [{
-          name: '风速风向',
-          type: 'radar',
-          symbol: 'none',
-          itemStyle: {
-            color: '#5C89FF'
-          },
-          areaStyle: {
-            color: '#5C89FF',
-            opacity: 1
-          },
-          label: {
-            show: false
-          },
-          data: [{
-            value: [13, 6, 8, 7, 5, 6, 15, 14, 16, 8, 7, 15, 6, 15, 13, 16],
-            name: '风速风向'
-          }]
+          type: 'bar',
+          data: [1, 2, 3, 4, 3, 5, 1],
+          coordinateSystem: 'polar',
+          name: 'A',
+          stack: 'a',
+          color: '#7C6AF2'
         }, {
-          name: '风速风向',
-          type: 'radar',
-          symbol: 'none',
-          itemStyle: {
-            color: '#FF6383'
-          },
-          areaStyle: {
-            color: '#FF6383',
-            opacity: 1
-          },
-          label: {
-            show: false
-          },
-          data: [{
-            value: [8, 7, 15, 6, 15, 13, 16, 13, 6, 8, 7, 5, 6, 15, 14, 16 ],
-            name: '风速风向'
-          }]
+          type: 'bar',
+          data: [2, 4, 6, 1, 3, 2, 1],
+          coordinateSystem: 'polar',
+          name: 'B',
+          stack: 'a',
+          color: '#C95FF2'
         }, {
-          name: '风速风向',
-          type: 'radar',
-          symbol: 'none',
-          itemStyle: {
-            color: '#7C6AF2'
-          },
-          areaStyle: {
-            color: '#7C6AF2',
-            opacity: 1
-          },
-          label: {
-            show: false
-          },
-          data: [{
-            value: [13, 16, 13, 6, 8, 7, 5, 8, 7, 15, 6, 15, 14, 16],
-            name: '风速风向'
-          }]
+          type: 'bar',
+          data: [1, 2, 3, 4, 1, 2, 5],
+          coordinateSystem: 'polar',
+          name: 'C',
+          stack: 'a',
+          color: '#5C89FF'
         }]
       }
       var option2 = {

@@ -41,3 +41,9 @@
 .time-bottom .page-box .content .legend4 li:last-child::before {
     border-top: 2px dotted #C95FF2;
 }
+.time-bottom .page-box .content .legend5 li:first-child::before {
+    border-top: 2px solid #FB9225;
+}
+.time-bottom .page-box .content .legend5 li:last-child::before {
+    border-top: 2px dotted #727180;
+}
