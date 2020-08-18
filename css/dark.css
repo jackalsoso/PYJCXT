@@ -7,6 +7,10 @@
 @import "./dark/system.css";
 /*深色皮肤*/
 body{background-color:#0A061E;font-size: 14px;color:white}
+.daterangepicker {
+  color:#4a4a4a !important;
+  position: absolute;
+}
 .page-controller{
   /*display: block;*/
   visibility: visible;

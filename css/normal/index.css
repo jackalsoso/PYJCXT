@@ -58,10 +58,12 @@
 }
 .right .check-box {
   position: absolute;
-  top: 50px;
-  left: 20px;
-  width: 150px;
+  top: 40px;
+  left: 0;
+  height: calc(100% - 40px);
+  padding: 10px 20px;
   line-height: 22px;
+  color: #fff;
 }
 .right img{
   width: 100%;

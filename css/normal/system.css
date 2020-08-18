@@ -1,33 +1,40 @@
 .system1 {
     padding: 10px;
 }
+
 .system1 .page-box:first-child {
     top: 10px;
     right: 10px;
     left: 10px;
     height: 200px;
 }
+
 .system1 .page-box:first-child .content {
     padding: 30px;
     position: relative;
 }
+
 .system1 .page-box:first-child ul {
     display: flex;
     flex-wrap: wrap;
 }
+
 .system1 .page-box:first-child ul li {
     display: flex;
 }
+
 .system1 .page-box:first-child ul li {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
+
 .system1 .page-box:first-child ul li label {
     width: 100px;
     text-align: right;
     margin-right: 14px;
 }
+
 .system1 .page-box:first-child ul li select,
 .system1 .page-box:first-child ul li input {
     width: 240px;
@@ -38,61 +45,71 @@
     color: #6c6c6c;
     padding: 0 12px;
 }
+
 .system1 .page-box:first-child .buttons {
     position: absolute;
     right: 200px;
     bottom: 20px;
 }
+
 .system1 .page-box:first-child .buttons button {
     width: 120px;
     height: 32px;
     border: 0;
-    margin-left: 10px; 
+    margin-left: 10px;
     font-size: 14px;
     cursor: pointer;
 }
+
 .system1 .page-box:first-child .buttons button:first-child {
     background: transparent;
     color: #000;
     border: 1px solid #000;
 }
+
 .system1 .page-box:first-child .buttons button:last-child {
     background: #5C89FF;
     color: #fff;
 }
+
 .system1 .page-box:last-child {
     right: 10px;
     bottom: 10px;
     left: 10px;
     height: calc(100% - 230px);
 }
+
 .system2 {
     display: flex;
     padding: 10px;
     box-sizing: border-box;
 }
+
 /*.system2 .system2-left {
     width: 318px;
     display: flex;
     flex-direction: column;
 }*/
 .system2 .system2-left-top {
-    left:10px;
-    top:10px;
+    left: 10px;
+    top: 10px;
     width: 300px;
     height: 243px;
 }
+
 .system2 .system2-left-bottom {
-  left:10px;
-  top:263px;
-  width: 300px;
-  height: calc(100% - 283px);
+    left: 10px;
+    top: 263px;
+    width: 300px;
+    height: calc(100% - 283px);
 }
+
 .system2 .system2-left-bottom ul {
     display: flex;
     height: 40px;
     margin: 20px 0;
 }
+
 .system2 .system2-left-bottom ul li {
     flex: 1;
     line-height: 28px;
@@ -101,175 +118,212 @@
     justify-content: center;
     align-items: center;
 }
+
 .system2 .system2-left-bottom ul li:first-child {
     border-right: 1px solid #000;
 }
+
 .system2 .system2-left-bottom ul li span:first-child {
     font-size: 14px;
     color: #75798A;
 }
+
 .system2 .system2-left-bottom ul li span:last-child {
     font-size: 20px;
     color: #000;
 }
+
 .system2 .system2-left-bottom .chart {
     width: 100%;
     height: calc(100% - 80px);
 }
-.system2-right{
-  left:320px;
-  top:10px;
-  right: 10px;
-  bottom:20px;
-  background: red;
+
+.system2-right {
+    left: 320px;
+    top: 10px;
+    right: 10px;
+    bottom: 20px;
+    background: red;
 }
 
 
 .system3-top {
-    width:calc(100% - 20px);
+    width: calc(100% - 20px);
     overflow: hidden;
-    left:10px;
-    top:10px;
+    left: 10px;
+    top: 10px;
     right: 10px;
     background: red;
 }
+
 .system3-top ul {
-    width:100%;
+    width: 100%;
     overflow: hidden;
 }
+
 .system3-top li {
-    width:calc((100% - 30px) / 4);
+    width: calc((100% - 30px) / 4);
     padding: 40px 40px 0;
-    box-shadow: 0 2px 4px 0 rgba(14,29,49,0.60);
+    box-shadow: 0 2px 4px 0 rgba(14, 29, 49, 0.60);
     float: left;
     height: 190px;
 }
-.system3-top li + li {
+
+.system3-top li+li {
     margin-left: 10px;
 }
+
 .system3-top li:first-child {
     /* background-image: linear-gradient(38deg, #2AD0FF 0%, #0063FA 100%); */
     background: url(../../images/system3-1.png) no-repeat center center/cover;
 }
+
 .system3-top li:nth-child(2) {
     /* background-image: linear-gradient(198deg, #0098DA 0%, #41E0CB 100%); */
     background: url(../../images/system3-2.png) no-repeat center center/cover;
 }
+
 .system3-top li:nth-child(3) {
     /* background-image: linear-gradient(42deg, #FAD961 0%, #F76B1C 100%); */
     background: url(../../images/system3-3.png) no-repeat center center/cover;
 }
+
 .system3-top li:last-child {
     /* background-image: linear-gradient(225deg, #FF4B4F 0%, #FB7173 100%); */
     background: url(../../images/system3-4.png) no-repeat center center/cover;
     margin-right: 0;
 }
+
 .system3-top li span:first-child {
     font-size: 18px;
 }
+
 .system3-top li span:last-child {
     font-size: 32px;
 }
-.system3-bottom{
-  left:10px;
-  top:210px;
-  right: 10px;
-  bottom:10px;
+
+.system3-bottom {
+    left: 10px;
+    top: 210px;
+    right: 10px;
+    bottom: 10px;
 }
-.system1 .list-table,
+
+.system1 .list-table {
+    width: 100%;
+    height: calc(100% - 72px);
+    margin-top: 20px;
+}
+
 .system2-right .list-table,
-.system3-bottom .list-table{
-  width: 100%;
-  height: calc(100% - 72px);
-  margin-top: 20px;
+.system3-bottom .list-table {
+    width: 100%;
+    height: calc(100% - 120px);
+    margin-top: 20px;
 }
+
 .system1 .list-table ul,
 .system2-right .list-table ul,
-.system3-bottom .list-table ul{
-  width: 100%;
-  overflow: hidden;
+.system3-bottom .list-table ul {
+    width: 100%;
+    overflow: hidden;
 }
-.system1 .list-table li{
-  width: calc(100% / 6);
-  height: 40px;
-  line-height: 40px;
-  float: left;
-  text-align: center;
+
+.system1 .list-table li {
+    width: calc(100% / 6);
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    text-align: center;
 }
-.system2-right .list-table li{
+
+.system2-right .list-table li {
     width: calc(100% / 4);
     height: 40px;
     line-height: 40px;
     float: left;
     text-align: center;
 }
-.system3-bottom .list-table li{
-  width: calc(100% / 5);
-  height: 40px;
-  line-height: 40px;
-  float: left;
-  text-align: center;
+
+.system3-bottom .list-table li {
+    width: calc(100% / 5);
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    text-align: center;
 }
+
 .system1 .list-table li.rd,
 .system2-right .list-table li.rd,
-.system3-bottom .list-table li.rd{
-  color:#fd4f54;
+.system3-bottom .list-table li.rd {
+    color: #fd4f54;
 }
+
 .system1 .list-table li.gd,
 .system2-right .list-table li.gd,
-.system3-bottom .list-table li.gd{
-  color:#39c160;
+.system3-bottom .list-table li.gd {
+    color: #39c160;
 }
+
 .system1 .list-table li.do,
 .system2-right .list-table li.do,
-.system3-bottom .list-table li.do{
-  color:#55566a;
+.system3-bottom .list-table li.do {
+    color: #55566a;
 }
+
 .system1 .list-table li.do a,
 .system2-right .list-table li.do a,
-.system3-bottom .list-table li.do a{
-  color:#5C89FF;
+.system3-bottom .list-table li.do a {
+    color: #5C89FF;
 }
+
 .system1 .list-table li.do a:hover,
 .system2-right .list-table li.do a:hover,
-.system3-bottom .list-table li.do a:hover{
-  color:#fff;
+.system3-bottom .list-table li.do a:hover {
+    color: #fff;
 }
+
 .system1 .list-table .tb-hd,
 .system2-right .list-table .tb-hd,
-.system3-bottom .list-table .tb-hd{
-  width: 100%;
-  height: 40px;
+.system3-bottom .list-table .tb-hd {
+    width: 100%;
+    height: 40px;
 }
+
 .system1 .list-table .tb-bd,
 .system2-right .list-table .tb-bd,
-.system3-bottom .list-table .tb-bd{
-  width: 100%;
-  height: calc(100% - 40px);
-  overflow: hidden;
-  overflow-y: auto;
+.system3-bottom .list-table .tb-bd {
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow: hidden;
+    overflow-y: auto;
 }
+
 .system1 .list-table .tb-hd ul,
 .system2-right .list-table .tb-hd ul,
-.system3-bottom .list-table .tb-hd ul{
-  color:#000;
+.system3-bottom .list-table .tb-hd ul {
+    color: #000;
 }
+
 .system1 .list-table .tb-bd ul:nth-child(odd),
 .system2-right .list-table .tb-bd ul:nth-child(odd),
-.system3-bottom .list-table .tb-bd ul:nth-child(odd){
-  background: #f9f9f9;
+.system3-bottom .list-table .tb-bd ul:nth-child(odd) {
+    background: #f9f9f9;
 }
+
 .system2-right .content .header,
-.system3-bottom .content .header  {
+.system3-bottom .content .header {
     margin-top: 20px;
     padding-right: 20px;
     display: flex;
     justify-content: space-between;
 }
+
 .system2-right .content .header-left,
 .system3-bottom .content .header-left {
     display: flex;
 }
+
 .system2-right .content .header-left li,
 .system3-bottom .content .header-left li {
     height: 32px;
@@ -279,37 +333,45 @@
     color: #75798A;
     cursor: pointer;
 }
-.system2-right .content .header-left li.active, .system2-right .content .header-left li:hover,
-.system3-bottom .content .header-left li.active, .system2-right .content .header-left li:hover {
+
+.system2-right .content .header-left li.active,
+.system2-right .content .header-left li:hover,
+.system3-bottom .content .header-left li.active,
+.system2-right .content .header-left li:hover {
     border-color: #5C89FF;
     color: #5C89FF;
 }
+
 .system2-right .content .header-left li:first-child,
-.system3-bottom .content .header-left li:first-child  {
+.system3-bottom .content .header-left li:first-child {
     border-radius: 4px 0 0 4px;
 }
+
 .system2-right .content .header-left li:last-child,
 .system3-bottom .content .header-left li:last-child {
     border-radius: 0 4px 4px 0;
 }
+
 .system2-right .content .header-right,
 .system3-bottom .content .header-right {
     display: flex;
     align-items: center;
 }
+
 .system2-right .content .header-right select,
-.system3-bottom .content .header-right select  {
+.system3-bottom .content .header-right select {
     height: 32px;
     line-height: 32px;
     background: #fff;
     font-size: 14px;
     color: #6c6c6c;
     /*border: 0;*/
-    border-color:#c4c6cf;
+    border-color: #c4c6cf;
     margin-left: 10px;
     cursor: pointer;
     padding: 0 8px;
 }
+
 .system2-right .content .header-right input,
 .system3-bottom .content .header-right input {
     height: 32px;
@@ -321,6 +383,7 @@
     margin-left: 10px;
     padding: 0 8px;
 }
+
 .system2-right .content .header-right button,
 .system3-bottom .content .header-right button {
     width: 80px;
@@ -333,19 +396,23 @@
     align-items: center;
     margin-left: 10px;
 }
+
 .system2-right .content .header-right .search,
 .system3-bottom .content .header-right .search {
     background: #5C89FF;
 }
+
 .system2-right .content .header-right .export,
 .system3-bottom .content .header-right .export {
     background: #FCB333;
 }
+
 .system2-right .content .header-right .created,
 .system3-bottom .content .header-right .created {
     width: 100px;
     background: #2ECB5D;
 }
+
 .system2-right .content .header-right button img,
 .system3-bottom .content .header-right button img {
     width: 14px;

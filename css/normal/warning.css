@@ -151,16 +151,14 @@
   left:0;
   top:368px;
   right:0;
-  bottom: 10px;
-  height: auto;
+  height: 500px;
 }
 .warning1bottom .page-box{
   height: 100%;
 }
-
 .warning1bottom .list-table{
   width: 100%;
-  height: calc(100% - 52px);
+  height: calc(100% - 86px);
   margin-top: 20px;
 }
 .warning1bottom .list-table ul{

@@ -10,6 +10,7 @@
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.4.0-rc.1/extension/dataTool.min.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
   <title>浦仪监测系统</title>
 </head>
 
@@ -97,12 +98,7 @@
                     <option value="4阶">4阶</option>
                     <option value="5阶">5阶</option>
                   </select>
-                  <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  </select>
+                  <input type="text" id="time-selector1" class="time-selector">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -125,12 +121,7 @@
                   <select>
                     <option value="请选择">1阶</option>
                   </select>
-                  <select class="time-selector">
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                    <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                  </select>
+                  <input type="text" id="time-selector2" class="time-selector">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -154,12 +145,7 @@
                 <select>
                   <option value="请选择">1阶</option>
                 </select>
-                <select class="time-selector">
-                  <option value="2020/05/12">2020/05/12</option>
-                  <option value="2020/05/13">2020/05/13</option>
-                  <option value="2020/05/14">2020/05/14</option>
-                  <option value="2020/05/15">2020/05/15</option>
-                </select>
+                <input type="text" id="time-selector3" class="time-selector">
               </div>
             </div>
             <div class="chart-wrap" style="padding: 20px;">
@@ -172,6 +158,8 @@
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script type="text/javascript">
     let init = function () {
       var data = echarts.dataTool.prepareBoxplotData([
@@ -343,6 +331,34 @@
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
     }
+    $('#time-selector1').daterangepicker({
+      "startDate": "08/10/2020",
+      "endDate": "08/16/2020",
+      "opens": "left"
+    }, function (start, end, label) {
+      console.log(
+        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+        );
+    });
+    $('#time-selector2').daterangepicker({
+      "startDate": "08/10/2020",
+      "endDate": "08/16/2020",
+      "opens": "left"
+    }, function (start, end, label) {
+      console.log(
+        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+        );
+    });
+    $('#time-selector3').daterangepicker({
+      "singleDatePicker": true,
+      "startDate": "08/10/2020",
+      "endDate": "08/16/2020",
+      "opens": "left"
+    }, function (start, end, label) {
+      console.log(
+        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+        );
+    });
   </script>
 </body>
 

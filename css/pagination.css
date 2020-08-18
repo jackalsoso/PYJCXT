@@ -1,0 +1,91 @@
+@charset "UTF-8";
+.m-style {
+    position: relative;
+    text-align: center;
+    zoom: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+
+.m-style:before,
+.m-style:after {
+    content: "";
+    display: table;
+}
+
+.m-style:after {
+    clear: both;
+    overflow: hidden;
+}
+
+.m-style span {
+    /* float: left; */
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #bdbdbd;
+    font-size: 12px;
+}
+
+.m-style .active {
+    /* float: left; */
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: #5C89FF ;
+    color: #fff;
+    font-size: 12px;
+    border: 1px solid #5C89FF ;
+}
+
+.m-style a {
+    /* float: left; */
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    color: #bdbdbd;
+    font-size: 12px;
+}
+
+.m-style a:hover {
+    color: #fff;
+    background: #5C89FF ;
+}
+
+.m-style .next,
+.m-style .prev {
+    font-family: "Simsun";
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.m-style .now,
+.m-style .count {
+    padding: 0 5px;
+    color: #f00;
+}
+
+.m-style .eg img {
+    max-width: 800px;
+    min-height: 500px;
+}
+
+.m-style input {
+    /* float: left; */
+    margin: 0 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    outline: none;
+    color: #bdbdbd;
+    font-size: 12px;
+}

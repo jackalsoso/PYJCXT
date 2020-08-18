@@ -8,6 +8,8 @@
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
   <title>浦仪监测系统</title>
 </head>
 <body>
@@ -116,9 +118,7 @@
                 <select>
                   <option value="">系统运维记录</option>
                 </select>
-                <select>
-                  <option value="">2020/09/01 - 2020/09/30</option>
-                </select>
+                <input type="text" id="time-selector1" class="time-selector">
                 <input type="text" placeholder="输入关键字查找">
                 </select>
                 <button class="created">
@@ -159,6 +159,7 @@
               </div>
               <!-- <img src="./images/simple6.jpg" border="0" /> -->
             </div>
+            <div class="m-style pagination"></div>
           </div>
         </div>
       <!-- </div> -->
@@ -167,6 +168,9 @@
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
     let init = function () {
       var value = 80; // 数值
@@ -343,6 +347,28 @@
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
     }
+    $('#time-selector1').daterangepicker({
+      "startDate": "08/10/2020",
+      "endDate": "08/16/2020",
+      "opens": "left"
+    }, function (start, end, label) {
+      console.log(
+        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+        );
+    });
+    $(function () {
+      $('.pagination').pagination({
+        mode: 'fixed',
+        pageCount: 50,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {}
+      });
+    })
   </script>
 </body>
 

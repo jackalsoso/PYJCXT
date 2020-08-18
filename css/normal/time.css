@@ -88,14 +88,13 @@
 .time-bottom .page-box .content .header-right .update span {
   color: #3698FD;
 }
-.time-bottom .page-box .content .header-right select {
+.time-bottom .page-box .content .header-right select, .time-bottom .page-box .content .header-right input {
     height: 32px;
     line-height: 32px;
     background: #fff;
     font-size: 14px;
     color: #6c6c6c;
-    /*border: 0;*/
-    border-color:#c4c6cf;
+    border: 1px solid #c4c6cf;
     margin-left: 10px;
     cursor: pointer;
     padding: 0 8px;
@@ -180,7 +179,7 @@
 }
 .time3bottom .list-table{
   width: 100%;
-  height: calc(100% - 52px);
+  height: calc(100% - 84px);
   margin-top: 20px;
 }
 .time3bottom .list-table ul{

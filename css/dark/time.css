@@ -87,7 +87,7 @@
 .time-bottom .page-box .content .header-right .update span {
   color: #3698FD;
 }
-.time-bottom .page-box .content .header-right select {
+.time-bottom .page-box .content .header-right select, .time-bottom .page-box .content .header-right input {
     height: 32px;
     line-height: 32px;
     background: #191934;
@@ -179,7 +179,7 @@
 
 .time3bottom .list-table{
   width: 100%;
-  height: calc(100% - 52px);
+  height: calc(100% - 84px);
   margin-top: 20px;
 }
 .time3bottom .list-table ul{

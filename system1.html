@@ -8,6 +8,7 @@
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
   <title>浦仪监测系统</title>
 </head>
 <body>
@@ -239,14 +240,29 @@
               </ul>
             </div>
           </div>
+          <div class="m-style pagination"></div>
         </div>
       </div>
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
+  <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
-  let init = null
+    let init = null
+    $(function () {
+      $('.pagination').pagination({
+        mode: 'fixed',
+        pageCount: 50,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {}
+      });
+    })
   </script>
 </body>
 

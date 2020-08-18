@@ -9,6 +9,7 @@
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
   <title>浦仪监测系统</title>
 </head>
 
@@ -42,14 +43,14 @@
         </li><!-- 统计数据 -->
         <li><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li><span>服役<br>环境分析</span>
@@ -112,9 +113,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <select class="time-selector">
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                </select>
+                <input type="text" id="time-selector1" class="time-selector">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -147,9 +146,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <select class="time-selector">
-                  <option value="2020/05/12~2020/05/19">2020/05/12~2020/05/19</option>
-                </select>
+                <input type="text" id="time-selector2" class="time-selector">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -170,6 +167,8 @@
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script type="text/javascript">
     let init = function () {
       var data = [
@@ -365,6 +364,24 @@
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
     }
+    $('#time-selector1').daterangepicker({
+      "startDate": "08/10/2020",
+      "endDate": "08/16/2020",
+      "opens": "left"
+    }, function (start, end, label) {
+      console.log(
+        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+        );
+    });
+    $('#time-selector2').daterangepicker({
+      "startDate": "08/10/2020",
+      "endDate": "08/16/2020",
+      "opens": "left"
+    }, function (start, end, label) {
+      console.log(
+        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+        );
+    });
   </script>
 </body>
 

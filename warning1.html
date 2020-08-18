@@ -9,8 +9,7 @@
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
-  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
   <title>浦仪监测系统</title>
 </head>
 
@@ -268,8 +267,8 @@
                     <li>李志</li>
                   </ul>
                 </div>
-                <!-- <img src="./images/simple6.jpg" border="0" /> -->
               </div>
+              <div class="m-style pagination"></div>
             </div>
           </div>
         </div>
@@ -278,8 +277,7 @@
   </div>
   <script src="./js/jquery.min.js"></script>
   <script src="./js/common.js"></script>
-  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
     let init = function () {
       var value = 80; // 数值
@@ -580,6 +578,19 @@
       myChart2.setOption(option2, true);
       myChart3.setOption(option3, true);
     }
+    $(function () {
+      $('.pagination').pagination({
+        mode: 'fixed',
+        pageCount: 50,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {}
+      });
+    })
   </script>
 </body>
 
