@@ -204,3 +204,80 @@
     margin-left: 10px;
     padding: 0 8px;
 }
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10,6,30,0.70);
+  display: none;
+}
+
+.warning-detail {
+  width: 500px;
+  height: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  background: #111029;
+  display: none;
+}
+.warning-detail .title {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  background: #191934;
+}
+.warning-detail .detail {
+  flex: 1;
+  padding: 20px 10px 10px;
+  overflow: auto;
+}
+.warning-detail .detail .base-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.warning-detail .detail .base-info label {
+  line-height: 30px;
+  color: #97B8DA;
+}
+.warning-detail .detail .base-info img {
+  width: 20px;
+  height: 20px;
+}
+.warning-detail .detail .base-info p {
+  padding: 5px 10px;
+  line-height: 22px;
+  background: #191934;
+}
+.warning-detail .detail .btns {
+  display: flex;
+  justify-content: flex-end;
+}
+.warning-detail .detail .btns button {
+  width: 80px;
+  height: 32px;
+  line-height: 32px;
+  background: #5C89FF;
+  border: 0;
+  font-size: 14px;
+  color: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.warning-detail .detail .base-info .pdf {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.warning-detail .detail .base-info .pdf .operate {
+  color: #1890FF;
+  cursor: pointer;
+}

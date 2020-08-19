@@ -124,13 +124,11 @@
         <div class="time-bottom warning1bottom">
           <div class="page-box" style="height:100%">
             <div class="title">
-              <span>交通荷载时程</span>
+              <span>预警事件列表</span>
             </div>
             <div class="content">
               <div class="header">
-                <ul class="header-left">
-
-                </ul>
+                <ul class="header-left"></ul>
                 <div class="header-right">
                   <select>
                     <option value="">预警等级</option>
@@ -271,6 +269,54 @@
               <div class="m-style pagination"></div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="mask"></div>
+    <div class="warning-detail">
+      <div class="title">预警事件详情</div>
+      <div class="detail">
+        <div class="base-info">
+          <label>预警时间：</label>
+          <span>2020/08/10 14:00</span>&nbsp;&nbsp;&nbsp;&nbsp;
+          <label>预警等级：</label>
+          <img src="./images/level1.png" />
+        </div>
+        <div class="base-info">
+          <label>处理状态：</label>
+          <span style="color: #2FC25B;">已处理</span>
+        </div>
+        <div class="base-info">
+          <label>事件描述：</label>
+          <p>车路河大桥应力有9个测点数据超限</p>
+        </div>
+        <div class="base-info">
+          <label>原因分析：</label>
+          <p>初步检查发现，梁体腹板混凝土剥落漏筋严重，波纹管外露，需对桥梁进行特殊检测。检测单位使用回弹仪、裂缝测宽仪等专业设备进行检测。</p>
+        </div>
+        <div class="base-info">
+          <label>处理措施：</label>
+          <p>市交通委路政局迅速启动突发事件响应程序，市城市道路养护管理中心立即要求养护单位组织抢险人员进行方木支搭。</p>
+        </div>
+        <div class="base-info">
+          <label>预警报告：</label>
+          <div class="pdf">
+            <span>北二环大桥监测阶段7月报告.pdf</span>
+            <span class="operate">详情&nbsp;&nbsp;|&nbsp;&nbsp;删除</span>
+          </div>
+        </div>
+        <div class="base-info">
+          <label>处理人：</label>
+          <span>张小贤</span>
+        </div>
+        <div class="base-info">
+          <label>处理时间：</label>
+          <span>2020/08/10 14:00</span>
+        </div>
+        <div class="btns">
+          <button class="exit">退出</button>
+          <button class="exit">提交</button>
+          <button class="exit">保存</button>
         </div>
       </div>
     </div>
@@ -590,6 +636,15 @@
         nextContent: '下页',
         callback: function (api) {}
       });
+
+      $('.tb-bd ul').on('click', function(){
+        $('.mask').attr('style', 'display: block')
+        $('.warning-detail').attr('style', 'display: block')
+      })
+      $('.exit').on('click', function(){
+        $('.mask').attr('style', 'display: none')
+        $('.warning-detail').attr('style', 'display: none')
+      })
     })
   </script>
 </body>
