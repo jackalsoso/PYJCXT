@@ -78,7 +78,44 @@
       <div class="time-bottom waring2-left">
         <div class="page-box">
           <div class="title">
-            <span>整体检测得分</span>
+            <span>气象信息</span>
+          </div>
+          <div class="content">
+            <ul>
+              <li>
+                <img src="./images/warning2-1.png" />
+                <span>温度</span>
+                <span>19℃</span>
+              </li>
+              <li>
+                <img src="./images/warning2-2.png" />
+                <span>降水量</span>
+                <span>644.2mm</span>
+              </li>
+              <li>
+                <img src="./images/warning2-3.png" />
+                <span>风</span>
+                <span>东风3~4级</span>
+              </li>
+              <li>
+                <img src="./images/warning2-4.png" />
+                <span>能见度</span>
+                <span>50m</span>
+              </li>
+              <li>
+                <img src="./images/warning2-5.png" />
+                <span>地震</span>
+                <span>- -</span>
+              </li>
+            </ul>
+            <div class="img-box">
+              <img src="./images/simple5.jpg" />
+            </div>
+          </div>
+        </div>
+        <div class="page-box">
+          <div class="title">
+            <span>环境监测</span>
           </div>
           <div class="content">
             <div class="chart-wrap">
@@ -88,7 +125,7 @@
         </div>
         <div class="page-box">
           <div class="title">
-            <span>历史评分</span>
+            <span>环境实时监测评分</span>
           </div>
           <div class="content">
             <div class="header">
@@ -98,9 +135,10 @@
                 <li>周</li>
               </ul>
               <div class="header-right">
-                <select style="width:100px;">
-                  <option value="桥塔">桥塔</option>
+                <select>
+                  <option value="风荷载">风荷载</option>
                 </select>
+                <input type="text" id="time-selector1" class="time-selector">
               </div>
             </div>
             <div class="chart-wrap">
@@ -109,53 +147,15 @@
           </div>
         </div>
       </div>
-
-      <div class="time-bottom waring2-bottom">
-        <div class="page-box">
-          <div class="title">
-            <span>BIM模型</span>
-          </div>
-          <div class="content">
-            <div class="check-box">
-              <p><input type="checkbox" value="" name="category" checked/> 全选</p>
-              <p><input type="checkbox" value="应力" name="category" checked/> 应力</p>
-              <p><input type="checkbox" value="" name="category" checked/> 挠度</p>
-              <p><input type="checkbox" value="" name="category" checked/> 空间变位</p>
-              <p><input type="checkbox" value="" name="category" checked/> 拉索振动</p>
-              <p><input type="checkbox" value="" name="category" checked/> 梁端位移</p>
-              <p><input type="checkbox" value="" name="category" checked/> 阻尼器位移</p>
-              <p><input type="checkbox" value="" name="category" checked/> 横向支座位移</p>
-              <p><input type="checkbox" value="" name="category" checked/> 温度</p>
-              <p><input type="checkbox" value="" name="category" checked/> 温湿度</p>
-              <p><input type="checkbox" value="" name="category" checked/> 风速</p>
-              <p><input type="checkbox" value="" name="category" checked/> 动力特性</p>
-              <p><input type="checkbox" value="" name="category" checked/> 地震、船撞</p>
-            </div>
-            <img src="./images/simple3.jpg" border="0" />
-          </div>
-
-        </div>
-      </div>
-
       <div class="page-box waring2-right">
         <div class="title">
-          <span>预警事件列表</span>
+          <span>系统运维记录</span>
         </div>
         <div class="content">
           <div class="header">
             <ul class="header-left"></ul>
             <div class="header-right">
-              <select>
-                <option value="">预警等级</option>
-              </select>
-              <select>
-                <option value="">处理状态</option>
-              </select>
-
-              <button class="search">
-                <img src="./images/search.png" border="0" />
-                <span>查询</span>
-              </button>
+              <input type="text" id="time-selector1" class="time-selector">
               <button class="export">
                 <img src="./images/export.png" border="0" />
                 <span>导出</span>
@@ -165,68 +165,107 @@
           <div class="list-table">
             <div class="tb-hd">
               <ul>
-                <li>预警时间</li>
-                <li>预警等级</li>
-                <li>事件描述</li>
-                <li>处理状态</li>
+                <li>采集时间</li>
+                <li>监测测点</li>
+                <li>数值</li>
               </ul>
             </div>
             <div class="tb-bd">
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv1"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="rd">未处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv2"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="gd">已处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv3"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="rd">未处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv1"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="gd">已处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv1"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="gd">已处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv1"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="gd">已处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv1"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="gd">已处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv1"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="gd">已处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
               <ul>
                 <li>2018/10/09 14:00</li>
-                <li class="lv1"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="gd">已处理</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
               </ul>
-
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
+              <ul>
+                <li>2018/10/09 14:00</li>
+                <li>YL-A1-B-01</li>
+                <li>0.05</li>
+              </ul>
             </div>
           </div>
           <div class="m-style pagination"></div>
@@ -252,33 +291,25 @@
           },
           nameGap: 30,
           indicator: [{
-              name: '桥塔',
+              name: '风荷载',
               max: 100
             },
             {
-              name: '阻尼器',
+              name: '交通荷载',
               max: 100
             },
             {
-              name: '支座',
+              name: '桥面湿度',
               max: 100
             },
             {
-              name: '塔台',
+              name: '桥面温度',
               max: 100
             },
             {
-              name: '伸缩缝',
+              name: '船撞地震',
               max: 100
-            },
-            {
-              name: '主梁',
-              max: 100
-            },
-            {
-              name: '拉索',
-              max: 100
-            },
+            }
           ],
           // axisLabel: {
           //   show: true,
@@ -289,7 +320,7 @@
           }
         },
         series: [{
-          // name: '环境监测',
+          name: '环境监测',
           type: 'radar',
           symbolSize: 8,
           itemStyle: {
@@ -303,36 +334,36 @@
 
           },
           data: [{
-            value: [86, 75, 60, 80, 72, 30 , 68],
-            // name: '环境监测'
+            value: [43, 60, 88, 75, 50],
+            name: '环境监测'
           }]
         }]
       }
       var data = [
-        ["2000-06-05", 11],
-        ["2000-06-06", 12],
-        ["2000-06-07", 13],
-        ["2000-06-08", 5],
-        ["2000-06-09", 7],
-        ["2000-06-10", 8],
-        ["2000-06-11", 7],
-        ["2000-06-12", 6],
-        ["2000-06-13", 9],
-        ["2000-06-14", 13],
-        ["2000-06-15", 24],
-        ["2000-06-16", 13],
-        ["2000-06-17", 11],
-        ["2000-06-18", 11],
-        ["2000-06-19", 10],
-        ["2000-06-20", 20],
-        ["2000-06-21", 13],
-        ["2000-06-22", 12],
-        ["2000-06-23", 8],
-        ["2000-06-24", 9],
-        ["2000-06-25", 7],
-        ["2000-06-26", 10],
-        ["2000-06-27", 8],
-        ["2000-06-28", 9],
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
       ];
       var dateList = data.map(function (item) {
         return item[0];
