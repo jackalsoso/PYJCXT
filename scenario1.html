@@ -713,6 +713,8 @@
           })
           .then(function (res) {
             if (res.status == 200) {
+              thiz.option1.xAxis.data = []
+              thiz.option1.series[0].data = []
               console.log(res.data)
               // this.option1.
               for (let i = 0; i < res.data.list.length; i++) {
