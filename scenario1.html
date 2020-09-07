@@ -79,8 +79,8 @@
     </div>
     <div class="page-body">
       <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
-        
-        
+
+
         <div class="page-box time-top">
           <div class="title">
             <span>BIM模型</span>
@@ -568,6 +568,31 @@
       ]
     },
     );
+    Mock.mock(
+      'GET data-analysis/load/effect/bridges/:bridgeId/points/:point?startDatetime=xxx&endDatetime=xxx', {
+      "countType": "ONE_HOUR",
+      "list": [
+        {
+          "x": "2020-09-02 00",
+          "y": [
+            2313.988236546
+          ]
+        },
+        {
+          "x": "2020-09-02 01",
+          "y": [
+            2298.369461199
+          ]
+        },
+        {
+          "x": "2020-09-02 02",
+          "y": [
+            0.0
+          ]
+        }
+      ]
+    },
+    );
     //初始化vue
     var app = new Vue({
       el: '#app',
@@ -575,7 +600,85 @@
         select1name: "轴力",
         selectarr: [
           "轴力", "弯矩"
-        ]
+        ],
+        option1: {
+          color: ['#c95ff2', '#5c89ff'],
+          tooltip: {
+            trigger: 'axis'
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            axisLine: {
+              lineStyle: {
+                color: '#ACB3BE'
+              }
+            },
+            axisLabel: {
+              margin: 20
+            },
+            axisTick: {
+              alignWithLabel: true
+            },
+            data: [],
+          },
+          yAxis: [{
+            name: '轴力、剪力：kN',
+            type: 'value',
+            nameTextStyle: {
+              lineHeight: 0
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ACB3BE'
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: '#4C4B5E',
+                type: 'dashed'
+              }
+            }
+          }, {
+            name: '弯矩：kN/m',
+            type: 'value',
+            nameTextStyle: {
+              lineHeight: 0
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ACB3BE'
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: false
+            }
+          }],
+          grid: {
+            left: 20,
+            top: 30,
+            right: 40,
+            bottom: 17,
+            containLabel: true
+          },
+          series: [{
+            name: '轴力、剪力',
+            type: 'line',
+            data: []
+          }, {
+            name: '弯矩',
+            type: 'line',
+            yAxisIndex: 1,
+            data: []
+          }]
+        }
       },
       mounted() {
         this.getAllMesurePoints()
@@ -599,10 +702,28 @@
             });
         },
         selectchange(item) {
-          var index=item.target.selectedIndex ; // selectedIndex代表的是你所选中项的index
+          var index = item.target.selectedIndex; // selectedIndex代表的是你所选中项的index
           this.select1name = this.selectarr[index]
-          init()
-          debugger
+          var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+          
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET data-analysis/load/effect/bridges/:bridgeId/points/:point?startDatetime=xxx&endDatetime=xxx",
+          })
+          .then(function (res) {
+            if (res.status == 200) {
+              console.log(res.data)
+              // this.option1.
+              for (let i = 0; i < res.data.list.length; i++) {
+                thiz.option1.xAxis.data.push(res.data.list[i].x)
+                thiz.option1.series[0].data.push(res.data.list[i].y[0])
+              }
+              myChart1.setOption(thiz.option1, true);
+            }
+          })
+          .catch(err => {
+          });
         }
       }
     })
