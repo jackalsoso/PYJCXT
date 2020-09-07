@@ -171,7 +171,7 @@
                 <li>处理状态</li>
               </ul>
             </div>
-            <div class="tb-bd">
+            <div class="tb-bd" id="waringEvent">
               <ul>
                 <li>2018/10/09 14:00</li>
                 <li class="lv1"></li>
@@ -232,6 +232,144 @@
           <div class="m-style pagination"></div>
         </div>
       </div>
+
+      <div class="page-box waring2-hide">
+        <div class="page-box">
+          <div class="title">
+            <span>预警详情</span>
+            <i class="close">X</i>
+          </div>
+          <div class="content">
+            <div class="top-box">
+              <ul>
+                <li><label>事件区间</label><span>2020-09-09 20:00~22:00</span></li>
+                <li><label>预警等级</label><span><img src="images/level2.png"></span></li>
+                <li><label>接收人</label><span>高管中心</span></li>
+                <li><label>处理状态</label><span class="gd">已处理</span></li>
+                <li><label>事件描述</label><span>监测数据超过警介线30%</span></li>
+              </ul>
+            </div>
+            <div class="list-table">
+              <div class="tb-hd">
+                <ul>
+                  <li>监测项目</li>
+                  <li>测点位置</li>
+                  <li>测点编号</li>
+                  <li>统计参数</li>
+                  <li>实测数值</li>
+                  <li>超限比例</li>
+                </ul>
+              </div>
+              <div class="tb-bd">
+                <ul>
+                  <li>结构应力</li>
+                  <li>18#孔右幅跨中</li>
+                  <li>SG-GL1-T-02</li>
+                  <li>最小值</li>
+                  <li>-10.45</li>
+                  <li>20%</li>
+                </ul>
+                <ul>
+                  <li>主梁挠度</li>
+                  <li>19#孔1/4</li>
+                  <li>PT-GR-04</li>
+                  <li>最大值</li>
+                  <li>35</li>
+                  <li>15%</li>
+                </ul>
+                <ul>
+                  <li>结构应力</li>
+                  <li>18#孔右幅跨中</li>
+                  <li>SG-GL1-T-02</li>
+                  <li>最小值</li>
+                  <li>-10.45</li>
+                  <li>20%</li>
+                </ul>
+                <ul>
+                  <li>主梁挠度</li>
+                  <li>19#孔1/4</li>
+                  <li>PT-GR-04</li>
+                  <li>最大值</li>
+                  <li>35</li>
+                  <li>15%</li>
+                </ul><ul>
+                  <li>结构应力</li>
+                  <li>18#孔右幅跨中</li>
+                  <li>SG-GL1-T-02</li>
+                  <li>最小值</li>
+                  <li>-10.45</li>
+                  <li>20%</li>
+                </ul>
+                <ul>
+                  <li>主梁挠度</li>
+                  <li>19#孔1/4</li>
+                  <li>PT-GR-04</li>
+                  <li>最大值</li>
+                  <li>35</li>
+                  <li>15%</li>
+                </ul><ul>
+                  <li>结构应力</li>
+                  <li>18#孔右幅跨中</li>
+                  <li>SG-GL1-T-02</li>
+                  <li>最小值</li>
+                  <li>-10.45</li>
+                  <li>20%</li>
+                </ul>
+                <ul>
+                  <li>主梁挠度</li>
+                  <li>19#孔1/4</li>
+                  <li>PT-GR-04</li>
+                  <li>最大值</li>
+                  <li>35</li>
+                  <li>15%</li>
+                </ul><ul>
+                  <li>结构应力</li>
+                  <li>18#孔右幅跨中</li>
+                  <li>SG-GL1-T-02</li>
+                  <li>最小值</li>
+                  <li>-10.45</li>
+                  <li>20%</li>
+                </ul>
+                <ul>
+                  <li>主梁挠度</li>
+                  <li>19#孔1/4</li>
+                  <li>PT-GR-04</li>
+                  <li>最大值</li>
+                  <li>35</li>
+                  <li>15%</li>
+                </ul>
+              </div>
+            </div>
+            <div class="chart-header">
+              <div class="header-right">
+                <select style="width:100px;">
+                  <option value="2020/5/20">2020/5/20</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart3"></div>
+            </div>
+            <div class="bt-button">
+              预警处理
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-box waring2-popup">
+        <div class="page-box">
+          <div class="title">
+            <span>预警处理</span>
+            <i class="close">X</i>
+          </div>
+          <div class="content">
+            <img src="images/popsimp.png" border="0" />
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
   <script src="./js/jquery.min.js"></script>
@@ -240,6 +378,19 @@
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
+    $('#waringEvent').on('click','> ul', function(){
+      if(!$('.waring2-hide').hasClass('show')){
+        $('.waring2-hide').addClass('show')
+      }
+    })
+    $('.bt-button').on('click', function(){
+      if(!$('.waring2-popup').hasClass('show')){
+        $('.waring2-popup').addClass('show')
+      }
+    })
+    $('.close').on('click', function(){
+      $(this).closest('.show').removeClass('show')
+    })
     let init = function () {
       var option1 = {
         tooltip: {},
@@ -421,11 +572,117 @@
           data: valueList
         }]
       }
+
+
+      var data2 = [
+        ["2000-06-16 10:40", 0],
+        ["2000-06-17 10:40", 1],
+        ["2000-06-18 10:40", 1],
+        ["2000-06-19 10:40", 2],
+        ["2000-06-20 10:40", 4],
+        ["2000-06-21 10:40", 3],
+        ["2000-06-22 10:40", 2],
+        ["2000-06-23 10:40", 8],
+        ["2000-06-24 10:40", 9],
+        ["2000-06-25 10:40", 7],
+        ["2000-06-26 10:40", 9],
+        ["2000-06-27 10:40", 10],
+        ["2000-06-28 10:40", 10],
+      ];
+      var dateList2 = data2.map(function (item) {
+        return item[0];
+      });
+      var valueList2 = data2.map(function (item) {
+        return item[1];
+      });
+      var option3 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          boundaryGap: false,
+          data: dateList2,
+        },
+        yAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(24,114,255,1)'
+          },
+          areaStyle: {
+            color: 'rgba(24,114,255,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            data: [{
+              yAxis: 309,
+              label: {
+                show: false,
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '轻微不适'
+              },
+              lineStyle: {
+                color: '#ff4d4f'
+              }
+            }, {
+              yAxis: 175,
+              label: {
+                show: false,
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '极度不适'
+              },
+              lineStyle: {
+                color: '#fcb333'
+              }
+            }]
+          },
+          data: valueList2
+        }]
+      }
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
     }
     $('#time-selector1').daterangepicker({
       "startDate": "08/10/2020",
