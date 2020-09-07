@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +12,13 @@
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
   <title>浦仪监测系统</title>
 </head>
+
 <body>
   <div class="page-controller">
     <div class="page-header">
       <div class="logo">浦仪监测系统</div>
       <div class="user">
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -41,14 +43,14 @@
         </li><!-- 统计数据 -->
         <li><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li class="active"><span>服役<br>环境分析</span>
@@ -75,6 +77,37 @@
     </div>
     <div class="page-body">
       <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+        <div class="page-box time-top">
+          <div class="title">
+            <span>BIM模型</span>
+            <span class="title-right">
+              <!-- <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+              </div> -->
+            </span>
+          </div>
+          <div class="content">
+            <!-- <div class="header">
+              <ul class="legend legend1">
+                <li>概率密度</li>
+                <li>累计概率</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="YL-A1-B-01，效应">YL-A1-B-01，效应</option>
+                </select>
+                <input type="text" id="time-selector3" class="time-selector">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart3"></div>
+            </div> -->
+            <div class="imgbox">
+              <img style="width: 100%;height: 347px" src="./images/simple3.jpg" border="0" />
+            </div>
+          </div>
+        </div>
         <div class="two-page-box">
           <div class="page-box">
             <div class="title">
@@ -359,7 +392,7 @@
     }, function (start, end, label) {
       console.log(
         "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+      );
     });
     $('#time-selector2').daterangepicker({
       "startDate": "08/10/2020",
@@ -368,7 +401,7 @@
     }, function (start, end, label) {
       console.log(
         "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+      );
     });
   </script>
 </body>
