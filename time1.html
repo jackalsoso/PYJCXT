@@ -78,10 +78,33 @@
     <div class="page-body">
       <div class="page-box time-top">
         <div class="title">
-          <span>IBM模型</span>
+          <span>IBM模型</span><span>
+            <input type="button" value="正常" onclick="bthclick(this)">
+            <input type="button" value="预警" onclick="bthclick(this)">
+            <input type="button" value="无数据" onclick="bthclick(this)"></span>
         </div>
         <div class="content">
-          <ul>
+          <div class="check-box"
+            style="  position: absolute;top: 40px;left: 0;;padding: 10px 20px;line-height: 22px;z-index:98;color: #fff;">
+            <p><input type="checkbox" value="应力" name="category" checked onclick="checktype(this)" /> 应力</p>
+            <p><input type="checkbox" value="挠度" name="category" checked onclick="checktype(this)" /> 挠度</p>
+            <p><input type="checkbox" value="空间变位" name="category" checked onclick="checktype(this)" /> 空间变位</p>
+            <p><input type="checkbox" value="拉索振动" name="category" checked onclick="checktype(this)" /> 拉索振动</p>
+            <p><input type="checkbox" value="粱端位移" name="category" checked onclick="checktype(this)" /> 梁端位移</p>
+            <p><input type="checkbox" value="阻尼器位移" name="category" checked onclick="checktype(this)" /> 阻尼器位移</p>
+            <p><input type="checkbox" value="横向支座位移" name="category" checked onclick="checktype(this)" /> 横向支座位移</p>
+            <p><input type="checkbox" value="温度" name="category" checked onclick="checktype(this)" /> 温度</p>
+            <p><input type="checkbox" value="温湿度" name="category" checked onclick="checktype(this)" /> 温湿度</p>
+            <p><input type="checkbox" value="风速" name="category" checked onclick="checktype(this)" /> 风速</p>
+            <p><input type="checkbox" value="动力特性" name="category" checked onclick="checktype(this)" /> 动力特性</p>
+            <p><input type="checkbox" value="合并形状" name="category" checked onclick="checktype(this)" /> 地震、船撞</p>
+          </div>
+          <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
+          <!-- <img src="./images/simple3.jpg" border="0" /> -->
+        </div>
+
+        <!-- <div class="content">
+           <ul>
             <li class="active" data-menu="time1">应力</li>
             <li>横向支座位移</li>
             <li>挠度</li>
@@ -95,8 +118,11 @@
             <li>阻尼器位移</li>
             <li>地震、船撞</li>
           </ul>
-          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
-        </div>
+
+          <div class="imgbox">
+            <div id="unity" style="z-index:99;width: 100%;height: 100%;"></div>
+          </div>
+        </div> -->
       </div>
       <div class="time-bottom">
         <div class="page-box">
@@ -169,7 +195,54 @@
   <script src="./js/common.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
   <script type="text/javascript">
+
+    var unity
+    var unityReady = false
+
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "合并形状"]
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    //选择测点
+    function SelectMonitorPoint() {
+
+    }
+    function bthclick(v) {
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
+    }
+    function checktype(item) {
+      var index;
+      for (var idx = 0; idx < typenamelist.length; idx++) {
+        if (item.value == typenamelist[idx]) {
+          index = idx;
+        }
+      }
+      if (item.checked) {
+        typenamelist.push(item.value)
+      } else {
+        typenamelist.splice(index, 1)
+      }
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    }
+
+
+    //unity加载完成后
+    function OnSceneLoaded() {
+      //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    }
+
+    //页面加载完成后调用
+    unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
+
     let init = function () {
       var data = [
         ["2000-06-05", 116],
@@ -371,7 +444,7 @@
     }, function (start, end, label) {
       console.log(
         "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+      );
     });
     $('#time-selector2').daterangepicker({
       "startDate": "08/10/2020",
@@ -380,7 +453,7 @@
     }, function (start, end, label) {
       console.log(
         "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+      );
     });
   </script>
 </body>

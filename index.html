@@ -104,7 +104,7 @@
           <span>BIM模型</span>
         </div>
         <div class="content">
-          <div class="check-box">
+          <div class="check-box" style="display:none">
             <p><input type="checkbox" value="" name="category" checked /> 全选</p>
             <p><input type="checkbox" value="应力" name="category" checked /> 应力</p>
             <p><input type="checkbox" value="" name="category" checked /> 挠度</p>
@@ -119,8 +119,8 @@
             <p><input type="checkbox" value="" name="category" checked /> 动力特性</p>
             <p><input type="checkbox" value="" name="category" checked /> 地震、船撞</p>
           </div>
-          <!-- <div id="unity" style="width: 100%;height: 100%;"></div> -->
-          <img src="./images/simple3.jpg" border="0" />
+          <div id="unity" style="width: 100%;height: 100%;"></div>
+          <!-- <img src="./images/simple3.jpg" border="0" /> -->
         </div>
       </div>
       <div class="page-box bottom">
@@ -197,6 +197,20 @@
 
     var unity
     var unityReady = false
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    //选择测点
+    function SelectMonitorPoint() {
+
+    }
+
     function OnSceneLoaded() {
       unity.SendMessage("Manager", "CallBackWGL_StartScene", '0')
     }
