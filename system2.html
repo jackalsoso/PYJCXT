@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script type="text/javascript" src="./js/mock.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -347,6 +350,52 @@
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
     }
+    //所有检测项和测点   mock
+    Mock.mock(
+      'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
+      "data": [{
+        "id": "5f5641d7b5185269993253cd",
+        "version": 1599636245976,
+        "bridgeId": "5f45d7f634f70b68fbeba992",
+        "monitorItemType": "STRESS",
+        "monitorItemTypeName": "应力",
+        "measuringPoints": ["WS-01-FF-03"]
+      }]
+    }
+
+    );
+    //初始化vue
+    var app = new Vue({
+        el: '#app',
+        data: {
+          select1name: "",
+        },
+        mounted() {
+          this.getcedian()
+        },
+        methods: {
+          getcedian() {
+            let thiz = this;
+            axios({
+              method: 'get',
+              url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+              // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+            })
+              .then(function (res) {
+                console.log(res)
+                if (res.status == 200) {
+                  console.log(res.data)
+                  //所有检测项和测点
+                }
+
+              })
+              .catch(err => {
+
+              });
+          },
+
+        }
+      })
     $('#time-selector1').daterangepicker({
       "startDate": "08/10/2020",
       "endDate": "08/16/2020",

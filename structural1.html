@@ -8,6 +8,9 @@
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.4.0-rc.1/extension/dataTool.min.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script type="text/javascript" src="./js/mock.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -149,7 +152,7 @@
               </div>
             </div>
             <div class="chart-wrap" style="padding: 20px;">
-              <img src="./images/simple4.jpg" border="0" style="width: 100%;height: 100%;"/>
+              <img src="./images/simple4.jpg" border="0" style="width: 100%;height: 100%;" />
             </div>
           </div>
         </div>
@@ -224,28 +227,28 @@
           containLabel: true
         },
         series: [{
-            name: 'boxplot',
-            type: 'boxplot',
-            data: data.boxData,
-            tooltip: {
-              formatter: function (param) {
-                return [
-                  param.name,
-                  '最大值: ' + param.data[3],
-                  '最小值: ' + param.data[1],
-                  '平均值: ' + param.data[2]
-                ].join('<br/>');
-              }
-            },
-            itemStyle: {
-              color: '#1f9870'
+          name: 'boxplot',
+          type: 'boxplot',
+          data: data.boxData,
+          tooltip: {
+            formatter: function (param) {
+              return [
+                param.name,
+                '最大值: ' + param.data[3],
+                '最小值: ' + param.data[1],
+                '平均值: ' + param.data[2]
+              ].join('<br/>');
             }
           },
-          {
-            name: '异常值',
-            type: 'scatter',
-            data: data.outliers
+          itemStyle: {
+            color: '#1f9870'
           }
+        },
+        {
+          name: '异常值',
+          type: 'scatter',
+          data: data.outliers
+        }
         ]
       }
       var option2 = {
@@ -301,28 +304,28 @@
           containLabel: true
         },
         series: [{
-            name: 'boxplot',
-            type: 'boxplot',
-            data: data.boxData,
-            tooltip: {
-              formatter: function (param) {
-                return [
-                  param.name,
-                  '最大值: ' + param.data[3],
-                  '最小值: ' + param.data[1],
-                  '平均值: ' + param.data[2]
-                ].join('<br/>');
-              }
-            },
-            itemStyle: {
-              color: '#1f9870'
+          name: 'boxplot',
+          type: 'boxplot',
+          data: data.boxData,
+          tooltip: {
+            formatter: function (param) {
+              return [
+                param.name,
+                '最大值: ' + param.data[3],
+                '最小值: ' + param.data[1],
+                '平均值: ' + param.data[2]
+              ].join('<br/>');
             }
           },
-          {
-            name: '异常值',
-            type: 'scatter',
-            data: data.outliers
+          itemStyle: {
+            color: '#1f9870'
           }
+        },
+        {
+          name: '异常值',
+          type: 'scatter',
+          data: data.outliers
+        }
         ]
       }
       // 初始化echarts实例
@@ -331,6 +334,55 @@
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
     }
+    //所有检测项和测点   mock
+    Mock.mock(
+      'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
+      "data": [{
+        "id": "5f5641d7b5185269993253cd",
+        "version": 1599636245976,
+        "bridgeId": "5f45d7f634f70b68fbeba992",
+        "monitorItemType": "STRESS",
+        "monitorItemTypeName": "应力",
+        "measuringPoints": ["WS-01-FF-03"]
+      }]
+    }
+
+    );
+    //初始化vue
+    var app = new Vue({
+      el: '#app',
+      data: {
+        select1name: "",
+
+
+
+      },
+      mounted() {
+        this.getcedian()
+      },
+      methods: {
+        getcedian() {
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+            // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+          })
+            .then(function (res) {
+              console.log(res)
+              if (res.status == 200) {
+                console.log(res.data)
+                //所有检测项和测点
+              }
+
+            })
+            .catch(err => {
+
+            });
+        },
+
+      }
+    })
     $('#time-selector1').daterangepicker({
       "startDate": "08/10/2020",
       "endDate": "08/16/2020",
@@ -338,7 +390,7 @@
     }, function (start, end, label) {
       console.log(
         "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+      );
     });
     $('#time-selector2').daterangepicker({
       "startDate": "08/10/2020",
@@ -347,7 +399,7 @@
     }, function (start, end, label) {
       console.log(
         "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+      );
     });
     $('#time-selector3').daterangepicker({
       "singleDatePicker": true,
@@ -357,7 +409,7 @@
     }, function (start, end, label) {
       console.log(
         "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+      );
     });
   </script>
 </body>

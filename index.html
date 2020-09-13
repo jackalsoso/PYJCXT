@@ -741,14 +741,116 @@
       }
 
       );
-      //初始化vue
-      var app = new Vue({
+      
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+
+      if (sessionStorage.theme == 'dark') {
+        myChart1.setOption(option1, true);
+        myChart2.setOption(option2, true);
+        myChart3.setOption(option3, true);
+      } else {
+        myChart1.setOption(option1n, true);
+        myChart2.setOption(option2n, true);
+        myChart3.setOption(option3n, true);
+      }
+    }
+    //所有检测项和测点   mock
+    Mock.mock(
+        'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
+        "data": [{
+          "id": "5f5641d7b5185269993253cd",
+          "version": 1599636245976,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "STRESS",
+          "monitorItemTypeName": "应力",
+          "measuringPoints": ["WS-01-FF-03"]
+        }, {
+          "id": "5f572a8534442f45ca55ccf4",
+          "version": 1599548037571,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "TEMPERATURE",
+          "monitorItemTypeName": "温度",
+          "measuringPoints": ["FS-01-FF-01", "WS-01-FF-01", "WS-01-FF-02", "WS-01-FF-03"]
+        }, {
+          "id": "5f50b61581d2f4799b4f2195",
+          "version": 1599188403354,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "HUMITURE",
+          "monitorItemTypeName": "温湿度",
+          "measuringPoints": ["WS-01-FF-01", "WS-01-FF-02", "WS-01-FF-03"]
+        }, {
+          "id": "5f5225e4fe202537efba2400",
+          "version": 1599219172850,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "WIND",
+          "monitorItemTypeName": "风速风向",
+          "measuringPoints": ["FS-01-FF-01"]
+        }, {
+          "id": "5f57486634442f45ca55ccf6",
+          "version": 1599555686942,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "SPACE_DEFLECTION",
+          "monitorItemTypeName": "空间变位",
+          "measuringPoints": ["FS-01-FF-01", "WS-01-FF-01", "WS-01-FF-02", "WS-01-FF-03"]
+        }, {
+          "id": "5f572aff34442f45ca55ccf5",
+          "version": 1599548159693,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "CABLE_FORCE",
+          "monitorItemTypeName": "索力",
+          "measuringPoints": ["FS-01-FF-01", "WS-01-FF-01", "WS-01-FF-02", "WS-01-FF-03"]
+        }, {
+          "id": "5f50548bdb5b1f7f28400e03",
+          "version": 1599100043037,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "BEAM_END_OFFSET",
+          "monitorItemTypeName": "梁端位移"
+        }, {
+          "id": "5f505494db5b1f7f28400e05",
+          "version": 1599100052803,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "DAMPER_OFFSET",
+          "monitorItemTypeName": "阻尼器位移"
+        }, {
+          "id": "5f50548fdb5b1f7f28400e04",
+          "version": 1599100047863,
+          "bridgeId": "5f45d7f634f70b68fbeba992",
+          "monitorItemType": "EARTHQUAKE_SHIP_CRASH",
+          "monitorItemTypeName": "地震船撞"
+        }],
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-type": "application/json;charset=UTF-8"
+        },
+        "config": {
+          "transformRequest": {},
+          "transformResponse": {},
+          "timeout": 0,
+          "xsrfCookieName": "XSRF-TOKEN",
+          "xsrfHeaderName": "X-XSRF-TOKEN",
+          "maxContentLength": -1,
+          "headers": {
+            "Accept": "application/json, text/plain, */*"
+          },
+          "method": "get",
+          "url": "http://192.168.137.1/monitor-service/items",
+          "params": {
+            "bridgeId": "5f45d7f634f70b68fbeba992"
+          }
+        },
+        "request": {}
+      }
+
+      );
+    //初始化vue
+    var app = new Vue({
         el: '#app',
         data: {
           select1name: "",
-
-
-
         },
         mounted() {
           this.getcedian()
@@ -765,6 +867,7 @@
                 console.log(res)
                 if (res.status == 200) {
                   console.log(res.data)
+                  // debugger
                   //所有检测项和测点
                 }
 
@@ -776,21 +879,6 @@
 
         }
       })
-      // 初始化echarts实例
-      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
-      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
-      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
-
-      if (sessionStorage.theme == 'dark') {
-        myChart1.setOption(option1, true);
-        myChart2.setOption(option2, true);
-        myChart3.setOption(option3, true);
-      } else {
-        myChart1.setOption(option1n, true);
-        myChart2.setOption(option2n, true);
-        myChart3.setOption(option3n, true);
-      }
-    }
   </script>
 </body>
 
