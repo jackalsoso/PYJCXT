@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -16,7 +17,14 @@
     <div class="page-header">
       <div class="logo">浦仪监测系统</div>
       <div class="user">
-        <div class="datetimer">2020年05月11日  周一  19 : 46</div>
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -79,27 +87,56 @@
           <span>IBM模型</span>
         </div>
         <div class="content">
-          <ul>
-            <li class="active" data-menu="statistics1">应力</li>
-            <li data-menu="statistics2">横向支座位移</li>
-            <li data-menu="statistics3">挠度</li>
-            <li data-menu="statistics4">温度</li>
-            <li data-menu="statistics5">空间变位</li>
-            <li data-menu="statistics6">温湿度</li>
-            <li data-menu="statistics7">拉索振动</li>
-            <li data-menu="statistics8">风速</li>
-            <li data-menu="statistics9">梁端位移</li>
-            <li data-menu="statistics10">动力特性</li>
-            <li data-menu="statistics11">阻尼器位移</li>
-            <li data-menu="statistics12">地震、船撞</li>
-          </ul>
-          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+          <div class="check-box">
+            <p><input id="check1" class="check" type="checkbox" value="应力" name="category"  checked/><img src="./images/ckicon1.png" /> 应力</p>
+            <p><input id="check2" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon2.png" /> 挠度</p>
+            <p><input id="check3" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon3.png" /> 空间变位</p>
+            <p><input id="check4" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon4.png" /> 拉索振动</p>
+            <p><input id="check5" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon5.png" /> 梁端位移</p>
+            <p><input id="check6" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon6.png" /> 阻尼器位移</p>
+            <p><input id="check7" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon7.png" /> 横向支座位移</p>
+            <p><input id="check8" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon8.png" /> 温度</p>
+            <p><input id="check9" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon9.png" /> 温湿度</p>
+            <p><input id="check10" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon10.png" /> 风速</p>
+            <p><input id="check11" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon11.png" /> 动力特性</p>
+            <p><input id="check12" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon12.png" /> 地震、船撞</p>
+          </div>
+          <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
+          <!-- <img src="./images/simple3.jpg" border="0" /> -->
         </div>
       </div>
       <div class="time-bottom statistics-bottom">
-        <div class="page-box" >
+
+        <div class="page-box" id="check1-page">
           <div class="title">
             <span>应力</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check1chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check2-page">
+          <div class="title">
+            <span>挠度</span>
           </div>
           <div class="content">
             <div class="header">
@@ -120,11 +157,331 @@
                   <option value="YL-A1-B-03">YL-A1-B-03</option>
                   <option value="YL-A1-B-04">YL-A1-B-04</option>
                 </select>
-                <input type="text" id="time-selector1" class="time-selector">
+                <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
               </div>
             </div>
             <div class="chart-wrap">
-              <div class="chart" id="chart1" style="width: 100%;"></div>
+              <div class="chart" id="check2chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check3-page">
+          <div class="title">
+            <span>空间变位</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check3chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check4-page">
+          <div class="title">
+            <span>拉索振动</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check4chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check5-page">
+          <div class="title">
+            <span>梁端位移</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector5" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check5chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check6-page">
+          <div class="title">
+            <span>阻尼器位移</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector6" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check6chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check7-page">
+          <div class="title">
+            <span>横向支座位移</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector7" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check7chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check8-page">
+          <div class="title">
+            <span>温度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector8" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check8chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check9-page">
+          <div class="title">
+            <span>温湿度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector9" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check9chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check10-page">
+          <div class="title">
+            <span>风速</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector10" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check10chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check11-page">
+          <div class="title">
+            <span>动力特性</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector11" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check11chart" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check12-page">
+          <div class="title">
+            <span>地震、船撞</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="平均值、应力值">平均值、应力值</option>
+                  <option value="平均值">平均值</option>
+                  <option value="应力值">应力值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector12" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check12chart" style="width: 100%;"></div>
             </div>
           </div>
         </div>
@@ -241,18 +598,131 @@
         }]
       }
       // 初始化echarts实例
-      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart1 = echarts.init(document.getElementById('check1chart'), 'light');
+      var myChart2 = echarts.init(document.getElementById('check2chart'), 'light');
+      var myChart3 = echarts.init(document.getElementById('check3chart'), 'light');
+      var myChart4 = echarts.init(document.getElementById('check4chart'), 'light');
+      var myChart5 = echarts.init(document.getElementById('check5chart'), 'light');
+      var myChart6 = echarts.init(document.getElementById('check6chart'), 'light');
+      var myChart7 = echarts.init(document.getElementById('check7chart'), 'light');
+      var myChart8 = echarts.init(document.getElementById('check8chart'), 'light');
+      var myChart9 = echarts.init(document.getElementById('check9chart'), 'light');
+      var myChart10 = echarts.init(document.getElementById('check10chart'), 'light');
+      var myChart11 = echarts.init(document.getElementById('check11chart'), 'light');
+      var myChart12 = echarts.init(document.getElementById('check12chart'), 'light');
       myChart1.setOption(option1, true);
+      myChart2.setOption(option1, true);
+      myChart3.setOption(option1, true);
+      myChart4.setOption(option1, true);
+      myChart5.setOption(option1, true);
+      myChart6.setOption(option1, true);
+      myChart7.setOption(option1, true);
+      myChart8.setOption(option1, true);
+      myChart9.setOption(option1, true);
+      myChart10.setOption(option1, true);
+      myChart11.setOption(option1, true);
+      myChart12.setOption(option1, true);
+      setTimeout(()=>{
+        $('#check2-page').css('display','none')
+        $('#check3-page').css('display','none')
+        $('#check4-page').css('display','none')
+        $('#check5-page').css('display','none')
+        $('#check6-page').css('display','none')
+        $('#check7-page').css('display','none')
+        $('#check8-page').css('display','none')
+        $('#check9-page').css('display','none')
+        $('#check10-page').css('display','none')
+        $('#check11-page').css('display','none')
+        $('#check12-page').css('display','none')
+      },1000)
     }
-    $('#time-selector1').daterangepicker({
-      "singleDatePicker": true,
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    let _checkarr = ['check1']
+    $('.check-box').on('click', 'input', function(){
+        // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
+        // console.log(_seledLen)
+        if($(this).is(':checked')){
+          _checkarr.push($(this).attr('id'))
+          if(_checkarr.length > 3){
+            $('#' + _checkarr[0]).prop('checked', false)
+            $('#' + _checkarr[0] + '-page').css('display','none')
+            _checkarr.splice(0, 1)
+
+          }
+          $('#' + $(this).attr('id') + '-page').css('display','block')
+
+          console.log(_checkarr)
+        }else{
+          let _idx = _checkarr.indexOf($(this).attr('id'))
+          // debugger
+          if(_idx != -1){
+            $('#' + _checkarr[_idx] + '-page').css('display','none')
+            _checkarr.splice(_idx, 1)
+            console.log(_checkarr)
+          }
+        }
+    })
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector2'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector3'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector4'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector5'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector6'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector7'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector8'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector9'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector10'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector11'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector12'
+      ,type: 'datetime'
+      ,range: true
     });
   </script>
 </body>

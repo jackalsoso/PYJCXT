@@ -55,21 +55,32 @@
   height:calc(100% - 340px);
   top:10px;
 }
+
+
 .right .check-box {
   position: absolute;
   top: 40px;
   left: 0;
-  height: calc(100% - 40px);
+  height: 40px;
   padding: 10px 20px;
   line-height: 22px;
   z-index:100;
   color: #fff;
-  /* background: #142845; */
-}
-.right img{
   width: 100%;
-  height:100%
 }
+.right .check-box p{
+  display: inline-block;
+}
+.right .check-box p + p{
+  margin-left: 10px;
+}
+.right .check-box img{
+  width: 12px;
+  height: auto;
+  margin-left: 5px
+}
+
+
 
 .bottom{
   left:390px;
@@ -141,4 +152,47 @@
   width: 20px;
   height: 20px;
   margin: 0 10px;
+}
+.tip-box{
+  position: absolute;
+  bottom:20px;
+  right: 20px;
+}
+.tip-box .tip-item{
+  display: block;
+  float: left;
+  padding-left:30px;
+  position: relative;
+}
+.tip-box .tip-item i{
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 10px;
+  left: 3px;
+  top:5px;
+  border-radius: 2px;
+}
+.tip-box .tip-item + .tip-item{
+  margin-left: 5px;
+}
+.tip-box .tip-item i.red{
+  background: red;
+}
+.tip-box .tip-item i.green{
+  background: green;
+}
+.tip-box .tip-item i.white{
+  background: white;
+}
+.unity-popup{
+  position: absolute;
+  top:200px;
+  left: 500px;
+  width: 300px;
+  overflow: hidden;
+}
+.unity-popup img{
+  width: 100%;
+  height: auto;
 }

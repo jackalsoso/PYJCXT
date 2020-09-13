@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -19,6 +20,13 @@
       <div class="logo">浦仪监测系统</div>
       <div class="user">
         <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -91,10 +99,14 @@
                 <div class="header-right">
                   <select>
                     <option value="请选择">请选择</option>
-                    <option value="上行">上行</option>
-                    <option value="下行">下行</option>
+                    <option value="上行1车道">上行1车道</option>
+                    <option value="上行2车道">上行2车道</option>
+                    <option value="上行3车道">上行3车道</option>
+                    <option value="下行1车道">下行1车道</option>
+                    <option value="下行2车道">下行2车道</option>
+                    <option value="下行3车道">下行3车道</option>
                   </select>
-                  <input type="text" id="time-selector1" class="time-selector">
+                  <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -112,10 +124,14 @@
                 <div class="header-right">
                   <select>
                     <option value="请选择">请选择</option>
-                    <option value="车型">车型</option>
-                    <option value="车速">车速</option>
+                    <option value="上行1车道">上行1车道</option>
+                    <option value="上行2车道">上行2车道</option>
+                    <option value="上行3车道">上行3车道</option>
+                    <option value="下行1车道">下行1车道</option>
+                    <option value="下行2车道">下行2车道</option>
+                    <option value="下行3车道">下行3车道</option>
                   </select>
-                  <input type="text" id="time-selector2" class="time-selector">
+                  <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -138,15 +154,14 @@
                 <div class="header-right">
                   <select>
                     <option value="请选择">请选择</option>
-                    <option value="上行">上行</option>
-                    <option value="下行">下行</option>
+                    <option value="上行1车道">上行1车道</option>
+                    <option value="上行2车道">上行2车道</option>
+                    <option value="上行3车道">上行3车道</option>
+                    <option value="下行1车道">下行1车道</option>
+                    <option value="下行2车道">下行2车道</option>
+                    <option value="下行3车道">下行3车道</option>
                   </select>
-                  <select>
-                    <option value="最大车重，最大轴重">最大车重，最大轴重</option>
-                    <option value="最大车重">最大车重</option>
-                    <option value="最大轴重">最大轴重</option>
-                  </select>
-                  <input type="text" id="time-selector3" class="time-selector">
+                  <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -164,10 +179,14 @@
                 <div class="header-right">
                   <select>
                     <option value="请选择">请选择</option>
-                    <option value="上行">上行</option>
-                    <option value="下行">下行</option>
+                    <option value="上行1车道">上行1车道</option>
+                    <option value="上行2车道">上行2车道</option>
+                    <option value="上行3车道">上行3车道</option>
+                    <option value="下行1车道">下行1车道</option>
+                    <option value="下行2车道">下行2车道</option>
+                    <option value="下行3车道">下行3车道</option>
                   </select>
-                  <input type="text" id="time-selector4" class="time-selector">
+                  <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -190,10 +209,14 @@
                 <div class="header-right">
                   <select>
                     <option value="请选择">请选择</option>
-                    <option value="上行">上行</option>
-                    <option value="下行">下行</option>
+                    <option value="上行1车道">上行1车道</option>
+                    <option value="上行2车道">上行2车道</option>
+                    <option value="上行3车道">上行3车道</option>
+                    <option value="下行1车道">下行1车道</option>
+                    <option value="下行2车道">下行2车道</option>
+                    <option value="下行3车道">下行3车道</option>
                   </select>
-                  <input type="text" id="time-selector5" class="time-selector">
+                  <input type="text" id="time-selector5" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -201,7 +224,7 @@
               </div>
             </div>
           </div>
-          <div class="page-box" style="flex-basis: 500px;">
+          <div class="page-box" style="flex-basis: 400px;">
             <div class="title">
               <span>车辆时间区段分布</span>
             </div>
@@ -214,10 +237,14 @@
                 <div class="header-right">
                   <select>
                     <option value="请选择">请选择</option>
-                    <option value="上行">上行</option>
-                    <option value="下行">下行</option>
+                    <option value="上行1车道">上行1车道</option>
+                    <option value="上行2车道">上行2车道</option>
+                    <option value="上行3车道">上行3车道</option>
+                    <option value="下行1车道">下行1车道</option>
+                    <option value="下行2车道">下行2车道</option>
+                    <option value="下行3车道">下行3车道</option>
                   </select>
-                  <input type="text" id="time-selector6" class="time-selector">
+                  <input type="text" id="time-selector6" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -783,7 +810,7 @@
           ]
         }]
       }
-      
+
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
@@ -799,59 +826,40 @@
       myChart5.setOption(option5, true);
       myChart6.setOption(option6, true);
     }
-    $('#time-selector1').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+
+
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
     });
-    $('#time-selector2').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    laydate.render({
+      elem: '#time-selector2'
+      ,type: 'datetime'
+      ,range: true
     });
-    $('#time-selector3').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    laydate.render({
+      elem: '#time-selector3'
+      ,type: 'datetime'
+      ,range: true
     });
-    $('#time-selector4').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    laydate.render({
+      elem: '#time-selector4'
+      ,type: 'datetime'
+      ,range: true
     });
-    $('#time-selector5').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    laydate.render({
+      elem: '#time-selector5'
+      ,type: 'datetime'
+      ,range: true
     });
-    $('#time-selector6').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    laydate.render({
+      elem: '#time-selector6'
+      ,type: 'datetime'
+      ,range: true
     });
   </script>
 </body>

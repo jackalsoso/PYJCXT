@@ -22,6 +22,13 @@
       <div class="logo">浦仪监测系统</div>
       <div class="user">
         <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -104,23 +111,28 @@
           <span>BIM模型</span>
         </div>
         <div class="content">
-          <div class="check-box" style="display:none">
-            <p><input type="checkbox" value="" name="category" checked /> 全选</p>
-            <p><input type="checkbox" value="应力" name="category" checked /> 应力</p>
-            <p><input type="checkbox" value="" name="category" checked /> 挠度</p>
-            <p><input type="checkbox" value="" name="category" checked /> 空间变位</p>
-            <p><input type="checkbox" value="" name="category" checked /> 拉索振动</p>
-            <p><input type="checkbox" value="" name="category" checked /> 梁端位移</p>
-            <p><input type="checkbox" value="" name="category" checked /> 阻尼器位移</p>
-            <p><input type="checkbox" value="" name="category" checked /> 横向支座位移</p>
-            <p><input type="checkbox" value="" name="category" checked /> 温度</p>
-            <p><input type="checkbox" value="" name="category" checked /> 温湿度</p>
-            <p><input type="checkbox" value="" name="category" checked /> 风速</p>
-            <p><input type="checkbox" value="" name="category" checked /> 动力特性</p>
-            <p><input type="checkbox" value="" name="category" checked /> 地震、船撞</p>
+          <div class="check-box">
+            <p><input class="checkAll" data-action="all" type="checkbox" value="" name="category" checked /> 全选</p>
+            <p><input class="check" type="checkbox" value="应力" name="category" checked /><img src="./images/ckicon1.png" /> 应力</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon2.png" /> 挠度</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon3.png" /> 空间变位</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon4.png" /> 拉索振动</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon5.png" /> 梁端位移</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon6.png" /> 阻尼器位移</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon7.png" /> 横向支座位移</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon8.png" /> 温度</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon9.png" /> 温湿度</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon10.png" /> 风速</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon11.png" /> 动力特性</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked /><img src="./images/ckicon12.png" /> 地震、船撞</p>
           </div>
+          <div class="tip-box">
+            <div class="tip-item"><i class="red"></i>正常</div>
+            <div class="tip-item"><i class="green"></i>未处理预警测点</div>
+            <div class="tip-item"><i class="white"></i>无数据侧点</div>
+          </div>
+          <div class="unity-popup"><img src="./images/popupindex.png" /></div>
           <div id="unity" style="width: 100%;height: 100%;"></div>
-          <!-- <img src="./images/simple3.jpg" border="0" /> -->
         </div>
       </div>
       <div class="page-box bottom">
@@ -791,6 +803,27 @@
         myChart3.setOption(option3n, true);
       }
     }
+
+    $('.check-box').on('click', 'input', function(){
+      if($(this).attr('data-action') == 'all'){
+        if($(this).is(':checked')){
+          console.log($('.check-box').find('.check'))
+          $('.check-box').find('.check').prop('checked', true)
+        }else{
+          console.log($('.check-box').find('.check'))
+          $('.check-box').find('.check').prop('checked', false)
+        }
+      }else{
+        let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
+        console.log(_seledLen)
+        if(_seledLen<12){
+          $('.checkAll').prop('checked', false)
+        }else{
+          $('.checkAll').prop('checked', true)
+        }
+      }
+    })
+
   </script>
 </body>
 

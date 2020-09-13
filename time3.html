@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -20,6 +21,13 @@
       <div class="logo">浦仪监测系统</div>
       <div class="user">
         <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
         <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
       </div>
     </div>
@@ -96,17 +104,19 @@
               <ul class="header-left"></ul>
               <div class="header-right">
                 <select>
-                  <option value="">左幅1#车道</option>
-                  <option value="">左幅2#车道</option>
-                  <option value="">左幅3#车道</option>
-                  <option value="">左幅4#车道</option>
+                  <option value="">上行1车道</option>
+                  <option value="">上行2车道</option>
+                  <option value="">上行3车道</option>
+                  <option value="">下行1车道</option>
+                  <option value="">下行2车道</option>
+                  <option value="">下行3车道</option>
                 </select>
                 <select>
                   <option value="">所有</option>
                   <option value="">超重车</option>
                   <option value="">未超重车</option>
                 </select>
-                <input type="text" id="time-selector1" class="time-selector">
+                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -357,16 +367,6 @@
   <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
     let init = null
-    $('#time-selector1').daterangepicker({
-      "singleDatePicker": true,
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-      );
-    });
     $(function () {
       $('.pagination').pagination({
         mode: 'fixed',
@@ -380,6 +380,11 @@
         callback: function (api) {}
       });
     })
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });
   </script>
 </body>
 
