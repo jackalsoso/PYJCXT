@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <script type="text/javascript" src="./js/vue.min.js"></script>
   <script type="text/javascript" src="./js/axios.min.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
@@ -139,7 +140,7 @@
                   <!-- <select>
                     <option value="轴力、弯矩">轴力、弯矩</option>
                   </select> -->
-                  <input type="text" id="time-selector1" class="time-selector">
+                  <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -167,7 +168,7 @@
                   <select>
                     <option value="YL-A1-B-01，效应">YL-A1-B-01，效应</option>
                   </select>
-                  <input type="text" id="time-selector3" class="time-selector">
+                  <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -539,7 +540,7 @@
         series: [{
           name: '概率密度',
           type: 'bar',
-          barWidth: 30,
+          barWidth: 16,
           data: valueList3
         }, {
           name: '累计概率',
@@ -736,34 +737,21 @@
         }
       }
     })
-    $('#time-selector1').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-      );
+
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
     });
-    $('#time-selector2').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-      );
+    laydate.render({
+      elem: '#time-selector3'
+      ,type: 'datetime'
     });
-    $('#time-selector3').daterangepicker({
-      "singleDatePicker": true,
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-      );
-    });
+    </script>
   </script>
 </body>
 

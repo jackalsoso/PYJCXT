@@ -7,6 +7,7 @@
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.4.0-rc.1/extension/dataTool.min.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -82,7 +83,7 @@
       </ul>
     </div>
     <div class="page-body">
-      <div class="page-box time-top statistics-top structural4-top">
+      <div class="page-box time-top statistics-top structural4-top" style="height: calc(100% - 440px);">
         <div class="title">
           <span>IBM模型</span>
         </div>
@@ -90,16 +91,16 @@
           <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
         </div>
       </div>
-      <div class="time-bottom statistics-bottom">
+      <div class="time-bottom statistics-bottom" style="height: 410px">
         <div class="two-page-box">
-          <div class="page-box">
+          <div class="page-box" style="margin-bottom:0">
             <div class="title">
               <span>加速度基频值时程图</span>
             </div>
             <div class="content">
               <div class="header">
                 <ul class="header-left">
-                  <li class="active">10分钟</li>
+                  <li class="active">实时</li>
                   <li>小时</li>
                   <li>日</li>
                 </ul>
@@ -110,7 +111,7 @@
                     <option value="YL-A1-B-03">YL-A1-B-03</option>
                     <option value="YL-A1-B-04">YL-A1-B-04</option>
                   </select>
-                  <input type="text" id="time-selector1" class="time-selector">
+                  <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -118,7 +119,7 @@
               </div>
             </div>
           </div>
-          <div class="page-box">
+          <div class="page-box" style="margin-bottom:0">
             <div class="title">
               <span>加速度频谱图</span>
             </div>
@@ -132,7 +133,7 @@
                     <option value="YL-A1-B-03">YL-A1-B-03</option>
                     <option value="YL-A1-B-04">YL-A1-B-04</option>
                   </select>
-                  <input type="text" id="time-selector2" class="time-selector">
+                  <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -150,25 +151,38 @@
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script type="text/javascript">
     let init = function () {
-      var data = echarts.dataTool.prepareBoxplotData([
-        [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
-        [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800],
-        [880, 880, 880, 860, 720, 720, 620, 860, 970, 950, 880, 910, 850, 870, 840, 840, 850, 840, 840, 840],
-        [890, 810, 810, 820, 800, 770, 760, 740, 750, 760, 910, 920, 890, 860, 880, 720, 840, 850, 850, 780],
-        [890, 840, 780, 810, 760, 810, 790, 810, 820, 850, 870, 870, 810, 740, 810, 940, 950, 800, 810, 870],
-        [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
-        [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800]
-      ]);
+
+      var data = [
+        ["2020-05-12", 1200, 2200, 1500, 1320],
+        ["2020-05-13", 1320, 1820, 2320, 3340],
+        ["2020-05-14", 1010, 1910, 1001, 1086],
+        ["2020-05-15", 0134, 3032, 0154, 1030],
+        ["2020-05-16", 190, 1290, 1190, 1210],
+        ["2020-05-17", 1234, 1330, 260, 1310],
+        ["2020-05-18", 1210, 1310, 410, 1184]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+      var valueList3 = data.map(function (item) {
+        return item[3];
+      });
+      var valueList4 = data.map(function (item) {
+        return item[4];
+      });
       var option1 = {
-        color: ['#1f9870'],
         tooltip: {
-          trigger: 'item',
-          axisPointer: {
-            type: 'shadow'
-          }
+          trigger: 'axis'
         },
         xAxis: {
           type: 'category',
+          boundaryGap: false,
           axisLine: {
             lineStyle: {
               color: '#ACB3BE'
@@ -177,10 +191,10 @@
           axisLabel: {
             margin: 20
           },
-          splitArea: {
-            show: false
+          axisTick: {
+            alignWithLabel: true
           },
-          data: ['2020/7/14', '2020/7/15', '2020/7/16', '2020/7/17', '2020/7/18', '2020/7/19', '2020/7/20']
+          data: dateList,
         },
         yAxis: {
           name: '频率：Hz',
@@ -207,35 +221,127 @@
         grid: {
           left: 20,
           top: 30,
-          right: 20,
+          right: 40,
           bottom: 17,
           containLabel: true
         },
         series: [{
-            name: 'boxplot',
-            type: 'boxplot',
-            data: data.boxData,
-            tooltip: {
-              formatter: function (param) {
-                return [
-                  param.name,
-                  '最大值: ' + param.data[3],
-                  '最小值: ' + param.data[1],
-                  '平均值: ' + param.data[2]
-                ].join('<br/>');
-              }
-            },
-            itemStyle: {
-              color: '#1f9870'
-            }
+          name: '最大值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
           },
-          {
-            name: '异常值',
-            type: 'scatter',
-            data: data.outliers
-          }
-        ]
+          data: valueList1
+        }, {
+          name: '最小值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList2
+        }, {
+          name: '平均值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList3
+        }, {
+          name: '最大应力幅值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList4
+        }]
       }
+
+      // var data = echarts.dataTool.prepareBoxplotData([
+      //   [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
+      //   [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800],
+      //   [880, 880, 880, 860, 720, 720, 620, 860, 970, 950, 880, 910, 850, 870, 840, 840, 850, 840, 840, 840],
+      //   [890, 810, 810, 820, 800, 770, 760, 740, 750, 760, 910, 920, 890, 860, 880, 720, 840, 850, 850, 780],
+      //   [890, 840, 780, 810, 760, 810, 790, 810, 820, 850, 870, 870, 810, 740, 810, 940, 950, 800, 810, 870],
+      //   [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
+      //   [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800]
+      // ]);
+      // var option1 = {
+      //   color: ['#1f9870'],
+      //   tooltip: {
+      //     trigger: 'item',
+      //     axisPointer: {
+      //       type: 'shadow'
+      //     }
+      //   },
+      //   xAxis: {
+      //     type: 'category',
+      //     axisLine: {
+      //       lineStyle: {
+      //         color: '#ACB3BE'
+      //       }
+      //     },
+      //     axisLabel: {
+      //       margin: 20
+      //     },
+      //     splitArea: {
+      //       show: false
+      //     },
+      //     data: ['2020/7/14', '2020/7/15', '2020/7/16', '2020/7/17', '2020/7/18', '2020/7/19', '2020/7/20']
+      //   },
+      //   yAxis: {
+      //     name: '频率：Hz',
+      //     type: 'value',
+      //     nameTextStyle: {
+      //       lineHeight: 0
+      //     },
+      //     axisLine: {
+      //       lineStyle: {
+      //         color: '#ACB3BE'
+      //       }
+      //     },
+      //     axisTick: {
+      //       show: false
+      //     },
+      //     splitLine: {
+      //       show: true,
+      //       lineStyle: {
+      //         color: '#4C4B5E',
+      //         type: 'dashed'
+      //       }
+      //     }
+      //   },
+      //   grid: {
+      //     left: 20,
+      //     top: 30,
+      //     right: 20,
+      //     bottom: 17,
+      //     containLabel: true
+      //   },
+      //   series: [{
+      //       name: 'boxplot',
+      //       type: 'boxplot',
+      //       data: data.boxData,
+      //       tooltip: {
+      //         formatter: function (param) {
+      //           return [
+      //             param.name,
+      //             '最大值: ' + param.data[3],
+      //             '最小值: ' + param.data[1],
+      //             '平均值: ' + param.data[2]
+      //           ].join('<br/>');
+      //         }
+      //       },
+      //       itemStyle: {
+      //         color: '#1f9870'
+      //       }
+      //     },
+      //     {
+      //       name: '异常值',
+      //       type: 'scatter',
+      //       data: data.outliers
+      //     }
+      //   ]
+      // }
       var data2 = [
         ["0", 116],
         ["0.1", 91],
@@ -372,24 +478,18 @@
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
     }
-    $('#time-selector1').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
     });
-    $('#time-selector2').daterangepicker({
-      "singleDatePicker": true,
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    laydate.render({
+      elem: '#time-selector2'
+      ,type: 'datetime'
     });
   </script>
 </body>

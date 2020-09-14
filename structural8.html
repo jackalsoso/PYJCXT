@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -83,9 +84,17 @@
       </ul>
     </div>
     <div class="page-body">
-      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+      <div class="page-box time-top statistics-top" style="height: calc(100% - 440px);">
+        <div class="title">
+          <span>IBM模型</span>
+        </div>
+        <div class="content">
+          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+        </div>
+      </div>
+      <div class="time-bottom statistics-bottom" style="height: 410px">
         <div class="two-page-box">
-          <div class="page-box">
+          <div class="page-box" style="margin-bottom:0;">
             <div class="title">
               <span>行人舒适度实时监测</span>
             </div>
@@ -101,11 +110,7 @@
               </div>
             </div>
           </div>
-          <div class="page-box">
-            <img src="./images/simple1.jpg" border="0" style="width: 100%; height: 100%;" />
-          </div>
-        </div>
-        <div class="page-box">
+        <div class="page-box" style="margin-bottom:0;flex:2">
           <div class="title">
             <span>历史行人舒适度</span>
           </div>
@@ -117,7 +122,7 @@
                 <li>日</li>
               </ul>
               <div class="header-right">
-                <input type="text" id="time-selector1" class="time-selector">
+                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
               </div>
             </div>
             <div class="chart-wrap">
@@ -406,16 +411,15 @@
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
     }
-    $('#time-selector1').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
-    });
-  </script>
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });  </script>
 </body>
 
 </html>
