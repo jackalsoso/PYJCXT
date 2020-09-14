@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
+  <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script type="text/javascript" src="./js/mock.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
+  <title>浦仪监测系统</title>
+</head>
+
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div>
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li><span>结构<br>状态分析</span>
+          <ul>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li class="active"><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <li data-menu="system3"><span>资料备份</span></li>
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body waring1">
+      <div class="time-bottom statistics-bottom waring1-top" style="height: calc(100% - 10px);top: 10px;">
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>最新评分</span>
+            </div>
+            <div class="content">
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>整体监测得分</span>
+            </div>
+            <div class="content">
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>历史评分</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li>10min</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="桥塔">桥塔</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time-bottom warning1bottom">
+          <div class="page-box" style="height:100%">
+            <div class="title">
+              <span>预警事件列表</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left"></ul>
+                <div class="header-right">
+                  <select>
+                    <option value="">预警等级</option>
+                  </select>
+                  <select>
+                    <option value="">处理状态</option>
+                  </select>
+                  <input type="text" placeholder="输入关键字查找">
+                  </select>
+                  <button class="search">
+                    <img src="./images/search.png" border="0" />
+                    <span>查询</span>
+                  </button>
+                  <button class="export">
+                    <img src="./images/export.png" border="0" />
+                    <span>导出</span>
+                  </button>
+                </div>
+              </div>
+              <div class="list-table waring1">
+                <div class="tb-hd">
+                  <ul>
+                    <li>预警时间</li>
+                    <li>预警等级</li>
+                    <li>事件描述</li>
+                    <li>接收人</li>
+                    <li>处理状态</li>
+                    <li>处理人</li>
+                  </ul>
+                </div>
+                <div class="tb-bd">
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li class="rd">车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level2.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li class="rd">车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level3.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li class="gd">已处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level2.png" / /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level2.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level3.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level3.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level3.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                  <ul>
+                    <li>2018.1.1 14:00</li>
+                    <li><img src="./images/level1.png" /></li>
+                    <li>车路河大桥应力有9个测点数据超限</li>
+                    <li>李志</li>
+                    <li>未处理</li>
+                    <li>李志</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="m-style pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mask"></div>
+    <div class="warning-detail">
+      <div class="title">预警事件详情</div>
+      <div class="detail">
+        <div class="base-info">
+          <label>预警时间：</label>
+          <span>2020/08/10 14:00</span>&nbsp;&nbsp;&nbsp;&nbsp;
+          <label>预警等级：</label>
+          <img src="./images/level1.png" />
+        </div>
+        <div class="base-info">
+          <label>处理状态：</label>
+          <span style="color: #2FC25B;">已处理</span>
+        </div>
+        <div class="base-info">
+          <label>事件描述：</label>
+          <p>车路河大桥应力有9个测点数据超限</p>
+        </div>
+        <div class="base-info">
+          <label>原因分析：</label>
+          <p>初步检查发现，梁体腹板混凝土剥落漏筋严重，波纹管外露，需对桥梁进行特殊检测。检测单位使用回弹仪、裂缝测宽仪等专业设备进行检测。</p>
+        </div>
+        <div class="base-info">
+          <label>处理措施：</label>
+          <p>市交通委路政局迅速启动突发事件响应程序，市城市道路养护管理中心立即要求养护单位组织抢险人员进行方木支搭。</p>
+        </div>
+        <div class="base-info">
+          <label>预警报告：</label>
+          <div class="pdf">
+            <span>北二环大桥监测阶段7月报告.pdf</span>
+            <span class="operate">详情&nbsp;&nbsp;|&nbsp;&nbsp;删除</span>
+          </div>
+        </div>
+        <div class="base-info">
+          <label>处理人：</label>
+          <span>张小贤</span>
+        </div>
+        <div class="base-info">
+          <label>处理时间：</label>
+          <span>2020/08/10 14:00</span>
+        </div>
+        <div class="btns">
+          <button class="exit">退出</button>
+          <button class="exit">提交</button>
+          <button class="exit">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/jquery.pagination.js"></script>
+  <script type="text/javascript">
+    let init = function () {
+      var value = 80; // 数值
+      var _x = document.getElementById('chart1').offsetWidth; // 宽度
+      var _y = document.getElementById('chart1').offsetHeight; // 高度
+      var x0 = _x / 2,
+        y0 = _y / 2; // 圆心坐标点
+      var r = _x > _y ? _y * 0.3 - 8 : _x * 0.3 - 8; // 半径
+      var deg = value / 100 * 270 - 225; // 角度
+      var option1 = {
+        series: {
+          name: '综合评分',
+          type: 'gauge',
+          max: 100,
+          radius: '60%',
+          detail: {
+            formatter: function (value) {
+              return `{a|}\n{b|${value}}\n{c|综合评分}`
+            },
+            offsetCenter: [0, 0],
+            rich: {
+              a: {
+                backgroundColor: {
+                  image: './images/score.png'
+                },
+                width: 40,
+                height: 22
+              },
+              b: {
+                fontSize: 36,
+                color: sessionStorage.theme == 'dark' ? '#fff' : '#000',
+                padding: [8, 0, 12, 0]
+              },
+              c: {
+                fontSize: 14,
+                color: '#8D8C98'
+              }
+            }
+          },
+          data: [{
+            value: value
+          }],
+          axisLine: {
+            lineStyle: {
+              width: 16,
+              color: [
+                [1, new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                    offset: 0.15,
+                    color: "#FF6383"
+                  },
+                  {
+                    offset: 0.50,
+                    color: "#C95FF2"
+                  },
+                  {
+                    offset: 0.85,
+                    color: "#7C6AF2"
+                  },
+                  {
+                    offset: 1,
+                    color: "#5C89FF"
+                  }
+                ])]
+              ]
+            }
+          },
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            distance: -20,
+            show: true,
+            formatter: function (value) {
+              if (value === 0) {
+                return '{a|严重}'
+              } else if (value === 100) {
+                return '{b|良好}'
+              }
+              return ''
+            },
+            rich: {
+              a: {
+                fontSize: 14,
+                color: '#FF6383',
+                padding: [-50, 0, 0, -10]
+              },
+              b: {
+                fontSize: 14,
+                color: '#6085FD',
+                padding: [-50, -10, 0, 0]
+              }
+            }
+          },
+          pointer: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          }
+        },
+        graphic: [{
+          type: 'circle',
+          shape: {
+            r: 10,
+            cx: x0 + r * Math.cos(deg * Math.PI / 180),
+            cy: y0 + r * Math.sin(deg * Math.PI / 180)
+          },
+          style: {
+            fill: sessionStorage.theme == 'dark' ? '#fff' : '#000'
+          },
+          z: 10
+        }]
+      }
+      var option2 = {
+        tooltip: {},
+        radar: {
+          radius: '60%',
+          name: {
+            textStyle: {
+              color: '#747889'
+            }
+          },
+          nameGap: 30,
+          indicator: [{
+              name: '桥塔',
+              max: 100
+            },
+            {
+              name: '管理阻尼器',
+              max: 100
+            },
+            {
+              name: '支座',
+              max: 100
+            },
+            {
+              name: '墩台',
+              max: 100
+            },
+            {
+              name: '伸缩缝',
+              max: 100
+            },
+            {
+              name: '市场主梁',
+              max: 100
+            },
+            {
+              name: '拉索',
+              max: 100
+            }
+          ],
+          // axisLabel: {
+          //   show: true,
+          //   showMinLabel: false
+          // },
+          splitArea: {
+            show: false
+          }
+        },
+        series: [{
+          name: '整体监测得分',
+          type: 'radar',
+          symbolSize: 8,
+          itemStyle: {
+            color: '#5B8FF9'
+          },
+          areaStyle: {
+            color: '#5B8FF9'
+          },
+          label: {
+            show: true
+          },
+          data: [{
+            value: [43, 60, 88, 75, 50, 66, 55],
+            name: '整体监测得分'
+          }]
+        }]
+      }
+      var data = [
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList = data.map(function (item) {
+        return item[1];
+      });
+      var option3 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(46,202,92,1)'
+          },
+          areaStyle: {
+            color: 'rgba(46,202,92,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            data: [{
+              yAxis: 309,
+              label: {
+                show: false,
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '轻微不适'
+              },
+              lineStyle: {
+                color: '#ff4d4f'
+              }
+            }, {
+              yAxis: 175,
+              label: {
+                show: false,
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '极度不适'
+              },
+              lineStyle: {
+                color: '#fcb333'
+              }
+            }]
+          },
+          data: valueList
+        }]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
+    }
+    //所有检测项和测点   mock
+    Mock.mock(
+      'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
+      "data": [{
+        "id": "5f5641d7b5185269993253cd",
+        "version": 1599636245976,
+        "bridgeId": "5f45d7f634f70b68fbeba992",
+        "monitorItemType": "STRESS",
+        "monitorItemTypeName": "应力",
+        "measuringPoints": ["WS-01-FF-03"]
+      }]
+    }
+
+    );
+    //初始化vue
+    var app = new Vue({
+        el: '#app',
+        data: {
+          select1name: "",
+        },
+        mounted() {
+          this.getcedian()
+        },
+        methods: {
+          getcedian() {
+            let thiz = this;
+            axios({
+              method: 'get',
+              url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+              // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+            })
+              .then(function (res) {
+                console.log(res)
+                if (res.status == 200) {
+                  console.log(res.data)
+                  //所有检测项和测点
+                }
+
+              })
+              .catch(err => {
+
+              });
+          },
+
+        }
+      })
+    $(function () {
+      $('.pagination').pagination({
+        mode: 'fixed',
+        pageCount: 50,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {}
+      });
+
+      $('.tb-bd ul').on('click', function(){
+        $('.mask').attr('style', 'display: block')
+        $('.warning-detail').attr('style', 'display: block')
+      })
+      $('.exit').on('click', function(){
+        $('.mask').attr('style', 'display: none')
+        $('.warning-detail').attr('style', 'display: none')
+      })
+    })
+  </script>
+</body>
+
+</html>

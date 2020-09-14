@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <script type="text/javascript" src="./js/vue.min.js"></script>
   <script type="text/javascript" src="./js/axios.min.js"></script>
   <script type="text/javascript" src="./js/mock.js"></script>
@@ -252,7 +253,7 @@
           <div class="content">
             <div class="top-box">
               <ul>
-                <li><label>事件区间</label><span>2020-09-09 20:00~22:00</span></li>
+                <li><label>事件区间</label><span>2020-09-11 00:03:00 - 2020-10-04 00:03:00</span></li>
                 <li><label>预警等级</label><span><img src="images/level2.png"></span></li>
                 <li><label>接收人</label><span>高管中心</span></li>
                 <li><label>处理状态</label><span class="gd">已处理</span></li>
@@ -352,9 +353,7 @@
             </div>
             <div class="chart-header">
               <div class="header-right">
-                <select style="width:100px;">
-                  <option value="2020/5/20">2020/5/20</option>
-                </select>
+                <input style="width:320px;height: 32px;line-height: 32px;background: #191934;font-size: 14px;  color: #97B8DA;  border: 0;  margin-left: 10px;cursor: pointer;padding: 0 8px;" type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00">
               </div>
             </div>
             <div class="chart-wrap">
@@ -740,14 +739,22 @@
 
         }
       })
-    $('#time-selector1').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
+    // $('#time-selector1').daterangepicker({
+    //   "startDate": "08/10/2020",
+    //   "endDate": "08/16/2020",
+    //   "opens": "left"
+    // }, function (start, end, label) {
+    //   console.log(
+    //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+    //     );
+    // });
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
     });
     $(function () {
       $('.pagination').pagination({

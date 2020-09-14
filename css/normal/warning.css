@@ -12,6 +12,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   top: 10px;
+  height: 410px;
 }
 .waring2 .waring2-left .page-box:nth-child(-n+2) {
   width: 49.5%;
@@ -491,4 +492,11 @@
 }
 .list-table .tb-bd > ul{
   cursor: pointer;
+}
+.scorce{
+  position: absolute;
+  right: 0;
+  top:0;
+  font-size: 30px;
+  padding: 10px;
 }
