@@ -91,7 +91,8 @@
           <div class="title">
             <span>整体检测得分</span>
           </div>
-          <div class="content">
+          <div class="content" style="position: relative;">
+            <div class="scorce">98分</div>
             <div class="chart-wrap">
               <div class="chart" id="chart1"></div>
             </div>
@@ -271,7 +272,7 @@
                   <li>超限比例</li>
                 </ul>
               </div>
-              <div class="tb-bd">
+              <div class="tb-bd" id="litte-table">
                 <ul>
                   <li>结构应力</li>
                   <li>18#孔右幅跨中</li>
@@ -756,6 +757,9 @@
       ,type: 'datetime'
       ,range: true
     });
+    $('#litte-table').on('click', 'ul', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
     $(function () {
       $('.pagination').pagination({
         mode: 'fixed',
