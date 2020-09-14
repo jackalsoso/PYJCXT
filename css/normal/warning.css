@@ -493,6 +493,9 @@
 .list-table .tb-bd > ul{
   cursor: pointer;
 }
+.list-table .tb-bd > ul.active{
+  background: rgba(131, 130, 136, 0.6)!important;
+}
 .scorce{
   position: absolute;
   right: 0;

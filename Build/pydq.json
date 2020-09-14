@@ -3,7 +3,7 @@
 "productName": "BIMBridge_PuYi",
 "productVersion": "0.1",
 "dataUrl": "pydq.data.unityweb",
-"wasmCodeUrl": "pydq.wasm.code.unityweb",
+"wasmCodeUrl": "pydq.wasm",
 "wasmFrameworkUrl": "pydq.wasm.framework.unityweb",
 "graphicsAPI": ["WebGL 2.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
