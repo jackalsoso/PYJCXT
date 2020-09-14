@@ -9,15 +9,17 @@
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
   <script type="text/javascript" src="./js/vue.min.js"></script>
   <script type="text/javascript" src="./js/axios.min.js"></script>
-  <script type="text/javascript" src="./js/mock.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
   <title>浦仪监测系统</title>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+
 </head>
 
 <body>
-  <div class="page-controller">
+  <div class="page-controller" id="app">
     <div class="page-header">
       <div class="logo">浦仪监测系统</div>
       <div class="user">
@@ -33,10 +35,10 @@
       </div>
     </div>
     <div class="page-nav">
-      <div class="themes-picker" data-theme="">
+      <!-- <div class="themes-picker" data-theme="">
         <div class="dot"></div>
         <div class="label"></div>
-      </div>
+      </div> -->
       <ul>
         <li data-menu="index">首页</li><!-- 首页 -->
         <li class="active"><span>时程数据</span>
@@ -95,18 +97,30 @@
         </div>
         <div class="content">
           <div class="check-box">
-            <p><input id="check1" class="check" type="checkbox" value="应力" name="category"  checked/><img src="./images/ckicon1.png" /> 应力</p>
-            <p><input id="check2" class="check" type="checkbox" value="" name="category"  checked/><img src="./images/ckicon2.png" /> 挠度</p>
-            <p><input id="check3" class="check" type="checkbox" value="" name="category"  checked/><img src="./images/ckicon3.png" /> 空间变位</p>
-            <p><input id="check4" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon4.png" /> 拉索振动</p>
-            <p><input id="check5" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon5.png" /> 梁端位移</p>
-            <p><input id="check6" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon6.png" /> 阻尼器位移</p>
-            <p><input id="check7" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon7.png" /> 横向支座位移</p>
-            <p><input id="check8" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon8.png" /> 温度</p>
-            <p><input id="check9" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon9.png" /> 温湿度</p>
-            <p><input id="check10" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon10.png" /> 风速</p>
-            <p><input id="check11" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon11.png" /> 动力特性</p>
-            <p><input id="check12" class="check" type="checkbox" value="" name="category"  /><img src="./images/ckicon12.png" /> 地震、船撞</p>
+            <p><input id="check1" class="check" type="checkbox" value="应力" name="category" checked /><img
+                src="./images/ckicon1.png" /> 应力</p>
+            <p><input id="check2" class="check" type="checkbox" value="" name="category" checked /><img
+                src="./images/ckicon2.png" /> 挠度</p>
+            <p><input id="check3" class="check" type="checkbox" value="" name="category" checked /><img
+                src="./images/ckicon3.png" /> 空间变位</p>
+            <p><input id="check4" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon4.png" /> 拉索振动</p>
+            <p><input id="check5" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon5.png" /> 梁端位移</p>
+            <p><input id="check6" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon6.png" /> 阻尼器位移</p>
+            <p><input id="check7" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon7.png" /> 横向支座位移</p>
+            <p><input id="check8" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon8.png" /> 温度</p>
+            <p><input id="check9" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon9.png" /> 温湿度</p>
+            <p><input id="check10" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon10.png" /> 风速</p>
+            <p><input id="check11" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon11.png" /> 动力特性</p>
+            <p><input id="check12" class="check" type="checkbox" value="" name="category" /><img
+                src="./images/ckicon12.png" /> 地震、船撞</p>
           </div>
           <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
           <!-- <img src="./images/simple3.jpg" border="0" /> -->
@@ -543,8 +557,7 @@
   <script src="./js/common.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
-  <script src="TemplateData/UnityProgress.js"></script>
-  <script src="Build/UnityLoader.js"></script>
+  <script type="text/javascript" src="./js/mock.js"></script>
   <script type="text/javascript">
 
     var unity
@@ -567,29 +580,26 @@
     function bthclick(v) {
       unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
     }
-    function checktype(item) {
-      var index;
-      for (var idx = 0; idx < typenamelist.length; idx++) {
-        if (item.value == typenamelist[idx]) {
-          index = idx;
-        }
-      }
-      if (item.checked) {
-        typenamelist.push(item.value)
-      } else {
-        typenamelist.splice(index, 1)
-      }
-      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
-    }
+    // function checktype(item) {
+    //   var index;
+    //   for (var idx = 0; idx < typenamelist.length; idx++) {
+    //     if (item.value == typenamelist[idx]) {
+    //       index = idx;
+    //     }
+    //   }
+    //   if (item.checked) {
+    //     typenamelist.push(item.value)
+    //   } else {
+    //     typenamelist.splice(index, 1)
+    //   }
+    //   unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    // }
 
 
     //unity加载完成后
     function OnSceneLoaded() {
       //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
     }
-
-    //页面加载完成后调用
-    unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
 
     let init = function () {
       var data = [
@@ -804,32 +814,31 @@
       myChart10.setOption(option2, true);
       myChart11.setOption(option2, true);
       myChart12.setOption(option2, true);
-      setTimeout(()=>{
-        $('#check4-page').css('display','none')
-        $('#check5-page').css('display','none')
-        $('#check6-page').css('display','none')
-        $('#check7-page').css('display','none')
-        $('#check8-page').css('display','none')
-        $('#check9-page').css('display','none')
-        $('#check10-page').css('display','none')
-        $('#check11-page').css('display','none')
-        $('#check12-page').css('display','none')
-      },1000)
+      setTimeout(() => {
+        $('#check4-page').css('display', 'none')
+        $('#check5-page').css('display', 'none')
+        $('#check6-page').css('display', 'none')
+        $('#check7-page').css('display', 'none')
+        $('#check8-page').css('display', 'none')
+        $('#check9-page').css('display', 'none')
+        $('#check10-page').css('display', 'none')
+        $('#check11-page').css('display', 'none')
+        $('#check12-page').css('display', 'none')
+      }, 1000)
     }
     //所有检测项和测点   mock
-    Mock.mock(
-      'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
-      "data": [{
-        "id": "5f5641d7b5185269993253cd",
-        "version": 1599636245976,
-        "bridgeId": "5f45d7f634f70b68fbeba992",
-        "monitorItemType": "STRESS",
-        "monitorItemTypeName": "应力",
-        "measuringPoints": ["WS-01-FF-03"]
-      }]
-    }
-
-    );
+    // Mock.mock(
+    //   'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
+    //   "data": [{
+    //     "id": "5f5641d7b5185269993253cd",
+    //     "version": 1599636245976,
+    //     "bridgeId": "5f45d7f634f70b68fbeba992",
+    //     "monitorItemType": "STRESS",
+    //     "monitorItemTypeName": "应力",
+    //     "measuringPoints": ["WS-01-FF-03"]
+    //   }]
+    // }
+    // );
     //初始化vue
     var app = new Vue({
       el: '#app',
@@ -837,6 +846,9 @@
         select1name: "",
       },
       mounted() {
+
+        //页面加载完成后调用
+        unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
         this.getcedian()
       },
       methods: {
@@ -881,31 +893,31 @@
       );
     });
     let _checkarr = ['check1', 'check2', 'check3']
-    $('.check-box').on('click', 'input', function(){
-        // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
-        // console.log(_seledLen)
-        if($(this).is(':checked')){
-          _checkarr.push($(this).attr('id'))
-          if(_checkarr.length > 3){
-            $('#' + _checkarr[0]).prop('checked', false)
-            $('#' + _checkarr[0] + '-page').css('display','none')
-            _checkarr.splice(0, 1)
+    $('.check-box').on('click', 'input', function () {
+      // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
+      // console.log(_seledLen)
+      if ($(this).is(':checked')) {
+        _checkarr.push($(this).attr('id'))
+        if (_checkarr.length > 3) {
+          $('#' + _checkarr[0]).prop('checked', false)
+          $('#' + _checkarr[0] + '-page').css('display', 'none')
+          _checkarr.splice(0, 1)
 
-          }
-          $('#' + $(this).attr('id') + '-page').css('display','block')
-
-          console.log(_checkarr)
-        }else{
-          let _idx = _checkarr.indexOf($(this).attr('id'))
-          // debugger
-          if(_idx != -1){
-            $('#' + _checkarr[_idx] + '-page').css('display','none')
-            _checkarr.splice(_idx, 1)
-            console.log(_checkarr)
-          }
         }
+        $('#' + $(this).attr('id') + '-page').css('display', 'block')
+
+        console.log(_checkarr)
+      } else {
+        let _idx = _checkarr.indexOf($(this).attr('id'))
+        // debugger
+        if (_idx != -1) {
+          $('#' + _checkarr[_idx] + '-page').css('display', 'none')
+          _checkarr.splice(_idx, 1)
+          console.log(_checkarr)
+        }
+      }
     })
-    $('.page-box').on('click', '.header-left li', function(){
+    $('.page-box').on('click', '.header-left li', function () {
       $(this).addClass('active').siblings().removeClass('active')
     })
 
