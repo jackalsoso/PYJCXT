@@ -463,10 +463,12 @@
             show: true
 
           },
+
           data: [{
             value: [86, 75, 60, 80, 72, 30 , 68],
             // name: '环境监测'
-          }]
+          }],
+
         }]
       }
       var data = [
@@ -556,23 +558,23 @@
           markLine: {
             symbol: "none",
             data: [{
-              yAxis: 309,
+              yAxis: 22,
               label: {
                 show: false,
                 position: 'start',
                 padding: [-20, -60, 0, 0],
-                formatter: '轻微不适'
+                formatter: '上限值'
               },
               lineStyle: {
                 color: '#ff4d4f'
               }
             }, {
-              yAxis: 175,
+              yAxis: 10,
               label: {
                 show: false,
                 position: 'start',
                 padding: [-20, -60, 0, 0],
-                formatter: '极度不适'
+                formatter: '下限值'
               },
               lineStyle: {
                 color: '#fcb333'
@@ -660,23 +662,21 @@
           markLine: {
             symbol: "none",
             data: [{
-              yAxis: 309,
+              yAxis: 8,
               label: {
-                show: false,
                 position: 'start',
                 padding: [-20, -60, 0, 0],
-                formatter: '轻微不适'
+                formatter: '上限值'
               },
               lineStyle: {
                 color: '#ff4d4f'
               }
             }, {
-              yAxis: 175,
+              yAxis: 2,
               label: {
-                show: false,
                 position: 'start',
                 padding: [-20, -60, 0, 0],
-                formatter: '极度不适'
+                formatter: '下限值'
               },
               lineStyle: {
                 color: '#fcb333'
