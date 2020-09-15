@@ -8,6 +8,29 @@
     padding: 10px;
     display: flex;
 }
+.time-top .content .check-box {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  height: 40px;
+  padding: 10px 20px;
+  line-height: 22px;
+  z-index:100;
+  color: #fff;
+  width: 100%;
+  /* font-size: 16px; */
+}
+.time-top .content .check-box p{
+  display: inline-block;
+}
+.time-top .content .check-box p + p{
+  margin-left: 10px;
+}
+.time-top .content .check-box img{
+  width: 12px;
+  height: auto;
+  margin-left: 5px
+}
 .time-top .content ul {
     width: 300px;
 }
