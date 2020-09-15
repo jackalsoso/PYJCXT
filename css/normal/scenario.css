@@ -1,6 +1,7 @@
 .time-bottom .page-box .content .legend {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 .time-bottom .page-box .content .legend li {
     margin-right: 30px;
