@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <script type="text/javascript" src="./js/vue.min.js"></script>
   <script type="text/javascript" src="./js/axios.min.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
@@ -162,7 +163,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector1" class="time-selector">
+                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -193,7 +194,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector1" class="time-selector">
+                <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -227,7 +228,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -261,7 +262,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -295,7 +296,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector5" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -329,7 +330,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector6" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -363,7 +364,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector7" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -397,7 +398,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector8" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -431,7 +432,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector9" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -465,7 +466,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector10" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -499,7 +500,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector11" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -533,7 +534,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector">
+                <input type="text" id="time-selector12" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -874,24 +875,6 @@
 
       }
     })
-    $('#time-selector1').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-      );
-    });
-    $('#time-selector2').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-      );
-    });
     let _checkarr = ['check1', 'check2', 'check3']
     $('.check-box').on('click', 'input', function () {
       // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
@@ -927,7 +910,66 @@
       //   $('#time-selector1').hide()
       // }
     })
-
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector2'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector3'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector4'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector5'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector6'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector7'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector8'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector9'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector10'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector11'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector12'
+      ,type: 'datetime'
+      ,range: true
+    });
   </script>
 </body>
 
