@@ -573,6 +573,30 @@
           lineStyle: {
             // color: 'rgb(23, 143, 255)'
           },
+          markLine: {
+            symbol: "none",
+            data: [{
+              yAxis: 309,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '上限值'
+              },
+              lineStyle: {
+                color: '#ff4d4f'
+              }
+            }, {
+              yAxis: 175,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '下限值'
+              },
+              lineStyle: {
+                color: '#fcb333'
+              }
+            }]
+          },
           data: valueList1
         }, {
           name: '最小值',
