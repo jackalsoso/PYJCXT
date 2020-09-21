@@ -2,7 +2,7 @@
     left: 10px;
     top: 10px;
     right: 10px;
-    height: calc(100% - 340px);
+    height: calc(100% - 440px);
 }
 .time-top .content {
     padding: 10px;
@@ -63,14 +63,12 @@
     position: absolute;
     left: 10px;
     right: 10px;
-    bottom: 10px;
+    bottom: 15px;
     height: 310px;
-    overflow: hidden;
-    overflow-y:auto;
 }
 .time-bottom .page-box {
     position: static !important;
-    height: 410px;
+    height: 430px;
     margin-bottom: 10px;
 }
 .time-bottom .page-box.bottom {
@@ -98,7 +96,7 @@
 .time-bottom .page-box .content .header-left li {
     height: 32px;
     line-height: 30px;
-    padding: 0 8px;
+    padding: 0 6px;
     border: 1px solid #4C4B5E;
     color: #75798A;
     cursor: pointer;
@@ -116,6 +114,16 @@
 .time-bottom .page-box .content .header-right {
     display: flex;
     align-items: center;
+}
+.time-bottom .page-box .content .header-right .laneSelect {
+    /*width: 94px;*/
+    margin-right: 10px;
+}
+.time-bottom .page-box .content .header-right .laneSelect > .el-input {
+    height: 32px;
+}
+.time-bottom .page-box .content .header-right .laneSelect > .el-input .el-input__inner{
+    height: 32px !important;
 }
 .time-bottom .page-box .content .header-right .update {
   display: flex;
@@ -158,8 +166,31 @@
     margin-right: 10px;
 }
 .time-bottom .page-box .content .chart-wrap {
+    position:relative;
     flex: 1;
     display: flex;
+}
+.time-bottom .page-box .content .chart-wrap .legendView{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    right: 30px;
+    bottom: 50px;
+    width: 50px;
+    height: 80px;
+    border: 1px solid #ccc;
+}
+.time-bottom .page-box .content .chart-wrap .legendView li{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.time-bottom .page-box .content .chart-wrap .legendView .legendLabel{
+    width: 10px;
+    height: 10px;
+    border-width: 1px;
+    border-style: solid;
 }
 .time-bottom .page-box .content .chart-wrap .chart {
     width: 1380px;

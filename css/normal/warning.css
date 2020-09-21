@@ -503,3 +503,8 @@
   font-size: 30px;
   padding: 10px;
 }
+.page-box::-webkit-scrollbar{
+  
+  display:none;
+
+}

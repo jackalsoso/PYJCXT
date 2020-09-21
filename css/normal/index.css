@@ -193,3 +193,59 @@
   width: 100%;
   height: auto;
 }
+.tip-check {
+  position: absolute;
+  bottom: 1px;
+  left: 12px;
+  z-index: 98;
+  cursor: pointer;
+}
+.custom-checkbox {
+  float: left;
+}
+
+.custom-checkbox span {
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid #0073bf;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 18px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + span {
+  position: relative;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + span:after {
+  content: "";
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background: #0073bf;
+  border: #fff solid 2px;
+  height: 12px;
+  width: 12px;
+}
+
+.box {
+  width: 70px;
+  height: 28px;
+}
+
+.custom-txt {
+  margin-left: 29px;
+  padding-top: 1px;
+  width: 40px;
+  height: 100%;
+  color:white;
+}

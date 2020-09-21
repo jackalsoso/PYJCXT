@@ -107,44 +107,66 @@
         </div>
       </div>
       <div class="page-box right">
-        <div class="title">
+        <!-- <div class="title">
           <span>BIM模型</span>
-        </div>
-        <div class="content">
-          <div class="check-box">
+        </div> -->
+        <div class="content" style="height:100%">
+          <div class="check-box"  style="width:93%">
             <p><input class="checkAll" data-action="all" type="checkbox" value="" name="category" checked /> 全选</p>
-            <p><input class="check" type="checkbox" value="应力" name="category" checked /><img
-                src="./images/ckicon1.png" /> 应力</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon2.png" /> 挠度</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon3.png" /> 空间变位</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon4.png" /> 拉索振动</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon5.png" /> 梁端位移</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon6.png" /> 阻尼器位移</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon7.png" /> 横向支座位移</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon8.png" /> 温度</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon9.png" /> 温湿度</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon10.png" /> 风速</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon11.png" /> 动力特性</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon12.png" /> 地震、船撞</p>
+            <p><input class="check" type="checkbox" value="应力" name="category" checked style="display: none;" /><img
+                src="./images/ckicon1.png" class="checkImg" name='1' /> 应力</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon2.png" class="checkImg" name='2' /> 挠度</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon3.png" class="checkImg" name='3' /> 空间变位</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon4.png" class="checkImg" name='4' /> 拉索振动</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon5.png" class="checkImg" name='5' /> 梁端位移</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon6.png" class="checkImg" name='6' /> 阻尼器位移</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon7.png" class="checkImg" name='7' /> 横向支座位移</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon8.png" class="checkImg" name='8' /> 温度</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon9.png" class="checkImg" name='9' /> 温湿度</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon10.png" class="checkImg" name='10' /> 风速</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon11.png" class="checkImg" name='11' /> 动力特性</p>
+            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+                src="./images/ckicon12.png" class="checkImg" name='12' /> 地震、船撞</p>
           </div>
           <div class="tip-box">
-            <div class="tip-item" @click="changecolor"><i class="green" v-if="greentrue"></i><i class="grey" v-if="!greentrue"></i>正常</div>
-            <div class="tip-item" @click="changecolor2"><i class="red" v-if="redtrue"></i><i class="grey" v-if="!redtrue"></i>未处理预警测点</div>
-            <div class="tip-item" @click="changecolor3"><i class="white" v-if="whitetrue"></i><i class="grey" v-if="!whitetrue"></i>无数据侧点
+            <div class="tip-item" @click="changecolor"><i class="green" v-if="greentrue"></i><i class="grey"
+                v-if="!greentrue"></i>正常</div>
+            <div class="tip-item" @click="changecolor2"><i class="red" v-if="redtrue"></i><i class="grey"
+                v-if="!redtrue"></i>未处理预警测点</div>
+            <div class="tip-item" @click="changecolor3"><i class="white" v-if="whitetrue"></i><i class="grey"
+                v-if="!whitetrue"></i>数据异常测点
             </div>
             <!-- @click="changecolor" @click="changecolor2"
 @click="changecolor3" -->
+          </div>
+          <div class="tip-check">
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="xuhuacheck" type="checkbox">
+                <!-- <input  type="checkbox" onclick="if(this.checked){ alert('选中协议,允许bai注册!duzhi');}else{alert('请选择同意协dao议后注册!');}"> -->
+                <span></span>
+
+              </label>
+              <div class="custom-txt">虚化</div>
+            </div>
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="huanjincheck" type="checkbox" checked>
+                <span></span>
+
+              </label>
+              <div class="custom-txt">环境</div>
+            </div>
           </div>
           <div class="unity-popup"><img src="./images/popupindex.png" /></div>
           <div id="unity" style="width: 100%;height: 100%;"></div>
@@ -240,11 +262,11 @@
       console.log(type)
       console.log(name)
       if (isshow == false) {
-        $(".unity-popup").show();
-        isshow = true
+        // $(".unity-popup").show();
+        // isshow = true
       } else {
-        $(".unity-popup").hide();
-        isshow = false
+        // $(".unity-popup").hide();
+        // isshow = false
       }
 
 
@@ -805,9 +827,9 @@
       el: '#appall',
       data: {
         select1name: "",
-        greentrue:true,
-        redtrue:true,
-        whitetrue:true,
+        greentrue: true,
+        redtrue: true,
+        whitetrue: true,
       },
       mounted() {
         //页面加载完成后调用
@@ -816,13 +838,80 @@
       },
       methods: {
         changecolor() {
+          var str="";
           this.greentrue = !this.greentrue
+          if(this.greentrue == true){
+            str+="正常";
+          }
+          if(this.redtrue == true){
+            if(str==""){
+              str+="预警";
+            }
+            else{
+              str+=",预警";
+            }
+          }
+          if(this.whitetrue == true){
+            if(str==""){
+              str+="无数据";
+            }
+            else{
+              str+=",无数据";
+            }
+          }
+          console.log(str)
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", str)
+          
         },
         changecolor2() {
+          var str="";
           this.redtrue = !this.redtrue
+          if(this.greentrue == true){
+            str+="正常";
+          }
+          if(this.redtrue == true){
+            if(str==""){
+              str+="预警";
+            }
+            else{
+              str+=",预警";
+            }
+          }
+          if(this.whitetrue == true){
+            if(str==""){
+              str+="无数据";
+            }
+            else{
+              str+=",无数据";
+            }
+          }
+          console.log(str)
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", str)
         },
         changecolor3() {
+          var str="";
           this.whitetrue = !this.whitetrue
+          if(this.greentrue == true){
+            str+="正常";
+          }
+          if(this.redtrue == true){
+            if(str==""){
+              str+="预警";
+            }
+            else{
+              str+=",预警";
+            }
+          }
+          if(this.whitetrue == true){
+            if(str==""){
+              str+="无数据";
+            }
+            else{
+              str+=",无数据";
+            }
+          }
+          console.log(str)
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", str)
         },
         getcedian() {
           let thiz = this;
@@ -855,23 +944,79 @@
     //   }
     //   $(".green").css("background","#575757")
     // })
+    $('#xuhuacheck').on("click", function () {
+      if (this.checked == true) {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+      } else {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "true")
+      }
+    })
+    $('#huanjincheck').on("click", function () {
+      if (this.checked == true) {
+
+        unity.SendMessage("GameManager", "SetEnvir", "true")
+      } else {
+
+        unity.SendMessage("GameManager", "SetEnvir", "false")
+      }
+    })
     $('.check-box').on('click', 'input', function () {
+      console.log($('.check'))
+      //循环遍历改变每张图片的url
+      console.log($('.checkImg'))
+      for (let i = 0; i < $('.check').length; i++) {
+        if ($('.check')[i].checked) {
+          $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+        } else {
+          $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
+        }
+
+      }
       if ($(this).attr('data-action') == 'all') {
         if ($(this).is(':checked')) {
-          console.log($('.check-box').find('.check'))
+
           $('.check-box').find('.check').prop('checked', true)
+          for (let i = 0; i < $('.check').length; i++) {
+            $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+          }
         } else {
-          console.log($('.check-box').find('.check'))
+
           $('.check-box').find('.check').prop('checked', false)
+          for (let i = 0; i < $('.check').length; i++) {
+            $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
+          }
         }
       } else {
         let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
-        console.log(_seledLen)
+
         if (_seledLen < 12) {
           $('.checkAll').prop('checked', false)
+
         } else {
           $('.checkAll').prop('checked', true)
+
         }
+      }
+    })
+    $('.check-box').on('click', 'img', function (event) {
+      console.log(event, event.target.name - 0)
+
+
+      if ($('.check')[event.target.name - 0 - 1].checked) {
+        $('.check')[event.target.name - 0 - 1].checked = false
+        $('.checkImg')[event.target.name - 0 - 1].src = `./images/ckicon${event.target.name - 0}_grey.png`
+      } else {
+        $('.check')[event.target.name - 0 - 1].checked = true
+        $('.checkImg')[event.target.name - 0 - 1].src = `./images/ckicon${event.target.name - 0}.png`
+      }
+      let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
+
+      if (_seledLen < 12) {
+        $('.checkAll').prop('checked', false)
+
+      } else {
+        $('.checkAll').prop('checked', true)
+
       }
     })
 

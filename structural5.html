@@ -99,7 +99,7 @@
             </div>
             <div class="content">
               <div class="header">
-                <ul class="header-left">
+                <ul class="header-left acceleration-time-chart">
                   <li class="active">实时</li>
                   <li>小时</li>
                   <li>日</li>
@@ -176,6 +176,64 @@
       var valueList4 = data.map(function (item) {
         return item[4];
       });
+      var option0 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '频率：Hz',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '最大值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList1
+        }]
+      }
       var option1 = {
         tooltip: {
           trigger: 'axis'
@@ -239,20 +297,6 @@
             // color: 'rgb(23, 143, 255)'
           },
           data: valueList2
-        }, {
-          name: '平均值',
-          type: 'line',
-          lineStyle: {
-            // color: 'rgb(23, 143, 255)'
-          },
-          data: valueList3
-        }, {
-          name: '最大应力幅值',
-          type: 'line',
-          lineStyle: {
-            // color: 'rgb(23, 143, 255)'
-          },
-          data: valueList4
         }]
       }
 
@@ -475,11 +519,13 @@
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
-      myChart1.setOption(option1, true);
+      myChart1.setOption($('.acceleration-time-chart li[class="active"]').text() === '实时' ? option0 : option1, true);
       myChart2.setOption(option2, true);
     }
+
     $('.page-box').on('click', '.header-left li', function(){
       $(this).addClass('active').siblings().removeClass('active')
+      init()
     })
 
     laydate.render({

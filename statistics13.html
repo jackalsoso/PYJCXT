@@ -8,6 +8,9 @@
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
   <script src="./js/laydate/laydate.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -15,7 +18,7 @@
 </head>
 
 <body>
-  <div class="page-controller">
+  <div class="page-controller" id="app">
     <div class="page-header">
       <div class="logo">浦仪监测系统</div>
       <div class="user">
@@ -97,15 +100,19 @@
                   <li>日</li>
                 </ul>
                 <div class="header-right">
-                  <select>
-                    <option value="请选择">请选择</option>
-                    <option value="上行1车道">上行1车道</option>
-                    <option value="上行2车道">上行2车道</option>
-                    <option value="上行3车道">上行3车道</option>
-                    <option value="下行1车道">下行1车道</option>
-                    <option value="下行2车道">下行2车道</option>
-                    <option value="下行3车道">下行3车道</option>
-                  </select>
+                  <el-select v-model="chooseData[0]"
+                             multiple
+                             placeholder="请选择"
+                             class="laneSelect"
+                             @change='selectAll($event, 0)'
+                  >
+                    <el-option v-for="item in selectOptions"
+                               :key="item.value"
+                               :label="item.label"
+                               :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                   <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
@@ -122,15 +129,19 @@
               <div class="header">
                 <ul class="header-left"></ul>
                 <div class="header-right">
-                  <select>
-                    <option value="请选择">请选择</option>
-                    <option value="上行1车道">上行1车道</option>
-                    <option value="上行2车道">上行2车道</option>
-                    <option value="上行3车道">上行3车道</option>
-                    <option value="下行1车道">下行1车道</option>
-                    <option value="下行2车道">下行2车道</option>
-                    <option value="下行3车道">下行3车道</option>
-                  </select>
+                  <el-select v-model="chooseData[1]"
+                             multiple
+                             placeholder="请选择"
+                             class="laneSelect"
+                             @change='selectAll($event, 1)'
+                  >
+                    <el-option v-for="item in selectOptions"
+                               :key="item.value"
+                               :label="item.label"
+                               :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                   <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
@@ -152,15 +163,19 @@
                   <li>日</li>
                 </ul>
                 <div class="header-right">
-                  <select>
-                    <option value="请选择">请选择</option>
-                    <option value="上行1车道">上行1车道</option>
-                    <option value="上行2车道">上行2车道</option>
-                    <option value="上行3车道">上行3车道</option>
-                    <option value="下行1车道">下行1车道</option>
-                    <option value="下行2车道">下行2车道</option>
-                    <option value="下行3车道">下行3车道</option>
-                  </select>
+                  <el-select v-model="chooseData[2]"
+                             multiple
+                             placeholder="请选择"
+                             class="laneSelect"
+                             @change='selectAll($event, 2)'
+                  >
+                    <el-option v-for="item in selectOptions"
+                               :key="item.value"
+                               :label="item.label"
+                               :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                   <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
@@ -177,15 +192,19 @@
               <div class="header">
                 <ul class="header-left"></ul>
                 <div class="header-right">
-                  <select>
-                    <option value="请选择">请选择</option>
-                    <option value="上行1车道">上行1车道</option>
-                    <option value="上行2车道">上行2车道</option>
-                    <option value="上行3车道">上行3车道</option>
-                    <option value="下行1车道">下行1车道</option>
-                    <option value="下行2车道">下行2车道</option>
-                    <option value="下行3车道">下行3车道</option>
-                  </select>
+                  <el-select v-model="chooseData[3]"
+                             multiple
+                             placeholder="请选择"
+                             class="laneSelect"
+                             @change='selectAll($event, 3)'
+                  >
+                    <el-option v-for="item in selectOptions"
+                               :key="item.value"
+                               :label="item.label"
+                               :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                   <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
@@ -196,7 +215,7 @@
           </div>
         </div>
         <div class="two-page-box">
-          
+
           <div class="page-box" style="flex-basis: 400px;">
             <div class="title">
               <span>车辆时间区段分布</span>
@@ -208,15 +227,19 @@
                   <li>重车数量</li>
                 </ul>
                 <div class="header-right">
-                  <select>
-                    <option value="请选择">请选择</option>
-                    <option value="上行1车道">上行1车道</option>
-                    <option value="上行2车道">上行2车道</option>
-                    <option value="上行3车道">上行3车道</option>
-                    <option value="下行1车道">下行1车道</option>
-                    <option value="下行2车道">下行2车道</option>
-                    <option value="下行3车道">下行3车道</option>
-                  </select>
+                  <el-select v-model="chooseData[4]"
+                             multiple
+                             placeholder="请选择"
+                             class="laneSelect"
+                             @change='selectAll($event, 4)'
+                  >
+                    <el-option v-for="item in selectOptions"
+                               :key="item.value"
+                               :label="item.label"
+                               :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                   <input type="text" id="time-selector6" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
@@ -236,15 +259,19 @@
                   <li>日</li>
                 </ul>
                 <div class="header-right">
-                  <select>
-                    <option value="请选择">请选择</option>
-                    <option value="上行1车道">上行1车道</option>
-                    <option value="上行2车道">上行2车道</option>
-                    <option value="上行3车道">上行3车道</option>
-                    <option value="下行1车道">下行1车道</option>
-                    <option value="下行2车道">下行2车道</option>
-                    <option value="下行3车道">下行3车道</option>
-                  </select>
+                  <el-select v-model="chooseData[5]"
+                             multiple
+                             placeholder="请选择"
+                             class="laneSelect"
+                             @change='selectAll($event, 5)'
+                  >
+                    <el-option v-for="item in selectOptions"
+                               :key="item.value"
+                               :label="item.label"
+                               :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                   <input type="text" id="time-selector5" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
@@ -295,15 +322,12 @@
       });
 
       var option1 = {
-        color: ['#5C89FF', '#7C6AF2', '#5C89FF', '#7C6AF2', '#5C89FF', '#7C6AF2'],
         tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
+          trigger: 'axis'
         },
         xAxis: {
           type: 'category',
+          boundaryGap: false,
           axisLine: {
             lineStyle: {
               color: '#ACB3BE'
@@ -311,6 +335,9 @@
           },
           axisLabel: {
             margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
           },
           data: dateList,
         },
@@ -339,34 +366,27 @@
         grid: {
           left: 20,
           top: 30,
-          right: 20,
+          right: 40,
           bottom: 17,
           containLabel: true
         },
         series: [{
-          name: '1车道上行',
-          type: 'bar',
+          name: '所有车辆',
+          type: 'line',
+          lineStyle: {
+            color: '#5C89FF'
+          },
+          markLine: {
+            symbol: "none",
+          },
           data: valueList1
         }, {
-          name: '1车道下行',
-          type: 'bar',
+          name: '重车车辆',
+          type: 'line',
+          lineStyle: {
+            color: '#7C6AF2'
+          },
           data: valueList2
-        }, {
-          name: '2车道上行',
-          type: 'bar',
-          data: valueList3
-        }, {
-          name: '2车道下行',
-          type: 'bar',
-          data: valueList4
-        }, , {
-          name: '3车道上行',
-          type: 'bar',
-          data: valueList5
-        }, {
-          name: '3车道下行',
-          type: 'bar',
-          data: valueList6
         }]
       }
       var option2 = {
@@ -822,7 +842,7 @@
 
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
-      myChart3.setOption(option3, true);
+      myChart3.setOption(option1, true);
       myChart4.setOption(option4, true);
       myChart5.setOption(option5, true);
       myChart6.setOption(option6, true);
@@ -862,6 +882,64 @@
       ,type: 'datetime'
       ,range: true
     });
+
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          selectOptions: [
+            { value: 'ALL_SELECT', label: '全选' },
+            { value: '1', label: '上行1车道' },
+            { value: '2', label: '上行2车道' },
+            { value: '3', label: '上行3车道' },
+            { value: '4', label: '下行1车道' },
+            { value: '5', label: '下行2车道' },
+            { value: '6', label: '下行3车道' }
+          ],
+          oldChooseData: [],
+          chooseData: []
+        };
+      },
+      methods: {
+        selectAll (val, index) {
+          console.log(index ,val)
+          const allValues = this.selectOptions.map(item => {
+            return item.value;
+          });
+          // 用来储存上一次选择的值，可进行对比
+          const oldVal = this.oldChooseData[index]?.length ? this.oldChooseData[index] : [];
+
+          // 若选择全部
+          if (val.includes('ALL_SELECT')) {
+            this.chooseData[index] = allValues;
+          }
+
+          // 取消全部选中， 上次有， 当前没有， 表示取消全选
+          if (oldVal.includes('ALL_SELECT') && !val.includes('ALL_SELECT')) {
+            this.chooseData[index] = [];
+          }
+
+          // 点击非全部选中，需要排除全部选中 以及 当前点击的选项
+          // 新老数据都有全部选中
+          if (oldVal.includes('ALL_SELECT') && val.includes('ALL_SELECT')) {
+            const index = val.indexOf('ALL_SELECT');
+            val.splice(index, 1); // 排除全选选项
+            this.chooseData[index] = val;
+          }
+
+          // 全选未选，但是其他选项都全部选上了，则全选选上
+          if (!oldVal.includes('ALL_SELECT') && !val.includes('ALL_SELECT')) {
+            if (val.length === allValues.length - 1) {
+              this.chooseData[index] = ['ALL_SELECT'].concat(val);
+            }
+          }
+
+          // 储存当前选择的最后结果 作为下次的老数据
+          this.oldChooseData[index] = this.chooseData[index];
+        }
+      }
+
+    })
   </script>
 </body>
 

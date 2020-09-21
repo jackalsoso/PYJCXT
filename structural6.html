@@ -102,30 +102,30 @@
             <li data-menu="structural6">地震、船撞/Mpa</li>
           </ul> -->
           <div class="check-box">
-            <p><input id="check1" class="check" type="checkbox" value="应力" name="category" checked /><img
-                src="./images/ckicon1.png" /> 应力</p>
-            <p><input id="check2" class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon2.png" /> 挠度</p>
-            <p><input id="check3" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon3.png" /> 空间变位</p>
-            <p><input id="check4" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon4.png" /> 拉索振动</p>
-            <p><input id="check5" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon5.png" /> 梁端位移</p>
-            <p><input id="check6" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon6.png" /> 阻尼器位移</p>
-            <p><input id="check7" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon7.png" /> 横向支座位移</p>
-            <p><input id="check8" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon8.png" /> 温度</p>
-            <p><input id="check9" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon9.png" /> 温湿度</p>
-            <p><input id="check10" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon10.png" /> 风速</p>
-            <p><input id="check11" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon11.png" /> 动力特性</p>
-            <p><input id="check12" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon12.png" /> 地震、船撞</p>
+            <p><input id="check1" class="check" type="radio" value="应力" name="category" checked style="display: none;"/><img
+                class="checkSturalImg" name ='1' src="./images/ckicon1.png" /> 应力</p>
+            <p><input id="check2" class="check" type="radio" value="" name="category"  style="display: none;"/><img
+                class="checkSturalImg" name ='2' src="./images/ckicon2_grey.png" /> 挠度</p>
+            <p><input id="check3" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='3' src="./images/ckicon3_grey.png" /> 空间变位</p>
+            <p><input id="check4" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='4' src="./images/ckicon4_grey.png" /> 拉索振动</p>
+            <p><input id="check5" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='5' src="./images/ckicon5_grey.png" /> 梁端位移</p>
+            <p><input id="check6" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='6' src="./images/ckicon6_grey.png" /> 阻尼器位移</p>
+            <p><input id="check7" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='7' src="./images/ckicon7_grey.png" /> 横向支座位移</p>
+            <p><input id="check8" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='8' src="./images/ckicon8_grey.png" /> 温度</p>
+            <p><input id="check9" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='9' src="./images/ckicon9_grey.png" /> 温湿度</p>
+            <p><input id="check10" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='10' src="./images/ckicon10_grey.png" /> 风速</p>
+            <p><input id="check11" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='11' src="./images/ckicon11_grey.png" /> 动力特性</p>
+            <p><input id="check12" class="check" type="radio" value="" name="category" style="display: none;"/><img
+                class="checkSturalImg" name ='12' src="./images/ckicon12_grey.png" /> 地震、船撞</p>
           </div>          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
         </div>
       </div>
@@ -201,7 +201,7 @@
               </div>
             </div>
           </div>
-        <div class="page-box" id="check1-page" style="float:left;margin-top:10px;">
+        <!-- <div class="page-box" id="check1-page" style="float:left;margin-top:10px;">
           <div class="title">
             <span>结构应力</span>
           </div>
@@ -601,7 +601,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
@@ -1125,9 +1125,40 @@
 
 
     }
+  
+ 
+    //radio框图片联动
+    $('.check-box').on('click', 'input', function () {
+    
+      //循环遍历改变每张图片的url
 
-
-
+      for(let i = 0 ; i < $('.check').length ; i++){
+        console.log($('.check')[i].checked)
+        if($('.check')[i].checked){
+          $('.checkSturalImg')[i].src = `./images/ckicon${i+1}.png`
+        }else {
+          $('.checkSturalImg')[i].src = `./images/ckicon${i+1}_grey.png`
+        }
+      }
+      
+    })
+    $('.checkSturalImg').on('click', function (event) {
+      console.log(event,event.target.name-0)
+      // $('.checkSturalImg')[i].src = `./images/ckicon${i+1}.png`
+      if(!$('.check')[event.target.name-0-1].checked ){
+        $('.check')[event.target.name-0-1].checked  = true
+        $('.checkSturalImg')[event.target.name-0-1].src = `./images/ckicon${event.target.name-0}.png`
+      }
+      for(let i = 0 ; i < $('.check').length ; i++){
+        console.log($('.check')[i].checked)
+        if($('.check')[i].checked){
+          $('.checkSturalImg')[i].src = `./images/ckicon${i+1}.png`
+        }else {
+          $('.checkSturalImg')[i].src = `./images/ckicon${i+1}_grey.png`
+        }
+      }
+    
+    })
     $('.page-box').on('click', '.header-left li', function(){
       $(this).addClass('active').siblings().removeClass('active')
     })
@@ -1142,31 +1173,6 @@
       ,type: 'datetime'
       ,range: true
     });
-    let _checkarr = ['check1', 'check2']
-    $('.check-box').on('click', 'input', function () {
-      // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
-      // console.log(_seledLen)
-      if ($(this).is(':checked')) {
-        _checkarr.push($(this).attr('id'))
-        if (_checkarr.length > 2) {
-          $('#' + _checkarr[0]).prop('checked', false)
-          $('#' + _checkarr[0] + '-page').css('display', 'none')
-          _checkarr.splice(0, 1)
-
-        }
-        $('#' + $(this).attr('id') + '-page').css('display', 'block')
-
-        console.log(_checkarr)
-      } else {
-        let _idx = _checkarr.indexOf($(this).attr('id'))
-        // debugger
-        if (_idx != -1) {
-          $('#' + _checkarr[_idx] + '-page').css('display', 'none')
-          _checkarr.splice(_idx, 1)
-          console.log(_checkarr)
-        }
-      }
-    })
   </script>
 </body>
 

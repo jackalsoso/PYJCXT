@@ -10,6 +10,8 @@
   <script src="./js/laydate/laydate.js"></script>
   <script type="text/javascript" src="./js/vue.min.js"></script>
   <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -100,31 +102,50 @@
             <input type="button" value="无数据" onclick="bthclick(this)"></span>
         </div> -->
         <div class="content">
-          <div class="check-box">
-            <p><input id="check1" class="check" type="checkbox" value="应力" name="category" checked /><img
-                src="./images/ckicon1.png" /> 应力</p>
-            <p><input id="check2" class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon2.png" /> 挠度</p>
-            <p><input id="check3" class="check" type="checkbox" value="" name="category" checked /><img
-                src="./images/ckicon3.png" /> 空间变位</p>
-            <p><input id="check4" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon4.png" /> 拉索振动</p>
-            <p><input id="check5" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon5.png" /> 梁端位移</p>
-            <p><input id="check6" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon6.png" /> 阻尼器位移</p>
-            <p><input id="check7" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon7.png" /> 横向支座位移</p>
-            <p><input id="check8" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon8.png" /> 温度</p>
-            <p><input id="check9" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon9.png" /> 温湿度</p>
-            <p><input id="check10" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon10.png" /> 风速</p>
-            <p><input id="check11" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon11.png" /> 动力特性</p>
-            <p><input id="check12" class="check" type="checkbox" value="" name="category" /><img
-                src="./images/ckicon12.png" /> 地震、船撞</p>
+          <div class="check-box" style="width:93%">
+            <p><input id="check1" class="check" type="checkbox" value="应力" name="category" checked style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon1.png" name ='1'/> 应力</p>
+            <p><input id="check2" class="check" type="checkbox" value="" name="category" checked style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon2.png" name ='2'/> 挠度</p>
+            <p><input id="check3" class="check" type="checkbox" value="" name="category" checked style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon3.png" name ='3'/> 空间变位</p>
+            <p><input id="check4" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon4_grey.png" name ='4'/> 拉索振动</p>
+            <p><input id="check5" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon5_grey.png" name ='5'/> 梁端位移</p>
+            <p><input id="check6" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon6_grey.png" name ='6'/> 阻尼器位移</p>
+            <p><input id="check7" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon7_grey.png" name ='7'/> 横向支座位移</p>
+            <p><input id="check8" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon8_grey.png" name ='8'/> 温度</p>
+            <p><input id="check9" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon9_grey.png" name ='9'/> 温湿度</p>
+            <p><input id="check10" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon10_grey.png" name ='10'/> 风速</p>
+            <p><input id="check11" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon11_grey.png" name ='11'/> 动力特性</p>
+            <p><input id="check12" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
+                class='time1CheckImg' src="./images/ckicon12_grey.png" name ='12'/> 地震、船撞</p>
+          </div>
+          <div class="tip-check">
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="xuhuacheck" type="checkbox">
+                <!-- <input  type="checkbox" onclick="if(this.checked){ alert('选中协议,允许bai注册!duzhi');}else{alert('请选择同意协dao议后注册!');}"> -->
+                <span></span>
+
+              </label>
+              <div class="custom-txt">虚化</div>
+            </div>
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="huanjincheck" type="checkbox" checked>
+                <span></span>
+
+              </label>
+              <div class="custom-txt">环境</div>
+            </div>
           </div>
           <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
           <!-- <img src="./images/simple3.jpg" border="0" /> -->
@@ -151,7 +172,7 @@
           </div>
         </div> -->
       </div>
-      <div class="time-bottom">
+      <div class="time-bottom" style="bottom: 110px;">
         <div class="page-box" id="check1-page">
           <div class="title">
             <span>结构应力</span>
@@ -166,7 +187,7 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none; width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -176,7 +197,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check1chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -207,7 +232,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check2chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -241,7 +270,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check3chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -275,7 +308,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check4chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -309,7 +346,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check5chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -343,7 +384,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check6chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -377,7 +422,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check7chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -411,7 +460,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check8chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -445,7 +498,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check9chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -479,7 +536,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check10chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -513,7 +574,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check11chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -547,7 +612,11 @@
             <div class="chart-wrap">
               <div class="chart" id="check12chart"></div>
               <div class="imgbox">
-                <img src="./images/simple2.jpg" border="0" />
+                <el-carousel height="240px" style="width: 100%">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
                 <span>测点位置</span>
               </div>
             </div>
@@ -896,6 +965,9 @@
       el: '#app',
       data: {
         select1name: "",
+        carouselItem:[
+          './images/simple2.jpg',
+        ]
       },
       mounted() {
 
@@ -926,12 +998,29 @@
 
       }
     })
+    $('#xuhuacheck').on("click", function () {
+      if (this.checked == true) {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+      } else {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "true")
+      }
+    })
+    $('#huanjincheck').on("click", function () {
+      if (this.checked == true) {
+
+        unity.SendMessage("GameManager", "SetEnvir", "true")
+      } else {
+
+        unity.SendMessage("GameManager", "SetEnvir", "false")
+      }
+    })
     let _checkarr = ['check1', 'check2', 'check3']
     $('.check-box').on('click', 'input', function () {
       // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
       // console.log(_seledLen)
       if ($(this).is(':checked')) {
         _checkarr.push($(this).attr('id'))
+      
         if (_checkarr.length > 3) {
           $('#' + _checkarr[0]).prop('checked', false)
           $('#' + _checkarr[0] + '-page').css('display', 'none')
@@ -940,26 +1029,75 @@
         }
         $('#' + $(this).attr('id') + '-page').css('display', 'block')
 
-        console.log(_checkarr)
+       
       } else {
+
         let _idx = _checkarr.indexOf($(this).attr('id'))
         // debugger
         if (_idx != -1) {
           $('#' + _checkarr[_idx] + '-page').css('display', 'none')
           _checkarr.splice(_idx, 1)
-          console.log(_checkarr)
+        
+        }
+      }
+      for(let i = 0 ; i <$('.check').length; i++){
+       
+        if($('.check')[i].checked){
+         
+          $('.time1CheckImg')[i].src = `./images/ckicon${i+1}.png`
+        }else {
+          $('.time1CheckImg')[i].src = `./images/ckicon${i+1}_grey.png`
         }
       }
     })
+    //图片点击事件触发
+    $('.time1CheckImg').on('click', function (event) {
+      // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
+  
+      if($('.check')[event.target.name-0-1].checked){
+        $('.check')[event.target.name-0-1].checked = false
+
+        let _idx = _checkarr.indexOf(`check${event.target.name-0}`)
+        // debugger
+       
+        if (_idx != -1) {
+          $('#' + _checkarr[_idx] + '-page').css('display', 'none')
+          _checkarr.splice(_idx, 1)
+      
+        }
+      }else {
+        $('.check')[event.target.name-0-1].checked = true
+        _checkarr.push(`check${event.target.name-0}`)
+
+        if (_checkarr.length > 3) {
+          $('#' + _checkarr[0]).prop('checked', false)
+          $('#' + _checkarr[0] + '-page').css('display', 'none')
+          _checkarr.splice(0, 1)
+
+        }
+        $('#' + `check${event.target.name-0}` + '-page').css('display', 'block')
+      }
+  
+      for(let i = 0 ; i <$('.check').length; i++){
+        console.log($('.check')[i].checked)
+        if($('.check')[i].checked){
+         
+          $('.time1CheckImg')[i].src = `./images/ckicon${i+1}.png`
+        }else {
+          $('.time1CheckImg')[i].src = `./images/ckicon${i+1}_grey.png`
+        }
+      }
+    })
+
     // $('#time-selector1').hide()
     $('.page-box').on('click', '.header-left li', function () {
       // debugger
       $(this).addClass('active').siblings().removeClass('active')
-      // if(this.innerHTML == "历史数据"){
-      //   $('#time-selector1').show()
-      // }else{
-      //   $('#time-selector1').hide()
-      // }
+      if(this.innerHTML == "历史数据"){
+        $('#time-selector1').show()
+      }else{
+        $('#time-selector1').hide()
+      }
     })
     laydate.render({
       elem: '#time-selector1'

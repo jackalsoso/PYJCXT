@@ -1,11 +1,13 @@
 .structural2-top .content ul li {
     height: calc((100% - 40px) / 5);
 }
+
 .structural4-top .content ul li {
     height: calc((100% - 40px) / 4);
 }
-.structural4-top .sel1{
-  height: 32px;
+
+.structural4-top .sel1 {
+    height: 32px;
     line-height: 32px;
     background: #191934;
     font-size: 14px;
@@ -15,4 +17,6 @@
     cursor: pointer;
     padding: 0 8px;
     margin-top: 5px;
+    position: absolute;
+    top: 50px;
 }
