@@ -106,7 +106,7 @@
       </ul>
     </div>
     <div class="page-body">
-      <div class="page-box time-top">
+      <div class="page-box time-top" style="height: calc(100% - 366px);">
         <!-- <div class="title">
           <span>BIM模型</span>
         </div> -->
@@ -188,7 +188,7 @@
           </div>
         </div> -->
       </div>
-      <div class="time-bottom" style="bottom: 110px;">
+      <div class="time-bottom" style="bottom: 38px;">
         <div class="page-box" id="check1-page">
           <!-- <div class="title">
             <span>结构应力</span>
@@ -672,7 +672,18 @@
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script type="text/javascript" src="./js/mock.js"></script>
   <script type="text/javascript">
-
+    $('#check1-page').css('display', 'none')
+    $('#check2-page').css('display', 'none')
+    $('#check3-page').css('display', 'none')
+    $('#check4-page').css('display', 'none')
+    $('#check5-page').css('display', 'none')
+    $('#check6-page').css('display', 'none')
+    $('#check7-page').css('display', 'none')
+    $('#check8-page').css('display', 'none')
+    $('#check9-page').css('display', 'none')
+    $('#check10-page').css('display', 'none')
+    $('#check11-page').css('display', 'none')
+    $('#check12-page').css('display', 'none')
     var unity
     var unityReady = false
 
@@ -686,35 +697,44 @@
     function OnCrossSectionLoaded() {
 
     }
-    var jcxarr = []
-    var oUl1 = document.getElementsByClassName('time-bottom')[0];
-    var oLi = oUl1.getElementsByClassName('page-box');
-    console.log(oUl1)
-    console.log(oLi)
-    // oUl1.appendChild(oLi[0]);//oLi[0]放到最后一位
-    //oUl1.insertBefore(oLi[0]);//oLi[0]放到第一位
-    for (let i = 0; i < oLi.length; i++) {
-      oLi[i].style.display = 'none';
+    function CallBackWGL_LoadMeasurePoint() {
+
+    }
+    let _checkarr = []
+    let _selObj = {
+      '应力': '#check1-page',
+      '挠度': '#check2-page',
+      '空间变位': '#check3-page',
+      '拉索振动': '#check4-page',
+      '梁端位移': '#check5-page',
+      '阻尼器位移': '#check6-page',
+      '横向支座位移': '#check7-page',
+      '温度': '#check8-page',
+      '温湿度': '#check9-page',
+      '风速': '#check10-page',
+      '动力特性': '#check11-page',
+      '地震、船撞': '#check12-page',
     }
     //选择测点
     function SelectMonitorPoint(type, name) {
       console.log(type)
       console.log(name)
-      var first = document.getElementsByClassName('time-bottom')[0].firstChild;
-      for (let i = 0; i < oLi.length; i++) {
-        // console.log(oLi[i].children[0].children[0].children[1].innerText)
-        // debugger
-        if(oLi[i].children[0].children[0].children[1].innerText == type){
-          // $('#' + $(this).attr('id') + '-page').css('display', 'block')
-          $('#check1-page').css('display', 'block')//样式崩了
-          // oLi[i].style.display = 'block';
-          // oLi[i].insertBefore(oLi[i],first);//oLi[i]放到第一位
-          
-        }else{
-          oLi[i].style.display = 'none';
-        }
+      // debugger
+      // let curPageBox = $(_selObj[type]),
+      //   firstPageBox = curPageBox.siblings()[0];
+      // curPageBox.css('display', 'block')
+      // curPageBox.insertBefore(firstPageBox)
+
+      let curPageBox = $(_selObj[type]),
+        _siblingsBox = curPageBox.siblings().filter(function () { return $(this).css('display') != 'none' })
+      console.log(_siblingsBox)
+      if (_siblingsBox.length > 2) {
+        _siblingsBox.eq(_siblingsBox.length - 1).css('display', 'none')
       }
-      
+      curPageBox.css('display', 'block')
+      curPageBox.insertBefore(_siblingsBox[0])
+      $(window).trigger('resize');
+
 
     }
     function bthclick(v) {
@@ -739,6 +759,7 @@
     //unity加载完成后
     function OnSceneLoaded() {
       //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+      unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
     }
 
     let init = function () {
@@ -1002,17 +1023,32 @@
       myChart10.setOption(option2, true);
       myChart11.setOption(option2, true);
       myChart12.setOption(option2, true);
-      setTimeout(() => {
-        $('#check4-page').css('display', 'none')
-        $('#check5-page').css('display', 'none')
-        $('#check6-page').css('display', 'none')
-        $('#check7-page').css('display', 'none')
-        $('#check8-page').css('display', 'none')
-        $('#check9-page').css('display', 'none')
-        $('#check10-page').css('display', 'none')
-        $('#check11-page').css('display', 'none')
-        $('#check12-page').css('display', 'none')
-      }, 1000)
+      $(window).resize(myChart1.resize);
+      $(window).resize(myChart2.resize);
+      $(window).resize(myChart3.resize);
+      $(window).resize(myChart4.resize);
+      $(window).resize(myChart5.resize);
+      $(window).resize(myChart6.resize);
+      $(window).resize(myChart7.resize);
+      $(window).resize(myChart8.resize);
+      $(window).resize(myChart9.resize);
+      $(window).resize(myChart10.resize);
+      $(window).resize(myChart11.resize);
+      $(window).resize(myChart12.resize);
+      // setTimeout(() => {
+      // $('#check1-page').css('display', 'none')
+      // $('#check2-page').css('display', 'none')
+      // $('#check3-page').css('display', 'none')
+      // $('#check4-page').css('display', 'none')
+      // $('#check5-page').css('display', 'none')
+      // $('#check6-page').css('display', 'none')
+      // $('#check7-page').css('display', 'none')
+      // $('#check8-page').css('display', 'none')
+      // $('#check9-page').css('display', 'none')
+      // $('#check10-page').css('display', 'none')
+      // $('#check11-page').css('display', 'none')
+      // $('#check12-page').css('display', 'none')
+      // }, 100)
     }
     //所有检测项和测点   mock
     // Mock.mock(

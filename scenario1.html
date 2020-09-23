@@ -14,6 +14,8 @@
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
   <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
 </head>
 
 <body>
@@ -90,17 +92,16 @@
 
 
         <div class="page-box time-top">
-          <div class="title">
+          <!-- <div class="title">
             <span>BIM模型</span>
             <span class="title-right">
-              <!-- <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
               <div class="title-right-tip">
                 说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
-              </div> -->
+              </div>
             </span>
-          </div>
-          <div class="content">
-            <!-- <div class="header">
+          </div> -->
+          <!-- <div class="header">
               <ul class="legend legend1">
                 <li>概率密度</li>
                 <li>累计概率</li>
@@ -115,9 +116,58 @@
             <div class="chart-wrap">
               <div class="chart" id="chart3"></div>
             </div> -->
-            <div class="imgbox">
+          <!-- <div class="imgbox">
               <img style="width: 100%;height: 347px" src="./images/simple3.jpg" border="0" />
+            </div> -->
+          <div class="content" style="height:100%">
+            <!-- <div class="check-box" style="width:93%">
+              <p><input class="checkAll" data-action="all" type="checkbox" value="" name="category" checked /> 全选</p>
+              <p><input class="check" type="checkbox" value="应力" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon1.png" class="checkImg" name='1' /> 应力</p>
+              <p><input class="check" type="checkbox" value="挠度" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon2.png" class="checkImg" name='2' /> 挠度</p>
+              <p><input class="check" type="checkbox" value="空间变位" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon3.png" class="checkImg" name='3' /> 空间变位</p>
+              <p><input class="check" type="checkbox" value="拉索震动" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon4.png" class="checkImg" name='4' /> 拉索震动</p>
+              <p><input class="check" type="checkbox" value="梁端位移" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon5.png" class="checkImg" name='5' /> 梁端位移</p>
+              <p><input class="check" type="checkbox" value="阻尼器位移" name="category" checked
+                  style="display: none;" /><img src="./images/ckicon6.png" class="checkImg" name='6' /> 阻尼器位移</p>
+              <p><input class="check" type="checkbox" value="横向支座位移" name="category" checked
+                  style="display: none;" /><img src="./images/ckicon7.png" class="checkImg" name='7' /> 横向支座位移</p>
+              <p><input class="check" type="checkbox" value="温度" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon8.png" class="checkImg" name='8' /> 温度</p>
+              <p><input class="check" type="checkbox" value="温湿度" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon9.png" class="checkImg" name='9' /> 温湿度</p>
+              <p><input class="check" type="checkbox" value="风速" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon10.png" class="checkImg" name='10' /> 风速</p>
+              <p><input class="check" type="checkbox" value="动力特性" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon11.png" class="checkImg" name='11' /> 动力特性</p>
+              <p><input class="check" type="checkbox" value="地震、船撞" name="category" checked
+                  style="display: none;" /><img src="./images/ckicon12.png" class="checkImg" name='12' /> 地震、船撞</p>
+            </div> -->
+            <div class="tip-check">
+              <div class="box">
+                <label class="custom-checkbox">
+                  <input id="xuhuacheck" type="checkbox">
+                  <!-- <input  type="checkbox" onclick="if(this.checked){ alert('选中协议,允许bai注册!duzhi');}else{alert('请选择同意协dao议后注册!');}"> -->
+                  <span></span>
+
+                </label>
+                <div class="custom-txt">虚化</div>
+              </div>
+              <div class="box">
+                <label class="custom-checkbox">
+                  <input id="huanjincheck" type="checkbox" checked>
+                  <span></span>
+
+                </label>
+                <div class="custom-txt">环境</div>
+              </div>
             </div>
+            <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
+            <!-- <img src="./images/simple3.jpg" border="0" /> -->
           </div>
         </div>
         <div class="two-page-box">
@@ -140,7 +190,8 @@
                   <!-- <select>
                     <option value="轴力、弯矩">轴力、弯矩</option>
                   </select> -->
-                  <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  <input type="text" id="time-selector1" class="time-selector"
+                    value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -168,7 +219,8 @@
                   <select>
                     <option value="YL-A1-B-01，效应">YL-A1-B-01，效应</option>
                   </select>
-                  <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
+                  <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00"
+                    style="width:160px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -210,6 +262,65 @@
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script type="text/javascript" src="./js/mock.js"></script>
   <script type="text/javascript">
+    var unity
+    var unityReady = false
+
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    function CallBackWGL_LoadMeasurePoint() {
+
+    }
+    let _checkarr = []
+    let _selObj = {
+      '应力': '#check1-page',
+      '挠度': '#check2-page',
+      '空间变位': '#check3-page',
+      '拉索振动': '#check4-page',
+      '梁端位移': '#check5-page',
+      '阻尼器位移': '#check6-page',
+      '横向支座位移': '#check7-page',
+      '温度': '#check8-page',
+      '温湿度': '#check9-page',
+      '风速': '#check10-page',
+      '动力特性': '#check11-page',
+      '地震、船撞': '#check12-page',
+    }
+    //选择测点
+    function SelectMonitorPoint(type) {
+      console.log(type)
+    }
+    function bthclick(v) {
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
+    }
+    // function checktype(item) {
+    //   var index;
+    //   for (var idx = 0; idx < typenamelist.length; idx++) {
+    //     if (item.value == typenamelist[idx]) {
+    //       index = idx;
+    //     }
+    //   }
+    //   if (item.checked) {
+    //     typenamelist.push(item.value)
+    //   } else {
+    //     typenamelist.splice(index, 1)
+    //   }
+    //   unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    // }
+
+
+    //unity加载完成后
+    function OnSceneLoaded() {
+      //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+      unity.SendMessage("GameManager", "CallBackWGL_LoadCrossSection", "")
+    }
     let init = function () {
 
       //调用mock方法模拟数据
@@ -562,45 +673,45 @@
       // myChart2.setOption(option2, true);//html注释掉的
       myChart3.setOption(option3, true);
     }
-    Mock.mock(
-      'GET data-analysis/compute/param/bridges/:bridgeId/effectNameList', {
-      "effectNameList": [
-        "断面1-A",
-        "断面1-B",
-        "断面1-C",
-        "断面1-D",
-        "断面1-E",
-        "断面1-F",
-        "断面1-G",
-        "断面1-H"
-      ]
-    },
-    );
-    Mock.mock(
-      'GET data-analysis/load/effect/bridges/:bridgeId/points/:point?startDatetime=xxx&endDatetime=xxx', {
-      "countType": "ONE_HOUR",
-      "list": [
-        {
-          "x": "2020-09-02 00",
-          "y": [
-            2313.988236546
-          ]
-        },
-        {
-          "x": "2020-09-02 01",
-          "y": [
-            2298.369461199
-          ]
-        },
-        {
-          "x": "2020-09-02 02",
-          "y": [
-            0.0
-          ]
-        }
-      ]
-    },
-    );
+    // Mock.mock(
+    //   'GET data-analysis/compute/param/bridges/:bridgeId/effectNameList', {
+    //   "effectNameList": [
+    //     "断面1-A",
+    //     "断面1-B",
+    //     "断面1-C",
+    //     "断面1-D",
+    //     "断面1-E",
+    //     "断面1-F",
+    //     "断面1-G",
+    //     "断面1-H"
+    //   ]
+    // },
+    // );
+    // Mock.mock(
+    //   'GET data-analysis/load/effect/bridges/:bridgeId/points/:point?startDatetime=xxx&endDatetime=xxx', {
+    //   "countType": "ONE_HOUR",
+    //   "list": [
+    //     {
+    //       "x": "2020-09-02 00",
+    //       "y": [
+    //         2313.988236546
+    //       ]
+    //     },
+    //     {
+    //       "x": "2020-09-02 01",
+    //       "y": [
+    //         2298.369461199
+    //       ]
+    //     },
+    //     {
+    //       "x": "2020-09-02 02",
+    //       "y": [
+    //         0.0
+    //       ]
+    //     }
+    //   ]
+    // },
+    // );
     //初始化vue
     var app = new Vue({
       el: '#app',
@@ -689,6 +800,7 @@
         }
       },
       mounted() {
+        unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
         this.getAllMesurePoints()
       },
       methods: {
@@ -719,39 +831,39 @@
             method: 'get',
             url: "GET data-analysis/load/effect/bridges/:bridgeId/points/:point?startDatetime=xxx&endDatetime=xxx",
           })
-          .then(function (res) {
-            if (res.status == 200) {
-              thiz.option1.xAxis.data = []
-              thiz.option1.series[0].data = []
-              console.log(res.data)
-              // this.option1.
-              for (let i = 0; i < res.data.list.length; i++) {
-                thiz.option1.xAxis.data.push(res.data.list[i].x)
-                thiz.option1.series[0].data.push(res.data.list[i].y[0])
+            .then(function (res) {
+              if (res.status == 200) {
+                thiz.option1.xAxis.data = []
+                thiz.option1.series[0].data = []
+                console.log(res.data)
+                // this.option1.
+                for (let i = 0; i < res.data.list.length; i++) {
+                  thiz.option1.xAxis.data.push(res.data.list[i].x)
+                  thiz.option1.series[0].data.push(res.data.list[i].y[0])
+                }
+                myChart1.setOption(thiz.option1, true);
               }
-              myChart1.setOption(thiz.option1, true);
-            }
-          })
-          .catch(err => {
-          });
+            })
+            .catch(err => {
+            });
         }
       }
     })
 
-    $('.page-box').on('click', '.header-left li', function(){
+    $('.page-box').on('click', '.header-left li', function () {
       $(this).addClass('active').siblings().removeClass('active')
     })
 
     laydate.render({
       elem: '#time-selector1'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector3'
-      ,type: 'datetime'
+      , type: 'datetime'
     });
-    </script>
+  </script>
   </script>
 </body>
 
