@@ -58,12 +58,12 @@
 
 .right .check-box {
   position: absolute;
-  top: 40px;
+  top: 0px;
   left: 0;
   height: 40px;
   padding: 10px 20px;
   line-height: 22px;
-  z-index: 100;
+  z-index: 98;
   color: #fff;
   width: 100%;
 }

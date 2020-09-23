@@ -15,16 +15,31 @@
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
-  <title>浦仪监测系统</title>
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
   <script src="TemplateData/UnityProgress.js"></script>
   <script src="Build/UnityLoader.js"></script>
 
 </head>
+<style>
+  .time-bottom .page-box {
+    height: 340px;
+  }
+
+  .time-top .content {
+    padding: 0px;
+    display: flex;
+  }
+
+  .header-mid {
+    display: flex;
+    align-items: center;
+  }
+</style>
 
 <body>
   <div class="page-controller" id="app">
     <div class="page-header">
-      <div class="logo">浦仪监测系统</div>
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
       <div class="user">
         <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="themes-picker">
@@ -92,41 +107,42 @@
     </div>
     <div class="page-body">
       <div class="page-box time-top">
-        <div class="title">
+        <!-- <div class="title">
           <span>BIM模型</span>
-        </div>
+        </div> -->
         <!-- <div class="title">
           <span>IBM模型</span><span>
             <input type="button" value="正常" onclick="bthclick(this)">
             <input type="button" value="预警" onclick="bthclick(this)">
             <input type="button" value="无数据" onclick="bthclick(this)"></span>
         </div> -->
-        <div class="content">
+        <div class="content" style="height:100%">
           <div class="check-box" style="width:93%">
-            <p><input id="check1" class="check" type="checkbox" value="应力" name="category" checked style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon1.png" name ='1'/> 应力</p>
-            <p><input id="check2" class="check" type="checkbox" value="" name="category" checked style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon2.png" name ='2'/> 挠度</p>
-            <p><input id="check3" class="check" type="checkbox" value="" name="category" checked style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon3.png" name ='3'/> 空间变位</p>
-            <p><input id="check4" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon4_grey.png" name ='4'/> 拉索振动</p>
-            <p><input id="check5" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon5_grey.png" name ='5'/> 梁端位移</p>
-            <p><input id="check6" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon6_grey.png" name ='6'/> 阻尼器位移</p>
-            <p><input id="check7" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon7_grey.png" name ='7'/> 横向支座位移</p>
-            <p><input id="check8" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon8_grey.png" name ='8'/> 温度</p>
-            <p><input id="check9" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon9_grey.png" name ='9'/> 温湿度</p>
-            <p><input id="check10" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon10_grey.png" name ='10'/> 风速</p>
-            <p><input id="check11" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon11_grey.png" name ='11'/> 动力特性</p>
-            <p><input id="check12" class="check" type="checkbox" value="" name="category" style="display: none;"/><img
-                class='time1CheckImg' src="./images/ckicon12_grey.png" name ='12'/> 地震、船撞</p>
+            <p><input class="checkAll" data-action="all" type="checkbox" value="" name="category" checked /> 全选</p>
+            <p><input class="check" type="checkbox" value="应力" name="category" checked style="display: none;" /><img
+                src="./images/ckicon1.png" class="checkImg" name='1' /> 应力</p>
+            <p><input class="check" type="checkbox" value="挠度" name="category" checked style="display: none;" /><img
+                src="./images/ckicon2.png" class="checkImg" name='2' /> 挠度</p>
+            <p><input class="check" type="checkbox" value="空间变位" name="category" checked style="display: none;" /><img
+                src="./images/ckicon3.png" class="checkImg" name='3' /> 空间变位</p>
+            <p><input class="check" type="checkbox" value="拉索震动" name="category" checked style="display: none;" /><img
+                src="./images/ckicon4.png" class="checkImg" name='4' /> 拉索震动</p>
+            <p><input class="check" type="checkbox" value="梁端位移" name="category" checked style="display: none;" /><img
+                src="./images/ckicon5.png" class="checkImg" name='5' /> 梁端位移</p>
+            <p><input class="check" type="checkbox" value="阻尼器位移" name="category" checked style="display: none;" /><img
+                src="./images/ckicon6.png" class="checkImg" name='6' /> 阻尼器位移</p>
+            <p><input class="check" type="checkbox" value="横向支座位移" name="category" checked style="display: none;" /><img
+                src="./images/ckicon7.png" class="checkImg" name='7' /> 横向支座位移</p>
+            <p><input class="check" type="checkbox" value="温度" name="category" checked style="display: none;" /><img
+                src="./images/ckicon8.png" class="checkImg" name='8' /> 温度</p>
+            <p><input class="check" type="checkbox" value="温湿度" name="category" checked style="display: none;" /><img
+                src="./images/ckicon9.png" class="checkImg" name='9' /> 温湿度</p>
+            <p><input class="check" type="checkbox" value="风速" name="category" checked style="display: none;" /><img
+                src="./images/ckicon10.png" class="checkImg" name='10' /> 风速</p>
+            <p><input class="check" type="checkbox" value="动力特性" name="category" checked style="display: none;" /><img
+                src="./images/ckicon11.png" class="checkImg" name='11' /> 动力特性</p>
+            <p><input class="check" type="checkbox" value="地震、船撞" name="category" checked style="display: none;" /><img
+                src="./images/ckicon12.png" class="checkImg" name='12' /> 地震、船撞</p>
           </div>
           <div class="tip-check">
             <div class="box">
@@ -174,20 +190,22 @@
       </div>
       <div class="time-bottom" style="bottom: 110px;">
         <div class="page-box" id="check1-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>结构应力</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">应力</div>
               <div class="header-right">
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none; width:320px">
+                <input type="text" id="time-selector1" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none; width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -209,20 +227,22 @@
         </div>
 
         <div class="page-box" id="check2-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>挠度</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">挠度</div>
               <div class="header-right">
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector2" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -244,15 +264,16 @@
         </div>
 
         <div class="page-box" id="check3-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>空间变位</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">空间变位</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -260,7 +281,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector3" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -282,15 +304,16 @@
         </div>
 
         <div class="page-box" id="check4-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>拉索振动</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">拉索震动</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -298,7 +321,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector4" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -320,15 +344,16 @@
         </div>
 
         <div class="page-box" id="check5-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>梁端位移</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">梁端位移</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -336,7 +361,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector5" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector5" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -358,15 +384,16 @@
         </div>
 
         <div class="page-box" id="check6-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>阻尼器位移</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">阻尼器位移</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -374,7 +401,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector6" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector6" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -396,15 +424,16 @@
         </div>
 
         <div class="page-box" id="check7-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>横向支座位移</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">横向支座位移</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -412,7 +441,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector7" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector7" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -434,15 +464,16 @@
         </div>
 
         <div class="page-box" id="check8-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>温度</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">温度</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -450,7 +481,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector8" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector8" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -472,15 +504,16 @@
         </div>
 
         <div class="page-box" id="check9-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>温湿度</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">温湿度</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -488,7 +521,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector9" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector9" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -510,15 +544,16 @@
         </div>
 
         <div class="page-box" id="check10-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>风速</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">风速</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -526,7 +561,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector10" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector10" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -548,15 +584,16 @@
         </div>
 
         <div class="page-box" id="check11-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>动力特性</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">动力特性</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -564,7 +601,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector11" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector11" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -586,15 +624,16 @@
         </div>
 
         <div class="page-box" id="check12-page">
-          <div class="title">
+          <!-- <div class="title">
             <span>地震、船撞</span>
-          </div>
+          </div> -->
           <div class="content">
             <div class="header">
               <ul class="header-left">
                 <li class="active">实时</li>
                 <li>历史数据</li>
               </ul>
+              <div class="header-mid">地震、船撞</div>
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
@@ -602,7 +641,8 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector12" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector12" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -636,7 +676,7 @@
     var unity
     var unityReady = false
 
-    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "合并形状"]
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
 
     //测点加载完成
     function OnPointLoaded() {
@@ -646,8 +686,35 @@
     function OnCrossSectionLoaded() {
 
     }
+    var jcxarr = []
+    var oUl1 = document.getElementsByClassName('time-bottom')[0];
+    var oLi = oUl1.getElementsByClassName('page-box');
+    console.log(oUl1)
+    console.log(oLi)
+    // oUl1.appendChild(oLi[0]);//oLi[0]放到最后一位
+    //oUl1.insertBefore(oLi[0]);//oLi[0]放到第一位
+    for (let i = 0; i < oLi.length; i++) {
+      oLi[i].style.display = 'none';
+    }
     //选择测点
-    function SelectMonitorPoint() {
+    function SelectMonitorPoint(type, name) {
+      console.log(type)
+      console.log(name)
+      var first = document.getElementsByClassName('time-bottom')[0].firstChild;
+      for (let i = 0; i < oLi.length; i++) {
+        // console.log(oLi[i].children[0].children[0].children[1].innerText)
+        // debugger
+        if(oLi[i].children[0].children[0].children[1].innerText == type){
+          // $('#' + $(this).attr('id') + '-page').css('display', 'block')
+          $('#check1-page').css('display', 'block')//样式崩了
+          // oLi[i].style.display = 'block';
+          // oLi[i].insertBefore(oLi[i],first);//oLi[i]放到第一位
+          
+        }else{
+          oLi[i].style.display = 'none';
+        }
+      }
+      
 
     }
     function bthclick(v) {
@@ -786,7 +853,7 @@
           }
         },
         grid: {
-          left: 0,
+          left: 6,
           top: 30,
           right: 10,
           bottom: 17,
@@ -965,7 +1032,7 @@
       el: '#app',
       data: {
         select1name: "",
-        carouselItem:[
+        carouselItem: [
           './images/simple2.jpg',
         ]
       },
@@ -1014,78 +1081,153 @@
         unity.SendMessage("GameManager", "SetEnvir", "false")
       }
     })
-    let _checkarr = ['check1', 'check2', 'check3']
-    $('.check-box').on('click', 'input', function () {
+    // let _checkarr = ['check1', 'check2', 'check3']
+    // $('.check-box').on('click', 'input', function () {
+    //   // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
+    //   // console.log(_seledLen)
+    //   if ($(this).is(':checked')) {
+    //     _checkarr.push($(this).attr('id'))
+
+    //     if (_checkarr.length > 3) {
+    //       $('#' + _checkarr[0]).prop('checked', false)
+    //       $('#' + _checkarr[0] + '-page').css('display', 'none')
+    //       _checkarr.splice(0, 1)
+
+    //     }
+    //     $('#' + $(this).attr('id') + '-page').css('display', 'block')
+
+
+    //   } else {
+
+    //     let _idx = _checkarr.indexOf($(this).attr('id'))
+    //     // debugger
+    //     if (_idx != -1) {
+    //       $('#' + _checkarr[_idx] + '-page').css('display', 'none')
+    //       _checkarr.splice(_idx, 1)
+
+    //     }
+    //   }
+    //   for (let i = 0; i < $('.check').length; i++) {
+
+    //     if ($('.check')[i].checked) {
+
+    //       $('.time1CheckImg')[i].src = `./images/ckicon${i + 1}.png`
+    //     } else {
+    //       $('.time1CheckImg')[i].src = `./images/ckicon${i + 1}_grey.png`
+    //     }
+    //   }
+    // })
+    //图片点击事件触发
+    $('.time1CheckImg').on('click', function (event) {
+      debugger
       // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
-      // console.log(_seledLen)
-      if ($(this).is(':checked')) {
-        _checkarr.push($(this).attr('id'))
-      
+
+      if ($('.check')[event.target.name - 0 - 1].checked) {
+        $('.check')[event.target.name - 0 - 1].checked = false
+
+        let _idx = _checkarr.indexOf(`check${event.target.name - 0}`)
+        // debugger
+
+        if (_idx != -1) {
+          $('#' + _checkarr[_idx] + '-page').css('display', 'none')
+          _checkarr.splice(_idx, 1)
+
+        }
+      } else {
+        $('.check')[event.target.name - 0 - 1].checked = true
+        _checkarr.push(`check${event.target.name - 0}`)
+
         if (_checkarr.length > 3) {
           $('#' + _checkarr[0]).prop('checked', false)
           $('#' + _checkarr[0] + '-page').css('display', 'none')
           _checkarr.splice(0, 1)
 
         }
-        $('#' + $(this).attr('id') + '-page').css('display', 'block')
-
-       
-      } else {
-
-        let _idx = _checkarr.indexOf($(this).attr('id'))
-        // debugger
-        if (_idx != -1) {
-          $('#' + _checkarr[_idx] + '-page').css('display', 'none')
-          _checkarr.splice(_idx, 1)
-        
-        }
+        $('#' + `check${event.target.name - 0}` + '-page').css('display', 'block')
       }
-      for(let i = 0 ; i <$('.check').length; i++){
-       
-        if($('.check')[i].checked){
-         
-          $('.time1CheckImg')[i].src = `./images/ckicon${i+1}.png`
-        }else {
-          $('.time1CheckImg')[i].src = `./images/ckicon${i+1}_grey.png`
+
+      for (let i = 0; i < $('.check').length; i++) {
+        console.log($('.check')[i].checked)
+        if ($('.check')[i].checked) {
+
+          $('.time1CheckImg')[i].src = `./images/ckicon${i + 1}.png`
+        } else {
+          $('.time1CheckImg')[i].src = `./images/ckicon${i + 1}_grey.png`
         }
       }
     })
-    //图片点击事件触发
-    $('.time1CheckImg').on('click', function (event) {
-      // let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
-  
-      if($('.check')[event.target.name-0-1].checked){
-        $('.check')[event.target.name-0-1].checked = false
+    //全选事件
+    $('.check-box').on('click', 'input', function () {
+      // debugger
+      console.log($('.check'))
+      //循环遍历改变每张图片的url
+      console.log($('.checkImg'))
+      for (let i = 0; i < $('.check').length; i++) {
+        if ($('.check')[i].checked) {
+          $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "")
+        } else {
+          $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
 
-        let _idx = _checkarr.indexOf(`check${event.target.name-0}`)
-        // debugger
-       
-        if (_idx != -1) {
-          $('#' + _checkarr[_idx] + '-page').css('display', 'none')
-          _checkarr.splice(_idx, 1)
-      
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索震动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
         }
-      }else {
-        $('.check')[event.target.name-0-1].checked = true
-        _checkarr.push(`check${event.target.name-0}`)
 
-        if (_checkarr.length > 3) {
-          $('#' + _checkarr[0]).prop('checked', false)
-          $('#' + _checkarr[0] + '-page').css('display', 'none')
-          _checkarr.splice(0, 1)
-
-        }
-        $('#' + `check${event.target.name-0}` + '-page').css('display', 'block')
       }
-  
-      for(let i = 0 ; i <$('.check').length; i++){
-        console.log($('.check')[i].checked)
-        if($('.check')[i].checked){
-         
-          $('.time1CheckImg')[i].src = `./images/ckicon${i+1}.png`
-        }else {
-          $('.time1CheckImg')[i].src = `./images/ckicon${i+1}_grey.png`
+      if ($(this).attr('data-action') == 'all') {
+        if ($(this).is(':checked')) {
+
+          $('.check-box').find('.check').prop('checked', true)
+          for (let i = 0; i < $('.check').length; i++) {
+            $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+          }
+        } else {
+
+          $('.check-box').find('.check').prop('checked', false)
+          for (let i = 0; i < $('.check').length; i++) {
+            $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
+          }
         }
+      } else {
+        let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
+
+        if (_seledLen < 12) {
+          $('.checkAll').prop('checked', false)
+
+        } else {
+          $('.checkAll').prop('checked', true)
+
+        }
+      }
+    })
+    //全选框后面的切换图片事件
+    var checkarr = ["应力", "挠度", "空间变位", "拉索震动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+    $('.check-box').on('click', 'img', function (event) {
+      // debugger
+      console.log(event, event.target.name - 0)
+
+
+      if ($('.check')[event.target.name - 0 - 1].checked) {
+        console.log($('.check')[event.target.name - 0 - 1].value)
+        $('.check')[event.target.name - 0 - 1].checked = false
+        checkarr[event.target.name - 0 - 1] = ""
+        console.log(checkarr)
+        unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", checkarr.join(","))
+        $('.checkImg')[event.target.name - 0 - 1].src = `./images/ckicon${event.target.name - 0}_grey.png`
+      } else {
+        $('.check')[event.target.name - 0 - 1].checked = true
+        checkarr[event.target.name - 0 - 1] = $('.check')[event.target.name - 0 - 1].value
+        console.log(checkarr)
+        unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", checkarr.join(","))
+        $('.checkImg')[event.target.name - 0 - 1].src = `./images/ckicon${event.target.name - 0}.png`
+      }
+      let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
+
+      if (_seledLen < 12) {
+        $('.checkAll').prop('checked', false)
+
+      } else {
+        $('.checkAll').prop('checked', true)
+
       }
     })
 
@@ -1093,71 +1235,71 @@
     $('.page-box').on('click', '.header-left li', function () {
       // debugger
       $(this).addClass('active').siblings().removeClass('active')
-      if(this.innerHTML == "历史数据"){
+      if (this.innerHTML == "历史数据") {
         $('#time-selector1').show()
-      }else{
+      } else {
         $('#time-selector1').hide()
       }
     })
     laydate.render({
       elem: '#time-selector1'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector2'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector3'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector4'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector5'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector6'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector7'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector8'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector9'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector10'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector11'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
     laydate.render({
       elem: '#time-selector12'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
   </script>
 </body>

@@ -11,7 +11,7 @@
   <script type="text/javascript" src="./js/axios.min.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
-  <title>浦仪监测系统</title>
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
   <script src="TemplateData/UnityProgress.js"></script>
   <script src="Build/UnityLoader.js"></script>
 </head>
@@ -19,7 +19,7 @@
 <body>
   <div class="page-controller" id="appall">
     <div class="page-header">
-      <div class="logo">浦仪监测系统</div>
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
       <div class="user">
         <div class="datetimer">2020年05月11日 周一 19 : 46</div>
         <div class="themes-picker">
@@ -115,27 +115,27 @@
             <p><input class="checkAll" data-action="all" type="checkbox" value="" name="category" checked /> 全选</p>
             <p><input class="check" type="checkbox" value="应力" name="category" checked style="display: none;" /><img
                 src="./images/ckicon1.png" class="checkImg" name='1' /> 应力</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="挠度" name="category" checked style="display: none;" /><img
                 src="./images/ckicon2.png" class="checkImg" name='2' /> 挠度</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="空间变位" name="category" checked style="display: none;" /><img
                 src="./images/ckicon3.png" class="checkImg" name='3' /> 空间变位</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
-                src="./images/ckicon4.png" class="checkImg" name='4' /> 拉索振动</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="拉索震动" name="category" checked style="display: none;" /><img
+                src="./images/ckicon4.png" class="checkImg" name='4' /> 拉索震动</p>
+            <p><input class="check" type="checkbox" value="梁端位移" name="category" checked style="display: none;" /><img
                 src="./images/ckicon5.png" class="checkImg" name='5' /> 梁端位移</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="阻尼器位移" name="category" checked style="display: none;" /><img
                 src="./images/ckicon6.png" class="checkImg" name='6' /> 阻尼器位移</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="横向支座位移" name="category" checked style="display: none;" /><img
                 src="./images/ckicon7.png" class="checkImg" name='7' /> 横向支座位移</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="温度" name="category" checked style="display: none;" /><img
                 src="./images/ckicon8.png" class="checkImg" name='8' /> 温度</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="温湿度" name="category" checked style="display: none;" /><img
                 src="./images/ckicon9.png" class="checkImg" name='9' /> 温湿度</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="风速" name="category" checked style="display: none;" /><img
                 src="./images/ckicon10.png" class="checkImg" name='10' /> 风速</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="动力特性" name="category" checked style="display: none;" /><img
                 src="./images/ckicon11.png" class="checkImg" name='11' /> 动力特性</p>
-            <p><input class="check" type="checkbox" value="" name="category" checked style="display: none;" /><img
+            <p><input class="check" type="checkbox" value="地震、船撞" name="category" checked style="display: none;" /><img
                 src="./images/ckicon12.png" class="checkImg" name='12' /> 地震、船撞</p>
           </div>
           <div class="tip-box">
@@ -961,14 +961,18 @@
       }
     })
     $('.check-box').on('click', 'input', function () {
+      // debugger
       console.log($('.check'))
       //循环遍历改变每张图片的url
       console.log($('.checkImg'))
       for (let i = 0; i < $('.check').length; i++) {
         if ($('.check')[i].checked) {
           $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "")
         } else {
           $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
+          
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索震动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
         }
 
       }
@@ -998,15 +1002,24 @@
         }
       }
     })
+    var checkarr = ["应力","挠度","空间变位","拉索震动","梁端位移","阻尼器位移","横向支座位移","温度","温湿度","风速","动力特性","地震、船撞"]
     $('.check-box').on('click', 'img', function (event) {
+      // debugger
       console.log(event, event.target.name - 0)
 
 
       if ($('.check')[event.target.name - 0 - 1].checked) {
+        console.log($('.check')[event.target.name - 0 - 1].value)
         $('.check')[event.target.name - 0 - 1].checked = false
+        checkarr[event.target.name - 0 - 1] = ""
+        console.log(checkarr)
+        unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", checkarr.join(","))
         $('.checkImg')[event.target.name - 0 - 1].src = `./images/ckicon${event.target.name - 0}_grey.png`
       } else {
         $('.check')[event.target.name - 0 - 1].checked = true
+        checkarr[event.target.name - 0 - 1] = $('.check')[event.target.name - 0 - 1].value
+        console.log(checkarr)
+        unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", checkarr.join(","))
         $('.checkImg')[event.target.name - 0 - 1].src = `./images/ckicon${event.target.name - 0}.png`
       }
       let _seledLen = $('.check-box').find('input[type=checkbox].check:checked').length
