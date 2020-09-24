@@ -288,7 +288,7 @@
       });
 
       var option1 = {
-        color: ['#3698FD', '#00C853'],
+        color: ['#00C853', '#00C853'],
         xAxis: {
           name: '纵桥向位移：mm',
           nameTextStyle: {
@@ -547,7 +547,13 @@
           axisTick: {
             alignWithLabel: true
           },
-          data: ['16墩', '17墩', '18墩', '19墩', '20墩', '21墩', '22墩'],
+          data: ['', '16墩', '17墩', '18墩', '19墩', '20墩', '21墩', '22墩',''],
+          splitLine: { //坐标轴在 grid 区域中的分隔线。
+            show: true, //是否显示分隔线。默认数值轴显示，类目轴不显示。
+            lineStyle: { //分隔线样式
+              type: 'solid', //分隔线线的类型。								
+            },
+          }
         },
         yAxis: {
           // name: '概率密度',
@@ -581,7 +587,7 @@
         series: [{
           name: '左幅',
           type: 'line',
-          smooth: true,
+          // smooth: true,
           symbol: 'none',
           markLine: {
             symbol: 'none',
@@ -597,11 +603,11 @@
               {coord: [1, 192.2]}
             ]]
           },
-          data: [10,30,50,20,33,100,21]
+          data: ['',10,30,50,20,33,100,21,'',]
         }, {
           name: '右幅',
           type: 'line',
-          smooth: true,
+          // smooth: true,
           symbol: 'none',
           lineStyle: {
             type: 'solid'
@@ -620,7 +626,7 @@
               {coord: [1, 231.6]}
             ]]
           },
-          data: [20,33,80,37,23,49,21]
+          data: ['',20,33,80,37,23,49,21,'']
         }]
       }
 
