@@ -125,8 +125,8 @@
                 src="./images/ckicon2.png" class="checkImg" name='2' /> 挠度</p>
             <p><input class="check" type="checkbox" value="空间变位" name="category" checked style="display: none;" /><img
                 src="./images/ckicon3.png" class="checkImg" name='3' /> 空间变位</p>
-            <p><input class="check" type="checkbox" value="拉索震动" name="category" checked style="display: none;" /><img
-                src="./images/ckicon4.png" class="checkImg" name='4' /> 拉索震动</p>
+            <p><input class="check" type="checkbox" value="拉索振动" name="category" checked style="display: none;" /><img
+                src="./images/ckicon4.png" class="checkImg" name='4' /> 拉索振动</p>
             <p><input class="check" type="checkbox" value="梁端位移" name="category" checked style="display: none;" /><img
                 src="./images/ckicon5.png" class="checkImg" name='5' /> 梁端位移</p>
             <p><input class="check" type="checkbox" value="阻尼器位移" name="category" checked style="display: none;" /><img
@@ -981,7 +981,7 @@
         } else {
           $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
           
-          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索震动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索振动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
         }
 
       }
@@ -1011,7 +1011,7 @@
         }
       }
     })
-    var checkarr = ["应力","挠度","空间变位","拉索震动","梁端位移","阻尼器位移","横向支座位移","温度","温湿度","风速","动力特性","地震、船撞"]
+    var checkarr = ["应力","挠度","空间变位","拉索振动","梁端位移","阻尼器位移","横向支座位移","温度","温湿度","风速","动力特性","地震、船撞"]
     $('.check-box').on('click', 'img', function (event) {
       // debugger
       console.log(event, event.target.name - 0)
