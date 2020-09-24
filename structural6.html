@@ -6,11 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.min.js"></script>
   <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
   <script src="./js/laydate/laydate.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
   <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
 </head>
 <body>
   <div class="page-controller">
@@ -81,56 +85,36 @@
         </li><!-- 系统管理 -->
       </ul>
     </div>
-    <div class="page-body">
-      <div class="page-box time-top statistics-top" style="height: calc(100% - 440px);">
-        <div class="title">
+    <div class="page-body" style="overflow-y: hidden;">
+      <div class="page-box time-top statistics-top" style="height: calc(100% - 376px);">
+        <!-- <div class="title">
           <span>IBM模型</span>
-        </div>
-        <div class="content">
-          <!-- <ul>
-            <li data-menu="structural6">结构应力/Mpa</li>
-            <li data-menu="structural6">支座位移/Mpa</li>
-            <li data-menu="structural6">挠度/Mpa</li>
-            <li data-menu="structural6">温度/Mpa</li>
-            <li data-menu="structural6">空间变位/Mpa</li>
-            <li data-menu="structural6">温湿度/Mpa</li>
-            <li data-menu="structural6">索力/Mpa</li>
-            <li data-menu="structural6">风速/Mpa</li>
-            <li data-menu="structural6">伸缩缝/Mpa</li>
-            <li data-menu="structural6">动力特性/Mpa</li>
-            <li data-menu="structural6">阻尼器/Mpa</li>
-            <li data-menu="structural6">地震、船撞/Mpa</li>
-          </ul> -->
-          <div class="check-box">
-            <p><input id="check1" class="check" type="radio" value="应力" name="category" checked style="display: none;"/><img
-                class="checkSturalImg" name ='1' src="./images/ckicon1.png" /> 应力</p>
-            <p><input id="check2" class="check" type="radio" value="" name="category"  style="display: none;"/><img
-                class="checkSturalImg" name ='2' src="./images/ckicon2_grey.png" /> 挠度</p>
-            <p><input id="check3" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='3' src="./images/ckicon3_grey.png" /> 空间变位</p>
-            <p><input id="check4" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='4' src="./images/ckicon4_grey.png" /> 拉索振动</p>
-            <p><input id="check5" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='5' src="./images/ckicon5_grey.png" /> 梁端位移</p>
-            <p><input id="check6" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='6' src="./images/ckicon6_grey.png" /> 阻尼器位移</p>
-            <p><input id="check7" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='7' src="./images/ckicon7_grey.png" /> 横向支座位移</p>
-            <p><input id="check8" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='8' src="./images/ckicon8_grey.png" /> 温度</p>
-            <p><input id="check9" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='9' src="./images/ckicon9_grey.png" /> 温湿度</p>
-            <p><input id="check10" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='10' src="./images/ckicon10_grey.png" /> 风速</p>
-            <p><input id="check11" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='11' src="./images/ckicon11_grey.png" /> 动力特性</p>
-            <p><input id="check12" class="check" type="radio" value="" name="category" style="display: none;"/><img
-                class="checkSturalImg" name ='12' src="./images/ckicon12_grey.png" /> 地震、船撞</p>
-          </div>          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+        </div> -->
+        <div class="content" style="height:100%;position: relative;padding: 0;">
+          <!-- <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div> -->
+          <div class="tip-check">
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="xuhuacheck" type="checkbox">
+                <span></span>
+
+              </label>
+              <div class="custom-txt">虚化</div>
+            </div>
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="huanjincheck" type="checkbox" checked>
+                <span></span>
+
+              </label>
+              <div class="custom-txt">环境</div>
+            </div>
+          </div>
+          <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
         </div>
       </div>
 
-      <div class="time-bottom" style="height:410px">
+      <div class="time-bottom" style="height:340px">
         <div class="page-box" style="margin-bottom:0;float:left;width:calc((100% - 10px) / 2)">
             <div class="title">
               <span>相关性时程分析</span>
@@ -620,6 +604,78 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script type="text/javascript">
+  var unity
+    var unityReady = false
+
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    function CallBackWGL_LoadMeasurePoint() {
+
+    }
+    let _checkarr = []
+    let _selObj = {
+      '应力': '#check1-page',
+      '挠度': '#check2-page',
+      '空间变位': '#check3-page',
+      '拉索振动': '#check4-page',
+      '梁端位移': '#check5-page',
+      '阻尼器位移': '#check6-page',
+      '横向支座位移': '#check7-page',
+      '温度': '#check8-page',
+      '温湿度': '#check9-page',
+      '风速': '#check10-page',
+      '动力特性': '#check11-page',
+      '地震、船撞': '#check12-page',
+    }
+    //选择测点
+    function SelectMonitorPoint(type, name) {
+      console.log(type)
+      console.log(name)
+
+      // let curPageBox = $(_selObj[type]),
+      //   _siblingsBox = curPageBox.siblings().filter(function () { return $(this).css('display') != 'none' })
+      // console.log(_siblingsBox)
+      // if (_siblingsBox.length > 3) {
+      //   _siblingsBox.eq(_siblingsBox.length - 1).css('display', 'none')
+      // }
+      // curPageBox.css('display', 'block')
+      // curPageBox.insertBefore(_siblingsBox[0])
+      // $(window).trigger('resize');
+
+
+    }
+    function bthclick(v) {
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
+    }
+    // function checktype(item) {
+    //   var index;
+    //   for (var idx = 0; idx < typenamelist.length; idx++) {
+    //     if (item.value == typenamelist[idx]) {
+    //       index = idx;
+    //     }
+    //   }
+    //   if (item.checked) {
+    //     typenamelist.push(item.value)
+    //   } else {
+    //     typenamelist.splice(index, 1)
+    //   }
+    //   unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    // }
+
+
+    //unity加载完成后
+    function OnSceneLoaded() {
+      //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+      unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
+    }
     let init = function () {
       var data20 = [
         ["2020-05-12", 120, 220, 150, 320],
@@ -1126,7 +1182,60 @@
 
     }
   
- 
+    //初始化vue
+    var app = new Vue({
+      el: '#app',
+      data: {
+        select1name: "",
+        carouselItem: [
+          './images/simple2.jpg',
+        ]
+      },
+      mounted() {
+
+        //页面加载完成后调用
+        unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
+        this.getcedian()
+      },
+      methods: {
+        getcedian() {
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+            // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+          })
+            .then(function (res) {
+              console.log(res)
+              if (res.status == 200) {
+                console.log(res.data)
+                //所有检测项和测点
+              }
+
+            })
+            .catch(err => {
+
+            });
+        },
+
+      }
+    })
+    $('#xuhuacheck').on("click", function () {
+      if (this.checked == true) {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+      } else {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "true")
+      }
+    })
+    $('#huanjincheck').on("click", function () {
+      if (this.checked == true) {
+
+        unity.SendMessage("GameManager", "SetEnvir", "true")
+      } else {
+
+        unity.SendMessage("GameManager", "SetEnvir", "false")
+      }
+    })
     //radio框图片联动
     $('.check-box').on('click', 'input', function () {
     
