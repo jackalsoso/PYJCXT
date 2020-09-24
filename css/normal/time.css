@@ -460,3 +460,28 @@ color: #3698FD;
 .time-bottom_2 .page-box .content .chart-wrap .imgbox span {
   color: #ACB3BE;
 }
+
+.chart-wrap .chartTips{
+  right: 110px !important;
+    bottom: -126px !important;
+  width: 184px !important;
+  height: 90px !important;
+  position: relative !important;
+  border: 1px solid;
+  flex-direction: column;
+  justify-content: space-around;
+  display: flex;
+}
+
+.time-bottom .page-box .content .chart-wrap .legendView .legendLabel {
+  width: 10px;
+  height: 10px;
+  border-width: 1px;
+  border-style: solid;
+  margin: 0 8px !important;
+}
+
+.chartTips li{
+  display: flex;
+  align-items: center;
+}

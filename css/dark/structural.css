@@ -20,3 +20,22 @@
     position: absolute;
     top: 50px;
 }
+
+.structureAlys{
+    flex-direction: row !important;
+}
+
+.structureleft{
+    width: 50%;
+    position: sticky;
+}
+
+.structureright{
+    flex: 1;
+}
+
+.structureleft .header{
+    position: absolute;
+    right: 0;
+    margin-top: -18px;
+}

@@ -17,7 +17,7 @@
   <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
 </head>
 <body>
-  <div class="page-controller">
+  <div class="page-controller" id="appall">
     <div class="page-header">
       <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
       <div class="user">
@@ -88,17 +88,38 @@
     <div class="page-body waring2" style="padding: 10px;">
       <div class="time-bottom waring2-left">
         <div class="page-box">
-          <div class="title">
-            <span>整体检测得分</span>
+          <div class="title" style="justify-content: initial;">
+            <!-- <span>整体检测得分</span> -->
+            <select class="filterChart" @change="selectOne">
+              <option value="整体检测得分">整体检测得分</option>
+              <option value="历史评分">历史评分</option>
+            </select>
           </div>
-          <div class="content" style="position: relative;">
-            <!-- <div class="scorce">98分</div> -->
+          <div class="content allScore" style="position: relative;">
+            
             <div class="chart-wrap">
               <div class="chart" id="chart1"></div>
             </div>
           </div>
+          <div class="content historyScore" style="display:none">
+            <div class="header">
+              <ul class="header-left timesDuring">
+                <li class="active">小时</li>
+                <li>日</li>
+                <li>周</li>
+              </ul>
+              <div class="header-right">
+                <select style="width:100px;">
+                  <option value="桥塔">桥塔</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart2"></div>
+            </div>
+          </div>
         </div>
-        <div class="page-box">
+        <!-- <div class="page-box">
           <div class="title">
             <span>历史评分</span>
           </div>
@@ -119,7 +140,7 @@
               <div class="chart" id="chart2"></div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="time-bottom waring2-bottom">
@@ -184,12 +205,7 @@
               </ul>
             </div>
             <div class="tb-bd" id="waringEvent">
-              <ul>
-                <li>2018/10/09 14:00</li>
-                <li class="lv1"></li>
-                <li>节构应力有9个测点数据异常</li>
-                <li class="rd">未处理</li>
-              </ul>
+               
               <ul>
                 <li>2018/10/09 14:00</li>
                 <li class="lv2"></li>
@@ -360,9 +376,18 @@
             <div class="chart-wrap">
               <div class="chart" id="chart3"></div>
             </div>
-            <div class="bt-button">
-              预警处理
-            </div>
+              <div class="preDealtail">
+                  <h4 class="label">原因分析：</h4>
+                  <p class="showInfo"><textarea type="text" class="inputClass">初步检查发现，梁体腹板混凝土剥落漏筋严重，波纹管外露，需对桥梁进行特殊检测。检测单位使用回弹仪、裂缝测宽仪等专业设备进行检测。</textarea></p>
+                  <h4 class="label">处理措施：</h4>
+                  <p class="showInfo"><textarea type="text" class="inputClass">市交通委路政局迅速启动突发事件响应程序，市城市道路养护管理中心立即要求养护单位组织抢险人员进行方木支搭。</textarea></p>
+                  <div><span class="label">预警报告:</span>北二 环大桥监测阶段7月报告pdf<span style="float: right;color: rgb(24,144,255);">详情|删除</span></div>
+                  <div class="label">处理人：<input type="text" class="inputClass" value="张小贤"/></div>
+                  <div class="label">处理时间：2018/10/01 14:28</div>
+                  <div class="save">
+                    <button>保存</button>
+                  </div>
+              </div>
           </div>
         </div>
       </div>
@@ -388,7 +413,8 @@
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
-    $('#waringEvent').on('click','> ul', function(){
+  
+    $('#waringEvent ul').on('click', function(){
       if(!$('.waring2-hide').hasClass('show')){
         $('.waring2-hide').addClass('show')
       }
@@ -463,12 +489,10 @@
             show: true
 
           },
-
           data: [{
             value: [86, 75, 60, 80, 72, 30 , 68],
             // name: '环境监测'
-          }],
-
+          }]
         }]
       }
       var data = [
@@ -558,23 +582,23 @@
           markLine: {
             symbol: "none",
             data: [{
-              yAxis: 22,
+              yAxis: 309,
               label: {
                 show: false,
                 position: 'start',
                 padding: [-20, -60, 0, 0],
-                formatter: '上限值'
+                formatter: '轻微不适'
               },
               lineStyle: {
                 color: '#ff4d4f'
               }
             }, {
-              yAxis: 10,
+              yAxis: 175,
               label: {
                 show: false,
                 position: 'start',
                 padding: [-20, -60, 0, 0],
-                formatter: '下限值'
+                formatter: '极度不适'
               },
               lineStyle: {
                 color: '#fcb333'
@@ -662,21 +686,23 @@
           markLine: {
             symbol: "none",
             data: [{
-              yAxis: 8,
+              yAxis: 309,
               label: {
+                show: false,
                 position: 'start',
                 padding: [-20, -60, 0, 0],
-                formatter: '上限值'
+                formatter: '轻微不适'
               },
               lineStyle: {
                 color: '#ff4d4f'
               }
             }, {
-              yAxis: 2,
+              yAxis: 175,
               label: {
+                show: false,
                 position: 'start',
                 padding: [-20, -60, 0, 0],
-                formatter: '下限值'
+                formatter: '极度不适'
               },
               lineStyle: {
                 color: '#fcb333'
@@ -693,6 +719,10 @@
       myChart1.setOption(option1, true);
       myChart2.setOption(option2, true);
       myChart3.setOption(option3, true);
+      $(window).resize(myChart1.resize)
+      $(window).resize(myChart2.resize)
+      $(window).resize(myChart3.resize)
+      // $(window).trigger('resize')
     }
     //所有检测项和测点   mock
     Mock.mock(
@@ -710,12 +740,61 @@
     );
     //初始化vue
     var app = new Vue({
-        el: '#app',
+        el: '#appall',
         data: {
           select1name: "",
+          allScore:true
         },
         mounted() {
           this.getcedian()
+                $('#waringEvent ul').on('click', function(){
+                  if(!$('.waring2-hide').hasClass('show')){
+                    // $('.waring2-hide').css('left','50%')
+                    // $('.waring2-hide').css('position','absolute')
+                    // $('.waring2-hide').css('top','84px')
+                    // $('.waring2-hide').css('top','84px')
+                    // $('.waring2-hide').css('top','84px')
+                    $('.waring2-hide').addClass('show')
+                    
+                  }
+                })
+                $('.bt-button').on('click', function(){
+                  if(!$('.waring2-popup').hasClass('show')){
+                    $('.waring2-popup').addClass('show')
+                  }
+                })
+
+                $('.waring2-hide .close').on('click',function(){
+                  $('.waring2-hide').removeClass('show')
+                })
+
+                $('.close').on('click', function(){
+                  $(this).closest('.show').removeClass('show')
+                })
+                $('.page-box').on('click', '.header-left li', function(){
+              $(this).addClass('active').siblings().removeClass('active')
+            })
+            laydate.render({
+              elem: '#time-selector1'
+              ,type: 'datetime'
+              ,range: true
+            });
+            $('#litte-table').on('click', 'ul', function(){
+              $(this).addClass('active').siblings().removeClass('active')
+            })
+            $(function () {
+              $('.pagination').pagination({
+                mode: 'fixed',
+                pageCount: 50,
+                jump: true,
+                coping: true,
+                homePage: '首页',
+                endPage: '末页',
+                prevContent: '上页',
+                nextContent: '下页',
+                callback: function (api) {}
+              });
+            })
         },
         methods: {
           getcedian() {
@@ -737,6 +816,17 @@
 
               });
           },
+          selectOne(param){
+             $(window).trigger('resize')
+            if(param.target.value==='整体检测得分'){
+              $('.allScore').css('display','block')
+              $('.historyScore').css('display','none')
+            }else{
+              $('.historyScore').css('display','block')
+              $('.allScore').css('display','none')
+            }
+            $(window).trigger('resize')
+          }
 
         }
       })

@@ -100,20 +100,20 @@
                   <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
-              <div class="chart-wrap">
+              <div class="chart-wrap chart-tips">
                 <div class="chart" id="chart1"></div>
-                  <ul class="legendView">
+                  <ul class="legendView chartTips">
                     <li>
                       <div class="legendLabel" style="border-color: #7C6AF2; background-color: #7C6AF2"></div>
-                      <div class="legendItem">风速</div>
+                      <div class="legendItem">风速(1~5m/s)</div>
                     </li>
                     <li>
                       <div class="legendLabel" style="border-color: #C95FF2; background-color: #C95FF2"></div>
-                      <div class="legendItem">风向</div>
+                      <div class="legendItem">风向(5~10m/s)</div>
                     </li>
                     <li>
                       <div class="legendLabel" style="border-color: #5C89FF; background-color: #5C89FF"></div>
-                      <div class="legendItem">紊流</div>
+                      <div class="legendItem">紊流(10~15m/s)</div>
                     </li>
                   </ul>
               </div>
@@ -356,7 +356,7 @@
           data: dateList,
         },
         yAxis: {
-          name: '脉动风速功率（m2/s2）',
+          name: '脉动风速功率（㎡/s²）',
           nameTextStyle: {
             lineHeight: 0,
             padding: [0, 0, 0, 70]

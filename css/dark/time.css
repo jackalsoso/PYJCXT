@@ -626,3 +626,22 @@
 .time-bottom_2 .page-box .content .chart-wrap .imgbox span {
   color: #acb3be;
 }
+
+.time-bottom .legendView li{
+  justify-content: flex-start !important;
+}
+.time-bottom .legendView .legendLabel{
+  margin: 0 8px !important;
+}
+
+.chart-wrap .chartTips{
+  /* right: 66px !important;
+  bottom: 60px !important;
+  width: 140px !important;
+  height: 90px !important; */
+  right: 136px !important;
+  bottom: -126px !important;
+  width: 170px !important;
+  height: 90px !important;
+  position: relative !important;
+}

@@ -12,6 +12,7 @@
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <link href="./css/dark/structural.css" rel="stylesheet">
   <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
 </head>
 
@@ -142,21 +143,44 @@
           <div class="title">
             <span>结构动力特性分析</span>
           </div>
-          <div class="content">
-            <div class="header">
-              <ul class="header-left">
+          <div class="content structureAlys">
 
-              </ul>
-              <div class="header-right">
-                <select>
-                  <option value="请选择">1阶</option>
-                </select>
-                <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
-              </div>
+            <div class="structureleft">
+                <div class="content">
+                    <div class="header">
+                      <div class="header-right">
+                        <select>
+                          <option value="1阶">1阶</option>
+                          <option value="2阶">2阶</option>
+                          <option value="3阶">3阶</option>
+                          <option value="4阶">4阶</option>
+                          <option value="5阶">5阶</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="chart-wrap">
+                      <div class="chart" id="chart3"></div>
+                    </div>
+                  </div>
             </div>
-            <div class="chart-wrap" style="padding: 20px;">
-              <img src="./images/simple4.jpg" border="0" style="width: 100%;height: 100%;"/>
+
+            <div class="structureright">
+                <div class="header">
+                    <ul class="header-left">
+      
+                    </ul>
+                    <div class="header-right">
+                      <select>
+                        <option value="请选择">1阶</option>
+                      </select>
+                      <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
+                    </div>
+                  </div>
+                  <div class="chart-wrap" style="padding: 20px;">
+                    <img src="./images/simple4.jpg" border="0" style="width: 100%;height: 100%;"/>
+                  </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -482,8 +506,10 @@
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
       myChart1.setOption($('.frequency li[class="active"]').text() === '实时' ? option1 : option2, true);
       myChart2.setOption($('.damping li[class="active"]').text() === '实时' ? option1 : option2, true);
+      myChart3.setOption(option1,true);
     }
     $('.page-box').on('click', '.header-left li', function(){
       $(this).addClass('active').siblings().removeClass('active');
