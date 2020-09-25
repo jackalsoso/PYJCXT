@@ -182,7 +182,7 @@
                         <select>
                           <option value="请选择">1阶</option>
                         </select>
-                        <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
+                        <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
                       </div>
                     </div>
                     <div class="chart-wrap" style="padding: 20px;">
@@ -541,6 +541,11 @@
     });
     laydate.render({
       elem: '#time-selector3'
+      ,type: 'datetime'
+      // ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector4'
       ,type: 'datetime'
       // ,range: true
     });

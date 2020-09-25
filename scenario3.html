@@ -482,7 +482,16 @@
         ]
       },
       mounted() {
-
+        laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector2'
+      ,type: 'datetime'
+      ,range: true
+    });
         //页面加载完成后调用
         unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
         this.getcedian()
@@ -530,16 +539,16 @@
       $(this).addClass('active').siblings().removeClass('active')
     })
 
-    laydate.render({
-      elem: '#time-selector1'
-      ,type: 'datetime'
-      ,range: true
-    });
-    laydate.render({
-      elem: '#time-selector2'
-      ,type: 'datetime'
-      ,range: true
-    });
+    // laydate.render({
+    //   elem: '#time-selector1'
+    //   ,type: 'datetime'
+    //   ,range: true
+    // });
+    // laydate.render({
+    //   elem: '#time-selector2'
+    //   ,type: 'datetime'
+    //   ,range: true
+    // });
 
 
   </script>
