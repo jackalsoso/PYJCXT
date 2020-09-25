@@ -487,7 +487,6 @@
   width: 400px;
   height: 300px;
   transition: right .3s linear 0s;
-  z-index: 99;
 }
 .waring2 .waring2-popup.show{
   display: block;
