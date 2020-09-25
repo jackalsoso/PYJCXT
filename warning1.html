@@ -207,14 +207,16 @@
                 <option value="">处理状态</option>
               </select>
 
-              <button class="search">
+              <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+
+              <!-- <button class="search">
                 <img src="./images/search.png" border="0" />
                 <span>查询</span>
               </button>
               <button class="export">
                 <img src="./images/export.png" border="0" />
                 <span>导出</span>
-              </button>
+              </button> -->
             </div>
           </div>
           <div class="list-table">
@@ -294,7 +296,7 @@
               <ul>
                 <li><label>事件区间</label><span>2020-09-11 00:03:00 - 2020-10-04 00:03:00</span></li>
                 <li><label>预警等级</label><span><img src="images/level2.png"></span></li>
-                <li><label>接收人</label><span>高管中心</span></li>
+                <!-- <li><label>接收人</label><span>高管中心</span></li> -->
                 <li><label>处理状态</label><span class="gd">已处理</span></li>
                 <li><label>事件描述</label><span>监测数据超过警介线30%</span></li>
               </ul>
@@ -894,6 +896,12 @@
                 callback: function (api) {}
               });
             })
+
+            laydate.render({
+              elem: '#time-selector1'
+              ,type: 'datetime'
+              ,range: true
+            });
         },
         methods: {
           getcedian() {

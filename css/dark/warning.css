@@ -461,7 +461,7 @@
 .waring2 .waring2-hide .page-box .content .chart-wrap{
   width: calc(100% - 40px);
   margin: 0 auto;
-  height: 120px;
+  height: 160px;
   /* height: calc(100% - 546px); */
 }
 .waring2 .waring2-hide .page-box .content .chart-wrap .chart{
@@ -566,7 +566,7 @@
 
 .label{
   color: #97b8da;
-  line-height: 32px;
+  line-height: 26px;
 }
 
 .content .showInfo{
@@ -578,7 +578,7 @@
 
 .preDealtail{
   width: 100%;
-  padding: 10px 20px;
+  padding: 0 20px 10px 20px;
 }
 
 .save{
@@ -589,7 +589,7 @@
 .save button{
   background: RGB(92,137,255);
     width: 66px;
-    height: 32px;
+    height: 22px;
     color: #fff;
     border: 0;
 }
@@ -602,5 +602,17 @@
 
 .showInfo textarea{
   width: 100%;
-  height: 60px;
+  height: 50px;
+}
+
+.time-selector {
+  height: 32px;
+  line-height: 32px;
+  background: #191934;
+  font-size: 14px;
+  color: #97b8da;
+  border: 0;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 0 8px;
 }
