@@ -9,9 +9,10 @@
   <script type="text/javascript" src="./js/vue.min.js"></script>
   <script type="text/javascript" src="./js/axios.min.js"></script>
   <script type="text/javascript" src="./js/mock.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <!-- <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" /> -->
   <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
   <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
 </head>
@@ -119,7 +120,7 @@
             <ul class="header-left">
             </ul>
             <div class="header-right">
-              <input type="text" id="time-selector1" class="time-selector">
+              <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
             </div>
           </div>
           <div class="list-table">
@@ -157,7 +158,7 @@
             <ul class="header-left">
             </ul>
             <div class="header-right">
-              <input type="text" id="time-selector1" class="time-selector">
+              <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
             </div>
           </div>
           <div class="list-table">
@@ -195,7 +196,7 @@
             <ul class="header-left">
             </ul>
             <div class="header-right">
-              <input type="text" id="time-selector1" class="time-selector">
+              <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
               <button class="created">
                 <img src="./images/created.png" border="0" />
                 <span>上传报告</span>
@@ -237,7 +238,7 @@
             <ul class="header-left">
             </ul>
             <div class="header-right">
-              <input type="text" id="time-selector1" class="time-selector">
+              <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
               <button class="created">
                 <img src="./images/created.png" border="0" />
                 <span>上传报告</span>
@@ -283,15 +284,15 @@
   <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
     let init = null
-    $('#time-selector1').daterangepicker({
-      "startDate": "08/10/2020",
-      "endDate": "08/16/2020",
-      "opens": "left"
-    }, function (start, end, label) {
-      console.log(
-        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-        );
-    });
+    // $('#time-selector1').daterangepicker({
+    //   "startDate": "08/10/2020",
+    //   "endDate": "08/16/2020",
+    //   "opens": "left"
+    // }, function (start, end, label) {
+    //   console.log(
+    //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+    //     );
+    // });
     //所有检测项和测点   mock
     Mock.mock(
       'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
@@ -315,15 +316,20 @@
         },
         mounted() {
           this.getcedian()
-          $('#time-selector1').daterangepicker({
-            "startDate": "08/10/2020",
-            "endDate": "08/16/2020",
-            "opens": "left"
-          }, function (start, end, label) {
-            console.log(
-              "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-              );
+          laydate.render({
+            elem: '#time-selector1'
+            ,type: 'datetime'
+            ,range: true
           });
+          // $('#time-selector1').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
           $('.pagination').pagination({
             mode: 'fixed',
             pageCount: 50,
@@ -335,6 +341,70 @@
             nextContent: '下页',
             callback: function (api) {}
           });
+        },
+        updated(){
+          laydate.render({
+            elem: '#time-selector1'
+            ,type: 'datetime'
+            ,range: true
+          });
+
+          laydate.render({
+            elem: '#time-selector2'
+            ,type: 'datetime'
+            ,range: true
+          });
+
+          laydate.render({
+            elem: '#time-selector3'
+            ,type: 'datetime'
+            ,range: true
+          });
+
+          laydate.render({
+            elem: '#time-selector4'
+            ,type: 'datetime'
+            ,range: true
+          });
+          // $('#time-selector1').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
+
+          // $('#time-selector2').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
+
+          // $('#time-selector3').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
+
+          // $('#time-selector4').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
         },
         methods: {
           getcedian() {
@@ -358,7 +428,6 @@
           },
           showList(param){
             this.isChoice=param;
-            console.log(this.isChoice)
           }
 
         }
