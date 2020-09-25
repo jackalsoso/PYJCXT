@@ -18,3 +18,7 @@
 .statistics-bottom .page-box .content .chart-wrap .chart {
     width: 100%;
 }
+
+.cloudRelative{
+    justify-content: flex-end !important;
+}
