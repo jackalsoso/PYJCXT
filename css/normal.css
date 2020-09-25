@@ -219,6 +219,9 @@ body{background-color:#eef0f3;font-size: 14px;color:#4a4a4a;}
   background-image: url(./../images/nav_6.png)
 }
 .page-nav > ul > li:nth-child(7){
+  background-image: url(./../images/nav_4.png)
+}
+.page-nav > ul > li:nth-child(8){
   background-image: url(./../images/nav_7.png)
 }
 .page-nav > ul > li.active{
