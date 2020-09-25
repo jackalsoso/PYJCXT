@@ -722,6 +722,8 @@
       '动力特性': '#check11-page',
       '地震、船撞': '#check12-page',
     }
+    SelectMonitorPoint("应力","") 
+    // SelectMonitorPoint("挠度","") 
     //选择测点
     function SelectMonitorPoint(type, name) {
       console.log(type)
@@ -744,6 +746,7 @@
 
 
     }
+    
     function bthclick(v) {
       unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
     }
