@@ -256,7 +256,8 @@
   height: 100%;
 }
 
-.title-Info{
+.title-Info {
   position: absolute !important;
-  right: 0;
+  right: -94px;
+  top: 73px;
 }
