@@ -9,12 +9,14 @@
   <script src="./js/laydate/laydate.js"></script>
   <script type="text/javascript" src="./js/vue.min.js"></script>
   <script type="text/javascript" src="./js/axios.min.js"></script>
-  <script type="text/javascript" src="./js/mock.js"></script>
+  <!-- <script type="text/javascript" src="./js/mock.js"></script> -->
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
   <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
   <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
 </head>
 <body>
   <div class="page-controller" id="appall">
@@ -86,7 +88,7 @@
       </ul>
     </div>
     <div class="page-body waring2" style="padding: 10px;">
-      <div class="time-bottom waring2-left">
+      <div class="time-bottom waring2-left" style="top: 514px;height: 373px;">
         <div class="page-box">
           <div class="title" style="justify-content: initial;">
             <!-- <span>整体检测得分</span> -->
@@ -94,11 +96,12 @@
               <option value="整体检测得分">整体检测得分</option>
               <option value="历史评分">历史评分</option>
             </select>
+            <!-- <span class="scorce" style="font-size: 18px;font-size: 18px;position: relative;padding: 0;margin-left: 16px;">98分</span> -->
           </div>
           <div class="content allScore" style="position: relative;">
             
             <div class="chart-wrap">
-              <div class="chart" id="chart1"></div>
+              <div class="chart" id="chart1" style="height:310px;"></div>
             </div>
           </div>
           <div class="content historyScore" style="display:none">
@@ -143,13 +146,13 @@
         </div> -->
       </div>
 
-      <div class="time-bottom waring2-bottom">
-        <div class="page-box">
-          <div class="title">
+      <div class="time-bottom waring2-bottom" style="height: calc(100% - 394px);" >
+        <div class="page-box"  style="height: calc(100% - 384px);">
+          <!-- <div class="title">
             <span>BIM模型</span>
-          </div>
-          <div class="content">
-            <div class="check-box">
+          </div> -->
+          <div class="content"  style="height:100%;position: relative;">
+            <!-- <div class="check-box">
               <p><input type="checkbox" value="" name="category" checked/> 全选</p>
               <p><input type="checkbox" value="应力" name="category" checked/> 应力</p>
               <p><input type="checkbox" value="" name="category" checked/> 挠度</p>
@@ -164,13 +167,32 @@
               <p><input type="checkbox" value="" name="category" checked/> 动力特性</p>
               <p><input type="checkbox" value="" name="category" checked/> 地震、船撞</p>
             </div>
-            <img src="./images/simple3.jpg" border="0" />
+            <img src="./images/simple3.jpg" border="0" /> -->
+            <div class="tip-check">
+              <div class="box">
+                <label class="custom-checkbox">
+                  <input id="xuhuacheck" type="checkbox">
+                  <span></span>
+  
+                </label>
+                <div class="custom-txt">虚化</div>
+              </div>
+              <div class="box">
+                <label class="custom-checkbox">
+                  <input id="huanjincheck" type="checkbox" checked>
+                  <span></span>
+  
+                </label>
+                <div class="custom-txt">环境</div>
+              </div>
+            </div>
+            <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
           </div>
 
         </div>
       </div>
 
-      <div class="page-box waring2-right">
+      <div class="page-box waring2-right" style="height: 370px;top: 515px;">
         <div class="title">
           <span>预警事件列表</span>
         </div>
@@ -413,7 +435,83 @@
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
-  
+    var unity
+    var unityReady = false
+
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    function CallBackWGL_LoadMeasurePoint() {
+
+    }
+    let _checkarr = []
+    let _selObj = {
+      '应力': '#check1-page',
+      '挠度': '#check2-page',
+      '空间变位': '#check3-page',
+      '拉索振动': '#check4-page',
+      '梁端位移': '#check5-page',
+      '阻尼器位移': '#check6-page',
+      '横向支座位移': '#check7-page',
+      '温度': '#check8-page',
+      '温湿度': '#check9-page',
+      '风速': '#check10-page',
+      '动力特性': '#check11-page',
+      '地震、船撞': '#check12-page',
+    }
+    //选择测点
+    function SelectMonitorPoint(type, name) {
+      console.log(type)
+      console.log(name)
+      // debugger
+      // let curPageBox = $(_selObj[type]),
+      //   firstPageBox = curPageBox.siblings()[0];
+      // curPageBox.css('display', 'block')
+      // curPageBox.insertBefore(firstPageBox)
+
+      let curPageBox = $(_selObj[type]),
+        _siblingsBox = curPageBox.siblings().filter(function () { return $(this).css('display') != 'none' })
+      console.log(_siblingsBox)
+      if (_siblingsBox.length > 3) {
+        _siblingsBox.eq(_siblingsBox.length - 1).css('display', 'none')
+      }
+      curPageBox.css('display', 'block')
+      curPageBox.insertBefore(_siblingsBox[0])
+      $(window).trigger('resize');
+
+
+    }
+    function bthclick(v) {
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
+    }
+    // function checktype(item) {
+    //   var index;
+    //   for (var idx = 0; idx < typenamelist.length; idx++) {
+    //     if (item.value == typenamelist[idx]) {
+    //       index = idx;
+    //     }
+    //   }
+    //   if (item.checked) {
+    //     typenamelist.push(item.value)
+    //   } else {
+    //     typenamelist.splice(index, 1)
+    //   }
+    //   unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    // }
+
+
+    //unity加载完成后
+    function OnSceneLoaded() {
+      //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+      unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
+    }
     $('#waringEvent ul').on('click', function(){
       if(!$('.waring2-hide').hasClass('show')){
         $('.waring2-hide').addClass('show')
@@ -725,19 +823,19 @@
       // $(window).trigger('resize')
     }
     //所有检测项和测点   mock
-    Mock.mock(
-      'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
-      "data": [{
-        "id": "5f5641d7b5185269993253cd",
-        "version": 1599636245976,
-        "bridgeId": "5f45d7f634f70b68fbeba992",
-        "monitorItemType": "STRESS",
-        "monitorItemTypeName": "应力",
-        "measuringPoints": ["WS-01-FF-03"]
-      }]
-    }
+    // Mock.mock(
+    //   'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
+    //   "data": [{
+    //     "id": "5f5641d7b5185269993253cd",
+    //     "version": 1599636245976,
+    //     "bridgeId": "5f45d7f634f70b68fbeba992",
+    //     "monitorItemType": "STRESS",
+    //     "monitorItemTypeName": "应力",
+    //     "measuringPoints": ["WS-01-FF-03"]
+    //   }]
+    // }
 
-    );
+    // );
     //初始化vue
     var app = new Vue({
         el: '#appall',
@@ -746,6 +844,7 @@
           allScore:true
         },
         mounted() {
+          unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
           this.getcedian()
                 $('#waringEvent ul').on('click', function(){
                   if(!$('.waring2-hide').hasClass('show')){
@@ -821,9 +920,11 @@
             if(param.target.value==='整体检测得分'){
               $('.allScore').css('display','block')
               $('.historyScore').css('display','none')
+              $('.scorce').show()
             }else{
               $('.historyScore').css('display','block')
               $('.allScore').css('display','none')
+              $('.scorce').hide()
             }
             $(window).trigger('resize')
           }
@@ -839,6 +940,22 @@
     //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
     //     );
     // });
+    $('#xuhuacheck').on("click", function () {
+      if (this.checked == true) {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+      } else {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "true")
+      }
+    })
+    $('#huanjincheck').on("click", function () {
+      if (this.checked == true) {
+
+        unity.SendMessage("GameManager", "SetEnvir", "true")
+      } else {
+
+        unity.SendMessage("GameManager", "SetEnvir", "false")
+      }
+    })
     $('.page-box').on('click', '.header-left li', function(){
       $(this).addClass('active').siblings().removeClass('active')
     })
