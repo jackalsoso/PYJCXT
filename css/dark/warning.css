@@ -344,7 +344,8 @@
 .waring2 .waring2-hide{
   position: absolute;
   top: 84px;
-  left: -50%;
+  /* left: -50%;外包 */
+  left:30%;
   /* margin-left: -21%; */
   background: #111029 !important;
   /* right: -42%; */

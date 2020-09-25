@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
   <script src="TemplateData/UnityProgress.js"></script>
   <script src="Build/UnityLoader.js"></script>
 </head>
+
 <body>
   <div class="page-controller" id="appall">
     <div class="page-header">
@@ -55,14 +57,14 @@
         </li><!-- 统计数据 -->
         <li><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li><span>服役<br>环境分析</span>
@@ -103,9 +105,11 @@
               <option value="整体检测得分">整体检测得分</option>
               <option value="历史评分">历史评分</option>
             </select>
+            <!-- <span class="scorce"
+              style="font-size: 18px;font-size: 18px;position: relative;padding: 0;margin-left: 16px;">98分</span> -->
           </div>
           <div class="content allScore" style="position: relative;">
-            
+
             <div class="chart-wrap">
               <div class="chart" id="chart1" style="height:310px;"></div>
             </div>
@@ -152,12 +156,12 @@
         </div> -->
       </div>
 
-      <div class="time-bottom waring2-bottom" style="height: calc(100% - 394px);" >
-        <div class="page-box"  style="height: calc(100% - 384px);">
+      <div class="time-bottom waring2-bottom" style="height: calc(100% - 394px);">
+        <div class="page-box" style="height: calc(100% - 384px);">
           <!-- <div class="title">
             <span>BIM模型</span>
           </div> -->
-          <div class="content"  style="height:100%;position: relative;">
+          <div class="content" style="height:100%;position: relative;">
             <!-- <div class="check-box">
               <p><input type="checkbox" value="" name="category" checked/> 全选</p>
               <p><input type="checkbox" value="应力" name="category" checked/> 应力</p>
@@ -179,7 +183,7 @@
                 <label class="custom-checkbox">
                   <input id="xuhuacheck" type="checkbox">
                   <span></span>
-  
+
                 </label>
                 <div class="custom-txt">虚化</div>
               </div>
@@ -187,7 +191,7 @@
                 <label class="custom-checkbox">
                   <input id="huanjincheck" type="checkbox" checked>
                   <span></span>
-  
+
                 </label>
                 <div class="custom-txt">环境</div>
               </div>
@@ -213,7 +217,8 @@
                 <option value="">处理状态</option>
               </select>
 
-              <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              <input type="text" id="time-selector1" class="time-selector"
+                value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
 
               <!-- <button class="search">
                 <img src="./images/search.png" border="0" />
@@ -234,8 +239,8 @@
                 <li>处理状态</li>
               </ul>
             </div>
-            <div class="tb-bd" id="waringEvent">
-               
+            <div class="tb-bd" id="waringEvent" @click="modelshow">
+
               <ul>
                 <li>2018/10/09 14:00</li>
                 <li class="lv2"></li>
@@ -291,11 +296,11 @@
         </div>
       </div>
 
-      <div class="page-box waring2-hide" style="z-index:9999;">
+      <div class="page-box waring2-hide" style="z-index:9999;" id="drop" v-show="isDowm == true">
         <div class="page-box">
           <div class="title">
-            <span>预警详情</span>
-            <i class="close">X</i>
+            <span @mousedown="mousedown" style="cursor:move">预警详情</span>
+            <i class="close" @click="closemodel">X</i>
           </div>
           <div class="content">
             <div class="top-box">
@@ -350,7 +355,8 @@
                   <li>最大值</li>
                   <li>35</li>
                   <li>15%</li>
-                </ul><ul>
+                </ul>
+                <ul>
                   <li>结构应力</li>
                   <li>18#孔右幅跨中</li>
                   <li>SG-GL1-T-02</li>
@@ -365,7 +371,8 @@
                   <li>最大值</li>
                   <li>35</li>
                   <li>15%</li>
-                </ul><ul>
+                </ul>
+                <ul>
                   <li>结构应力</li>
                   <li>18#孔右幅跨中</li>
                   <li>SG-GL1-T-02</li>
@@ -380,7 +387,8 @@
                   <li>最大值</li>
                   <li>35</li>
                   <li>15%</li>
-                </ul><ul>
+                </ul>
+                <ul>
                   <li>结构应力</li>
                   <li>18#孔右幅跨中</li>
                   <li>SG-GL1-T-02</li>
@@ -400,24 +408,30 @@
             </div>
             <div class="chart-header">
               <div class="header-right">
-                <input style="width:320px;height: 32px;line-height: 32px;background: #191934;font-size: 14px;  color: #97B8DA;  border: 0;  margin-left: 10px;cursor: pointer;padding: 0 8px;" type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00">
+                <input
+                  style="width:320px;height: 32px;line-height: 32px;background: #191934;font-size: 14px;  color: #97B8DA;  border: 0;  margin-left: 10px;cursor: pointer;padding: 0 8px;"
+                  type="text" id="time-selector2" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00">
               </div>
             </div>
             <div class="chart-wrap">
-              <div class="chart" id="chart3"></div>
+              <div class="chart" id="chart3" style="width: 729px;height:160px;"></div>
             </div>
-              <div class="preDealtail">
-                  <h4 class="label">原因分析：</h4>
-                  <p class="showInfo"><textarea type="text" class="inputClass">初步检查发现，梁体腹板混凝土剥落漏筋严重，波纹管外露，需对桥梁进行特殊检测。检测单位使用回弹仪、裂缝测宽仪等专业设备进行检测。</textarea></p>
-                  <h4 class="label">处理措施：</h4>
-                  <p class="showInfo"><textarea type="text" class="inputClass">市交通委路政局迅速启动突发事件响应程序，市城市道路养护管理中心立即要求养护单位组织抢险人员进行方木支搭。</textarea></p>
-                  <div><span class="label">预警报告:</span>北二 环大桥监测阶段7月报告pdf<span style="float: right;color: rgb(24,144,255);" class="preOpara">详情|删除</span></div>
-                  <div class="label">处理人：<input type="text" class="inputClass" value="张小贤"/></div>
-                  <div class="label">处理时间：2018/10/01 14:28</div>
-                  <div class="save">
-                    <button>保存</button>
-                  </div>
+            <div class="preDealtail">
+              <h4 class="label">原因分析：</h4>
+              <p class="showInfo"><textarea type="text"
+                  class="inputClass">初步检查发现，梁体腹板混凝土剥落漏筋严重，波纹管外露，需对桥梁进行特殊检测。检测单位使用回弹仪、裂缝测宽仪等专业设备进行检测。</textarea></p>
+              <h4 class="label">处理措施：</h4>
+              <p class="showInfo"><textarea type="text"
+                  class="inputClass">市交通委路政局迅速启动突发事件响应程序，市城市道路养护管理中心立即要求养护单位组织抢险人员进行方木支搭。</textarea></p>
+              <div><span class="label">预警报告:</span>北二 环大桥监测阶段7月报告pdf<span style="float: right;color: rgb(24,144,255);"
+                  class="preOpara">详情|删除</span></div>
+              <div class="label">处理人：<input type="text" class="inputClass" value="张小贤" /></div>
+              <div class="label">处理时间：2018/10/01 14:28</div>
+              <div class="save">
+                <button>保存</button>
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -520,17 +534,17 @@
       //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
       unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
     }
-    $('#waringEvent ul').on('click', function(){
-      if(!$('.waring2-hide').hasClass('show')){
-        $('.waring2-hide').addClass('show')
-      }
-    })
-    $('.bt-button').on('click', function(){
-      if(!$('.waring2-popup').hasClass('show')){
+    // $('#waringEvent ul').on('click', function () {
+    //   if (!$('.waring2-hide').hasClass('show')) {
+    //     $('.waring2-hide').addClass('show')
+    //   }
+    // })
+    $('.bt-button').on('click', function () {
+      if (!$('.waring2-popup').hasClass('show')) {
         $('.waring2-popup').addClass('show')
       }
     })
-    $('.close').on('click', function(){
+    $('.close').on('click', function () {
       $(this).closest('.show').removeClass('show')
     })
     let init = function () {
@@ -545,33 +559,33 @@
           },
           nameGap: 30,
           indicator: [{
-              name: '桥塔',
-              max: 100
-            },
-            {
-              name: '阻尼器',
-              max: 100
-            },
-            {
-              name: '支座',
-              max: 100
-            },
-            {
-              name: '塔台',
-              max: 100
-            },
-            {
-              name: '伸缩缝',
-              max: 100
-            },
-            {
-              name: '主梁',
-              max: 100
-            },
-            {
-              name: '拉索',
-              max: 100
-            },
+            name: '桥塔',
+            max: 100
+          },
+          {
+            name: '阻尼器',
+            max: 100
+          },
+          {
+            name: '支座',
+            max: 100
+          },
+          {
+            name: '塔台',
+            max: 100
+          },
+          {
+            name: '伸缩缝',
+            max: 100
+          },
+          {
+            name: '主梁',
+            max: 100
+          },
+          {
+            name: '拉索',
+            max: 100
+          },
           ],
           // axisLabel: {
           //   show: true,
@@ -596,7 +610,7 @@
 
           },
           data: [{
-            value: [86, 75, 60, 80, 72, 30 , 68],
+            value: [86, 75, 60, 80, 72, 30, 68],
             // name: '环境监测'
           }]
         }]
@@ -846,103 +860,134 @@
     // );
     //初始化vue
     var app = new Vue({
-        el: '#appall',
-        data: {
-          select1name: "",
-          allScore:true
-        },
-        mounted() {
-          unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
-          this.getcedian()
-                $('#waringEvent ul').on('click', function(){
-                  if(!$('.waring2-hide').hasClass('show')){
-                    // $('.waring2-hide').css('left','50%')
-                    // $('.waring2-hide').css('position','absolute')
-                    // $('.waring2-hide').css('top','84px')
-                    // $('.waring2-hide').css('top','84px')
-                    // $('.waring2-hide').css('top','84px')
-                    $('.waring2-hide').addClass('show')
-                    
-                  }
-                })
-                $('.bt-button').on('click', function(){
-                  if(!$('.waring2-popup').hasClass('show')){
-                    $('.waring2-popup').addClass('show')
-                  }
-                })
+      el: '#appall',
+      data: {
+        select1name: "",
+        allScore: true,
+        isDowm: false,
+        selectElement: ""
+      },
+      mounted() {
+        unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
+        this.getcedian()
+        // $('#waringEvent ul').on('click', function () {
+        //   if (!$('.waring2-hide').hasClass('show')) {
+        //     // $('.waring2-hide').css('left','50%')
+        //     // $('.waring2-hide').css('position','absolute')
+        //     // $('.waring2-hide').css('top','84px')
+        //     // $('.waring2-hide').css('top','84px')
+        //     // $('.waring2-hide').css('top','84px')
+        //     $('.waring2-hide').addClass('show')
 
-                $('.waring2-hide .close').on('click',function(){
-                  $('.waring2-hide').removeClass('show')
-                })
-
-                $('.close').on('click', function(){
-                  $(this).closest('.show').removeClass('show')
-                })
-                $('.page-box').on('click', '.header-left li', function(){
-              $(this).addClass('active').siblings().removeClass('active')
-            })
-            laydate.render({
-              elem: '#time-selector1'
-              ,type: 'datetime'
-              ,range: true
-            });
-            $('#litte-table').on('click', 'ul', function(){
-              $(this).addClass('active').siblings().removeClass('active')
-            })
-            $(function () {
-              $('.pagination').pagination({
-                mode: 'fixed',
-                pageCount: 50,
-                jump: true,
-                coping: true,
-                homePage: '首页',
-                endPage: '末页',
-                prevContent: '上页',
-                nextContent: '下页',
-                callback: function (api) {}
-              });
-            })
-
-            laydate.render({
-              elem: '#time-selector2'
-              ,type: 'datetime'
-              ,range: true
-            });
-        },
-        methods: {
-          getcedian() {
-            let thiz = this;
-            axios({
-              method: 'get',
-              url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
-              // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
-            })
-              .then(function (res) {
-                console.log(res)
-                if (res.status == 200) {
-                  console.log(res.data)
-                  //所有检测项和测点
-                }
-
-              })
-              .catch(err => {
-
-              });
-          },
-          selectOne(param){
-             $(window).trigger('resize')
-            if(param.target.value==='整体检测得分'){
-              $('.allScore').css('display','block')
-              $('.historyScore').css('display','none')
-            }else{
-              $('.historyScore').css('display','block')
-              $('.allScore').css('display','none')
-            }
-            $(window).trigger('resize')
+        //   }
+        // })
+        $('.bt-button').on('click', function () {
+          if (!$('.waring2-popup').hasClass('show')) {
+            $('.waring2-popup').addClass('show')
           }
+        })
 
+        $('.waring2-hide .close').on('click', function () {
+          $('.waring2-hide').removeClass('show')
+        })
+        //关闭按钮
+        // $('.close').on('click', function () {
+        //   $(this).closest('.show').removeClass('show')
+        // })
+        $('.page-box').on('click', '.header-left li', function () {
+          $(this).addClass('active').siblings().removeClass('active')
+        })
+        laydate.render({
+          elem: '#time-selector1'
+          , type: 'datetime'
+          , range: true
+        });
+        $('#litte-table').on('click', 'ul', function () {
+          $(this).addClass('active').siblings().removeClass('active')
+        })
+        $(function () {
+          $('.pagination').pagination({
+            mode: 'fixed',
+            pageCount: 50,
+            jump: true,
+            coping: true,
+            homePage: '首页',
+            endPage: '末页',
+            prevContent: '上页',
+            nextContent: '下页',
+            callback: function (api) { }
+          });
+        })
+
+        laydate.render({
+          elem: '#time-selector2'
+          , type: 'datetime'
+          , range: true
+        });
+      },
+      methods: {
+        getcedian() {
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+            // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+          })
+            .then(function (res) {
+              console.log(res)
+              if (res.status == 200) {
+                console.log(res.data)
+                //所有检测项和测点
+              }
+
+            })
+            .catch(err => {
+
+            });
+        },
+        selectOne(param) {
+          $(window).trigger('resize')
+          if (param.target.value === '整体检测得分') {
+            $('.allScore').css('display', 'block')
+            $('.historyScore').css('display', 'none')
+            $('.scorce').show()
+          } else {
+            $('.historyScore').css('display', 'block')
+            $('.allScore').css('display', 'none')
+            $('.scorce').hide()
+          }
+          $(window).trigger('resize')
+        },
+        modelshow() {
+          this.isDowm = true
+          // $(window).trigger('resize')
+        },
+        closemodel() {
+          this.isDowm = false
+        },
+        mousedown(event) {
+          // this.selectElement = document.getElementById("drop")
+
+          this.selectElement = document.getElementsByClassName("waring2-hide")[0]
+          var div1 = this.selectElement
+          this.selectElement.style.cursor = 'move'
+          this.isDowm = true
+          var distanceX = event.clientX - this.selectElement.offsetLeft
+          var distanceY = event.clientY - this.selectElement.offsetTop
+          document.onmousemove = function (ev) {
+            var oevent = ev || event
+            div1.style.left = oevent.clientX - distanceX + 'px'
+            div1.style.top = oevent.clientY - distanceY + 'px'
+          }
+          document.onmouseup = function () {
+            document.onmousemove = null
+            document.onmouseup = null
+            div1.style.cursor = 'default'
+          }
         }
-      })
+
+      }
+    })
     // $('#time-selector1').daterangepicker({
     //   "startDate": "08/10/2020",
     //   "endDate": "08/16/2020",
@@ -968,15 +1013,15 @@
         unity.SendMessage("GameManager", "SetEnvir", "false")
       }
     })
-    $('.page-box').on('click', '.header-left li', function(){
+    $('.page-box').on('click', '.header-left li', function () {
       $(this).addClass('active').siblings().removeClass('active')
     })
     laydate.render({
       elem: '#time-selector1'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
-    $('#litte-table').on('click', 'ul', function(){
+    $('#litte-table').on('click', 'ul', function () {
       $(this).addClass('active').siblings().removeClass('active')
     })
     $(function () {
@@ -989,7 +1034,7 @@
         endPage: '末页',
         prevContent: '上页',
         nextContent: '下页',
-        callback: function (api) {}
+        callback: function (api) { }
       });
     })
   </script>
