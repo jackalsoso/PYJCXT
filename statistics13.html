@@ -100,21 +100,13 @@
                   <li>日</li>
                 </ul>
                 <div class="header-right">
-                  <el-select v-model="chooseData[0]"
-                             multiple
-                             collapse-tags
-                             placeholder="请选择"
-                             class="laneSelect"
-                             @change='selectAll($event, 0)'
-                  >
-                    <el-option v-for="item in selectOptions"
-                               :key="item.value"
-                               :label="item.label"
-                               :value="item.value"
-                    >
+                  <el-select v-model="chooseData[0]" multiple collapse-tags placeholder="请选择" class="laneSelect"
+                    @change='selectAll($event, 0)'>
+                    <el-option v-for="item in selectOptions" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
-                  <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  <input type="text" id="time-selector1" class="time-selector"
+                    value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -130,21 +122,13 @@
               <div class="header">
                 <ul class="header-left"></ul>
                 <div class="header-right">
-                  <el-select v-model="chooseData[1]"
-                             multiple
-                             collapse-tags
-                             placeholder="请选择"
-                             class="laneSelect"
-                             @change='selectAll($event, 1)'
-                  >
-                    <el-option v-for="item in selectOptions"
-                               :key="item.value"
-                               :label="item.label"
-                               :value="item.value"
-                    >
+                  <el-select v-model="chooseData[1]" multiple collapse-tags placeholder="请选择" class="laneSelect"
+                    @change='selectAll($event, 1)'>
+                    <el-option v-for="item in selectOptions" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
-                  <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  <input type="text" id="time-selector2" class="time-selector"
+                    value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -165,21 +149,13 @@
                   <li>日</li>
                 </ul>
                 <div class="header-right">
-                  <el-select v-model="chooseData[2]"
-                             multiple
-                             collapse-tags
-                             placeholder="请选择"
-                             class="laneSelect"
-                             @change='selectAll($event, 2)'
-                  >
-                    <el-option v-for="item in selectOptions"
-                               :key="item.value"
-                               :label="item.label"
-                               :value="item.value"
-                    >
+                  <el-select v-model="chooseData[2]" multiple collapse-tags placeholder="请选择" class="laneSelect"
+                    @change='selectAll($event, 2)'>
+                    <el-option v-for="item in selectOptions" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
-                  <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  <input type="text" id="time-selector3" class="time-selector"
+                    value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -195,21 +171,13 @@
               <div class="header">
                 <ul class="header-left"></ul>
                 <div class="header-right">
-                  <el-select v-model="chooseData[3]"
-                             multiple
-                             collapse-tags
-                             placeholder="请选择"
-                             class="laneSelect"
-                             @change='selectAll($event, 3)'
-                  >
-                    <el-option v-for="item in selectOptions"
-                               :key="item.value"
-                               :label="item.label"
-                               :value="item.value"
-                    >
+                  <el-select v-model="chooseData[3]" multiple collapse-tags placeholder="请选择" class="laneSelect"
+                    @change='selectAll($event, 3)'>
+                    <el-option v-for="item in selectOptions" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
-                  <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  <input type="text" id="time-selector4" class="time-selector"
+                    value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -231,21 +199,13 @@
                   <li>重车数量</li>
                 </ul>
                 <div class="header-right">
-                  <el-select v-model="chooseData[4]"
-                             multiple
-                             collapse-tags
-                             placeholder="请选择"
-                             class="laneSelect"
-                             @change='selectAll($event, 4)'
-                  >
-                    <el-option v-for="item in selectOptions"
-                               :key="item.value"
-                               :label="item.label"
-                               :value="item.value"
-                    >
+                  <el-select v-model="chooseData[4]" multiple collapse-tags placeholder="请选择" class="laneSelect"
+                    @change='selectAll($event, 4)'>
+                    <el-option v-for="item in selectOptions" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
-                  <input type="text" id="time-selector6" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  <input type="text" id="time-selector6" class="time-selector"
+                    value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -262,23 +222,15 @@
                 <!-- <ul class="header-left">
                   <li class="active">小时</li>
                   <li>日</li>
-                </!--> 
+                </!-->
                 <div class="header-right">
-                  <el-select v-model="chooseData[5]"
-                             multiple
-                             collapse-tags
-                             placeholder="请选择"
-                             class="laneSelect"
-                             @change='selectAll($event, 5)'
-                  >
-                    <el-option v-for="item in selectOptions"
-                               :key="item.value"
-                               :label="item.label"
-                               :value="item.value"
-                    >
+                  <el-select v-model="chooseData[5]" multiple collapse-tags placeholder="请选择" class="laneSelect"
+                    @change='selectAll($event, 5)'>
+                    <el-option v-for="item in selectOptions" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                   </el-select>
-                  <input type="text" id="time-selector5" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  <input type="text" id="time-selector5" class="time-selector"
+                    value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 </div>
               </div>
               <div class="chart-wrap">
@@ -708,29 +660,29 @@
             show: false
           },
           data: [{
-              value: 335,
-              name: '总重超50t'
-            },
-            {
-              value: 310,
-              name: '总重超60t'
-            },
-            {
-              value: 234,
-              name: '总重超70t'
-            },
-            {
-              value: 215,
-              name: '总重超80t'
-            },
-            {
-              value: 150,
-              name: '总重超90t'
-            },
-            {
-              value: 135,
-              name: '总重超100t'
-            }
+            value: 335,
+            name: '总重超50t'
+          },
+          {
+            value: 310,
+            name: '总重超60t'
+          },
+          {
+            value: 234,
+            name: '总重超70t'
+          },
+          {
+            value: 215,
+            name: '总重超80t'
+          },
+          {
+            value: 150,
+            name: '总重超90t'
+          },
+          {
+            value: 135,
+            name: '总重超100t'
+          }
           ]
         }]
       }
@@ -855,41 +807,41 @@
     }
 
 
-    $('.page-box').on('click', '.header-left li', function(){
+    $('.page-box').on('click', '.header-left li', function () {
       $(this).addClass('active').siblings().removeClass('active')
     })
-    laydate.render({
-      elem: '#time-selector1'
-      ,type: 'datetime'
-      ,range: true
-    });
-    laydate.render({
-      elem: '#time-selector2'
-      ,type: 'datetime'
-      ,range: true
-    });
-    laydate.render({
-      elem: '#time-selector3'
-      ,type: 'datetime'
-      ,range: true
-    });
-    laydate.render({
-      elem: '#time-selector4'
-      ,type: 'datetime'
-      ,range: true
-    });
-    laydate.render({
-      elem: '#time-selector5'
-      ,type: 'datetime'
-      ,range: true
-    });
-    laydate.render({
-      elem: '#time-selector6'
-      ,type: 'datetime'
-      ,range: true
-    });
+    // laydate.render({
+    //   elem: '#time-selector1'
+    //   , type: 'datetime'
+    //   , range: true
+    // });
+    // laydate.render({
+    //   elem: '#time-selector2'
+    //   , type: 'datetime'
+    //   , range: true
+    // });
+    // laydate.render({
+    //   elem: '#time-selector3'
+    //   , type: 'datetime'
+    //   , range: true
+    // });
+    // laydate.render({
+    //   elem: '#time-selector4'
+    //   , type: 'datetime'
+    //   , range: true
+    // });
+    // laydate.render({
+    //   elem: '#time-selector5'
+    //   , type: 'datetime'
+    //   , range: true
+    // });
+    // laydate.render({
+    //   elem: '#time-selector6'
+    //   , type: 'datetime'
+    //   , range: true
+    // });
 
-    const app = new Vue({
+    let app = new Vue({
       el: '#app',
       data() {
         return {
@@ -906,9 +858,44 @@
           chooseData: []
         };
       },
+      mounted() {
+        $('.page-box').on('click', '.header-left li', function () {
+          $(this).addClass('active').siblings().removeClass('active')
+        })
+        laydate.render({
+          elem: '#time-selector1'
+          , type: 'datetime'
+          , range: true
+        });
+        laydate.render({
+          elem: '#time-selector2'
+          , type: 'datetime'
+          , range: true
+        });
+        laydate.render({
+          elem: '#time-selector3'
+          , type: 'datetime'
+          , range: true
+        });
+        laydate.render({
+          elem: '#time-selector4'
+          , type: 'datetime'
+          , range: true
+        });
+        laydate.render({
+          elem: '#time-selector5'
+          , type: 'datetime'
+          , range: true
+        });
+        laydate.render({
+          elem: '#time-selector6'
+          , type: 'datetime'
+          , range: true
+        });
+      },
       methods: {
-        selectAll (val, index) {
-          console.log(index ,val)
+        selectAll(val, index) {
+          console.log(index, val)
           const allValues = this.selectOptions.map(item => {
             return item.value;
           });
