@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <script src="./js/dataTool.min.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+</head>
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li class="active"><span>结构<br>状态分析</span>
+          <ul>
+          <li data-menu="structural1"><span>结构动力特性分析</span></li>
+          <li data-menu="structural2"><span>应力五度指标</span></li>
+          <li data-menu="structural3"><span>结构变形响应分析</span></li>
+          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+          <li data-menu="structural6"><span>结构相关性分析</span></li>
+          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li data-menu="system3"><span>报表管理</span>
+          <ul>
+            <!-- <li data-menu="system1"><span>角色管理</span></li> -->
+            <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 报表管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body"  style="overflow-y: hidden;">
+      <div class="page-box time-top statistics-top structural4-top" style="height: calc(100% - 376px);">
+        <!-- <div class="title">
+          <span>IBM模型</span>
+        </div> -->
+        <div class="content" style="height:100%;position: relative;padding: 0;">
+          <!-- <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div> -->
+          <div class="tip-check">
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="xuhuacheck" type="checkbox">
+                <span></span>
+
+              </label>
+              <div class="custom-txt">虚化</div>
+            </div>
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="huanjincheck" type="checkbox" checked>
+                <span></span>
+
+              </label>
+              <div class="custom-txt">环境</div>
+            </div>
+          </div>
+          <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
+        </div>
+      </div>
+      <div class="time-bottom statistics-bottom" style="height: 340px">
+        <div class="two-page-box">
+          <div class="page-box" style="margin-bottom:0">
+            <div class="title">
+              <span>加速度基频值时程图</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left acceleration-time-chart">
+                  <li class="active">实时</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                    <option value="YL-A1-B-02">YL-A1-B-02</option>
+                    <option value="YL-A1-B-03">YL-A1-B-03</option>
+                    <option value="YL-A1-B-04">YL-A1-B-04</option>
+                  </select>
+                  <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box" style="margin-bottom:0">
+            <div class="title">
+              <span>加速度频谱图</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left"></ul>
+                <div class="header-right">
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                    <option value="YL-A1-B-02">YL-A1-B-02</option>
+                    <option value="YL-A1-B-03">YL-A1-B-03</option>
+                    <option value="YL-A1-B-04">YL-A1-B-04</option>
+                  </select>
+                  <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/moment.min1.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script type="text/javascript">
+    var unity
+    var unityReady = false
+
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    function CallBackWGL_LoadMeasurePoint() {
+
+    }
+    let _checkarr = []
+    let _selObj = {
+      '应力': '#check1-page',
+      '挠度': '#check2-page',
+      '空间变位': '#check3-page',
+      '拉索振动': '#check4-page',
+      '梁端位移': '#check5-page',
+      '阻尼器位移': '#check6-page',
+      '横向支座位移': '#check7-page',
+      '温度': '#check8-page',
+      '温湿度': '#check9-page',
+      '风速': '#check10-page',
+      '动力特性': '#check11-page',
+      '地震、船撞': '#check12-page',
+    }
+    //选择测点
+    function SelectMonitorPoint(type, name) {
+      console.log(type)
+      console.log(name)
+
+      // let curPageBox = $(_selObj[type]),
+      //   _siblingsBox = curPageBox.siblings().filter(function () { return $(this).css('display') != 'none' })
+      // console.log(_siblingsBox)
+      // if (_siblingsBox.length > 3) {
+      //   _siblingsBox.eq(_siblingsBox.length - 1).css('display', 'none')
+      // }
+      // curPageBox.css('display', 'block')
+      // curPageBox.insertBefore(_siblingsBox[0])
+      // $(window).trigger('resize');
+
+
+    }
+    function bthclick(v) {
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
+    }
+    // function checktype(item) {
+    //   var index;
+    //   for (var idx = 0; idx < typenamelist.length; idx++) {
+    //     if (item.value == typenamelist[idx]) {
+    //       index = idx;
+    //     }
+    //   }
+    //   if (item.checked) {
+    //     typenamelist.push(item.value)
+    //   } else {
+    //     typenamelist.splice(index, 1)
+    //   }
+    //   unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    // }
+
+
+    //unity加载完成后
+    function OnSceneLoaded() {
+      //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+      unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
+    }
+    let init = function () {
+
+      var data = [
+        ["2020-05-12", 1200, 2200, 1500, 1320],
+        ["2020-05-13", 1320, 1820, 2320, 3340],
+        ["2020-05-14", 1010, 1910, 1001, 1086],
+        ["2020-05-15", 0134, 3032, 0154, 1030],
+        ["2020-05-16", 190, 1290, 1190, 1210],
+        ["2020-05-17", 1234, 1330, 260, 1310],
+        ["2020-05-18", 1210, 1310, 410, 1184]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+      var valueList3 = data.map(function (item) {
+        return item[3];
+      });
+      var valueList4 = data.map(function (item) {
+        return item[4];
+      });
+      var option0 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '频率：Hz',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '最大值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList1
+        }]
+      }
+      var option1 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '频率：Hz',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '最大值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList1
+        }, {
+          name: '最小值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList2
+        }]
+      }
+
+      // var data = echarts.dataTool.prepareBoxplotData([
+      //   [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
+      //   [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800],
+      //   [880, 880, 880, 860, 720, 720, 620, 860, 970, 950, 880, 910, 850, 870, 840, 840, 850, 840, 840, 840],
+      //   [890, 810, 810, 820, 800, 770, 760, 740, 750, 760, 910, 920, 890, 860, 880, 720, 840, 850, 850, 780],
+      //   [890, 840, 780, 810, 760, 810, 790, 810, 820, 850, 870, 870, 810, 740, 810, 940, 950, 800, 810, 870],
+      //   [850, 740, 900, 1070, 930, 850, 950, 980, 980, 880, 1000, 980, 930, 650, 760, 810, 1000, 1000, 960, 960],
+      //   [960, 940, 960, 940, 880, 800, 850, 880, 900, 840, 830, 790, 810, 880, 880, 830, 800, 790, 760, 800]
+      // ]);
+      // var option1 = {
+      //   color: ['#1f9870'],
+      //   tooltip: {
+      //     trigger: 'item',
+      //     axisPointer: {
+      //       type: 'shadow'
+      //     }
+      //   },
+      //   xAxis: {
+      //     type: 'category',
+      //     axisLine: {
+      //       lineStyle: {
+      //         color: '#ACB3BE'
+      //       }
+      //     },
+      //     axisLabel: {
+      //       margin: 20
+      //     },
+      //     splitArea: {
+      //       show: false
+      //     },
+      //     data: ['2020/7/14', '2020/7/15', '2020/7/16', '2020/7/17', '2020/7/18', '2020/7/19', '2020/7/20']
+      //   },
+      //   yAxis: {
+      //     name: '频率：Hz',
+      //     type: 'value',
+      //     nameTextStyle: {
+      //       lineHeight: 0
+      //     },
+      //     axisLine: {
+      //       lineStyle: {
+      //         color: '#ACB3BE'
+      //       }
+      //     },
+      //     axisTick: {
+      //       show: false
+      //     },
+      //     splitLine: {
+      //       show: true,
+      //       lineStyle: {
+      //         color: '#4C4B5E',
+      //         type: 'dashed'
+      //       }
+      //     }
+      //   },
+      //   grid: {
+      //     left: 20,
+      //     top: 30,
+      //     right: 20,
+      //     bottom: 17,
+      //     containLabel: true
+      //   },
+      //   series: [{
+      //       name: 'boxplot',
+      //       type: 'boxplot',
+      //       data: data.boxData,
+      //       tooltip: {
+      //         formatter: function (param) {
+      //           return [
+      //             param.name,
+      //             '最大值: ' + param.data[3],
+      //             '最小值: ' + param.data[1],
+      //             '平均值: ' + param.data[2]
+      //           ].join('<br/>');
+      //         }
+      //       },
+      //       itemStyle: {
+      //         color: '#1f9870'
+      //       }
+      //     },
+      //     {
+      //       name: '异常值',
+      //       type: 'scatter',
+      //       data: data.outliers
+      //     }
+      //   ]
+      // }
+      var data2 = [
+        ["0", 116],
+        ["0.1", 91],
+        ["0.2", 129],
+        ["0.3", 92],
+        ["0.4", 135],
+        ["0.5", 113],
+        ["0.6", 86],
+        ["0.7", 107],
+        ["0.8", 73],
+        ["0.9", 131],
+        ["1", 85],
+        ["1.1", 111],
+        ["1.2", 73],
+        ["1.3", 64],
+        ["1.4", 68],
+        ["1.5", 69],
+        ["1.6", 92],
+        ["1.7", 130],
+        ["1.8", 245],
+        ["1.9", 139],
+        ["2", 115],
+        ["2.1", 111],
+        ["2.2", 309],
+        ["2.3", 206],
+        ["2.4", 137],
+        ["2.5", 128],
+        ["2.6", 85],
+        ["2.7", 94],
+        ["2.8", 71],
+        ["2.9", 106],
+        ["3", 84],
+        ["3.1", 93],
+        ["3.2", 85],
+        ["3.3", 73],
+        ["3.4", 83],
+        ["3.5", 125],
+        ["3.6", 107],
+        ["3.7", 82],
+        ["3.8", 44],
+        ["3.9", 72],
+        ["4", 106],
+        ["4.1", 107],
+        ["4.2", 66],
+        ["4.3", 77],
+        ["4.4", 83],
+        ["4.5", 111],
+        ["4.6", 57],
+        ["4.7", 55],
+        ["4.8", 60],
+        ["4.9", 73],
+        ["5", 68],
+        ["5.1", 92],
+        ["5.2", 130],
+        ["5.3", 245],
+        ["5.4", 139],
+        ["5.5", 115],
+        ["5.6", 111],
+        ["5.7", 309],
+        ["5.8", 206],
+        ["5.9", 137],
+        ["6", 128]
+      ];
+      var dateList = data2.map(function (item) {
+        return item[0];
+      });
+      var valueList = data2.map(function (item) {
+        return item[1];
+      });
+      var option2 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          name: '频率：Hz',
+          nameTextStyle: {
+            padding: [80, 0, 0, -65]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20,
+            interval: 9
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '幅值',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(23, 143, 255,1)'
+          },
+          data: valueList
+        }]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      myChart1.setOption($('.acceleration-time-chart li[class="active"]').text() === '实时' ? option0 : option1, true);
+      myChart2.setOption(option2, true);
+    }
+    //初始化vue
+    var app = new Vue({
+      el: '#app',
+      data: {
+        select1name: "",
+        carouselItem: [
+          './images/simple2.jpg',
+        ]
+      },
+      mounted() {
+
+        //页面加载完成后调用
+        unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
+        this.getcedian()
+      },
+      methods: {
+        getcedian() {
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+            // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+          })
+            .then(function (res) {
+              console.log(res)
+              if (res.status == 200) {
+                console.log(res.data)
+                //所有检测项和测点
+              }
+
+            })
+            .catch(err => {
+
+            });
+        },
+
+      }
+    })
+    $('#xuhuacheck').on("click", function () {
+      if (this.checked == true) {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+      } else {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "true")
+      }
+    })
+    $('#huanjincheck').on("click", function () {
+      if (this.checked == true) {
+
+        unity.SendMessage("GameManager", "SetEnvir", "true")
+      } else {
+
+        unity.SendMessage("GameManager", "SetEnvir", "false")
+      }
+    })
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+      init()
+    })
+
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector2'
+      ,type: 'datetime'
+    });
+  </script>
+</body>
+
+</html>

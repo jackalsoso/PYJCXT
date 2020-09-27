@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+</head>
+
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li class="active"><span>结构<br>状态分析</span>
+          <ul>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li data-menu="system3"><span>报表管理</span>
+          <ul>
+            <!-- <li data-menu="system1"><span>角色管理</span></li> -->
+            <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 报表管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="page-box time-top statistics-top" style="height: calc(100% - 396px);">
+        <!-- <div class="title">
+          <span>IBM模型</span>
+        </div> -->
+        <div class="content" style="height:100%">
+          <!-- <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div> -->
+          <div class="tip-check">
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="xuhuacheck" type="checkbox">
+                <span></span>
+
+              </label>
+              <div class="custom-txt">虚化</div>
+            </div>
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="huanjincheck" type="checkbox" checked>
+                <span></span>
+
+              </label>
+              <div class="custom-txt">环境</div>
+            </div>
+          </div>
+          <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
+        </div>
+      </div>
+      <div class="time-bottom statistics-bottom" style="height: 362px">
+        <div class="two-page-box">
+          <div class="page-box" style="margin-bottom:0;">
+            <div class="title">
+              <span>行人舒适度实时监测</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left"></ul>
+                <div class="header-right">
+                  <span>更新时间：2020年05月26日 15:30</span>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+        <div class="page-box" style="margin-bottom:0;flex:2">
+          <div class="title">
+            <span>历史行人舒适度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/moment.min1.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script type="text/javascript">
+   var unity
+    var unityReady = false
+
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    function CallBackWGL_LoadMeasurePoint() {
+
+    }
+    let _checkarr = []
+    let _selObj = {
+      '应力': '#check1-page',
+      '挠度': '#check2-page',
+      '空间变位': '#check3-page',
+      '拉索振动': '#check4-page',
+      '梁端位移': '#check5-page',
+      '阻尼器位移': '#check6-page',
+      '横向支座位移': '#check7-page',
+      '温度': '#check8-page',
+      '温湿度': '#check9-page',
+      '风速': '#check10-page',
+      '动力特性': '#check11-page',
+      '地震、船撞': '#check12-page',
+    }
+    //选择测点
+    function SelectMonitorPoint(type, name) {
+      console.log(type)
+      console.log(name)
+
+      // let curPageBox = $(_selObj[type]),
+      //   _siblingsBox = curPageBox.siblings().filter(function () { return $(this).css('display') != 'none' })
+      // console.log(_siblingsBox)
+      // if (_siblingsBox.length > 3) {
+      //   _siblingsBox.eq(_siblingsBox.length - 1).css('display', 'none')
+      // }
+      // curPageBox.css('display', 'block')
+      // curPageBox.insertBefore(_siblingsBox[0])
+      // $(window).trigger('resize');
+
+
+    }
+    function bthclick(v) {
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
+    }
+    // function checktype(item) {
+    //   var index;
+    //   for (var idx = 0; idx < typenamelist.length; idx++) {
+    //     if (item.value == typenamelist[idx]) {
+    //       index = idx;
+    //     }
+    //   }
+    //   if (item.checked) {
+    //     typenamelist.push(item.value)
+    //   } else {
+    //     typenamelist.splice(index, 1)
+    //   }
+    //   unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    // }
+
+
+    //unity加载完成后
+    function OnSceneLoaded() {
+      //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+      unity.SendMessage("GameManager", "CallBackWGL_LoadCrossSection", "")
+    }
+    let init = function () {
+      var data = [
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
+        ["2000-06-29", 85],
+        ["2000-06-30", 73],
+        ["2000-07-01", 83],
+        ["2000-07-02", 125],
+        ["2000-07-03", 107],
+        ["2000-07-04", 82],
+        ["2000-07-05", 44],
+        ["2000-07-06", 72],
+        ["2000-07-07", 106],
+        ["2000-07-08", 107],
+        ["2000-07-09", 66],
+        ["2000-07-10", 91],
+        ["2000-07-11", 92],
+        ["2000-07-12", 113],
+        ["2000-07-13", 107],
+        ["2000-07-14", 131],
+        ["2000-07-15", 111],
+        ["2000-07-16", 64],
+        ["2000-07-17", 69],
+        ["2000-07-18", 88],
+        ["2000-07-19", 77],
+        ["2000-07-20", 83],
+        ["2000-07-21", 111],
+        ["2000-07-22", 57],
+        ["2000-07-23", 55],
+        ["2000-07-24", 60],
+        ["2000-07-25", 73],
+        ["2000-07-26", 68],
+        ["2000-07-27", 92],
+        ["2000-07-28", 130],
+        ["2000-07-29", 245],
+        ["2000-07-30", 139],
+        ["2000-07-31", 115],
+        ["2000-08-01", 111],
+        ["2000-08-02", 309],
+        ["2000-08-03", 206],
+        ["2000-08-04", 137],
+        ["2000-08-05", 128],
+        ["2000-08-06", 92]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList = data.map(function (item) {
+        return item[1];
+      });
+      var value = 40; // 数值
+
+      var option1 = {
+        title: {
+          show: true,
+          subtext: '振动感觉指标\n(VG)\n' + value + '\n良好',
+          subtextStyle: {
+            align: 'center',
+            fontSize: 14,
+            color: '#fff',
+            lineHeight: 25
+          },
+          x: 'center',
+          y: 'center'
+        },
+        series: [{
+          name: '行人舒适度实时监测',
+          type: 'gauge',
+          max: 100,
+          splitNumber: 20,
+          radius: '75%',
+          detail: {
+            show: false
+          },
+          data: [{
+            value: value
+          }],
+          axisLine: {
+            lineStyle: {
+              width: 20,
+              color: [
+                [0.2, '#5773FF'],
+                [0.5, '#3BCDE2'],
+                [0.8, '#FCB333'],
+                [1, '#FF6383']
+              ]
+            }
+          },
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000',
+            distance: -34,
+            show: true,
+            formatter: function (value) {
+              if (value === 10) {
+                return '良好'
+              } else if (value === 30) {
+                return '轻微'
+              } else if (value == 65) {
+                return '一般'
+              } else if (value === 90) {
+                return '严重'
+              } else {
+                return ''
+              }
+            }
+          },
+          pointer: {
+            show: true,
+            length: '85%',
+            width: 20
+          },
+          axisTick: {
+            show: false
+          }
+        }, {
+          type: 'pie',
+          radius: ['48%', '55%'],
+          label: {
+            show: false
+          },
+          labelLine: {
+            show: false
+          },
+          hoverAnimation: false,
+          itemStyle: {
+            color: '#364C94'
+          },
+          emphasis: {
+            itemStyle: {
+              color: '#364C94'
+            }
+          },
+          data: [{
+            value: 100
+          }]
+        }, {
+          type: 'pie',
+          radius: '48%',
+          label: {
+            show: false
+          },
+          labelLine: {
+            show: false
+          },
+          hoverAnimation: false,
+          itemStyle: {
+            color: '#5773FF'
+          },
+          emphasis: {
+            itemStyle: {
+              color: '#5773FF'
+            }
+          },
+          data: [{
+            value: 100
+          }]
+        }]
+      }
+      var option2 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          boundaryGap: false,
+          data: dateList,
+        },
+        yAxis: {
+          name: '舒适度',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(23, 143, 255,1)'
+          },
+          areaStyle: {
+            color: 'rgba(23, 143, 255,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            data: [{
+              yAxis: 309,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '极度不适'
+              },
+              lineStyle: {
+                color: '#fcb333'
+              }
+            }, {
+              yAxis: 175,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '轻微不适'
+              },
+              lineStyle: {
+                color: '#ff4d4f'
+              }
+            }]
+          },
+          data: valueList
+        }]
+      }
+
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+    }
+    
+    //初始化vue
+    var app = new Vue({
+      el: '#app',
+      data: {
+        select1name: "",
+        carouselItem: [
+          './images/simple2.jpg',
+        ]
+      },
+      mounted() {
+
+        //页面加载完成后调用
+        unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
+        this.getcedian()
+      },
+      methods: {
+        getcedian() {
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+            // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+          })
+            .then(function (res) {
+              console.log(res)
+              if (res.status == 200) {
+                console.log(res.data)
+                //所有检测项和测点
+              }
+
+            })
+            .catch(err => {
+
+            });
+        },
+
+      }
+    })
+    $('#xuhuacheck').on("click", function () {
+      if (this.checked == true) {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+      } else {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "true")
+      }
+    })
+    $('#huanjincheck').on("click", function () {
+      if (this.checked == true) {
+
+        unity.SendMessage("GameManager", "SetEnvir", "true")
+      } else {
+
+        unity.SendMessage("GameManager", "SetEnvir", "false")
+      }
+    })
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });  </script>
+</body>
+
+</html>

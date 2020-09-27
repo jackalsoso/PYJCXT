@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+</head>
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li class="active"><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li><span>结构<br>状态分析</span>
+          <ul>
+          <li data-menu="structural1"><span>结构动力特性分析</span></li>
+          <li data-menu="structural2"><span>应力五度指标</span></li>
+          <li data-menu="structural3"><span>结构变形响应分析</span></li>
+          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+          <li data-menu="structural6"><span>结构相关性分析</span></li>
+          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <li data-menu="system3"><span>资料备份</span></li>
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="page-box time-top statistics-top">
+        <div class="title">
+          <span>IBM模型</span>
+        </div>
+        <div class="content">
+          <ul>
+            <li data-menu="statistics1">应力</li>
+            <li data-menu="statistics2">横向支座位移</li>
+            <li class="active" data-menu="statistics3">挠度</li>
+            <li data-menu="statistics4">温度</li>
+            <li data-menu="statistics5">空间变位</li>
+            <li data-menu="statistics6">温湿度</li>
+            <li data-menu="statistics7">拉索振动</li>
+            <li data-menu="statistics8">风速</li>
+            <li data-menu="statistics9">梁端位移</li>
+            <li data-menu="statistics10">动力特性</li>
+            <li data-menu="statistics11">阻尼器位移</li>
+            <li data-menu="statistics12">地震、船撞</li>
+          </ul>
+          <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div>
+        </div>
+      </div>
+      <div class="time-bottom statistics-bottom">
+        <div class="page-box">
+          <div class="title">
+            <span>挠度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">10分钟</li>
+                <li>小时</li>
+                <li>日</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="最大值、位移值">最大值、位移值</option>
+                  <option value="最大值">最大值</option>
+                  <option value="最小值">最小值</option>
+                  <option value="位移值">位移值</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                  <option value="YL-A1-B-02">YL-A1-B-02</option>
+                  <option value="YL-A1-B-03">YL-A1-B-03</option>
+                  <option value="YL-A1-B-04">YL-A1-B-04</option>
+                </select>
+                <input type="text" id="time-selector1" class="time-selector">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/moment.min1.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script type="text/javascript">
+    let init = function () {
+      var data = [
+        ["2020-05-12", 120, 220, 150, 320],
+        ["2020-05-13", 132, 182, 232, 334],
+        ["2020-05-14", 101, 191, 301, 486],
+        ["2020-05-15", 134, 332, 154, 390],
+        ["2020-05-16", 90, 290, 190, 210],
+        ["2020-05-17", 234, 330, 260, 310],
+        ["2020-05-18", 210, 310, 410, 184]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+      var valueList3 = data.map(function (item) {
+        return item[3];
+      });
+      var valueList4 = data.map(function (item) {
+        return item[4];
+      });
+      var option1 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '位移：mm',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '最大值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList1
+        }, {
+          name: '最小值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList2
+        }, {
+          name: '平均值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList3
+        }, {
+          name: '位移值',
+          type: 'line',
+          lineStyle: {
+            // color: 'rgb(23, 143, 255)'
+          },
+          data: valueList4
+        }]
+      }
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      myChart1.setOption(option1, true);
+    }
+    $('#time-selector1').daterangepicker({
+      "singleDatePicker": true,
+      "startDate": "08/10/2020",
+      "endDate": "08/16/2020",
+      "opens": "left"
+    }, function (start, end, label) {
+      console.log(
+        "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+        );
+    });
+  </script>
+</body>
+
+</html>

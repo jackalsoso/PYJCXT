@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+</head>
+
+<body>
+  <div class="page-controller" id="app">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li><span>结构<br>状态分析</span>
+          <ul>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li class="active"><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li data-menu="system3"><span>报表管理</span>
+          <ul>
+            <!-- <li data-menu="system1"><span>角色管理</span></li> -->
+            <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 报表管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
+
+
+        <div class="page-box time-top" style="height: calc(100% - 396px);">
+          <!-- <div class="title">
+            <span>BIM模型</span>
+            <span class="title-right">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+              <div class="title-right-tip">
+                说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+              </div>
+            </span>
+          </div> -->
+          <!-- <div class="header">
+              <ul class="legend legend1">
+                <li>概率密度</li>
+                <li>累计概率</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="YL-A1-B-01，效应">YL-A1-B-01，效应</option>
+                </select>
+                <input type="text" id="time-selector3" class="time-selector">
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="chart3"></div>
+            </div> -->
+          <!-- <div class="imgbox">
+              <img style="width: 100%;height: 347px" src="./images/simple3.jpg" border="0" />
+            </div> -->
+          <div class="content" style="position:relative;height:100%;padding:0;">
+            <!-- <div class="check-box" style="width:93%">
+              <p><input class="checkAll" data-action="all" type="checkbox" value="" name="category" checked /> 全选</p>
+              <p><input class="check" type="checkbox" value="应力" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon1.png" class="checkImg" name='1' /> 应力</p>
+              <p><input class="check" type="checkbox" value="挠度" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon2.png" class="checkImg" name='2' /> 挠度</p>
+              <p><input class="check" type="checkbox" value="空间变位" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon3.png" class="checkImg" name='3' /> 空间变位</p>
+              <p><input class="check" type="checkbox" value="拉索振动" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon4.png" class="checkImg" name='4' /> 拉索振动</p>
+              <p><input class="check" type="checkbox" value="梁端位移" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon5.png" class="checkImg" name='5' /> 梁端位移</p>
+              <p><input class="check" type="checkbox" value="阻尼器位移" name="category" checked
+                  style="display: none;" /><img src="./images/ckicon6.png" class="checkImg" name='6' /> 阻尼器位移</p>
+              <p><input class="check" type="checkbox" value="横向支座位移" name="category" checked
+                  style="display: none;" /><img src="./images/ckicon7.png" class="checkImg" name='7' /> 横向支座位移</p>
+              <p><input class="check" type="checkbox" value="温度" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon8.png" class="checkImg" name='8' /> 温度</p>
+              <p><input class="check" type="checkbox" value="温湿度" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon9.png" class="checkImg" name='9' /> 温湿度</p>
+              <p><input class="check" type="checkbox" value="风速" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon10.png" class="checkImg" name='10' /> 风速</p>
+              <p><input class="check" type="checkbox" value="动力特性" name="category" checked style="display: none;" /><img
+                  src="./images/ckicon11.png" class="checkImg" name='11' /> 动力特性</p>
+              <p><input class="check" type="checkbox" value="地震、船撞" name="category" checked
+                  style="display: none;" /><img src="./images/ckicon12.png" class="checkImg" name='12' /> 地震、船撞</p>
+            </div> -->
+            <div class="tip-check">
+              <div class="box">
+                <label class="custom-checkbox">
+                  <input id="xuhuacheck" type="checkbox">
+                  <!-- <input  type="checkbox" onclick="if(this.checked){ alert('选中协议,允许bai注册!duzhi');}else{alert('请选择同意协dao议后注册!');}"> -->
+                  <span></span>
+
+                </label>
+                <div class="custom-txt">虚化</div>
+              </div>
+              <div class="box">
+                <label class="custom-checkbox">
+                  <input id="huanjincheck" type="checkbox" checked>
+                  <span></span>
+
+                </label>
+                <div class="custom-txt">环境</div>
+              </div>
+            </div>
+            <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
+            <!-- <img src="./images/simple3.jpg" border="0" /> -->
+          </div>
+        </div>
+        <div class="two-page-box">
+          <div class="page-box">
+            <div class="title">
+              <span>车载效应分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">实时</li>
+                  <li>10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select id="select" value="select1name" @change="selectchange">
+                    <option v-for="(item,index) in selectarr" :key="index" :value="index">{{item}}</option>
+                  </select>
+                  <!-- <select>
+                    <option value="轴力、弯矩">轴力、弯矩</option>
+                  </select> -->
+                  <input type="text" id="time-selector1" class="time-selector"
+                    value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box">
+            <div class="title">
+              <span>车载效应概率密度</span>
+              <span class="title-right">
+                <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+                <div class="title-right-tip">
+                  说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+                </div>
+              </span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="legend legend1">
+                  <li>概率密度</li>
+                  <li>累计概率</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="YL-A1-B-01，效应">YL-A1-B-01，效应</option>
+                  </select>
+                  <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00"
+                    style="width:160px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart3"></div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="page-box">
+            <div class="title">
+              <span>车载响应分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">实时</li>
+                  <li>10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="应力、位移">应力、位移</option>
+                  </select>
+                  <input type="text" id="time-selector2" class="time-selector">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2"></div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/moment.min1.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script type="text/javascript" src="./js/mock.js"></script>
+  <script type="text/javascript">
+    var unity
+    var unityReady = false
+
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    function CallBackWGL_LoadMeasurePoint() {
+
+    }
+    let _checkarr = []
+    let _selObj = {
+      '应力': '#check1-page',
+      '挠度': '#check2-page',
+      '空间变位': '#check3-page',
+      '拉索振动': '#check4-page',
+      '梁端位移': '#check5-page',
+      '阻尼器位移': '#check6-page',
+      '横向支座位移': '#check7-page',
+      '温度': '#check8-page',
+      '温湿度': '#check9-page',
+      '风速': '#check10-page',
+      '动力特性': '#check11-page',
+      '地震、船撞': '#check12-page',
+    }
+    //选择测点
+    function SelectMonitorPoint(type) {
+      console.log(type)
+    }
+    function bthclick(v) {
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
+    }
+    // function checktype(item) {
+    //   var index;
+    //   for (var idx = 0; idx < typenamelist.length; idx++) {
+    //     if (item.value == typenamelist[idx]) {
+    //       index = idx;
+    //     }
+    //   }
+    //   if (item.checked) {
+    //     typenamelist.push(item.value)
+    //   } else {
+    //     typenamelist.splice(index, 1)
+    //   }
+    //   unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    // }
+
+
+    //unity加载完成后
+    function OnSceneLoaded() {
+      //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+      unity.SendMessage("GameManager", "CallBackWGL_LoadCrossSection", "")
+    }
+    let init = function () {
+
+      //调用mock方法模拟数据
+      Mock.mock(
+        'GET /data-analysis/param/laneDirection', {
+        "list": [
+          {
+            "x": "1",
+            "y": [1, 2]
+          },
+          {
+            "x": "2",
+            "y": [1, 2]
+          }
+        ],
+      },
+      );
+      Mock.mock(
+        'GET /data-analysis/param/laneDirection1', {
+        "list": [
+          {
+            "x": "1",
+            "y": [1, 2, 3]
+          },
+          {
+            "x": "2",
+            "y": [1, 2, 3]
+          }
+        ],
+      },
+      );
+
+      //ajax请求
+      // $.ajax({
+      //   url: "GET /data-analysis/param/laneDirection1",    //请求的url地址
+      //   dataType: "json",   //返回格式为json
+      //   async: false, //请求是否异步，默认为异步，这也是ajax重要特性
+      //   data: {},    //参数值
+      //   type: "GET",   //请求方式
+
+      //   success: function (req) {
+      //     // debugger
+      //     //请求成功时处理
+      //     console.log(req);
+
+      //   },
+
+      // });
+      var data = [
+        ["2020-05-12", 120, 220, 150, 320],
+        ["2020-05-13", 132, 182, 232, 334],
+        ["2020-05-14", 101, 191, 301, 486],
+        ["2020-05-15", 134, 332, 154, 390],
+        ["2020-05-16", 90, 290, 190, 210],
+        ["2020-05-17", 234, 330, 260, 310],
+        ["2020-05-18", 210, 310, 410, 184]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+      var option1 = {
+        color: ['#c95ff2', '#5c89ff'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '轴力、剪力：kN',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '弯矩：kN/m',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '轴力、剪力',
+          type: 'line',
+          data: valueList1
+        }, {
+          name: '弯矩',
+          type: 'line',
+          yAxisIndex: 1,
+          data: valueList2
+        }]
+      }
+      var option2 = {
+        color: ['#c95ff2', '#5c89ff'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '应力：Mpa',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '位移：mm',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '应力',
+          type: 'line',
+          data: valueList1
+        }, {
+          name: '位移',
+          type: 'line',
+          yAxisIndex: 1,
+          data: valueList2
+        }]
+      }
+      var data3 = [
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-18", 210, 310, 410, 184, 101, 191],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+        ["2020-05-13", 132, 182, 232, 334, 90, 290],
+        ["2020-05-14", 101, 191, 301, 486, 210, 310],
+        ["2020-05-15", 134, 332, 154, 390, 120, 220],
+        ["2020-05-16", 90, 290, 190, 210, 120, 220],
+        ["2020-05-17", 234, 330, 260, 310, 132, 182],
+        ["2020-05-18", 210, 310, 410, 184, 101, 191],
+        ["2020-05-12", 120, 220, 150, 320, 134, 332],
+      ];
+      var dateList3 = data3.map(function (item) {
+        return item[0];
+      });
+      var valueList3 = data3.map(function (item) {
+        return item[1];
+      });
+      var valueList4 = data3.map(function (item) {
+        return item[1] - 50;
+      });
+      var option3 = {
+        color: ['#5C89FF', '#00C853'],
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            interval: 0,
+            alignWithLabel: true
+          },
+          data: ['[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)',
+            '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)',
+            '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)', '[0.1,0.15)',
+          ],
+        },
+        yAxis: [{
+          name: '概率密度',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '累计概率',
+          type: 'value',
+          nameLocation: 'middle',
+          nameRotate: 90,
+          nameGap: 40,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 50,
+          top: 30,
+          right: 50,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '概率密度',
+          type: 'bar',
+          barWidth: 16,
+          data: valueList3
+        }, {
+          name: '累计概率',
+          type: 'line',
+          yAxisIndex: 1,
+          symbol: 'none',
+          smooth: true,
+          lineStyle: {
+            type: 'dotted'
+          },
+          data: valueList4
+        }]
+      };
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      // var myChart2 = echarts.init(document.getElementById('chart2'), 'light');//html注释掉的
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+      myChart1.setOption(option1, true);
+      // myChart2.setOption(option2, true);//html注释掉的
+      myChart3.setOption(option3, true);
+    }
+    // Mock.mock(
+    //   'GET data-analysis/compute/param/bridges/:bridgeId/effectNameList', {
+    //   "effectNameList": [
+    //     "断面1-A",
+    //     "断面1-B",
+    //     "断面1-C",
+    //     "断面1-D",
+    //     "断面1-E",
+    //     "断面1-F",
+    //     "断面1-G",
+    //     "断面1-H"
+    //   ]
+    // },
+    // );
+    // Mock.mock(
+    //   'GET data-analysis/load/effect/bridges/:bridgeId/points/:point?startDatetime=xxx&endDatetime=xxx', {
+    //   "countType": "ONE_HOUR",
+    //   "list": [
+    //     {
+    //       "x": "2020-09-02 00",
+    //       "y": [
+    //         2313.988236546
+    //       ]
+    //     },
+    //     {
+    //       "x": "2020-09-02 01",
+    //       "y": [
+    //         2298.369461199
+    //       ]
+    //     },
+    //     {
+    //       "x": "2020-09-02 02",
+    //       "y": [
+    //         0.0
+    //       ]
+    //     }
+    //   ]
+    // },
+    // );
+    //初始化vue
+    var app = new Vue({
+      el: '#app',
+      data: {
+        select1name: "轴力",
+        selectarr: [
+          "轴力", "弯矩"
+        ],
+        option1: {
+          color: ['#c95ff2', '#5c89ff'],
+          tooltip: {
+            trigger: 'axis'
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            axisLine: {
+              lineStyle: {
+                color: '#ACB3BE'
+              }
+            },
+            axisLabel: {
+              margin: 20
+            },
+            axisTick: {
+              alignWithLabel: true
+            },
+            data: [],
+          },
+          yAxis: [{
+            name: '轴力、剪力：kN',
+            type: 'value',
+            nameTextStyle: {
+              lineHeight: 0
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ACB3BE'
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: '#4C4B5E',
+                type: 'dashed'
+              }
+            }
+          }, {
+            name: '弯矩：kN/m',
+            type: 'value',
+            nameTextStyle: {
+              lineHeight: 0
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#ACB3BE'
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: false
+            }
+          }],
+          grid: {
+            left: 20,
+            top: 30,
+            right: 40,
+            bottom: 17,
+            containLabel: true
+          },
+          series: [{
+            name: '轴力、剪力',
+            type: 'line',
+            data: []
+          }, {
+            name: '弯矩',
+            type: 'line',
+            yAxisIndex: 1,
+            data: []
+          }]
+        }
+      },
+      mounted() {
+        unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
+        this.getAllMesurePoints()
+      },
+      methods: {
+        getAllMesurePoints() {
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET data-analysis/compute/param/bridges/:bridgeId/effectNameList",
+          })
+            .then(function (res) {
+              if (res.status == 200) {
+                console.log(res.data)
+                thiz.selectarr = res.data.effectNameList
+              }
+
+            })
+            .catch(err => {
+
+            });
+        },
+        selectchange(item) {
+          var index = item.target.selectedIndex; // selectedIndex代表的是你所选中项的index
+          this.select1name = this.selectarr[index]
+          var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET data-analysis/load/effect/bridges/:bridgeId/points/:point?startDatetime=xxx&endDatetime=xxx",
+          })
+            .then(function (res) {
+              if (res.status == 200) {
+                thiz.option1.xAxis.data = []
+                thiz.option1.series[0].data = []
+                console.log(res.data)
+                // this.option1.
+                for (let i = 0; i < res.data.list.length; i++) {
+                  thiz.option1.xAxis.data.push(res.data.list[i].x)
+                  thiz.option1.series[0].data.push(res.data.list[i].y[0])
+                }
+                myChart1.setOption(thiz.option1, true);
+              }
+            })
+            .catch(err => {
+            });
+        }
+      }
+    })
+
+    $('.page-box').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+    $('#xuhuacheck').on("click", function () {
+        if (this.checked == true) {
+          unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+        } else {
+          unity.SendMessage("GameManager", "SetBridgeTransparent", "true")
+        }
+      })
+      $('#huanjincheck').on("click", function () {
+        if (this.checked == true) {
+
+          unity.SendMessage("GameManager", "SetEnvir", "true")
+        } else {
+
+          unity.SendMessage("GameManager", "SetEnvir", "false")
+        }
+      })
+    laydate.render({
+      elem: '#time-selector1'
+      , type: 'datetime'
+      , range: true
+    });
+    laydate.render({
+      elem: '#time-selector3'
+      , type: 'datetime'
+    });
+  </script>
+  </script>
+</body>
+
+</html>

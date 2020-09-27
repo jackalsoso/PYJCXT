@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script type="text/javascript" src="./js/mock.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+</head>
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li><span>结构<br>状态分析</span>
+          <ul>
+          <li data-menu="structural1"><span>结构动力特性分析</span></li>
+          <li data-menu="structural2"><span>应力五度指标</span></li>
+          <li data-menu="structural3"><span>结构变形响应分析</span></li>
+          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+          <li data-menu="structural6"><span>结构相关性分析</span></li>
+          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li data-menu="system3"><span>报表管理</span>
+          <ul>
+            <!-- <li data-menu="system1"><span>角色管理</span></li> -->
+            <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 报表管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body system1">
+      <div class="page-box">
+        <div class="title">
+          <span>创建用户</span>
+        </div>
+        <div class="content">
+          <ul>
+            <li>
+              <label>公司名称</label>
+              <select>
+                <option value="">中设设计集团股份有限公司</option>
+              </select>
+            </li>
+            <li>
+              <label>账号</label>
+              <input type="text" value="" placeholder="">
+            </li>
+            <li>
+              <label>姓名</label>
+              <input type="text" value="" placeholder="">
+            </li>
+            <li>
+              <label>手机号</label>
+              <input type="text" value="" placeholder="">
+            </li>
+            <li>
+              <label>预警推送</label>
+              <select>
+                <option value="">红色预警、黄色预警</option>
+              </select>
+            </li>
+          </ul>
+          <div class="buttons">
+            <button>取消</button>
+            <button>保存</button>
+          </div>
+        </div>
+      </div>
+      <div class="page-box">
+        <div class="title">
+          <span>用户列表</span>
+        </div>
+        <div class="content">
+          <div class="list-table">
+            <div class="tb-hd">
+              <ul>
+                <li>公司名称</li>
+                <li>姓名</li>
+                <li>账号</li>
+                <li>手机号</li>
+                <li>预警等级</li>
+                <li>账号状态</li>
+              </ul>
+            </div>
+            <div class="tb-bd">
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable1" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable1" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable2" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable2" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable3" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable3" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable4" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable4" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable5" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable5" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable6" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable6" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable7" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable7" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable8" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable8" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable9" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable9" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+              <ul>
+                <li>中设设计集团股份有限公司</li>
+                <li>陈晓宇</li>
+                <li>Jsty007</li>
+                <li>15051876161</li>
+                <li><img src="./images/level1.png" /></li>
+                <li>
+                  <input name="enable10" type="radio" value="" />&nbsp;启用&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="enable10" type="radio" value="" />&nbsp;禁用
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-style pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/jquery.pagination.js"></script>
+  <script type="text/javascript">
+    let init = null
+    //所有检测项和测点   mock
+    Mock.mock(
+      'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
+      "data": [{
+        "id": "5f5641d7b5185269993253cd",
+        "version": 1599636245976,
+        "bridgeId": "5f45d7f634f70b68fbeba992",
+        "monitorItemType": "STRESS",
+        "monitorItemTypeName": "应力",
+        "measuringPoints": ["WS-01-FF-03"]
+      }]
+    }
+
+    );
+    //初始化vue
+    var app = new Vue({
+        el: '#app',
+        data: {
+          select1name: "",
+        },
+        mounted() {
+          this.getcedian()
+        },
+        methods: {
+          getcedian() {
+            let thiz = this;
+            axios({
+              method: 'get',
+              url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+              // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+            })
+              .then(function (res) {
+                console.log(res)
+                if (res.status == 200) {
+                  console.log(res.data)
+                  //所有检测项和测点
+                }
+
+              })
+              .catch(err => {
+
+              });
+          },
+
+        }
+      })
+    $(function () {
+      $('.pagination').pagination({
+        mode: 'fixed',
+        pageCount: 50,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {}
+      });
+    })
+  </script>
+</body>
+
+</html>

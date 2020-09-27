@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+</head>
+
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li class="active"><span>结构<br>状态分析</span>
+          <ul>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li data-menu="system3"><span>报表管理</span>
+          <ul>
+            <!-- <li data-menu="system1"><span>角色管理</span></li> -->
+            <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 报表管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="time-bottom statistics-bottom" style="height:calc(100% - 10px);top: 10px;">
+        <div class="two-page-box">
+          <div class="page-box" style="height:430px;">
+            <div class="title">
+              <span>主塔偏位图</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left"></ul>
+                <div class="header-right">
+                  <select>
+                    <option value="浦口侧塔">浦口侧塔</option>
+                    <option value="仪征侧塔">仪征侧塔</option>
+                  </select>
+                  <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart1" style="height:330px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-box" style="height:430px;">
+            <div class="title">
+              <span>主梁竖向变形分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <!-- <li class="active">10min</li>
+                  <li>h</li>
+                  <li>日</li> -->
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">左幅中跨L/4</option>
+                    <option value="请选择">右幅中跨L/4</option>
+                    <option value="请选择">左幅中跨跨中</option>
+                    <option value="请选择">右幅中跨跨中</option>
+                    <option value="请选择">左幅中跨L3/4</option>
+                    <option value="请选择">右幅中跨L3/4</option>
+                  </select>
+                  <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00" style="width:160px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-page-box" style="left:0;right:0;position: absolute;top: 444px;height: calc(100% - 430px);overflow: hidden;">
+          <div class="page-box" style="height:430px;">
+            <div class="title">
+              <span>主梁竖向变形分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">10min</li>
+                  <li>h</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="请选择">左幅中跨L/4</option>
+                    <option value="请选择">右幅中跨L/4</option>
+                    <option value="请选择">左幅中跨跨中</option>
+                    <option value="请选择">右幅中跨跨中</option>
+                    <option value="请选择">左幅中跨L3/4</option>
+                    <option value="请选择">右幅中跨L3/4</option>
+                  </select>
+                  <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart2" style="height:330px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-box" style="height:430px;">
+            <div class="title">
+              <span>变形最值样本分析</span>
+              <span class="title-right">
+                <img src="./images/explain.png" border="0" />&nbsp;&nbsp;说明
+                <div class="title-right-tip">
+                  说明：当前监测的结构参数的设计能力使用程度，当某测点安全度指为100时，表示该测点当前的应力状态达到了按设计要求（规范加载）计算出的最大应力值。
+                </div>
+              </span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="legend legend5" style="width:260px">
+                  <li>剔除温变影响主梁挠度值</li>
+                  <li style="border-left:0">实测车流理论主梁挠度值</li>
+                </ul>
+                <div class="header-right">
+                  <div class="update">
+                    校验系数：<span>0.45</span>&nbsp;&nbsp;
+                    <img src="./images/refresh.png" border="0" />
+                  </div>
+                  <select>
+                    <option value="请选择">左幅中跨L/4</option>
+                    <option value="请选择">右幅中跨L/4</option>
+                    <option value="请选择">左幅中跨跨中</option>
+                    <option value="请选择">右幅中跨跨中</option>
+                    <option value="请选择">左幅中跨L3/4</option>
+                    <option value="请选择">右幅中跨L3/4</option>
+                  </select>
+                  <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart3" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/moment.min1.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script type="text/javascript">
+    let init = function () {
+      var data1 = [
+        [3.275154, 2.957587],
+        [-3.344465, 2.603513],
+        [0.355083, -3.376585],
+        [1.852435, 3.547351],
+        [-2.078973, 2.552013],
+        [-0.993756, -0.884433],
+        [2.682252, 4.007573],
+        [-3.087776, 2.878713],
+        [-1.565978, -1.256985],
+        [2.441611, 0.444826],
+        [-0.659487, 3.111284],
+        [-0.459601, -2.618005],
+        [2.17768, 2.387793],
+        [-2.920969, 2.917485],
+        [-0.028814, -4.168078],
+        [3.625746, 2.119041],
+        [-3.912363, 1.325108],
+        [-0.551694, -2.814223],
+        [2.855808, 3.483301],
+        [-3.594448, 2.856651],
+        [0.421993, -2.372646],
+        [1.650821, 3.407572],
+        [-2.082902, 3.384412],
+        [-0.718809, -2.492514]
+      ];
+      var data2 = [
+        [4.513623, 3.841029],
+        [-4.822011, 4.607049],
+        [-0.656297, -1.449872],
+        [1.919901, 4.439368],
+        [-3.287749, 3.918836],
+        [-1.576936, -2.977622],
+        [3.598143, 1.97597],
+        [-3.977329, 4.900932],
+        [0.765015, -3.00127],
+        [3.121904, 2.173988],
+        [-4.025139, 4.65231],
+        [-0.559558, -3.840539],
+        [4.376754, 4.863579],
+        [-1.874308, 4.032237],
+        [-0.089337, -3.026809],
+        [3.997787, 2.518662],
+        [-3.082978, 2.884822],
+        [0.845235, -3.454465],
+        [1.327224, 3.358778],
+        [-2.889949, 3.596178],
+        [-0.966018, -2.839827],
+        [2.960769, 3.079555],
+        [-3.275518, 1.577068],
+        [0.639276, -3.41284]
+      ];
+      var data = [
+        ["2020-05-12", 120, 220, 150, 320],
+        ["2020-05-13", 132, 182, 232, 334],
+        ["2020-05-14", 101, 191, 301, 486],
+        ["2020-05-15", 134, 332, 154, 390],
+        ["2020-05-16", 90, 290, 190, 210],
+        ["2020-05-17", 234, 330, 260, 310],
+        ["2020-05-18", 210, 310, 410, 184]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data.map(function (item) {
+        return item[2];
+      });
+
+      var option1 = {
+        color: ['#00C853', '#00C853'],
+        xAxis: {
+          name: '纵桥向位移：mm',
+          nameTextStyle: {
+            padding: [-20, 0, 0, -110]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        yAxis: {
+          name: '横桥向位移：mm',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 100]
+          },
+          scale: true,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '浦口侧塔',
+          data: data1,
+          type: 'scatter'
+        }, {
+          name: '仪征侧塔',
+          data: data2,
+          type: 'scatter'
+        }]
+      }
+      var option2 = {
+        color: ['#5c89ff', '#c95ff2'],
+        legend: {
+          top: 10,
+          right: 20,
+          itemGap: 20,
+          selectedMode: false,
+          icon: 'rect',
+          itemHeight: 2,
+          textStyle: {
+            color: sessionStorage.theme == 'dark' ? '#fff' : '#000'
+          }
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '位移：mm',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 50,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '剔除温变影响主梁挠度值',
+          type: 'line',
+          data: valueList1
+        }, {
+          name: '实测车流理论主梁挠度值',
+          type: 'line',
+          data: valueList2
+        }]
+      }
+      var option3 = {
+        color: ['#FB9225', '#727180'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          name: '竖向变形：mm',
+          nameTextStyle: {
+            padding: [80, 0, 0, -100]
+          },
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: ['0', '5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60', '65', '70', '75', '80'],
+        },
+        yAxis: {
+          name: '概率密度',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 50,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '剔除温变影响主梁挠度值',
+          type: 'line',
+          smooth: true,
+          symbol: 'none',
+          markLine: {
+            symbol: 'none',
+            lineStyle: {
+              color: '#4c4b5e',
+              type: 'solid'
+            },
+            label: {
+              show: false
+            },
+            data: [[
+              {coord: [7, 0]},
+              {coord: [7, 192.2]}
+            ]]
+          },
+          data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 105.6, 192.2, 48.7, 18.8, 6.0, 2.3, 2.6, 5.9, 9.0, 26.4, 28.7]
+        }, {
+          name: '实测车流理论主梁挠度值',
+          type: 'line',
+          smooth: true,
+          symbol: 'none',
+          lineStyle: {
+            type: 'dashed'
+          },
+          markLine: {
+            symbol: 'none',
+            lineStyle: {
+              color: '#4c4b5e',
+              type: 'solid'
+            },
+            label: {
+              show: false
+            },
+            data: [[
+              {coord: [6, 0]},
+              {coord: [6, 231.6]}
+            ]]
+          },
+          data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7, 3.9, 5.9, 11.1, 18.7, 48.3]
+        }]
+      }
+
+      var option4 = {
+        color: ['rgb(255,0,0)', 'rgb(0,255,0)'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          // name: '竖向变形：mm',
+          nameTextStyle: {
+            padding: [80, 0, 0, -100]
+          },
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: ['', '16墩', '17墩', '18墩', '19墩', '20墩', '21墩', '22墩',''],
+          splitLine: { //坐标轴在 grid 区域中的分隔线。
+            show: true, //是否显示分隔线。默认数值轴显示，类目轴不显示。
+            lineStyle: { //分隔线样式
+              type: 'solid', //分隔线线的类型。								
+            },
+          }
+        },
+        yAxis: {
+          name: '竖向变形：mm',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 50,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '左幅',
+          type: 'line',
+          // smooth: true,
+          symbol: 'none',
+          markLine: {
+            symbol: 'none',
+            lineStyle: {
+              color: '#4c4b5e',
+              type: 'solid'
+            },
+            label: {
+              show: false
+            },
+            data: [[
+              {coord: [1, 0]},
+              {coord: [1, 192.2]}
+            ]]
+          },
+          data: ['',10,30,50,20,33,100,21,'',]
+        }, {
+          name: '右幅',
+          type: 'line',
+          // smooth: true,
+          symbol: 'none',
+          lineStyle: {
+            type: 'solid'
+          },
+          markLine: {
+            symbol: 'none',
+            lineStyle: {
+              color: '#4c4b5e',
+              type: 'solid'
+            },
+            label: {
+              show: false
+            },
+            data: [[
+              {coord: [1, 0]},
+              {coord: [1, 231.6]}
+            ]]
+          },
+          data: ['',20,33,80,37,23,49,21,'']
+        }]
+      }
+
+      // 初始化echarts实例
+      var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
+      var myChart2 = echarts.init(document.getElementById('chart2'), 'light');
+      var myChart3 = echarts.init(document.getElementById('chart3'), 'light');
+      var myChart4 = echarts.init(document.getElementById('chart4'), 'light');
+
+      myChart1.setOption(option1, true);
+      myChart2.setOption(option2, true);
+      myChart3.setOption(option3, true);
+      myChart4.setOption(option4, true);
+    }
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector2'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector3'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector4'
+      ,type: 'datetime'
+
+    });
+  </script>
+</body>
+
+</html>

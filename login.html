@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>监测平台 登录</title>
+    <link rel="stylesheet" type="text/css" href="./page/css/iview.css">
+    <!-- <script type="text/javascript" src="res/localJS.js"></script> -->
+    <script type="text/javascript" src="./page/js/axios.min.js"></script>
+    <script type="text/javascript" src="./page/js/vue.min.js"></script>
+    <script type="text/javascript" src="./page/js/iview.min.js"></script>
+    <script src="./js/element_index.js"></script>
+    <link rel="stylesheet" href="./css/element_index.css">
+    <style type="text/css" media="screen">
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            font: 14px Microsoft YaHei;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: url(./page/images/login.png) no-repeat;
+            background-size: 100% 100%;
+            -webkit-user-select: none;
+        }
+
+        #flashContent {
+            width: 100%;
+            height: 100%;
+        }
+
+        .shadow {
+            box-shadow: 1px 1px 5px rgb(22, 22, 22);
+        }
+
+        .ivu-input {
+            height: 56px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div style="background-color: #103258;position: absolute;top:239px;right: 312px;width: 464px;height: 600px;z-index: 888;"
+            class="shadow">
+            <div style="font-weight: bold;color:white;text-align: center;margin-top: 60px;font-size: 23px;">
+                浦仪公路西段上坝夹江大桥健康监测系统</div>
+            <i-form ref="loginForm" :model="account" :rules="rule"
+                style="width: 382px;margin-left: 40px;margin-top: 54px;">
+                <Form-item prop="user" >
+                    <i-input type="text" v-model="account.user" style="font-size:32px;" placeholder="账号">
+                        <Icon type="ios-person-outline" slot="prepend"></Icon>
+                    </i-input>
+                </Form-item>
+                <Form-item prop="password" style="margin-top:38px;">
+                    <i-input type="password" v-model="account.password" style="font-size:32px;" placeholder="密码">
+                        <Icon type="ios-lock-outline" slot="prepend"></Icon>
+                    </i-input>
+                </Form-item>
+                <i-button type="primary" @click="handleSubmit('loginForm')"
+                    style="margin-top:60px;height:60px;width: 100%;font-size: 16px;float:left;">登&nbsp;&nbsp;录</i-button>
+                <!-- <i-button type="error" @click="exit()"
+                    style="margin-top:60px;height:60px;width: 20%;font-size: 16px;float:left;">退&nbsp;&nbsp;出</i-button> -->
+            </i-form>
+
+        </div>
+    </div>
+    <script>
+        var baseUrl = "http://47.111.247.216/suzhou/";
+        new Vue({
+            el: '#app',
+            data: {
+                account: {
+                    user: '',
+                    password: ''
+                },
+                rule: {
+                    user: [
+                        { required: true, message: '请输入账号', trigger: 'blur' }
+                    ],
+                    password: [
+                        { required: true, message: '请输入密码', trigger: 'blur' }
+                    ]
+                },
+                
+            },
+            methods: {
+                handleSubmit: function (name) {
+                    let thiz = this
+                    // this.$refs[name].validate((valid) => {
+                    //     if (valid) {
+                    //         axios({
+                    //             method: 'post',
+                    //             url: baseUrl + 'auth/login',
+                    //             data: { account: this.account.user, password: this.account.password, dataBridgeId: 'B4C115034DF44A6CB70DF00DE4271F67' }
+                    //         }).then(function (resp) {
+                    //             if (resp.data.success) {
+                    //                 var account = { user: resp.data.data.name, uid: resp.data.data.userId, role: resp.data.data.role }
+                    //                 location.href = 'pages/main.html';
+                    //                 setCookie("token", resp.data.token);
+                    //                 setCookie("account", account);
+                    //                 setCookie("bridgeId", resp.data.data.bridgeId);
+                    //                 setCookie("bridgeSides", JSON.stringify(resp.data.data.bridgeSideTypeList));
+                    //             } else
+                    //                 thiz.$Message.error(resp.data.msg);
+                    //         }).catch(err => {
+                    //             thiz.$Message.error("服务器连接失败");
+                    //         });
+                    //     }
+
+                    // })
+                    if (this.account.user == "admin" && this.account.password == "123") {
+                        location.href = 'page/index.html';
+                    } else {
+                        thiz.$Message.error("用户名或密码错误");
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

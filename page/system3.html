@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script type="text/javascript" src="./js/mock.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" /> -->
+  <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+</head>
+<body>
+  <div class="page-controller" id="app">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li><span>结构<br>状态分析</span>
+          <ul>
+          <li data-menu="structural1"><span>结构动力特性分析</span></li>
+          <li data-menu="structural2"><span>应力五度指标</span></li>
+          <li data-menu="structural3"><span>结构变形响应分析</span></li>
+          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+          <li data-menu="structural6"><span>结构相关性分析</span></li>
+          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li data-menu="system3"><span>报表管理</span>
+          <ul>
+            <!-- <li data-menu="system1"><span>角色管理</span></li> -->
+            <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 报表管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="page-box system3-top">
+        <ul>
+          <li>
+            <span>每日简报</span><br/><br/>
+            <!-- <span>1,4156份</span> -->
+          </li>
+          <li>
+            <span>月度简报</span><br/><br/>
+            <!-- <span>1,4156份</span> -->
+          </li>
+          <li>
+            <span>监测分析快报</span><br/><br/>
+            <!-- <span>1,4156份</span> -->
+          </li>
+          <li>
+            <span>年度分析报告</span><br/><br/>
+            <!-- <span>1,4156份</span> -->
+          </li>
+        </ul>
+      </div>
+      <div class="page-box system3-bottom">
+        <div class="title">
+          <ul>
+            <li :class="{active:isChoice==='1'?true:false}" @click="showList('1')">每日简报</li>
+            <li :class="{active:isChoice==='2'?true:false}" @click="showList('2')">月度简报</li>
+            <li :class="{active:isChoice==='3'?true:false}" @click="showList('3')">监测分析快报</li>
+            <li :class="{active:isChoice==='4'?true:false}" @click="showList('4')">年度分析报告</li>
+          </ul>
+        </div>
+        <div class="content" v-if="isChoice==='1'">
+          <div class="header">
+            <ul class="header-left">
+            </ul>
+            <div class="header-right">
+              <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+            </div>
+          </div>
+          <div class="list-table">
+            <div class="tb-hd">
+              <ul>
+                <li>报表名称</li>
+                <li>报表类型</li>
+                <li>上传人</li>
+                <li>上传时间</li>
+                <li>操作</li>
+              </ul>
+            </div>
+            <div class="tb-bd">
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+            </div>
+            <!-- <img src="./images/simple6.jpg" border="0" /> -->
+          </div>
+          <div class="m-style pagination"></div>
+        </div>
+
+        <div class="content" v-else-if="isChoice==='2'">
+          <div class="header">
+            <ul class="header-left">
+            </ul>
+            <div class="header-right">
+              <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+            </div>
+          </div>
+          <div class="list-table">
+            <div class="tb-hd">
+              <ul>
+                <li>报表名称</li>
+                <li>报表类型</li>
+                <li>上传人</li>
+                <li>上传时间</li>
+                <li>操作</li>
+              </ul>
+            </div>
+            <div class="tb-bd">
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+            </div>
+            <!-- <img src="./images/simple6.jpg" border="0" /> -->
+          </div>
+          <div class="m-style pagination"></div>
+        </div>
+
+        <div class="content" v-else-if="isChoice==='3'">
+          <div class="header">
+            <ul class="header-left">
+            </ul>
+            <div class="header-right">
+              <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              <button class="created">
+                <img src="./images/created.png" border="0" />
+                <span>上传报告</span>
+              </button>
+            </div>
+          </div>
+          <div class="list-table">
+            <div class="tb-hd">
+              <ul>
+                <li>报表名称</li>
+                <li>报表类型</li>
+                <li>上传人</li>
+                <li>上传时间</li>
+                <li>操作</li>
+              </ul>
+            </div>
+            <div class="tb-bd">
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+            </div>
+            <!-- <img src="./images/simple6.jpg" border="0" /> -->
+          </div>
+          <div class="m-style pagination"></div>
+        </div>
+
+        <div class="content" v-else-if="isChoice==='4'">
+          <div class="header">
+            <ul class="header-left">
+            </ul>
+            <div class="header-right">
+              <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+              <button class="created">
+                <img src="./images/created.png" border="0" />
+                <span>上传报告</span>
+              </button>
+            </div>
+          </div>
+          <div class="list-table">
+            <div class="tb-hd">
+              <ul>
+                <li>报表名称</li>
+                <li>报表类型</li>
+                <li>上传人</li>
+                <li>上传时间</li>
+                <li>操作</li>
+              </ul>
+            </div>
+            <div class="tb-bd">
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+              <ul><li>2019年8月剑桥预警分析报告.pdf</li><li>预警报告</li><li>陈晓宇</li><li>2019/10/10 14:30</li><li class="do"><a href="javascript:;">预览</a> | <a href="javascript:;">下载</a> | <a href="javascript:;">删除</a></li></ul>
+            </div>
+            <!-- <img src="./images/simple6.jpg" border="0" /> -->
+          </div>
+          <div class="m-style pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/moment.min1.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script src="./js/jquery.pagination.js"></script>
+  <script type="text/javascript">
+    let init = null
+    // $('#time-selector1').daterangepicker({
+    //   "startDate": "08/10/2020",
+    //   "endDate": "08/16/2020",
+    //   "opens": "left"
+    // }, function (start, end, label) {
+    //   console.log(
+    //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+    //     );
+    // });
+    //所有检测项和测点   mock
+    Mock.mock(
+      'GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992', {
+      "data": [{
+        "id": "5f5641d7b5185269993253cd",
+        "version": 1599636245976,
+        "bridgeId": "5f45d7f634f70b68fbeba992",
+        "monitorItemType": "STRESS",
+        "monitorItemTypeName": "应力",
+        "measuringPoints": ["WS-01-FF-03"]
+      }]
+    }
+
+    );
+    //初始化vue
+    var app = new Vue({
+        el: '#app',
+        data: {
+          select1name: "",
+          isChoice:'1'
+        },
+        mounted() {
+          this.getcedian()
+          laydate.render({
+            elem: '#time-selector1'
+            ,type: 'datetime'
+            ,range: true
+          });
+          // $('#time-selector1').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
+          $('.pagination').pagination({
+            mode: 'fixed',
+            pageCount: 50,
+            jump: true,
+            coping: true,
+            homePage: '首页',
+            endPage: '末页',
+            prevContent: '上页',
+            nextContent: '下页',
+            callback: function (api) {}
+          });
+        },
+        updated(){
+          laydate.render({
+            elem: '#time-selector1'
+            ,type: 'datetime'
+            ,range: true
+          });
+
+          laydate.render({
+            elem: '#time-selector2'
+            ,type: 'datetime'
+            ,range: true
+          });
+
+          laydate.render({
+            elem: '#time-selector3'
+            ,type: 'datetime'
+            ,range: true
+          });
+
+          laydate.render({
+            elem: '#time-selector4'
+            ,type: 'datetime'
+            ,range: true
+          });
+          // $('#time-selector1').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
+
+          // $('#time-selector2').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
+
+          // $('#time-selector3').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
+
+          // $('#time-selector4').daterangepicker({
+          //   "startDate": "08/10/2020",
+          //   "endDate": "08/16/2020",
+          //   "opens": "left"
+          // }, function (start, end, label) {
+          //   console.log(
+          //     "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
+          //     );
+          // });
+        },
+        methods: {
+          getcedian() {
+            let thiz = this;
+            axios({
+              method: 'get',
+              url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+              // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+            })
+              .then(function (res) {
+                console.log(res)
+                if (res.status == 200) {
+                  console.log(res.data)
+                  //所有检测项和测点
+                }
+
+              })
+              .catch(err => {
+
+              });
+          },
+          showList(param){
+            this.isChoice=param;
+          }
+
+        }
+      })
+    $(function () {
+      $('.pagination').pagination({
+        mode: 'fixed',
+        pageCount: 50,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) {}
+      });
+    })
+  </script>
+</body>
+
+</html>

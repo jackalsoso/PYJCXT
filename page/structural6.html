@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/axios.min.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+  <script src="TemplateData/UnityProgress.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+</head>
+<body>
+  <div class="page-controller">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li class="active"><span>结构<br>状态分析</span>
+          <ul>
+          <li data-menu="structural1"><span>结构动力特性分析</span></li>
+          <li data-menu="structural2"><span>应力五度指标</span></li>
+          <li data-menu="structural3"><span>结构变形响应分析</span></li>
+          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+          <li data-menu="structural6"><span>结构相关性分析</span></li>
+          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li data-menu="system3"><span>报表管理</span>
+          <ul>
+            <!-- <li data-menu="system1"><span>角色管理</span></li> -->
+            <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 报表管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body" style="overflow-y: hidden;">
+      <div class="page-box time-top statistics-top" style="height: calc(100% - 376px);">
+        <!-- <div class="title">
+          <span>IBM模型</span>
+        </div> -->
+        <div class="content" style="height:100%;position: relative;padding: 0;">
+          <!-- <div class="imgbox"><img src="./images/simple3.jpg" border="0" /></div> -->
+          <div class="tip-check">
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="xuhuacheck" type="checkbox">
+                <span></span>
+
+              </label>
+              <div class="custom-txt">虚化</div>
+            </div>
+            <div class="box">
+              <label class="custom-checkbox">
+                <input id="huanjincheck" type="checkbox" checked>
+                <span></span>
+
+              </label>
+              <div class="custom-txt">环境</div>
+            </div>
+          </div>
+          <div id="unity" style="width: 100%;height: 100%;z-index: 1;"></div>
+        </div>
+      </div>
+
+      <div class="time-bottom" style="height:340px">
+        <div class="page-box" style="margin-bottom:0;float:left;width:calc((100% - 10px) / 2)">
+            <div class="title">
+              <span>相关性时程分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="应力">应力</option>
+                  </select>
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                    <option value="YL-A1-B-02">YL-A1-B-02</option>
+                    <option value="YL-A1-B-03">YL-A1-B-03</option>
+                    <option value="YL-A1-B-04">YL-A1-B-04</option>
+                  </select>
+                  <select>
+                    <option value="温度">温度</option>
+                  </select>
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                    <option value="YL-A1-B-02">YL-A1-B-02</option>
+                    <option value="YL-A1-B-03">YL-A1-B-03</option>
+                    <option value="YL-A1-B-04">YL-A1-B-04</option>
+                  </select>
+                  <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart21"></div>
+              </div>
+            </div>
+          </div>
+          <div class="page-box" style="margin-bottom:0;float:right;width:calc((100% - 10px) / 2)">
+            <div class="title">
+              <span>相关性分析</span>
+            </div>
+            <div class="content">
+              <div class="header">
+                <ul class="header-left">
+                  <li class="active">10分钟</li>
+                  <li>小时</li>
+                  <li>日</li>
+                </ul>
+                <div class="header-right">
+                  <select>
+                    <option value="应力">应力</option>
+                  </select>
+                  <select>
+                    <option value="YL-A1-B-01">YL-A1-B-01</option>
+                    <option value="YL-A1-B-02">YL-A1-B-02</option>
+                    <option value="YL-A1-B-03">YL-A1-B-03</option>
+                    <option value="YL-A1-B-04">YL-A1-B-04</option>
+                  </select>
+                  <select>
+                    <option value="温度">温度</option>
+                  </select>
+                  <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart" id="chart22"></div>
+              </div>
+            </div>
+          </div>
+        <!-- <div class="page-box" id="check1-page" style="float:left;margin-top:10px;">
+          <div class="title">
+            <span>结构应力</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check1chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check2-page" style="float:left">
+          <div class="title">
+            <span>挠度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector2" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check2chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check3-page" style="float:left">
+          <div class="title">
+            <span>空间变位</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector3" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check3chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check4-page" style="float:left">
+          <div class="title">
+            <span>拉索振动</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector4" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check4chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check5-page" style="float:left">
+          <div class="title">
+            <span>梁端位移</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector5" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check5chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check6-page" style="float:left">
+          <div class="title">
+            <span>阻尼器位移</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector6" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check6chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check7-page" style="float:left">
+          <div class="title">
+            <span>横向支座位移</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector7" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check7chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check8-page" style="float:left">
+          <div class="title">
+            <span>温度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector8" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check8chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check9-page" style="float:left">
+          <div class="title">
+            <span>温湿度</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector9" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check9chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check10-page" style="float:left">
+          <div class="title">
+            <span>风速</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector10" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check10chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check11-page" style="float:left">
+          <div class="title">
+            <span>动力特性</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector11" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check11chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-box" id="check12-page" style="float:left">
+          <div class="title">
+            <span>地震、船撞</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left">
+                <li class="active">实时</li>
+                <li>历史数据</li>
+              </ul>
+              <div class="header-right">
+                <select>
+                  <option value="横桥向">横桥向</option>
+                </select>
+                <select>
+                  <option value="YL-A1-B-01">YL-A1-B-01</option>
+                </select>
+                <input type="text" id="time-selector12" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart" id="check12chart"></div>
+              <div class="imgbox">
+                <img src="./images/simple2.jpg" border="0" />
+                <span>测点位置</span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+
+      <!-- <div class="time-bottom statistics-bottom" style="height: 410px">
+
+
+
+
+
+      </div> -->
+
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/moment.min1.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script type="text/javascript">
+  var unity
+    var unityReady = false
+
+    var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+
+    //测点加载完成
+    function OnPointLoaded() {
+
+    }
+    //断面加载完成
+    function OnCrossSectionLoaded() {
+
+    }
+    function CallBackWGL_LoadMeasurePoint() {
+
+    }
+    let _checkarr = []
+    let _selObj = {
+      '应力': '#check1-page',
+      '挠度': '#check2-page',
+      '空间变位': '#check3-page',
+      '拉索振动': '#check4-page',
+      '梁端位移': '#check5-page',
+      '阻尼器位移': '#check6-page',
+      '横向支座位移': '#check7-page',
+      '温度': '#check8-page',
+      '温湿度': '#check9-page',
+      '风速': '#check10-page',
+      '动力特性': '#check11-page',
+      '地震、船撞': '#check12-page',
+    }
+    //选择测点
+    function SelectMonitorPoint(type, name) {
+      console.log(type)
+      console.log(name)
+
+      // let curPageBox = $(_selObj[type]),
+      //   _siblingsBox = curPageBox.siblings().filter(function () { return $(this).css('display') != 'none' })
+      // console.log(_siblingsBox)
+      // if (_siblingsBox.length > 3) {
+      //   _siblingsBox.eq(_siblingsBox.length - 1).css('display', 'none')
+      // }
+      // curPageBox.css('display', 'block')
+      // curPageBox.insertBefore(_siblingsBox[0])
+      // $(window).trigger('resize');
+
+
+    }
+    function bthclick(v) {
+      unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
+    }
+    // function checktype(item) {
+    //   var index;
+    //   for (var idx = 0; idx < typenamelist.length; idx++) {
+    //     if (item.value == typenamelist[idx]) {
+    //       index = idx;
+    //     }
+    //   }
+    //   if (item.checked) {
+    //     typenamelist.push(item.value)
+    //   } else {
+    //     typenamelist.splice(index, 1)
+    //   }
+    //   unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+    // }
+
+
+    //unity加载完成后
+    function OnSceneLoaded() {
+      //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
+      unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
+    }
+    let init = function () {
+      var data20 = [
+        ["2020-05-12", 120, 220, 150, 320],
+        ["2020-05-13", 132, 182, 232, 334],
+        ["2020-05-14", 101, 191, 301, 486],
+        ["2020-05-15", 134, 332, 154, 390],
+        ["2020-05-16", 90, 290, 190, 210],
+        ["2020-05-17", 234, 330, 260, 310],
+        ["2020-05-18", 210, 310, 410, 184]
+      ];
+      var data21 = [
+        [3.275154, 2.957587],
+        [3.344465, 2.603513],
+        [0.355083, 3.376585],
+        [1.852435, 3.547351],
+        [2.078973, 2.552013],
+        [0.993756, 0.884433],
+        [2.682252, 4.007573],
+        [3.087776, 2.878713],
+        [1.565978, 1.256985],
+        [2.441611, 0.444826],
+        [0.659487, 3.111284],
+        [0.459601, 2.618005],
+        [2.17768, 2.387793],
+        [2.920969, 2.917485],
+        [0.028814, 4.168078],
+        [3.625746, 2.119041],
+        [3.912363, 1.325108],
+        [0.551694, 2.814223],
+        [2.855808, 3.483301],
+        [3.594448, 2.856651],
+        [0.421993, 2.372646],
+        [1.650821, 3.407572],
+        [2.082902, 3.384412],
+        [0.718809, 2.492514]
+      ];
+      var data22 = [
+        [4.513623, 3.841029],
+        [4.822011, 4.607049],
+        [0.656297, 1.449872],
+        [1.919901, 4.439368],
+        [3.287749, 3.918836],
+        [1.576936, 2.977622],
+        [3.598143, 1.97597],
+        [3.977329, 4.900932],
+        [0.765015, 3.00127],
+        [3.121904, 2.173988],
+        [4.025139, 4.65231],
+        [0.559558, 3.840539],
+        [4.376754, 4.863579],
+        [1.874308, 4.032237],
+        [0.089337, 3.026809],
+        [3.997787, 2.518662],
+        [3.082978, 2.884822],
+        [0.845235, 3.454465],
+        [1.327224, 3.358778],
+        [2.889949, 3.596178],
+        [0.966018, 2.839827],
+        [2.960769, 3.079555],
+        [3.275518, 1.577068],
+        [0.639276, 3.41284]
+      ];
+      var dateList = data20.map(function (item) {
+        return item[0];
+      });
+      var valueList1 = data20.map(function (item) {
+        return item[1];
+      });
+      var valueList2 = data20.map(function (item) {
+        return item[2];
+      });
+      var valueList3 = data20.map(function (item) {
+        return item[3];
+      });
+      var valueList4 = data20.map(function (item) {
+        return item[4];
+      });
+      var option21 = {
+        color: ['#c95ff2', '#5c89ff'],
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: [{
+          name: '应力：Mpa',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        }, {
+          name: '温度',
+          type: 'value',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }],
+        grid: {
+          left: 20,
+          top: 30,
+          right: 40,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '应力',
+          type: 'line',
+          data: valueList1
+        }, {
+          name: '温度',
+          type: 'line',
+          yAxisIndex: 1,
+          data: valueList2
+        }]
+      }
+      var option22 = {
+        color: ['#3698FD', '#00C853'],
+        xAxis: {
+          name: '温度：℃',
+          nameTextStyle: {
+            padding: [80, 0, 0, -65]
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        },
+        yAxis: {
+          name: '应力：Mpa',
+          nameTextStyle: {
+            lineHeight: 0,
+            padding: [0, 0, 0, 20]
+          },
+          scale: true,
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 20,
+          top: 30,
+          right: 20,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          name: '浦口侧塔',
+          data: data21,
+          type: 'scatter'
+        }, {
+          name: '仪征侧塔',
+          data: data22,
+          type: 'scatter'
+        }]
+      }
+      // 初始化echarts实例
+      var myChart21 = echarts.init(document.getElementById('chart21'), 'light');
+      var myChart22 = echarts.init(document.getElementById('chart22'), 'light');
+      myChart21.setOption(option21, true);
+      myChart22.setOption(option22, true);
+
+
+      var data = [
+        ["2000-06-05", 116],
+        ["2000-06-06", 129],
+        ["2000-06-07", 135],
+        ["2000-06-08", 86],
+        ["2000-06-09", 73],
+        ["2000-06-10", 85],
+        ["2000-06-11", 73],
+        ["2000-06-12", 68],
+        ["2000-06-13", 92],
+        ["2000-06-14", 130],
+        ["2000-06-15", 245],
+        ["2000-06-16", 139],
+        ["2000-06-17", 115],
+        ["2000-06-18", 111],
+        ["2000-06-19", 309],
+        ["2000-06-20", 206],
+        ["2000-06-21", 137],
+        ["2000-06-22", 128],
+        ["2000-06-23", 85],
+        ["2000-06-24", 94],
+        ["2000-06-25", 71],
+        ["2000-06-26", 106],
+        ["2000-06-27", 84],
+        ["2000-06-28", 93],
+        ["2000-06-29", 85],
+        ["2000-06-30", 73],
+        ["2000-07-01", 83],
+        ["2000-07-02", 125],
+        ["2000-07-03", 107],
+        ["2000-07-04", 82],
+        ["2000-07-05", 44],
+        ["2000-07-06", 72],
+        ["2000-07-07", 106],
+        ["2000-07-08", 107],
+        ["2000-07-09", 66],
+        ["2000-07-10", 91],
+        ["2000-07-11", 92],
+        ["2000-07-12", 113],
+        ["2000-07-13", 107],
+        ["2000-07-14", 131],
+        ["2000-07-15", 111],
+        ["2000-07-16", 64],
+        ["2000-07-17", 69],
+        ["2000-07-18", 88],
+        ["2000-07-19", 77],
+        ["2000-07-20", 83],
+        ["2000-07-21", 111],
+        ["2000-07-22", 57],
+        ["2000-07-23", 55],
+        ["2000-07-24", 60],
+        ["2000-07-25", 73],
+        ["2000-07-26", 68],
+        ["2000-07-27", 92],
+        ["2000-07-28", 130],
+        ["2000-07-29", 245],
+        ["2000-07-30", 139],
+        ["2000-07-31", 115],
+        ["2000-08-01", 111],
+        ["2000-08-02", 309],
+        ["2000-08-03", 206],
+        ["2000-08-04", 137],
+        ["2000-08-05", 128],
+        ["2000-08-06", 92]
+      ];
+      var dateList = data.map(function (item) {
+        return item[0];
+      });
+      var valueList = data.map(function (item) {
+        return item[1];
+      });
+      var option1 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '应力：Mpa',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 0,
+          top: 30,
+          right: 10,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(23, 143, 255,1)'
+          },
+          areaStyle: {
+            color: 'rgba(23, 143, 255,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            data: [{
+              yAxis: 309,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '上限值'
+              },
+              lineStyle: {
+                color: '#ff4d4f'
+              }
+            }, {
+              yAxis: 175,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '下限值'
+              },
+              lineStyle: {
+                color: '#fcb333'
+              }
+            }]
+          },
+          data: valueList
+        }]
+      }
+      var option2 = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisLabel: {
+            margin: 20
+          },
+          axisTick: {
+            alignWithLabel: true
+          },
+          data: dateList,
+        },
+        yAxis: {
+          name: '位移：mm',
+          nameTextStyle: {
+            lineHeight: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ACB3BE'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#4C4B5E',
+              type: 'dashed'
+            }
+          }
+        },
+        grid: {
+          left: 0,
+          top: 30,
+          right: 10,
+          bottom: 17,
+          containLabel: true
+        },
+        series: [{
+          type: 'line',
+          showSymbol: false,
+          lineStyle: {
+            color: 'rgba(200, 95, 241,1)'
+          },
+          areaStyle: {
+            color: 'rgba(200, 95, 241,0.2)'
+          },
+          markLine: {
+            symbol: "none",
+            data: [{
+              yAxis: 309,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '上限值'
+              },
+              lineStyle: {
+                color: '#ff4d4f'
+              }
+            }, {
+              yAxis: 175,
+              label: {
+                position: 'start',
+                padding: [-20, -60, 0, 0],
+                formatter: '下限值'
+              },
+              lineStyle: {
+                color: '#fcb333'
+              }
+            }]
+          },
+          data: valueList
+        }]
+      }
+      // 初始化echarts实例
+      // var myChart1 = echarts.init(document.getElementById('check1chart'), 'light');
+      // var myChart2 = echarts.init(document.getElementById('check2chart'), 'light');
+      // var myChart3 = echarts.init(document.getElementById('check3chart'), 'light');
+      // var myChart4 = echarts.init(document.getElementById('check4chart'), 'light');
+      // var myChart5 = echarts.init(document.getElementById('check5chart'), 'light');
+      // var myChart6 = echarts.init(document.getElementById('check6chart'), 'light');
+      // var myChart7 = echarts.init(document.getElementById('check7chart'), 'light');
+      // var myChart8 = echarts.init(document.getElementById('check8chart'), 'light');
+      // var myChart9 = echarts.init(document.getElementById('check9chart'), 'light');
+      // var myChart10 = echarts.init(document.getElementById('check10chart'), 'light');
+      // var myChart11 = echarts.init(document.getElementById('check11chart'), 'light');
+      // var myChart12 = echarts.init(document.getElementById('check12chart'), 'light');
+      // myChart1.setOption(option1, true);
+      // myChart2.setOption(option2, true);
+      // myChart3.setOption(option2, true);
+      // myChart4.setOption(option2, true);
+      // myChart5.setOption(option2, true);
+      // myChart6.setOption(option2, true);
+      // myChart7.setOption(option2, true);
+      // myChart8.setOption(option2, true);
+      // myChart9.setOption(option2, true);
+      // myChart10.setOption(option2, true);
+      // myChart11.setOption(option2, true);
+      // myChart12.setOption(option2, true);
+      // setTimeout(() => {
+      //   $('#check3-page').css('display', 'none')
+      //   $('#check4-page').css('display', 'none')
+      //   $('#check5-page').css('display', 'none')
+      //   $('#check6-page').css('display', 'none')
+      //   $('#check7-page').css('display', 'none')
+      //   $('#check8-page').css('display', 'none')
+      //   $('#check9-page').css('display', 'none')
+      //   $('#check10-page').css('display', 'none')
+      //   $('#check11-page').css('display', 'none')
+      //   $('#check12-page').css('display', 'none')
+      // }, 1000)
+
+
+
+
+
+
+
+
+    }
+  
+    //初始化vue
+    var app = new Vue({
+      el: '#app',
+      data: {
+        select1name: "",
+        carouselItem: [
+          './images/simple2.jpg',
+        ]
+      },
+      mounted() {
+
+        //页面加载完成后调用
+        unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
+        this.getcedian()
+      },
+      methods: {
+        getcedian() {
+          let thiz = this;
+          axios({
+            method: 'get',
+            url: "GET /monitor-service/items/bridgeId/:5f45d7f634f70b68fbeba992",
+            // params: { bridgeId: "5f45d7f634f70b68fbeba992" }
+          })
+            .then(function (res) {
+              console.log(res)
+              if (res.status == 200) {
+                console.log(res.data)
+                //所有检测项和测点
+              }
+
+            })
+            .catch(err => {
+
+            });
+        },
+
+      }
+    })
+    $('#xuhuacheck').on("click", function () {
+      if (this.checked == true) {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+      } else {
+        unity.SendMessage("GameManager", "SetBridgeTransparent", "true")
+      }
+    })
+    $('#huanjincheck').on("click", function () {
+      if (this.checked == true) {
+
+        unity.SendMessage("GameManager", "SetEnvir", "true")
+      } else {
+
+        unity.SendMessage("GameManager", "SetEnvir", "false")
+      }
+    })
+    //radio框图片联动
+    $('.check-box').on('click', 'input', function () {
+    
+      //循环遍历改变每张图片的url
+
+      for(let i = 0 ; i < $('.check').length ; i++){
+        console.log($('.check')[i].checked)
+        if($('.check')[i].checked){
+          $('.checkSturalImg')[i].src = `./images/ckicon${i+1}.png`
+        }else {
+          $('.checkSturalImg')[i].src = `./images/ckicon${i+1}_grey.png`
+        }
+      }
+      
+    })
+    $('.checkSturalImg').on('click', function (event) {
+      console.log(event,event.target.name-0)
+      // $('.checkSturalImg')[i].src = `./images/ckicon${i+1}.png`
+      if(!$('.check')[event.target.name-0-1].checked ){
+        $('.check')[event.target.name-0-1].checked  = true
+        $('.checkSturalImg')[event.target.name-0-1].src = `./images/ckicon${event.target.name-0}.png`
+      }
+      for(let i = 0 ; i < $('.check').length ; i++){
+        console.log($('.check')[i].checked)
+        if($('.check')[i].checked){
+          $('.checkSturalImg')[i].src = `./images/ckicon${i+1}.png`
+        }else {
+          $('.checkSturalImg')[i].src = `./images/ckicon${i+1}_grey.png`
+        }
+      }
+    
+    })
+    $('.page-box').on('click', '.header-left li', function(){
+      $(this).addClass('active').siblings().removeClass('active')
+    })
+
+    laydate.render({
+      elem: '#time-selector1'
+      ,type: 'datetime'
+      ,range: true
+    });
+    laydate.render({
+      elem: '#time-selector2'
+      ,type: 'datetime'
+      ,range: true
+    });
+  </script>
+</body>
+
+</html>

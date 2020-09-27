@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/echarts-en.common.min.js"></script>
+  <script src="./js/echarts-en.js"></script>
+  <script src="./js/laydate/laydate.js"></script>
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script src="./js/element_index.js"></script>
+  <link rel="stylesheet" href="./css/element_index.css">
+  <link href="./css/reset.css" rel="stylesheet">
+  <link id="cssthemes" href="" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
+  <link rel="stylesheet" type="text/css" href="./css/pagination.css" media="screen">
+  <title>浦仪公路西段上坝夹江大桥健康监测系统</title>
+</head>
+
+<body>
+  <div class="page-controller" id="app">
+    <div class="page-header">
+      <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
+      <div class="user">
+        <div class="datetimer">2020年05月11日 周一 19 : 46</div>
+        <div class="themes-picker">
+          <img src="./images/icon_themes.png" />
+          <ul>
+            <li class="white" data-theme="normal"><img src="./images/icon_white.png" /></li>
+            <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
+          </ul>
+        </div>
+        <div class="userinfo"><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+      </div>
+    </div>
+    <div class="page-nav">
+      <!-- <div class="themes-picker" data-theme="">
+        <div class="dot"></div>
+        <div class="label"></div>
+      </div> -->
+      <ul>
+        <li data-menu="index">首页</li><!-- 首页 -->
+        <li class="active"><span>时程数据</span>
+          <ul>
+            <li data-menu="time1"><span>测点时程</span></li>
+            <li data-menu="time3"><span>交通荷载</span></li>
+          </ul>
+        </li><!-- 时程数据 -->
+        <li><span>统计数据</span>
+          <ul>
+            <li data-menu="statistics1"><span>测点时程统计</span></li>
+            <li data-menu="statistics13"><span>交通荷载统计</span></li>
+          </ul>
+        </li><!-- 统计数据 -->
+        <li><span>结构<br>状态分析</span>
+          <ul>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
+          </ul>
+        </li><!-- 结构状态分析 -->
+        <li><span>服役<br>环境分析</span>
+          <ul>
+            <li data-menu="scenario1"><span>实际车载效应分析</span></li>
+            <li data-menu="scenario2"><span>风荷载分析</span></li>
+            <li data-menu="scenario3"><span>温度场分析</span></li>
+          </ul>
+        </li><!-- 服役环境分析 -->
+        <li><span>预警管理</span>
+          <ul>
+            <li data-menu="warning1"><span>结构状态预警</span></li>
+            <li data-menu="warning2"><span>服役环境预警</span></li>
+          </ul>
+        </li><!-- 预警管理 -->
+        <li data-menu="system3"><span>报表管理</span>
+          <ul>
+            <!-- <li data-menu="system1"><span>角色管理</span></li> -->
+            <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 报表管理 -->
+        <li><span>系统管理</span>
+          <ul>
+            <li data-menu="system1"><span>角色管理</span></li>
+            <li data-menu="system2"><span>监测设备管理</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
+          </ul>
+        </li><!-- 系统管理 -->
+      </ul>
+    </div>
+    <div class="page-body">
+      <div class="page-box time3top">
+        <div class="title">
+          <span>交通荷载抓拍</span>
+        </div>
+        <div class="content">
+          <div class="imgbox"><img class="img_1" src="./images/simple5.jpg" border="0" /></div>
+          <div class="imgbox"><img class="img_2" src="./images/simple5.jpg" border="0" /></div>
+        </div>
+      </div>
+      <div class="time-bottom time3bottom">
+        <div class="page-box">
+          <div class="title">
+            <span>交通荷载时程</span>
+          </div>
+          <div class="content">
+            <div class="header">
+              <ul class="header-left"></ul>
+              <div class="header-right">
+                <el-select v-model="chooseData" multiple collapse-tags placeholder="请选择" class="laneSelect"
+                  @change='selectAll'>
+                  <el-option v-for="item in selectOptions" :key="item.value" :label="item.label" :value="item.value">
+                  </el-option>
+                </el-select>
+                <select>
+                  <option value="">所有</option>
+                  <option value="">超重车</option>
+                  <option value="">未超重车</option>
+                </select>
+                <input type="text" id="time-selector1" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <button class="export">
+                  <img src="./images/export.png" border="0" />
+                  <span>导出</span>
+                </button>
+              </div>
+            </div>
+            <div class="list-table">
+              <div class="tb-hd">
+                <ul>
+                  <li>采集时间</li>
+                  <li>车牌号</li>
+                  <li>轴数</li>
+                  <li>车速(km/h)</li>
+                  <li>总重(kg)</li>
+                  <li>轴重1(kg)</li>
+                  <li>轴重2(kg)</li>
+                  <li>轴重3(kg)</li>
+                  <li>轴重4(kg)</li>
+                  <li>轴重5(kg)</li>
+                  <li>轴重6(kg)</li>
+                  <li>轴重7(kg)</li>
+                  <li>轴重8(kg)</li>
+                  <li>超重比例</li>
+                </ul>
+              </div>
+              <div class="tb-bd">
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li class="rd">0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li class="rd">苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li class="rd">0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li class="rd">苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li class="rd">3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+                <ul>
+                  <li>2018.1.1 14:00</li>
+                  <li>苏A·GK616</li>
+                  <li>2</li>
+                  <li>57</li>
+                  <li>3333</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>0</li>
+                  <li>50%</li>
+                </ul>
+              </div>
+              <!-- <img src="./images/simple6.jpg" border="0" /> -->
+            </div>
+            <div class="m-style pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script type="text/javascript" src="./js/moment.min1.js"></script>
+  <script type="text/javascript" src="./js/daterangepicker.js"></script>
+  <script src="./js/jquery.pagination.js"></script>
+  <script type="text/javascript">
+    let init = null
+
+    $(function () {
+      $('.pagination').pagination({
+        mode: 'fixed',
+        pageCount: 50,
+        jump: true,
+        coping: true,
+        homePage: '首页',
+        endPage: '末页',
+        prevContent: '上页',
+        nextContent: '下页',
+        callback: function (api) { }
+      });
+      $('.tb-bd').on('click', 'ul', function () {
+        if($(this).index() == 0){
+          $('.img_1')[0].src = `./images/simple5.jpg`
+          $('.img_2')[0].src = `./images/simple5.jpg`
+        }else if ($(this).index() == 1) {
+          $('.img_1')[0].src = `./images/zhuapai1.jpg`
+          $('.img_2')[0].src = `./images/zhuapai1.jpg`
+          // $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+        } else if ($(this).index() == 2) {
+          $('.img_1')[0].src = `./images/zhuapai2.jpg`
+          $('.img_2')[0].src = `./images/zhuapai2.jpg`
+        }
+        else if ($(this).index() == 3) {
+          $('.img_1')[0].src = `./images/zhuapai3.jpg`
+          $('.img_2')[0].src = `./images/zhuapai3.jpg`
+        }
+        else if ($(this).index() == 4) {
+          $('.img_1')[0].src = `./images/zhuapai4.jpg`
+          $('.img_2')[0].src = `./images/zhuapai4.jpg`
+        }
+        else if ($(this).index() == 5) {
+          $('.img_1')[0].src = `./images/zhuapai5.jpg`
+          $('.img_2')[0].src = `./images/zhuapai5.jpg`
+        }
+      })
+    })
+    laydate.render({
+      elem: '#time-selector1'
+      , type: 'datetime'
+      , range: true
+    });
+
+    const app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          selectOptions: [
+            { value: 'ALL_SELECT', label: '全选' },
+            { value: '1', label: '上行1车道' },
+            { value: '2', label: '上行2车道' },
+            { value: '3', label: '上行3车道' },
+            { value: '4', label: '下行1车道' },
+            { value: '5', label: '下行2车道' },
+            { value: '6', label: '下行3车道' }
+          ],
+          oldChooseData: [],
+          chooseData: []
+        };
+      },
+      methods: {
+        selectAll(val) {
+          const allValues = this.selectOptions.map(item => {
+            return item.value;
+          });
+          // 用来储存上一次选择的值，可进行对比
+          const oldVal = this.oldChooseData.length > 0 ? this.oldChooseData : [];
+
+          // 若选择全部
+          if (val.includes('ALL_SELECT')) {
+            this.chooseData = allValues;
+          }
+
+          // 取消全部选中， 上次有， 当前没有， 表示取消全选
+          if (oldVal.includes('ALL_SELECT') && !val.includes('ALL_SELECT')) {
+            this.chooseData = [];
+          }
+
+          // 点击非全部选中，需要排除全部选中 以及 当前点击的选项
+          // 新老数据都有全部选中
+          if (oldVal.includes('ALL_SELECT') && val.includes('ALL_SELECT')) {
+            const index = val.indexOf('ALL_SELECT');
+            val.splice(index, 1); // 排除全选选项
+            this.chooseData = val;
+          }
+
+          // 全选未选，但是其他选项都全部选上了，则全选选上
+          if (!oldVal.includes('ALL_SELECT') && !val.includes('ALL_SELECT')) {
+            if (val.length === allValues.length - 1) {
+              this.chooseData = ['ALL_SELECT'].concat(val);
+            }
+          }
+
+          // 储存当前选择的最后结果 作为下次的老数据
+          this.oldChooseData = this.chooseData;
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>
