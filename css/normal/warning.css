@@ -348,13 +348,14 @@
   transition: right .3s linear 0s; */
   position: absolute;
   top: 84px;
-  left: -50%;
+  /* left: -50%; */
+  left:30%;
   /* margin-left: -21%; */
   background: #111029 !important;
   /* right: -42%; */
   width: 42%;
   /* margin: 0 auto; */
-  height: calc(100% - 200px);
+  height: calc(100% - 178px);
   transition: right .3s linear 0s;
 
 }

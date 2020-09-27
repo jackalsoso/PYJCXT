@@ -74,11 +74,11 @@
             <li data-menu="warning2"><span>服役环境预警</span></li>
           </ul>
         </li><!-- 预警管理 -->
-        <li><span>报表管理</span>
+        <li data-menu="system3"><span>报表管理</span>
           <ul>
             <!-- <li data-menu="system1"><span>角色管理</span></li> -->
             <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
-            <li data-menu="system3"><span>资料备份</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
           </ul>
         </li><!-- 报表管理 -->
         <li><span>系统管理</span>
@@ -92,8 +92,8 @@
     </div>
     <div class="page-body">
       <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
-        <div class="two-page-box">
-          <div class="page-box" style="height:440px;">
+        <div class="two-page-box" style="height:calc(100% - 450px);">
+          <div class="page-box" style="height:98%;">
             <div class="title">
               <span>风速风向</span>
             </div>
@@ -108,7 +108,7 @@
                 </div>
               </div>
               <div class="chart-wrap chart-tips">
-                <div class="chart" id="chart1"></div>
+                <div class="chart" id="chart1" style="height:80%;"></div>
                   <ul class="legendView chartTips">
                     <li>
                       <div class="legendLabel" style="border-color: #7C6AF2; background-color: #7C6AF2"></div>
@@ -126,7 +126,7 @@
               </div>
             </div>
           </div>
-          <div class="page-box" style="flex-basis: 500px;height:440px">
+          <div class="page-box" style="flex-basis: 500px;height:98%">
             <div class="title">
               <span>风速功率谱</span>
             </div>
@@ -144,7 +144,7 @@
                 </div>
               </div>
               <div class="chart-wrap">
-                <div class="chart" id="chart2"></div>
+                <div class="chart" id="chart2" style="height:80%;"></div>
               </div>
             </div>
           </div>

@@ -76,11 +76,11 @@
             <li data-menu="warning2"><span>服役环境预警</span></li>
           </ul>
         </li><!-- 预警管理 -->
-        <li><span>报表管理</span>
+        <li data-menu="system3"><span>报表管理</span>
           <ul>
             <!-- <li data-menu="system1"><span>角色管理</span></li> -->
             <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
-            <li data-menu="system3"><span>资料备份</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
           </ul>
         </li><!-- 报表管理 -->
         <li><span>系统管理</span>
@@ -94,8 +94,8 @@
     </div>
     <div class="page-body">
       <div class="time-bottom statistics-bottom" style="height: 100%;top: 10px;">
-        <div class="two-page-box">
-          <div class="page-box" style="height:430px">
+        <div class="two-page-box" style="height:calc(100% - 450px);">
+          <div class="page-box" style="height:98%">
             <div class="title">
               <span>频率</span>
             </div>
@@ -118,11 +118,11 @@
                 </div>
               </div>
               <div class="chart-wrap">
-                <div class="chart" id="chart1"></div>
+                <div class="chart" id="chart1" style="height: 90%;"></div>
               </div>
             </div>
           </div>
-          <div class="page-box" style="height:430px">
+          <div class="page-box" style="height:98%">
             <div class="title">
               <span>阻尼比</span>
             </div>
@@ -141,7 +141,7 @@
                 </div>
               </div>
               <div class="chart-wrap">
-                <div class="chart" id="chart2"></div>
+                <div class="chart" id="chart2" style="height: 90%;"></div>
               </div>
             </div>
           </div>
@@ -154,7 +154,7 @@
             </div>
             <div class="content structureAlys">
   
-                  <div class="content">
+                  <div class="content" style="height: 90%;">
                     <div class="header">
                       <ul class="header-left header-right">
                         <select>
@@ -169,7 +169,7 @@
                       </div>
                     </div>
                       <div class="chart-wrap">
-                        <div class="chart" id="chart3"></div>
+                        <div class="chart" id="chart3" style="height: 100%;"></div>
                       </div>
                     </div>
             </div>

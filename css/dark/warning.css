@@ -351,7 +351,7 @@
   /* right: -42%; */
   width: 42%;
   /* margin: 0 auto; */
-  height: calc(100% - 200px);
+  height: calc(100% - 178px);
   transition: right .3s linear 0s;
   /* top:430px; */
   /* right:-42%; */

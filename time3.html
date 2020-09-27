@@ -78,11 +78,11 @@
             <li data-menu="warning2"><span>服役环境预警</span></li>
           </ul>
         </li><!-- 预警管理 -->
-        <li><span>报表管理</span>
+        <li data-menu="system3"><span>报表管理</span>
           <ul>
             <!-- <li data-menu="system1"><span>角色管理</span></li> -->
             <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
-            <li data-menu="system3"><span>资料备份</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
           </ul>
         </li><!-- 报表管理 -->
         <li><span>系统管理</span>
@@ -97,11 +97,11 @@
     <div class="page-body">
       <div class="page-box time3top">
         <div class="title">
-          <span>桥梁信息</span>
+          <span>交通荷载抓拍</span>
         </div>
         <div class="content">
-          <div class="imgbox"><img src="./images/simple5.jpg" border="0" /></div>
-          <div class="imgbox"><img src="./images/simple5.jpg" border="0" /></div>
+          <div class="imgbox"><img class="img_1" src="./images/simple5.jpg" border="0" /></div>
+          <div class="imgbox"><img class="img_2" src="./images/simple5.jpg" border="0" /></div>
         </div>
       </div>
       <div class="time-bottom time3bottom">
@@ -113,18 +113,9 @@
             <div class="header">
               <ul class="header-left"></ul>
               <div class="header-right">
-                <el-select v-model="chooseData"
-                           multiple
-                           collapse-tags
-                           placeholder="请选择"
-                           class="laneSelect"
-                           @change='selectAll'
-                >
-                  <el-option v-for="item in selectOptions"
-                             :key="item.value"
-                             :label="item.label"
-                             :value="item.value"
-                  >
+                <el-select v-model="chooseData" multiple collapse-tags placeholder="请选择" class="laneSelect"
+                  @change='selectAll'>
+                  <el-option v-for="item in selectOptions" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
                 <select>
@@ -132,7 +123,8 @@
                   <option value="">超重车</option>
                   <option value="">未超重车</option>
                 </select>
-                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector1" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -383,6 +375,7 @@
   <script src="./js/jquery.pagination.js"></script>
   <script type="text/javascript">
     let init = null
+
     $(function () {
       $('.pagination').pagination({
         mode: 'fixed',
@@ -393,13 +386,38 @@
         endPage: '末页',
         prevContent: '上页',
         nextContent: '下页',
-        callback: function (api) {}
+        callback: function (api) { }
       });
+      $('.tb-bd').on('click', 'ul', function () {
+        if($(this).index() == 0){
+          $('.img_1')[0].src = `./images/simple5.jpg`
+          $('.img_2')[0].src = `./images/simple5.jpg`
+        }else if ($(this).index() == 1) {
+          $('.img_1')[0].src = `./images/zhuapai1.jpg`
+          $('.img_2')[0].src = `./images/zhuapai1.jpg`
+          // $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+        } else if ($(this).index() == 2) {
+          $('.img_1')[0].src = `./images/zhuapai2.jpg`
+          $('.img_2')[0].src = `./images/zhuapai2.jpg`
+        }
+        else if ($(this).index() == 3) {
+          $('.img_1')[0].src = `./images/zhuapai3.jpg`
+          $('.img_2')[0].src = `./images/zhuapai3.jpg`
+        }
+        else if ($(this).index() == 4) {
+          $('.img_1')[0].src = `./images/zhuapai4.jpg`
+          $('.img_2')[0].src = `./images/zhuapai4.jpg`
+        }
+        else if ($(this).index() == 5) {
+          $('.img_1')[0].src = `./images/zhuapai5.jpg`
+          $('.img_2')[0].src = `./images/zhuapai5.jpg`
+        }
+      })
     })
     laydate.render({
       elem: '#time-selector1'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
 
     const app = new Vue({
@@ -420,7 +438,7 @@
         };
       },
       methods: {
-        selectAll (val) {
+        selectAll(val) {
           const allValues = this.selectOptions.map(item => {
             return item.value;
           });

@@ -96,11 +96,11 @@
             <li data-menu="warning2"><span>服役环境预警</span></li>
           </ul>
         </li><!-- 预警管理 -->
-        <li><span>报表管理</span>
+        <li data-menu="system3"><span>报表管理</span>
           <ul>
             <!-- <li data-menu="system1"><span>角色管理</span></li> -->
             <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
-            <li data-menu="system3"><span>资料备份</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
           </ul>
         </li><!-- 报表管理 -->
         <li><span>系统管理</span>
@@ -222,7 +222,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check1chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -249,7 +249,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector2" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -259,7 +259,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check2chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -289,7 +289,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector3" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -299,7 +299,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check3chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -329,7 +329,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector4" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -339,7 +339,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check4chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -369,7 +369,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector5" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -379,7 +379,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check5chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -409,7 +409,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector6" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -419,7 +419,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check6chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -449,7 +449,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector7" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -459,7 +459,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check7chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -489,7 +489,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector8" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -499,7 +499,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check8chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -529,7 +529,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector9" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -539,7 +539,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check9chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -569,7 +569,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector10" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -579,7 +579,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check10chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -609,7 +609,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector11" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -619,7 +619,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check11chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -649,7 +649,7 @@
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
                 <input type="text" id="time-selector12" class="time-selector"
-                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="display: none;width:320px">
                 <button class="export">
                   <img src="./images/export.png" border="0" />
                   <span>导出</span>
@@ -659,7 +659,7 @@
             <div class="chart-wrap">
               <div class="chart" id="check12chart"></div>
               <div class="imgbox">
-                <el-carousel height="240px" style="width: 100%">
+                <el-carousel height="240px" style="width: 100%" :autoplay="false">
                   <el-carousel-item v-for="item in carouselItem" :key="item">
                     <img :src='item' border="0" />
                   </el-carousel-item>
@@ -1080,6 +1080,7 @@
         select1name: "",
         carouselItem: [
           './images/simple2.jpg',
+          // './images/simple3.jpg',
         ]
       },
       mounted() {
@@ -1278,13 +1279,101 @@
     })
 
     // $('#time-selector1').hide()
-    $('.page-box').on('click', '.header-left li', function () {
+    $('#check1-page').on('click', '.header-left li', function () {
       // debugger
       $(this).addClass('active').siblings().removeClass('active')
       if (this.innerHTML == "历史数据") {
         $('#time-selector1').show()
       } else {
         $('#time-selector1').hide()
+      }
+    })
+    $('#check2-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector2').show()
+      } else {
+        $('#time-selector2').hide()
+      }
+    })
+    $('#check3-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector3').show()
+      } else {
+        $('#time-selector3').hide()
+      }
+    })
+    $('#check4-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector4').show()
+      } else {
+        $('#time-selector4').hide()
+      }
+    })
+    $('#check5-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector5').show()
+      } else {
+        $('#time-selector5').hide()
+      }
+    })
+    $('#check6-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector6').show()
+      } else {
+        $('#time-selector6').hide()
+      }
+    })
+    $('#check7-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector7').show()
+      } else {
+        $('#time-selector7').hide()
+      }
+    })
+    $('#check8-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector8').show()
+      } else {
+        $('#time-selector8').hide()
+      }
+    })
+    $('#check9-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector9').show()
+      } else {
+        $('#time-selector9').hide()
+      }
+    })
+    $('#check10-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector10').show()
+      } else {
+        $('#time-selector10').hide()
+      }
+    })
+    $('#check11-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector11').show()
+      } else {
+        $('#time-selector11').hide()
+      }
+    })
+    $('#check12-page').on('click', '.header-left li', function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      if (this.innerHTML == "历史数据") {
+        $('#time-selector12').show()
+      } else {
+        $('#time-selector12').hide()
       }
     })
     laydate.render({

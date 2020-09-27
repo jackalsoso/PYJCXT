@@ -80,11 +80,11 @@
             <li data-menu="warning2"><span>服役环境预警</span></li>
           </ul>
         </li><!-- 预警管理 -->
-        <li><span>报表管理</span>
+        <li data-menu="system3"><span>报表管理</span>
           <ul>
             <!-- <li data-menu="system1"><span>角色管理</span></li> -->
             <!-- <li data-menu="system2"><span>监测设备管理</span></li> -->
-            <li data-menu="system3"><span>资料备份</span></li>
+            <!-- <li data-menu="system3"><span>资料备份</span></li> -->
           </ul>
         </li><!-- 报表管理 -->
         <li><span>系统管理</span>
@@ -97,7 +97,7 @@
       </ul>
     </div>
     <div class="page-body waring2" style="padding: 10px;">
-      <div class="time-bottom waring2-left" style="top: 514px;height: 373px;">
+      <div class="time-bottom waring2-left" style="top:calc(100% - 376px);height: 373px;">
         <div class="page-box">
           <div class="title" style="justify-content: initial;">
             <!-- <span>整体检测得分</span> -->
@@ -202,7 +202,7 @@
         </div>
       </div>
 
-      <div class="page-box waring2-right" style="height: 370px;top: 515px;">
+      <div class="page-box waring2-right" style="height: 370px;top: calc(100% - 376px);">
         <div class="title">
           <span>预警事件列表</span>
         </div>
@@ -296,10 +296,10 @@
         </div>
       </div>
 
-      <div class="page-box waring2-hide" style="z-index:9999;" id="drop" v-show="isDowm == true">
+      <div class="page-box waring2-hide" style="z-index:98;" id="drop" v-show="isDowm == true">
         <div class="page-box">
           <div class="title">
-            <span @mousedown="mousedown" style="cursor:move">预警详情</span>
+            <span @mousedown="mousedown" style="cursor:movel;width: 80%;">预警详情</span>
             <i class="close" @click="closemodel">X</i>
           </div>
           <div class="content">
@@ -843,6 +843,7 @@
       $(window).resize(myChart2.resize)
       $(window).resize(myChart3.resize)
       // $(window).trigger('resize')
+      this.app.closemodel();
     }
     //所有检测项和测点   mock
     // Mock.mock(
@@ -868,6 +869,8 @@
         selectElement: ""
       },
       mounted() {
+        document.oncontextmenu = new Function("event.returnValue=false");
+        document.onselectstart = new Function("event.returnValue=false");
         unity = UnityLoader.instantiate("unity", "Build/pydq.json", { onProgress: UnityProgress });
         this.getcedian()
         // $('#waringEvent ul').on('click', function () {
@@ -976,8 +979,23 @@
           var distanceY = event.clientY - this.selectElement.offsetTop
           document.onmousemove = function (ev) {
             var oevent = ev || event
-            div1.style.left = oevent.clientX - distanceX + 'px'
-            div1.style.top = oevent.clientY - distanceY + 'px'
+            // if (oevent.clientX - distanceX < 20 || oevent.clientY - distanceY < 20 || oevent.clientX - distanceX > 1049 || oevent.clientY - distanceY > 165) {
+            //   return
+            // } else {
+            //   div1.style.left = oevent.clientX - distanceX + 'px'
+            //   div1.style.top = oevent.clientY - distanceY + 'px'
+            // }
+            if(oevent.clientX - distanceX > 20 && oevent.clientX - distanceX < 1049){
+              div1.style.left = oevent.clientX - distanceX + 'px'
+            }else{
+              return
+            }
+            if(oevent.clientY - distanceY > 20 && oevent.clientY - distanceY < 165){
+              div1.style.top = oevent.clientY - distanceY + 'px'
+            }else{
+              return
+            }
+            console.log(div1.style.left, div1.style.top)
           }
           document.onmouseup = function () {
             document.onmousemove = null
