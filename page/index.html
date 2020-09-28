@@ -29,7 +29,8 @@
             <li class="blue active" data-theme="dark"><img src="./images/icon_blue.png" /></li>
           </ul>
         </div>
-        <div class="userinfo" @mouseenter="" @mouseleave=""><img src="./images/portrait.jpg" border="0" /><span>管理员</span></div>
+        <div class="userinfo" @mouseenter="" @mouseleave=""><img src="./images/portrait.jpg"
+            border="0" /><span>管理员</span></div>
       </div>
     </div>
     <div class="page-nav">
@@ -100,13 +101,13 @@
         <div class="content">
           <div class="info">
             <ul>
-              <li><span>桥梁名称：</span> <span>上坝大桥主桥</span> <a href="javascript:;">（切换）</a></li>
-              <li><span>桥 型：</span> <span>独柱形钢塔双索面钢箱梁</span></li>
+              <li><span>桥梁名称：</span> <span>浦仪公路西段上坝夹江大桥</span> <a href="javascript:;">（切换）</a></li>
+              <li><span>桥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span> <span>双塔双索面钢箱梁斜拉桥</span></li>
               <li><span>跨径组合：</span> <span>50+180+500+180+50m</span></li>
-              <li><span>地区路线：</span> <span>镇江S235</span></li>
-              <li><span>中心桩号：</span> <span>K023+152.78</span></li>
-              <li><span>通车时间：</span> <span>2006年12月</span></li>
-              <li><span>设计荷载：</span> <span>汽车-超20级</span></li>
+              <li><span>地区路线：</span> <span>南京104国道</span></li>
+              <li><span>中心桩号：</span> <span>左幅LK7+919.901;右幅AK7+019.901</span></li>
+              <li><span>通车时间：</span> <span>2020年</span></li>
+              <li><span>设计荷载：</span> <span>公路-I级</span></li>
             </ul>
           </div>
           <div class="imgbox"><img src="./images/simple1.jpg" border="0" /></div>
@@ -124,7 +125,7 @@
           </div>
         </span> -->
         <div class="content" style="height:100%">
-          <div class="check-box"  style="width:93%">
+          <div class="check-box" style="width:93%">
             <p><input class="checkAll" data-action="all" type="checkbox" value="" name="category" checked /> 全选</p>
             <p><input class="check" type="checkbox" value="应力" name="category" checked style="display: none;" /><img
                 src="./images/ckicon1.png" class="checkImg" name='1' /> 应力</p>
@@ -151,12 +152,7 @@
             <p><input class="check" type="checkbox" value="地震、船撞" name="category" checked style="display: none;" /><img
                 src="./images/ckicon12.png" class="checkImg" name='12' /> 地震、船撞</p>
 
-                <span class="title-right title-Info" >
-                  <img src="./images/explain.png" border="0" />&nbsp;&nbsp;<p style="color: black;">说明<p/>
-                  <div class="title-right-tip">
-                    说明：鼠标左键旋转，右键平移
-                  </div>
-                </span>
+
           </div>
           <div class="tip-box">
             <!-- <div class="tip-item" @click="changecolor"><i class="green" v-if="greentrue"></i><i class="grey"
@@ -168,6 +164,19 @@
             </div>
             <!-- @click="changecolor" @click="changecolor2"
 @click="changecolor3" -->
+            <span class="title-right title-Info" style="position: absolute !important;
+            right: -63px;top:0;">
+              <img src="./images/explain.png" border="0" />&nbsp;&nbsp;<p style="color: white;">说明
+                <p />
+              <div class="title-right-tip" style="width: 300px;
+              padding: 10px;
+              line-height: 22px;
+              position: absolute;
+              top: -50px;
+              right: 0;">
+                说明：鼠标左键旋转，右键平移
+              </div>
+            </span>
           </div>
 
           <div class="tip-check">
@@ -862,76 +871,76 @@
       },
       methods: {
         changecolor() {
-          var str="";
+          var str = "";
           this.greentrue = !this.greentrue
-          if(this.greentrue == true){
-            str+="正常";
+          if (this.greentrue == true) {
+            str += "正常";
           }
-          if(this.redtrue == true){
-            if(str==""){
-              str+="预警";
+          if (this.redtrue == true) {
+            if (str == "") {
+              str += "预警";
             }
-            else{
-              str+=",预警";
+            else {
+              str += ",预警";
             }
           }
-          if(this.whitetrue == true){
-            if(str==""){
-              str+="无数据";
+          if (this.whitetrue == true) {
+            if (str == "") {
+              str += "无数据";
             }
-            else{
-              str+=",无数据";
+            else {
+              str += ",无数据";
             }
           }
           console.log(str)
           unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", str)
-          
+
         },
         changecolor2() {
-          var str="";
+          var str = "";
           this.redtrue = !this.redtrue
-          if(this.greentrue == true){
-            str+="正常";
+          if (this.greentrue == true) {
+            str += "正常";
           }
-          if(this.redtrue == true){
-            if(str==""){
-              str+="预警";
+          if (this.redtrue == true) {
+            if (str == "") {
+              str += "预警";
             }
-            else{
-              str+=",预警";
+            else {
+              str += ",预警";
             }
           }
-          if(this.whitetrue == true){
-            if(str==""){
-              str+="无数据";
+          if (this.whitetrue == true) {
+            if (str == "") {
+              str += "无数据";
             }
-            else{
-              str+=",无数据";
+            else {
+              str += ",无数据";
             }
           }
           console.log(str)
           unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", str)
         },
         changecolor3() {
-          var str="";
+          var str = "";
           this.whitetrue = !this.whitetrue
-          if(this.greentrue == true){
-            str+="正常";
+          if (this.greentrue == true) {
+            str += "正常";
           }
-          if(this.redtrue == true){
-            if(str==""){
-              str+="预警";
+          if (this.redtrue == true) {
+            if (str == "") {
+              str += "预警";
             }
-            else{
-              str+=",预警";
+            else {
+              str += ",预警";
             }
           }
-          if(this.whitetrue == true){
-            if(str==""){
-              str+="无数据";
+          if (this.whitetrue == true) {
+            if (str == "") {
+              str += "无数据";
             }
-            else{
-              str+=",无数据";
+            else {
+              str += ",无数据";
             }
           }
           console.log(str)
@@ -995,7 +1004,7 @@
           unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "")
         } else {
           $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
-          
+
           unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索振动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
         }
 
@@ -1026,7 +1035,7 @@
         }
       }
     })
-    var checkarr = ["应力","挠度","空间变位","拉索振动","梁端位移","阻尼器位移","横向支座位移","温度","温湿度","风速","动力特性","地震、船撞"]
+    var checkarr = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
     $('.check-box').on('click', 'img', function (event) {
       // debugger
       console.log(event, event.target.name - 0)

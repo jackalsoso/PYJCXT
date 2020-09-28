@@ -145,7 +145,7 @@
 .tip-box {
   position: absolute;
   bottom: 20px;
-  right: 20px;
+  right: 70px;
   z-index: 99;
   cursor: pointer;
   color: white;
