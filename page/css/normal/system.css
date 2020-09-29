@@ -280,7 +280,7 @@
 .system1 .list-table li.do a:hover,
 .system2-right .list-table li.do a:hover,
 .system3-bottom .list-table li.do a:hover {
-    color: #fff;
+    color: rgb(29, 13, 75);
 }
 
 .system1 .list-table .tb-hd,

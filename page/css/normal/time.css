@@ -174,17 +174,17 @@
   right:15px;
   height: 348px;
 }
-.time3top .imgbox{
-  width: 50%;
+.time3top .imgbox {
+  width: 33.3%;
   height: 100%;
   float: left;
   padding: 10px;
-  padding-right:5px;
+  padding-right: 5px;
 }
-.time3top .imgbox + .imgbox{
+.time3top .imgbox + .imgbox + .imgbox{
   float: right;
-  padding-right:10px;
-  padding-left:10px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 .time3top .imgbox img{
   width: 100%;
@@ -462,7 +462,7 @@ color: #3698FD;
 }
 
 .chart-wrap .chartTips{
-  right: 110px !important;
+  right: 83px !important;
     bottom: -126px !important;
   width: 184px !important;
   height: 90px !important;
@@ -485,3 +485,9 @@ color: #3698FD;
   display: flex;
   align-items: center;
 }
+.el-tag.el-tag--info {
+  background: white;
+  border-color: #e9e9eb;
+  color: #909399;
+}
+/* 修改element下拉选框样式 */

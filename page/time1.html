@@ -284,6 +284,8 @@
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
+                  <option value="横桥向">纵桥向</option>
+                  <option value="横桥向">竖向</option>
                 </select>
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
@@ -604,6 +606,8 @@
               <div class="header-right">
                 <select>
                   <option value="横桥向">横桥向</option>
+                  <option value="横桥向">纵桥向</option>
+                  <option value="横桥向">竖向</option>
                 </select>
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
@@ -722,7 +726,7 @@
       '动力特性': '#check11-page',
       '地震、船撞': '#check12-page',
     }
-    SelectMonitorPoint("应力","") 
+    SelectMonitorPoint("应力", "")
     // SelectMonitorPoint("挠度","") 
     //选择测点
     function SelectMonitorPoint(type, name) {
@@ -746,7 +750,7 @@
 
 
     }
-    
+
     function bthclick(v) {
       unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByState", v.value)
     }
@@ -770,6 +774,15 @@
     function OnSceneLoaded() {
       //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
       unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
+      if (window.localStorage.getItem("color") == "white") {
+        unity.SendMessage("GameManager", "SetBgColor", "#234780")//
+        unity.SendMessage("GameManager", "SetTransColor", "#6C6767;0.26")//
+      } else {
+        unity.SendMessage("GameManager", "SetBgColor", "#051631")
+        unity.SendMessage("GameManager", "SetTransColor", "#FFFFFF;0.1")
+      }
+      // unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
+      // unity.SendMessage("GameManager", "SetEnvir", "false")
     }
 
     let init = function () {
@@ -1112,6 +1125,7 @@
 
       }
     })
+
     $('#xuhuacheck').on("click", function () {
       if (this.checked == true) {
         unity.SendMessage("GameManager", "SetBridgeTransparent", "false")
@@ -1203,6 +1217,7 @@
         }
       }
     })
+    var checkarr = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
     //全选事件
     $('.check-box').on('click', 'input', function () {
       // debugger
@@ -1212,11 +1227,13 @@
       for (let i = 0; i < $('.check').length; i++) {
         if ($('.check')[i].checked) {
           $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+          checkarr = []
           unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "")
         } else {
           $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
-
-          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索振动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
+          checkarr = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+          // unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索振动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", checkarr.join(","))
         }
 
       }
@@ -1247,13 +1264,12 @@
       }
     })
     //全选框后面的切换图片事件
-    var checkarr = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
     $('.check-box').on('click', 'img', function (event) {
-      // debugger
       console.log(event, event.target.name - 0)
 
 
       if ($('.check')[event.target.name - 0 - 1].checked) {
+        // debugger
         console.log($('.check')[event.target.name - 0 - 1].value)
         $('.check')[event.target.name - 0 - 1].checked = false
         checkarr[event.target.name - 0 - 1] = ""
@@ -1262,6 +1278,7 @@
         $('.checkImg')[event.target.name - 0 - 1].src = `./images/ckicon${event.target.name - 0}_grey.png`
       } else {
         $('.check')[event.target.name - 0 - 1].checked = true
+        // checkarr.push($('.check')[event.target.name - 0 - 1].value)
         checkarr[event.target.name - 0 - 1] = $('.check')[event.target.name - 0 - 1].value
         console.log(checkarr)
         unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", checkarr.join(","))

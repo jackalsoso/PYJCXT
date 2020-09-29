@@ -682,6 +682,13 @@
     function OnSceneLoaded() {
       //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
       unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
+      if (window.localStorage.getItem("color") == "white") {
+        unity.SendMessage("GameManager", "SetBgColor", "#234780")//
+        unity.SendMessage("GameManager", "SetTransColor", "#6C6767;0.26")//
+      } else {
+        unity.SendMessage("GameManager", "SetBgColor", "#051631")
+        unity.SendMessage("GameManager", "SetTransColor", "#FFFFFF;0.1")
+      }
     }
     let init = function () {
       var data20 = [

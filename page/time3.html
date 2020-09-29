@@ -102,6 +102,7 @@
         <div class="content">
           <div class="imgbox"><img class="img_1" src="./images/simple5.jpg" border="0" /></div>
           <div class="imgbox"><img class="img_2" src="./images/simple5.jpg" border="0" /></div>
+          <div class="imgbox"><img class="img_3" src="./images/simple5.jpg" border="0" /></div>
         </div>
       </div>
       <div class="time-bottom time3bottom">
@@ -391,26 +392,26 @@
       $('.tb-bd').on('click', 'ul', function () {
         if($(this).index() == 0){
           $('.img_1')[0].src = `./images/simple5.jpg`
-          $('.img_2')[0].src = `./images/simple5.jpg`
+          // $('.img_2')[0].src = `./images/simple5.jpg`
         }else if ($(this).index() == 1) {
           $('.img_1')[0].src = `./images/zhuapai1.jpg`
-          $('.img_2')[0].src = `./images/zhuapai1.jpg`
+          // $('.img_2')[0].src = `./images/zhuapai1.jpg`
           // $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
         } else if ($(this).index() == 2) {
           $('.img_1')[0].src = `./images/zhuapai2.jpg`
-          $('.img_2')[0].src = `./images/zhuapai2.jpg`
+          // $('.img_2')[0].src = `./images/zhuapai2.jpg`
         }
         else if ($(this).index() == 3) {
           $('.img_1')[0].src = `./images/zhuapai3.jpg`
-          $('.img_2')[0].src = `./images/zhuapai3.jpg`
+          // $('.img_2')[0].src = `./images/zhuapai3.jpg`
         }
         else if ($(this).index() == 4) {
           $('.img_1')[0].src = `./images/zhuapai4.jpg`
-          $('.img_2')[0].src = `./images/zhuapai4.jpg`
+          // $('.img_2')[0].src = `./images/zhuapai4.jpg`
         }
         else if ($(this).index() == 5) {
           $('.img_1')[0].src = `./images/zhuapai5.jpg`
-          $('.img_2')[0].src = `./images/zhuapai5.jpg`
+          // $('.img_2')[0].src = `./images/zhuapai5.jpg`
         }
       })
     })
@@ -436,6 +437,10 @@
           oldChooseData: [],
           chooseData: []
         };
+      },
+      created() {
+        let arr = ["ALL_SELECT"]
+        this.selectAll(arr)
       },
       methods: {
         selectAll(val) {

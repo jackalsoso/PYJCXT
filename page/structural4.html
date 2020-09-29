@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,8 @@
   <script type="text/javascript" src="./js/vue.min.js"></script>
   <script type="text/javascript" src="./js/axios.min.js"></script>
   <script src="./js/laydate/laydate.js"></script>
+  <script src="./js/element_index.js"></script>
+  <link rel="stylesheet" href="./css/element_index.css">
   <link href="./css/reset.css" rel="stylesheet">
   <link id="cssthemes" href="" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="all" href="./css/daterangepicker.css" />
@@ -16,8 +19,9 @@
   <script src="TemplateData/UnityProgress.js"></script>
   <script src="Build/UnityLoader.js"></script>
 </head>
+
 <body>
-  <div class="page-controller" style="overflow-y: hidden;">
+  <div class="page-controller" style="overflow-y: hidden;" id="app">
     <div class="page-header">
       <div class="logo">浦仪公路西段上坝夹江大桥健康监测系统</div>
       <div class="user">
@@ -53,14 +57,14 @@
         </li><!-- 统计数据 -->
         <li class="active"><span>结构<br>状态分析</span>
           <ul>
-          <li data-menu="structural1"><span>结构动力特性分析</span></li>
-          <li data-menu="structural2"><span>应力五度指标</span></li>
-          <li data-menu="structural3"><span>结构变形响应分析</span></li>
-          <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
-          <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
-          <li data-menu="structural6"><span>结构相关性分析</span></li>
-          <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
-          <li data-menu="structural8"><span>行人舒适度评价</span></li>
+            <li data-menu="structural1"><span>结构动力特性分析</span></li>
+            <li data-menu="structural2"><span>应力五度指标</span></li>
+            <li data-menu="structural3"><span>结构变形响应分析</span></li>
+            <li data-menu="structural4"><span>正交异性板疲劳分析</span></li>
+            <li data-menu="structural5"><span>拉索索力时频域分析</span></li>
+            <li data-menu="structural6"><span>结构相关性分析</span></li>
+            <li data-menu="structural7"><span>阻尼器/梁端纵向累积行程分析</span></li>
+            <li data-menu="structural8"><span>行人舒适度评价</span></li>
           </ul>
         </li><!-- 结构状态分析 -->
         <li><span>服役<br>环境分析</span>
@@ -110,7 +114,7 @@
                 <label class="custom-checkbox">
                   <input id="xuhuacheck" type="checkbox">
                   <span></span>
-  
+
                 </label>
                 <div class="custom-txt">虚化</div>
               </div>
@@ -118,7 +122,7 @@
                 <label class="custom-checkbox">
                   <input id="huanjincheck" type="checkbox" checked>
                   <span></span>
-  
+
                 </label>
                 <div class="custom-txt">环境</div>
               </div>
@@ -155,11 +159,20 @@
                 <select>
                   <option value="YL-A1-B-01">YL-A1-B-01</option>
                 </select>
-                <input type="text" id="time-selector1" class="time-selector" value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
+                <input type="text" id="time-selector1" class="time-selector"
+                  value="2020-09-11 00:03:00 - 2020-10-04 00:03:00" style="width:320px">
               </div>
             </div>
             <div class="chart-wrap">
-              <div class="chart" id="chart1" style="width: 100%;"></div>
+              <div class="chart" id="chart1" style="width: 80%;"></div>
+              <div class="imgbox">
+                <el-carousel height="200px" style="width: 100%" :autoplay="false">
+                  <el-carousel-item v-for="item in carouselItem" :key="item">
+                    <img :src='item' border="0" />
+                  </el-carousel-item>
+                </el-carousel>
+                <span>测点位置</span>
+              </div>
             </div>
           </div>
         </div>
@@ -171,7 +184,7 @@
   <script type="text/javascript" src="./js/moment.min1.js"></script>
   <script type="text/javascript" src="./js/daterangepicker.js"></script>
   <script type="text/javascript">
-  var unity
+    var unity
     var unityReady = false
 
     var typenamelist = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
@@ -242,6 +255,13 @@
     function OnSceneLoaded() {
       //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
       unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
+      if (window.localStorage.getItem("color") == "white") {
+        unity.SendMessage("GameManager", "SetBgColor", "#234780")//
+        unity.SendMessage("GameManager", "SetTransColor", "#6C6767;0.26")//
+      } else {
+        unity.SendMessage("GameManager", "SetBgColor", "#051631")
+        unity.SendMessage("GameManager", "SetTransColor", "#FFFFFF;0.1")
+      }
     }
     let init = function () {
       var data = [
@@ -311,6 +331,9 @@
               color: '#ACB3BE'
             }
           },
+          nameTextStyle: {
+            fontSize: 16
+          },
           axisTick: {
             show: false
           },
@@ -327,6 +350,9 @@
           nameLocation: 'middle',
           nameRotate: 90,
           nameGap: 40,
+          nameTextStyle: {
+            fontSize: 16
+          },
           axisLine: {
             lineStyle: {
               color: '#ACB3BE'
@@ -445,10 +471,10 @@
       // 初始化echarts实例
       var myChart1 = echarts.init(document.getElementById('chart1'), 'light');
       myChart1.setOption(option1, true);
-      $('.option1').on('click', function(){
+      $('.option1').on('click', function () {
         myChart1.setOption(option1, true);
       })
-      $('.option2').on('click', function(){
+      $('.option2').on('click', function () {
         myChart1.setOption(option2, true);
       })
     }
@@ -459,6 +485,7 @@
         select1name: "",
         carouselItem: [
           './images/simple2.jpg',
+          // './images/simple3.jpg',
         ]
       },
       mounted() {
@@ -506,14 +533,14 @@
         unity.SendMessage("GameManager", "SetEnvir", "false")
       }
     })
-    $('.page-box').on('click', '.header-left li', function(){
+    $('.page-box').on('click', '.header-left li', function () {
       $(this).addClass('active').siblings().removeClass('active')
     })
 
     laydate.render({
       elem: '#time-selector1'
-      ,type: 'datetime'
-      ,range: true
+      , type: 'datetime'
+      , range: true
     });
 
   </script>

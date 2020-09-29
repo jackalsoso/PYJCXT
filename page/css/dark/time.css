@@ -231,13 +231,13 @@
   height: 408px;
 }
 .time3top .imgbox {
-  width: 50%;
+  width: 33.3%;
   height: 100%;
   float: left;
   padding: 10px;
   padding-right: 5px;
 }
-.time3top .imgbox + .imgbox {
+.time3top .imgbox + .imgbox + .imgbox{
   float: right;
   padding-right: 10px;
   padding-left: 10px;
@@ -639,9 +639,16 @@
   bottom: 60px !important;
   width: 140px !important;
   height: 90px !important; */
-  right: 136px !important;
+  right: 83px !important;
   bottom: -126px !important;
   width: 170px !important;
   height: 90px !important;
   position: relative !important;
 }
+
+.el-tag.el-tag--info {
+  background: #191934;
+  border-color: #e9e9eb;
+  color: #909399;
+}
+/* 修改element下拉选框样式 */

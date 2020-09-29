@@ -116,10 +116,12 @@
           </div>
           <div class="content historyScore" style="display:none">
             <div class="header">
-              <ul class="header-left timesDuring">
-                <li class="active">小时</li>
-                <li>日</li>
-                <li>周</li>
+              <ul class="header-left" style="padding-top: 20px;display: flex;
+              height: 40px;
+              margin: 0px 0 25px;">
+              <li class="active" style="width:65px;padding: 0;">10分</li>
+              <li style="width:65px;padding: 0;">小时</li>
+              <li style="border-right: 1px solid #ddd;padding: 0;width: 0px;">日</li>
               </ul>
               <div class="header-right">
                 <select style="width:100px;">
@@ -415,7 +417,7 @@
               </div>
             </div>
             <div class="chart-wrap">
-              <div class="chart" id="chart3" style="width: 729px;height:160px;"></div>
+              <div class="chart" id="chart3" style="width: 729px;height:185px;"></div>
             </div>
             <div class="preDealtail">
               <h4 class="label">原因分析：</h4>
@@ -424,8 +426,8 @@
               <h4 class="label">处理措施：</h4>
               <p class="showInfo"><textarea type="text"
                   class="inputClass">市交通委路政局迅速启动突发事件响应程序，市城市道路养护管理中心立即要求养护单位组织抢险人员进行方木支搭。</textarea></p>
-              <div><span class="label">预警报告:</span>北二 环大桥监测阶段7月报告pdf<span style="float: right;color: rgb(24,144,255);"
-                  class="preOpara">详情|删除</span></div>
+              <div><span class="label">预警报告:</span>北二 环大桥监测阶段7月报告pdf<span style="float: right;"
+                  class="preOpara">删除</span><span class="preOparal" style="margin-right: 4px;float: right;margin-left: 4px;">|</span><span class="preOpara" style="float: right;">详情</span></div>
               <div class="label">处理人：<input type="text" class="inputClass" value="张小贤" /></div>
               <div class="label">处理时间：2018/10/01 14:28</div>
               <div class="save">
@@ -533,6 +535,13 @@
     function OnSceneLoaded() {
       //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
       unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")
+      if (window.localStorage.getItem("color") == "white") {
+        unity.SendMessage("GameManager", "SetBgColor", "#234780")//
+        unity.SendMessage("GameManager", "SetTransColor", "#6C6767;0.26")//
+      } else {
+        unity.SendMessage("GameManager", "SetBgColor", "#051631")
+        unity.SendMessage("GameManager", "SetTransColor", "#FFFFFF;0.1")
+      }
     }
     // $('#waringEvent ul').on('click', function () {
     //   if (!$('.waring2-hide').hasClass('show')) {
@@ -990,7 +999,7 @@
             }else{
               return
             }
-            if(oevent.clientY - distanceY > 20 && oevent.clientY - distanceY < 165){
+            if(oevent.clientY - distanceY > 20 && oevent.clientY - distanceY < 757){
               div1.style.top = oevent.clientY - distanceY + 'px'
             }else{
               return

@@ -900,6 +900,15 @@
           , range: true
         });
       },
+      created() {
+        let arr = ["ALL_SELECT"]
+        this.selectAll(arr,0)
+        this.selectAll(arr,1)
+        this.selectAll(arr,2)
+        this.selectAll(arr,3)
+        this.selectAll(arr,4)
+        this.selectAll(arr,5)
+      },
       methods: {
         selectAll(val, index) {
           console.log(index, val)

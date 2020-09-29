@@ -303,10 +303,20 @@
 
     }
 
+
+
+
     function OnSceneLoaded() {
       // unity.SendMessage("Manager", "CallBackWGL_StartScene", '0')
       unity.SendMessage("GameManager", "CallBackWGL_LoadMeasurePoint", "")//加载测点
       unity.SendMessage("GameManager", "SetIsFlicker", "true")//测点闪烁
+      if (window.localStorage.getItem("color") == "white") {
+        unity.SendMessage("GameManager", "SetBgColor", "#234780")//
+        unity.SendMessage("GameManager", "SetTransColor", "#6C6767;0.26")//
+      } else {
+        unity.SendMessage("GameManager", "SetBgColor", "#051631")
+        unity.SendMessage("GameManager", "SetTransColor", "#FFFFFF;0.1")
+      }
 
     }
     function LoadComponentColor() {
@@ -1001,11 +1011,13 @@
       for (let i = 0; i < $('.check').length; i++) {
         if ($('.check')[i].checked) {
           $('.checkImg')[i].src = `./images/ckicon${i + 1}.png`
+          checkarr = []
           unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "")
         } else {
           $('.checkImg')[i].src = `./images/ckicon${i + 1}_grey.png`
-
-          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索振动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
+          checkarr = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+          // unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", "应力,挠度,空间变位,拉索振动,梁端位移,阻尼器位移,横向支座位移,温度,温湿度,风速,动力特性,地震、船撞")
+          unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", checkarr.join(","))
         }
 
       }
@@ -1035,7 +1047,7 @@
         }
       }
     })
-    var checkarr = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
+    // var checkarr = ["应力", "挠度", "空间变位", "拉索振动", "梁端位移", "阻尼器位移", "横向支座位移", "温度", "温湿度", "风速", "动力特性", "地震、船撞"]
     $('.check-box').on('click', 'img', function (event) {
       // debugger
       console.log(event, event.target.name - 0)

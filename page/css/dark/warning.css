@@ -343,7 +343,7 @@
 
 .waring2 .waring2-hide{
   position: absolute;
-  top: 84px;
+  top: 64px;
   /* left: -50%;外包 */
   left:30%;
   /* margin-left: -21%; */
@@ -351,7 +351,7 @@
   /* right: -42%; */
   width: 42%;
   /* margin: 0 auto; */
-  height: calc(100% - 178px);
+  height: calc(100% - 138px);
   transition: right .3s linear 0s;
   /* top:430px; */
   /* right:-42%; */
@@ -580,6 +580,7 @@
 .preDealtail{
   width: 100%;
   padding: 0 20px 10px 20px;
+  margin-top: 15px;
 }
 
 .save{
@@ -616,4 +617,14 @@
   margin-left: 10px;
   cursor: pointer;
   padding: 0 8px;
+}
+.preOpara{
+  color: rgb(24,144,255);
+  cursor: pointer;
+}
+.preOpara:hover{
+  color: white;
+}
+.preOparal{
+  color:#55566a;
 }

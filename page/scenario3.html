@@ -148,7 +148,7 @@
                 </div>
               </div>
               <div class="chart-wrap">
-                <div class="chart" id="chart2"></div>
+                <div class="chart" id="chart2" style="height:310px"></div>
               </div>
             </div>
           </div>
@@ -167,7 +167,7 @@
                 </div>
               </div>
               <div class="chart-wrap" style="height:100%;">
-                <div class="chart" id="chart3" style="height:80%;"></div>
+                <div class="chart" id="chart3" style="height:310px;"></div>
               </div>
             </div>
           </div>
@@ -251,6 +251,13 @@
     function OnSceneLoaded() {
       //unity.SendMessage("GameManager", "CallBackWGL_ShowMeasurePointByType", typenamelist.join(','))
       unity.SendMessage("GameManager", "CallBackWGL_LoadCrossSection", "")
+      if (window.localStorage.getItem("color") == "white") {
+        unity.SendMessage("GameManager", "SetBgColor", "#234780")//
+        unity.SendMessage("GameManager", "SetTransColor", "#6C6767;0.26")//
+      } else {
+        unity.SendMessage("GameManager", "SetBgColor", "#051631")
+        unity.SendMessage("GameManager", "SetTransColor", "#FFFFFF;0.1")
+      }
     }
     let init = function () {
       var data = [
